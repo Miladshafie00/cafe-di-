@@ -152,6 +152,8 @@
 
     <script>
         const menuData = {
+            coffee: {
+                title: '',
                 items: [
                     { n: 'اسپرسو', p: '۴۵,۰۰۰' },
                     { n: 'لاته', p: '۷۵,۰۰۰' },
@@ -186,7 +188,11 @@
                 clickedBtn.classList.add('active');
             }
 
-            let html = `<div class="menu-section"><h2>${data.title}</h2>`;
+            let html = `<div class="menu-section">`;
+
+            if (data.title) {
+                html += `<h2>${data.title}</h2>`;
+            }
 
             data.items.forEach(item => {
                 html += `
@@ -202,9 +208,7 @@
         }
 
         window.addEventListener('DOMContentLoaded', () => {
-            const buttons = document.querySelectorAll('.cat-btn');
-
-            buttons.forEach(button => {
+            document.querySelectorAll('.cat-btn').forEach(button => {
                 button.addEventListener('click', function () {
                     showCat(this.dataset.cat, this);
                 });

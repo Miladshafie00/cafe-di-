@@ -87,7 +87,8 @@
     <script>
         // دیتای منو
         const menuData = {
-            coffee: { title: 'قهوه گرم', items: [{n:'اسپرسو', p:'۴۵,۰۰۰'}, {n:'لاته', p:'۷۵,۰۰۰'}, {n:'کاپوچینو', p:'۷۰,۰۰۰'}] },
+            coffee: { title: 'قهوه گرم', items: [{n:
+                'اسپرسو', p:'۴۵,۰۰۰'}, {n:'لاته', p:'۷۵,۰۰۰'}, {n:'کاپوچینو', p:'۷۰,۰۰۰'}] },
             cold: { title: 'نوشیدنی سرد', items: [{n:'موهیتو', p:'۸۰,۰۰۰'}, {n:'آیس لاته', p:'۸۵,۰۰۰'}] },
             dessert: { title: 'کیک و دسر', items: [{n:'چیزکیک', p:'۹۵,۰۰۰'}, {n:'کیک هویج', p:'۸۰,۰۰۰'}] }
         };
@@ -96,8 +97,6 @@
             // تغییر دکمه فعال
             document.querySelectorAll('.cat-btn').forEach(b => b.classList.remove('active'));
             btn.classList.add('active');
-
-Milad, [26/05/1405 01:11 ب.ظ]
 // رندر آیتم‌ها
             const data = menuData[cat];
             let html = <div class="menu-section"><h2>${data.title}</h2>;

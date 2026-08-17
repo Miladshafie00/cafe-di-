@@ -1,16 +1,20 @@
 <!DOCTYPE html>
 <html lang="fa" dir="rtl">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>منوی دیجیتال کافه دی</title>
     <style>
-        * { margin: 0; padding: 0; box-sizing: border-box; }
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
         body {
             font-family: Tahoma, sans-serif;
-            /* ⬇️ ۱. مسیر عکس پس‌زمینه بزرگ اینجا تنظیم می‌شود ⬇️ */
             background: linear-gradient(rgba(0,0,0,0.8), rgba(0,0,0,0.8)),
-                        url('m.jpg'); 
+                        url('m.jpg');
             background-size: cover;
             background-position: center;
             background-attachment: fixed;
@@ -24,7 +28,6 @@
             padding: 50px 20px 20px;
         }
 
-        /* استایل لوگو */
         .logo-container {
             width: 120px;
             height: 120px;
@@ -46,7 +49,6 @@
             display: block;
         }
 
-        /* اگر عکس نبود این متن جایگزین نمایش داده می‌شود */
         .logo-placeholder {
             font-size: 40px;
             color: #d4a373;
@@ -129,8 +131,8 @@
 
     <header>
         <div class="logo-container">
-            <!-- ⬇️ ۲. مسیر عکس لوگو در اینجا تنظیم می‌شود ⬇️ -->
-            <img id="mainLogo" src="s.jpg" alt="لوگو" onerror="this.style.display='none'; document.getElementById('altText').style.display='block';">
+            <img id="mainLogo" src="s.jpg" alt="لوگو"
+                 onerror="this.style.display='none'; document.getElementById('altText').style.display='block';">
             <span id="altText" class="logo-placeholder" style="display:none;">دی</span>
         </div>
 
@@ -139,65 +141,76 @@
     </header>
 
     <nav class="category-nav">
-        <button class="cat-btn active" onclick="showCat('coffee', this)">قهوه</button>
-        <button class="cat-btn" onclick="showCat('cold', this)">بار سرد</button>
-        <button class="cat-btn" onclick="showCat('dessert', this)">دسر</button>
+        <button class="cat-btn active" data-cat="coffee">قهوه</button>
+        <button class="cat-btn" data-cat="cold">بار سرد</button>
+        <button class="cat-btn" data-cat="dessert">دسر</button>
     </nav>
 
     <main id="menu-content"></main>
 
     <script>
-        // دیتای منو
         const menuData = {
             coffee: {
-                title: 'قهوه گرم',
+                title: "قهوه گرم",
                 items: [
-                    { n: 'اسپرسو', p: '۴۵,۰۰۰' },
-                    { n: 'لاته', p: '۷۵,۰۰۰' },
-                    { n: 'کاپوچینو', p: '۷۰,۰۰۰' }
+                    { n: "اسپرسو", p: "۴۵,۰۰۰" },
+                    { n: "لاته", p: "۷۵,۰۰۰" },
+                    { n: "کاپوچینو", p: "۷۰,۰۰۰" }
                 ]
             },
             cold: {
-                title: 'نوشیدنی سرد',
+                title: "نوشیدنی سرد",
                 items: [
-                    { n: 'موهیتو', p: '۸۰,۰۰۰' },
-                    { n: 'آیس لاته', p: '۸۵,۰۰۰' }
+                    { n: "موهیتو", p: "۸۰,۰۰۰" },
+                    { n: "آیس لاته", p: "۸۵,۰۰۰" }
                 ]
             },
             dessert: {
-                title: 'کیک و دسر',
+                title: "کیک و دسر",
                 items: [
-                    { n: 'چیزکیک', p: '۹۵,۰۰۰' },
-                    { n: 'کیک هویج', p: '۸۰,۰۰۰' }
+                    { n: "چیزکیک", p: "۹۵,۰۰۰" },
+                    { n: "کیک هویج", p: "۸۰,۰۰۰" }
                 ]
             }
         };
 
-        function showCat(cat, btn) {
-            // تغییر دکمه فعال
-            document.querySelectorAll('.cat-btn').forEach(b => b.classList.remove('active'));
-            if (btn) btn.classList.add('active');
-
-            // رندر آیتم‌ها
+        function showCat(cat, clickedBtn) {
             const data = menuData[cat];
+            if (!data) return;
+
+            document.querySelectorAll(".cat-btn").forEach(btn => {
+                btn.classList.remove("active");
+            });
+
+            if (clickedBtn) {
+                clickedBtn.classList.add("active");
+            }
+
             let html = `<div class="menu-section"><h2>${data.title}</h2>`;
 
             data.items.forEach(item => {
-                html += `<div class="card">
-                            <span>${item.n}</span>
-                            <span class="price">${item.p} تومان</span>
-                         </div>`;
+                html += `
+                    <div class="card">
+                        <span>${item.n}</span>
+                        <span class="price">${item.p} تومان</span>
+                    </div>
+                `;
             });
 
             html += `</div>`;
-            document.getElementById('menu-content').innerHTML = html;
+            document.getElementById("menu-content").innerHTML = html;
         }
 
-        // اجرای اولیه
-        window.addEventListener('DOMContentLoaded', () => {
-            const firstBtn = document.querySelector('.cat-btn');
-            showCat('coffee', firstBtn);
+        const buttons = document.querySelectorAll(".cat-btn");
+
+        buttons.forEach(button => {
+            button.addEventListener("click", function () {
+                const category = this.getAttribute("data-cat");
+                showCat(category, this);
+            });
         });
+
+        showCat("coffee", document.querySelector('.cat-btn[data-cat="coffee"]'));
     </script>
 </body>
 </html>

@@ -4,46 +4,79 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>منوی دیجیتال کافه دی</title>
+    
+    <!-- فونت‌های شیک و جذاب فارسی -->
+    <link href="https://cdn.fontcdn.ir/Font/Persian/Vazirmatn/Vazirmatn.css" rel="stylesheet">
+    <link href="https://cdn.fontcdn.ir/Font/Persian/Lalezar/Lalezar.css" rel="stylesheet">
+    <link href="https://cdn.fontcdn.ir/Font/Persian/IranNastaliq/IranNastaliq.css" rel="stylesheet">
+    
     <style>
-        /* اضافه کردن فونت‌های جذاب */
-        @import url('https://cdn.fontcdn.ir/Font/Persian/Vazirmatn/Vazirmatn.css');
-        @import url('https://cdn.fontcdn.ir/Font/Persian/IranNastaliq/IranNastaliq.css');
+        :root {
+            --bg-image: url('s.jpg');
+            --gold-color: #e5b882;
+            --gold-bright: #ffd194;
+            --font-title: 'Lalezar', cursive, sans-serif;
+            --font-body: 'Vazirmatn', sans-serif;
+        }
 
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
+            letter-spacing: 0.3px;
         }
 
         body {
-            font-family: 'Vazirmatn', Tahoma, sans-serif;
-            background: linear-gradient(rgba(0,0,0,0.8), rgba(0,0,0,0.8)),
-                        url('m.jpg');
+            font-family: var(--font-body);
+            background: linear-gradient(rgba(10, 10, 10, 0.85), rgba(10, 10, 10, 0.9)), var(--bg-image);
             background-size: cover;
             background-position: center;
             background-attachment: fixed;
-            color: #fff;
+            background-color: #0d0d0d;
+            color: #f5f5f5;
             min-height: 100vh;
-            padding-bottom: 40px;
+            padding-bottom: 50px;
         }
 
         header {
             text-align: center;
-            padding: 50px 20px 20px;
+            padding: 45px 20px 20px;
         }
 
+        /* عنوان اصلی کافه */
+        header h2 {
+            font-family: var(--font-title);
+            font-size: 3rem;
+            color: var(--gold-bright);
+            letter-spacing: 1px;
+            text-shadow: 0 0 15px rgba(229, 184, 130, 0.4);
+            margin-bottom: 4px;
+        }
+
+        header p {
+            color: #d1d1d1;
+            font-size: 1rem;
+            font-weight: 300;
+        }
+
+        /* لوگو با استایل نئونی طلایی */
         .logo-container {
-            width: 120px;
-            height: 120px;
+            width: 125px;
+            height: 125px;
             margin: 0 auto 15px;
             border-radius: 50%;
-            border: 3px solid #d4a373;
-            box-shadow: 0 0 20px rgba(212, 163, 115, 0.4);
+            border: 2.5px solid var(--gold-color);
+            box-shadow: 0 0 25px rgba(229, 184, 130, 0.35);
             overflow: hidden;
-            background: #222;
+            background: #181818;
             display: flex;
             align-items: center;
             justify-content: center;
+            transition: transform 0.3s ease;
+        }
+
+        .logo-container:hover {
+            transform: scale(1.05);
         }
 
         .logo-container img {
@@ -54,73 +87,209 @@
         }
 
         .logo-placeholder {
-            font-size: 40px;
-            color: #d4a373;
-            font-weight: bold;
-        }
-
-        /* اعمال فونت نستعلیق به تیترها */
-        header h2 {
+            font-size: 45px;
+            color: var(--gold-color);
             font-family: 'IranNastaliq', cursive;
-            font-size: 2.2rem;
-            color: #d4a373;
-            margin-bottom: 5px;
+            display: none;
         }
 
-        header p {
-            color: #aaa;
-            font-size: 0.9rem;
-        }
-
+        /* نوار دسته‌بندی با طراحی شیشه‌ای */
         .category-nav {
             display: flex;
             overflow-x: auto;
             white-space: nowrap;
             justify-content: center;
-            gap: 10px;
-            padding: 15px;
+            gap: 12px;
+            padding: 14px 15px;
             position: sticky;
             top: 0;
-            background: rgba(0,0,0,0.9);
-            backdrop-filter: blur(10px);
+            background: rgba(15, 15, 15, 0.88);
+            backdrop-filter: blur(12px);
             z-index: 100;
+            border-bottom: 1px solid rgba(229, 184, 130, 0.25);
+        }
+
+        .category-nav::-webkit-scrollbar {
+            display: none;
         }
 
         .cat-btn {
-            background: transparent;
-            border: 1px solid #d4a373;
-            color: #d4a373;
-            padding: 8px 20px;
-            border-radius: 25px;
+            background: rgba(255, 255, 255, 0.04);
+            border: 1.5px solid rgba(229, 184, 130, 0.5);
+            color: var(--gold-color);
+            padding: 7px 22px;
+            border-radius: 30px;
             cursor: pointer;
-            transition: 0.3s;
-            font-family: 'Vazirmatn', sans-serif;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            font-family: var(--font-title);
+            font-size: 1.15rem;
             flex-shrink: 0;
         }
 
-        .cat-btn.active {
-            background: #d4a373;
-            color: #000;
-            font-weight: bold;
+        .cat-btn.active, .cat-btn:hover {
+            background: linear-gradient(135deg, #e5b882, #c79053);
+            color: #121212;
+            border-color: #ffd194;
+            box-shadow: 0 0 16px rgba(229, 184, 130, 0.45);
+            transform: translateY(-2px);
         }
 
         main {
-            max-width: 600px;
-            margin: 20px auto;
-            padding: 0 15px;
+            max-width: 580px;
+            margin: 25px auto;
+            padding: 0 16px;
         }
 
-        /* اعمال فونت نستعلیق به تیتر بخش‌ها */
+        /* تیتر هر دسته */
         .menu-section h2 {
             text-align: center;
-            color: #d4a373;
-            margin-bottom: 20px;
-            font-size: 2rem;
-            font-family: 'IranNastaliq', cursive;
+            font-family: var(--font-title);
+            font-size: 2.2rem;
+            color: var(--gold-bright);
+            margin-bottom: 22px;
+            text-shadow: 0 2px 10px rgba(0, 0, 0, 0.8);
+        }
+
+        /* کارت‌های جذاب شیشه‌ای مدرن */
+        .card {
+            background: rgba(255, 255, 255, 0.04);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            backdrop-filter: blur(8px);
+            border-radius: 16px;
+            padding: 14px 20px;
+            margin-bottom: 14px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            transition: all 0.25s ease;
+        }
+
+        .card:hover {
+            background: rgba(255, 255, 255, 0.08);
+            border-color: rgba(229, 184, 130, 0.4);
+            transform: translateX(-4px);
+        }
+
+        .item-name {
+            font-size: 1.05rem;
+            font-weight: 600;
+            color: #ffffff;
+        }
+
+        .price-tag {
+            font-family: var(--font-title);
+            color: var(--gold-bright);
+            font-size: 1.3rem;
+            text-shadow: 0 0 10px rgba(229, 184, 130, 0.3);
+            white-space: nowrap;
+        }
+
+        .currency {
+            font-family: var(--font-body);
+            font-size: 0.75rem;
+            color: #b8b8b8;
+            margin-right: 4px;
+            font-weight: 400;
         }
     </style>
 </head>
 <body>
-    <!-- بدنه کد بدون تغییر باقی ماند -->
+
+    <header>
+        <!-- لوگو (m.jpg) -->
+        <div class="logo-container">
+            <img id="mainLogo" src="m.jpg" alt="لوگوی کافه دی"
+                 onerror="this.style.display='none'; document.getElementById('altText').style.display='block';">
+            <span id="altText" class="logo-placeholder">دی</span>
+        </div>
+        <h2>کافه دی</h2>
+        <p>تجربه طعمی به‌یادماندنی</p>
+    </header>
+
+    <!-- نوار دسته‌بندی‌ها -->
+    <nav class="category-nav">
+        <button class="cat-btn active" data-cat="coffee">منوی قهوه</button>
+        <button class="cat-btn" data-cat="hot">بار گرم</button>
+        <button class="cat-btn" data-cat="cold">بار سرد</button>
+        <button class="cat-btn" data-cat="dessert">دسر</button>
+    </nav>
+
+    <!-- نمایش کارت‌های منو -->
+    <main id="menu-content"></main>
+
+    <script>
+        const menuData = {
+            coffee: {
+                title: 'قهوه‌های تخصصی',
+                items: [
+                    { n: 'تک ۱۰۰٪ روبوستا', p: '۶۰,۰۰۰' },
+                    { n: 'دوبل ۱۰۰٪ روبوستا', p: '۷۰,۰۰۰' },
+                    { n: 'تک ۷۰/۳۰ روبوستا', p: '۶۵,۰۰۰' },
+                    { n: 'دوبل ۷۰/۳۰ روبوستا', p: '۷۵,۰۰۰' },
+                    { n: 'تک ۸۰/۲۰ روبوستا', p: '۶۰,۰۰۰' },
+                    { n: 'دوبل ۸۰/۲۰ روبوستا', p: '۷۰,۰۰۰' },
+                    { n: 'تک ۱۰۰٪ عربیکا', p: '۸۰,۰۰۰' },
+                    { n: 'دوبل ۱۰۰٪ عربیکا', p: '۹۰,۰۰۰' }
+                ]
+            },
+            hot: {
+                title: 'نوشیدنی‌های گرم',
+                items: [
+                    { n: 'لته', p: '۸۵,۰۰۰' },
+                    { n: 'هات چاکلت', p: '۸۰,۰۰۰' },
+                    { n: 'شیر پسته', p: '۹۰,۰۰۰' },
+                    { n: 'شیر زعفران', p: '۹۰,۰۰۰' },
+                    { n: 'کاپوچینو', p: '۸۵,۰۰۰' },
+                    { n: 'چایی کرک', p: '۶۰,۰۰۰' },
+                    { n: 'کافی میکس', p: '۵۰,۰۰۰' },
+                    { n: 'ماسالا', p: '۸۰,۰۰۰' },
+                    { n: 'موکا', p: '۹۰,۰۰۰' }
+                ]
+            },
+            cold: {
+                title: 'نوشیدنی‌های سرد',
+                items: [
+                    { n: 'آیس لاته', p: '۹۵,۰۰۰' },
+                    { n: 'آیس موکا', p: '۱۰۰,۰۰۰' }
+                ]
+            },
+            dessert: {
+                title: 'کیک و دسر',
+                items: [
+                    { n: 'کیک شکلاتی', p: '۷۵,۰۰۰' }
+                ]
+            }
+        };
+
+        function showCat(cat, clickedBtn) {
+            const data = menuData[cat];
+            if (!data) return;
+
+            document.querySelectorAll('.cat-btn').forEach(btn => btn.classList.remove('active'));
+            if (clickedBtn) clickedBtn.classList.add('active');
+
+            let html = `<div class="menu-section"><h2>${data.title}</h2>`;
+            data.items.forEach(item => {
+                html += `
+                    <div class="card">
+                        <span class="item-name">${item.n}</span>
+                        <span class="price-tag">${item.p} <span class="currency">تومان</span></span>
+                    </div>
+                `;
+            });
+            html += `</div>`;
+            document.getElementById('menu-content').innerHTML = html;
+        }
+
+        window.addEventListener('DOMContentLoaded', () => {
+            document.querySelectorAll('.cat-btn').forEach(button => {
+                button.addEventListener('click', function () {
+                    showCat(this.dataset.cat, this);
+                });
+            });
+            // لود اولیه
+            showCat('coffee', document.querySelector('.cat-btn[data-cat="coffee"]'));
+        });
+    </script>
 </body>
 </html>

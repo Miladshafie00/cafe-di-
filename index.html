@@ -4,51 +4,44 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>منوی دیجیتال کافه دی</title>
-    
-    <!-- فونت‌های شیک و جذاب فارسی -->
-    <link href="https://cdn.fontcdn.ir/Font/Persian/Vazirmatn/Vazirmatn.css" rel="stylesheet">
-    <link href="https://cdn.fontcdn.ir/Font/Persian/Lalezar/Lalezar.css" rel="stylesheet">
-    <link href="https://cdn.fontcdn.ir/Font/Persian/IranNastaliq/IranNastaliq.css" rel="stylesheet">
-    
+
+    <!-- فونت‌های پایدار از Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Lalezar&family=Vazirmatn:wght@300;400;600;700&display=swap" rel="stylesheet">
+
     <style>
         :root {
             --bg-image: url('s.jpg');
             --gold-color: #e5b882;
             --gold-bright: #ffd194;
-            --font-title: 'Lalezar', cursive, sans-serif;
-            --font-body: 'Vazirmatn', sans-serif;
+            --font-title: 'Lalezar', 'Vazirmatn', Tahoma, sans-serif;
+            --font-body: 'Vazirmatn', Tahoma, sans-serif;
         }
 
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
-            letter-spacing: 0.3px;
         }
 
         body {
             font-family: var(--font-body);
-            background: linear-gradient(rgba(10, 10, 10, 0.85), rgba(10, 10, 10, 0.9)), var(--bg-image);
+            background: linear-gradient(rgba(10, 10, 10, 0.82), rgba(10, 10, 10, 0.88)), var(--bg-image);
             background-size: cover;
             background-position: center;
             background-attachment: fixed;
             background-color: #0d0d0d;
             color: #f5f5f5;
             min-height: 100vh;
-            padding-bottom: 50px;
+            padding-);
+            text-shadow: 0 0 15px rgba(229, 184, 130, 0.4);
+            margin-bottom: 4px;
         }
 
-        header {
-            text-align: center;
-            padding: 45px 20px 20px;
-        }
-
-        /* عنوان اصلی کافه */
-        header h2 {
-            font-family: var(--font-title);
-            font-size: 3rem;
-            color: var(--gold-bright);
-            letter-spacing: 1px;
+        header p {
+            color: #d1d1d1;
+            font-size:);
             text-shadow: 0 0 15px rgba(229, 184, 130, 0.4);
             margin-bottom: 4px;
         }
@@ -59,7 +52,6 @@
             font-weight: 300;
         }
 
-        /* لوگو با استایل نئونی طلایی */
         .logo-container {
             width: 125px;
             height: 125px;
@@ -89,11 +81,10 @@
         .logo-placeholder {
             font-size: 45px;
             color: var(--gold-color);
-            font-family: 'IranNastaliq', cursive;
+            font-weight: bold;
             display: none;
         }
 
-        /* نوار دسته‌بندی با طراحی شیشه‌ای */
         .category-nav {
             display: flex;
             overflow-x: auto;
@@ -140,17 +131,14 @@
             padding: 0 16px;
         }
 
-        /* تیتر هر دسته */
         .menu-section h2 {
             text-align: center;
             font-family: var(--font-title);
             font-size: 2.2rem;
             color: var(--gold-bright);
             margin-bottom: 22px;
-            text-shadow: 0 2px 10px rgba(0, 0, 0, 0.8);
         }
 
-        /* کارت‌های جذاب شیشه‌ای مدرن */
         .card {
             background: rgba(255, 255, 255, 0.04);
             border: 1px solid rgba(255, 255, 255, 0.08);
@@ -180,7 +168,6 @@
             font-family: var(--font-title);
             color: var(--gold-bright);
             font-size: 1.3rem;
-            text-shadow: 0 0 10px rgba(229, 184, 130, 0.3);
             white-space: nowrap;
         }
 
@@ -189,14 +176,12 @@
             font-size: 0.75rem;
             color: #b8b8b8;
             margin-right: 4px;
-            font-weight: 400;
         }
     </style>
 </head>
 <body>
 
     <header>
-        <!-- لوگو (m.jpg) -->
         <div class="logo-container">
             <img id="mainLogo" src="m.jpg" alt="لوگوی کافه دی"
                  onerror="this.style.display='none'; document.getElementById('altText').style.display='block';">
@@ -206,7 +191,6 @@
         <p>تجربه طعمی به‌یادماندنی</p>
     </header>
 
-    <!-- نوار دسته‌بندی‌ها -->
     <nav class="category-nav">
         <button class="cat-btn active" data-cat="coffee">منوی قهوه</button>
         <button class="cat-btn" data-cat="hot">بار گرم</button>
@@ -214,7 +198,6 @@
         <button class="cat-btn" data-cat="dessert">دسر</button>
     </nav>
 
-    <!-- نمایش کارت‌های منو -->
     <main id="menu-content"></main>
 
     <script>
@@ -223,13 +206,13 @@
                 title: 'قهوه‌های تخصصی',
                 items: [
                     { n: 'تک ۱۰۰٪ روبوستا', p: '۶۰,۰۰۰' },
-                    { n: 'دوبل ۱۰۰٪ روبوستا', p: '۷۰,۰۰۰' },
+                    { n: 'دبل ۱۰۰٪ روبوستا', p: '۷۰,۰۰۰' },
                     { n: 'تک ۷۰/۳۰ روبوستا', p: '۶۵,۰۰۰' },
-                    { n: 'دوبل ۷۰/۳۰ روبوستا', p: '۷۵,۰۰۰' },
+                    { n: 'دبل ۷۰/۳۰ روبوستا', p: '۷۵,۰۰۰' },
                     { n: 'تک ۸۰/۲۰ روبوستا', p: '۶۰,۰۰۰' },
-                    { n: 'دوبل ۸۰/۲۰ روبوستا', p: '۷۰,۰۰۰' },
+                    { n: 'دبل ۸۰/۲۰ روبوستا', p: '۷۰,۰۰۰' },
                     { n: 'تک ۱۰۰٪ عربیکا', p: '۸۰,۰۰۰' },
-                    { n: 'دوبل ۱۰۰٪ عربیکا', p: '۹۰,۰۰۰' }
+                    { n: 'دبل ۱۰۰٪ عربیکا', p: '۹۰,۰۰۰' }
                 ]
             },
             hot: {
@@ -249,7 +232,7 @@
             cold: {
                 title: 'نوشیدنی‌های سرد',
                 items: [
-                    { n: 'آیس لاته', p: '۹۵,۰۰۰' },
+                    { n: 'آیس لته', p: '۹۵,۰۰۰' },
                     { n: 'آیس موکا', p: '۱۰۰,۰۰۰' }
                 ]
             },
@@ -287,7 +270,6 @@
                     showCat(this.dataset.cat, this);
                 });
             });
-            // لود اولیه
             showCat('coffee', document.querySelector('.cat-btn[data-cat="coffee"]'));
         });
     </script>

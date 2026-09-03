@@ -5,10 +5,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>منوی دیجیتال کافه دی</title>
 
-    <!-- فونت‌های جذاب و مدرن گوگل -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Lalezar&family=Vazirmatn:wght@300;400;600;700;900&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Lalezar&family=Vazirmatn:wght@300;400;600;700&display=swap" rel="stylesheet">
 
     <style>
         :root {
@@ -19,12 +18,7 @@
             --font-body: 'Vazirmatn', sans-serif;
         }
 
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-            -webkit-tap-highlight-color: transparent;
-        }
+        * { margin: 0; padding: 0; box-sizing: border-box; -webkit-tap-highlight-color: transparent; }
 
         body {
             font-family: var(--font-body);
@@ -38,36 +32,23 @@
             padding-bottom: 50px;
         }
 
-        header {
-            text-align: center;
-            padding: 40px 20px 20px;
-        }
+        header { text-align: center; padding: 40px 20px 20px; }
 
         .logo-container {
-            width: 125px;
-            height: 125px;
+            width: 125px; height: 125px;
             margin: 0 auto 16px;
             border-radius: 50%;
             border: 2.5px solid var(--gold-color);
-            box-shadow: 0 0 25px rgba(229, 184, 130, 0.35);
+            box-shadow: 0 0 25px rgba(229, 18418 130, 0.35);
             overflow: hidden;
             background: #181818;
-            display: flex;
-            align-items: center;
-            justify-content: center;
+            display: flex; align-items: center; justify-content: center;
             transition: transform 0.3s ease;
         }
 
-        .logo-container:hover {
-            transform: scale(1.05);
-        }
+        .logo-container:hover { transform: scale(1.05); }
 
-        .logo-container img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            display: block;
-        }
+        .logo-container img { width: 100%; height: 100%; object-fit: cover; display: block; }
 
         .logo-placeholder {
             font-family: var(--font-title);
@@ -85,11 +66,7 @@
             margin-bottom: 4px;
         }
 
-        header p {
-            color: #d1d1d1;
-            font-size: 1rem;
-            font-weight: 300;
-        }
+        header p { color: #d1d1d1; font-size: 1rem; font-weight: 300; }
 
         .category-nav {
             display: flex;
@@ -106,9 +83,7 @@
             border-bottom: 1px solid rgba(229, 184, 130, 0.22);
         }
 
-        .category-nav::-webkit-scrollbar {
-            display: none;
-        }
+        .category-nav::-webkit-scrollbar { display: none; }
 
         .cat-btn {
             background: rgba(255, 255, 255, 0.04);
@@ -131,11 +106,7 @@
             transform: translateY(-2px);
         }
 
-        main {
-            max-width: 580px;
-            margin: 25px auto;
-            padding: 0 16px;
-        }
+        main { max-width: 580px; margin: 25px auto; padding: 0 16px; }
 
         .menu-section h2 {
             text-align: center;
@@ -172,11 +143,7 @@
             letter-spacing: 0.3px;
         }
 
-        .price-wrapper {
-            display: flex;
-            align-items: baseline;
-            gap: 5px;
-        }
+        .price-wrapper { display: flex; align-items: baseline; gap: 5px; }
 
         .price-tag {
             font-family: var(--font-title);
@@ -185,12 +152,7 @@
             letter-spacing: 0.5px;
         }
 
-        .currency {
-            font-family: var(--font-body);
-            font-size: 0.8rem;
-            font-weight: 400;
-            color: #c4c4c4;
-        }
+        .currency { font-size: 0.8rem; font-weight: 400; color: #c4c4c4; }
     </style>
 </head>
 <body>
@@ -233,7 +195,7 @@
                 title: 'نوشیدنی‌های گرم',
                 items: [
                     { n: 'کافی میکس', p: '۵۰' },
-                    { n: 'چایی کرک', p: '۶۰' },
+                    { n: 'چای کرک', p: '۶۰' },
                     { n: 'هات چاکلت', p: '۸۰' },
                     { n: 'ماسالا', p: '۸۰' },
                     { n: 'لته', p: '۸۵' },
@@ -262,29 +224,30 @@
             const data = menuData[cat];
             if (!data) return;
 
-            document.querySelectorAll('.cat-btn').forEach(btn => btn.classList.remove('active'));
+            document.querySelectorAll('.cat-btn').forEach(function (btn) {
+                btn.classList.remove('active');
+            });
             if (clickedBtn) clickedBtn.classList.add('active');
 
-            let html = `<div class="menu-section"><h2>${data.title}</h2>`;
-            data.items.forEach(item => {
-                html += `
-                    <div class="card">
-                        <span class="item-name">${item.n}</span>
-                        <div class="price-wrapper">
-                            <span class="price-tag">${item.p}</span>
-                            <span class="currency">هزار تومان</span>
-                        </div>
-                    </div>
-                `;
+            let html = '<div class="menu-section"><h2>' + data.title + '</h2>';
+            data.items.forEach(function (item) {
+                html += '<div class="card">' +
+                            '<span class="item-name">' + item.n + '</span>' +
+                            '<div class="price-wrapper">' +
+                                '<span class="price-tag">' + item.p + '</span>' +
+                                '<span class="currency">هزار تومان</span>' +
+                            '</div>' +
+                        '</div>';
             });
-            html += `</div>`;
+            html += '</div>';
             document.getElementById('menu-content').innerHTML = html;
         }
 
-        window.addEventListener('DOMContentLoaded', () => {
-            document.querySelectorAll('.cat-btn').forEach(button => {
+        document.addEventListener('DOMContentLoaded', function () {
+            const buttons = document.querySelectorAll('.cat-btn');
+            buttons.forEach(function (button) {
                 button.addEventListener('click', function () {
-                    showCat(this.dataset.cat, this);
+                    showCat(this.getAttribute('data-cat'), this);
                 });
             });
             showCat('coffee', document.querySelector('.cat-btn[data-cat="coffee"]'));

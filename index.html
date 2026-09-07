@@ -456,389 +456,372 @@ h1{
 
 <div class="container">
 
-  <header class="header">
-
-    <img src="s.jpg" class="logo" alt="کافه دی">
-
-    <h1>کافه دی ☕</h1>
-
-    <div class="poem">
-      اینجا کافه دی است؛ جایی برای یک فنجان قهوه،
-      یک حال خوب و چند دقیقه دور شدن از شلوغی دنیا ☕
-    </div>
-
-    <a
-      class="instagram-link"
-      href="https://instagram.com/cafedey2026"
-      target="_blank"
-      rel="noopener"
-    >
-      <span class="instagram-icon">📷</span>
-      <span>@cafedey2026</span>
-    </a>
-
-  </header>
-
-
-  <div class="tabs" id="a9qqwb">
-
-    <button
-      type="button"
-      class="tab active"
-      onclick="showCat('coffee', this)"
-    >
-      ☕ قهوه
-    </button>
-
-    <button
-      type="button"
-      class="tab"
-      onclick="showCat('hot', this)"
-    >
-      🔥 گرم
-    </button>
-
-    <button
-      type="button"
-      class="tab"
-      onclick="showCat('cold', this)"
-    >
-      🧊 سرد
-    </button>
-
-    <button
-      type="button"
-      class="tab"
-      onclick="showCat('dessert', this)"
-    >
-      🍰 دسر
-    </button>
-
-    <button
-      type="button"
-      class="tab"
-      onclick="showCat('wheel', this)"
-    >
-      🎡 گردونه شانس
-    </button>
-
-  </div>
-
-
-  <section id="coffee" class="menu-section active">
-
-    <h2 class="menu-title">☕ قهوه</h2>
-
-    <div class="menu-item">
-      <span>تک ۱۰۰٪ روبوستا</span>
-      <span class="price">۶۰</span>
-    </div>
-
-    <div class="menu-item">
-      <span>دبل ۱۰۰٪ روبوستا</span>
-      <span class="price">۷۰</span>
-    </div>
-
-    <div class="menu-item">
-      <span>تک ۸۰/۲۰ روبوستا</span>
-      <span class="price">۶۰</span>
-    </div>
-
-    <div class="menu-item">
-      <span>دبل ۸۰/۲۰ روبوستا</span>
-      <span class="price">۷۰</span>
-    </div>
-
-    <div class="menu-item">
-      <span>تک ۷۰/۳۰ روبوستا</span>
-      <span class="price">۶۵</span>
-    </div>
-
-    <div class="menu-item">
-      <span>دبل ۷۰/۳۰ روبوستا</span>
-      <span class="price">۷۵</span>
-    </div>
+<header class="header">
 
-    <div class="menu-item">
-      <span>تک ۱۰۰٪ عربیکا</span>
-      <span class="price">۱۱۰</span>
-    </div>
+<img src="s.jpg" class="logo" alt="کافه دی">
 
-    <div class="menu-item">
-      <span>دبل ۱۰۰٪ عربیکا</span>
-      <span class="price">۱۲۰</span>
-    </div>
+<h1>کافه دی ☕</h1>
 
-    <div class="menu-item">
-      <span>تک ۸۰/۲۰ عربیکا</span>
-      <span class="price">۸۰</span>
-    </div>
+<div class="poem">
+اینجا کافه دی است؛ جایی برای یک فنجان قهوه،
+یک حال خوب و چند دقیقه دور شدن از شلوغی دنیا ☕
+</div>
 
-    <div class="menu-item">
-      <span>دبل ۸۰/۲۰ عربیکا</span>
-      <span class="price">۹۰</span>
-    </div>
+<a
+class="instagram-link"
+href="https://instagram.com/cafedey2026"
+target="_blank"
+rel="noopener"
+>
+<span>📷</span>
+<span>@cafedey2026</span>
+</a>
 
-    <div class="menu-item">
-      <span>تک ۷۰/۳۰ عربیکا</span>
-      <span class="price">۸۵</span>
-    </div>
+</header>
 
-    <div class="menu-item">
-      <span>دبل ۷۰/۳۰ عربیکا</span>
-      <span class="price">۹۵</span>
-    </div>
 
-  </section>
+<div class="tabs">
 
+<button type="button" class="tab active" data-cat="coffee">
+☕ قهوه
+</button>
 
-  <section id="hot" class="menu-section">
+<button type="button" class="tab" data-cat="hot">
+🔥 گرم
+</button>
 
-    <h2 class="menu-title">🔥 گرم</h2>
+<button type="button" class="tab" data-cat="cold">
+🧊 سرد
+</button>
 
-    <div class="menu-item">
-      <span>کافی میکس</span>
-      <span class="price">۸۰</span>
-    </div>
+<button type="button" class="tab" data-cat="dessert">
+🍰 دسر
+</button>
 
-    <div class="menu-item">
-      <span>چای کرک</span>
-      <span class="price">۸۵</span>
-    </div>
+<button type="button" class="tab" data-cat="wheel">
+🎡 گردونه شانس
+</button>
 
-    <div class="menu-item">
-      <span>هات چاکلت</span>
-      <span class="price">۸۶</span>
-    </div>
+</div>
 
-    <div class="menu-item">
-      <span>ماسالا</span>
-      <span class="price">۸۵</span>
-    </div>
 
-    <div class="menu-item">
-      <span>لته</span>
-      <span class="price">۱۴۰</span>
-    </div>
+<section id="coffee" class="menu-section active">
 
-    <div class="menu-item">
-      <span>کاپوچینو</span>
-      <span class="price">۸۰</span>
-    </div>
+<h2 class="menu-title">☕ قهوه</h2>
 
-    <div class="menu-item">
-      <span>شیر پسته</span>
-      <span class="price">۸۵</span>
-    </div>
+<div class="menu-item">
+<span>تک ۱۰۰٪ روبوستا</span>
+<span class="price">۶۰</span>
+</div>
 
-    <div class="menu-item">
-      <span>شیر زعفران</span>
-      <span class="price">۸۵</span>
-    </div>
+<div class="menu-item">
+<span>دبل ۱۰۰٪ روبوستا</span>
+<span class="price">۷۰</span>
+</div>
 
-    <div class="menu-item">
-      <span>موکا</span>
-      <span class="price">۱۵۰</span>
-    </div>
+<div class="menu-item">
+<span>تک ۸۰/۲۰ روبوستا</span>
+<span class="price">۶۰</span>
+</div>
 
-  </section>
+<div class="menu-item">
+<span>دبل ۸۰/۲۰ روبوستا</span>
+<span class="price">۷۰</span>
+</div>
 
+<div class="menu-item">
+<span>تک ۷۰/۳۰ روبوستا</span>
+<span class="price">۶۵</span>
+</div>
 
-  <section id="cold" class="menu-section">
+<div class="menu-item">
+<span>دبل ۷۰/۳۰ روبوستا</span>
+<span class="price">۷۵</span>
+</div>
 
-    <h2 class="menu-title">🧊 سرد</h2>
+<div class="menu-item">
+<span>تک ۱۰۰٪ عربیکا</span>
+<span class="price">۱۱۰</span>
+</div>
 
-    <div class="menu-item">
-      <span>آیس لته</span>
-      <span class="price">۱۵۰</span>
-    </div>
+<div class="menu-item">
+<span>دبل ۱۰۰٪ عربیکا</span>
+<span class="price">۱۲۰</span>
+</div>
 
-    <div class="menu-item">
-      <span>آیس موکا</span>
-      <span class="price">۱۶۰</span>
-    </div>
+<div class="menu-item">
+<span>تک ۸۰/۲۰ عربیکا</span>
+<span class="price">۸۰</span>
+</div>
 
-  </section>
+<div class="menu-item">
+<span>دبل ۸۰/۲۰ عربیکا</span>
+<span class="price">۹۰</span>
+</div>
 
+<div class="menu-item">
+<span>تک ۷۰/۳۰ عربیکا</span>
+<span class="price">۸۵</span>
+</div>
 
-  <section id="dessert" class="menu-section">
+<div class="menu-item">
+<span>دبل ۷۰/۳۰ عربیکا</span>
+<span class="price">۹۵</span>
+</div>
 
-    <h2 class="menu-title">🍰 دسر</h2>
+</section>
 
-    <div class="menu-item">
-      <span>(کیک شکلاتی (هر اسلایس</span>
-      <span class="price">۷۰</span>
-    </div>
 
-  </section>
+<section id="hot" class="menu-section">
 
+<h2 class="menu-title">🔥 گرم</h2>
 
-  <section id="wheel" class="menu-section">
+<div class="menu-item">
+<span>کافی میکس</span>
+<span class="price">۸۰</span>
+</div>
 
-    <h2 class="menu-title">🎡 گردونه شانس</h2>
+<div class="menu-item">
+<span>چای کرک</span>
+<span class="price">۸۵</span>
+</div>
 
-    <div class="wheel-area">
+<div class="menu-item">
+<span>هات چاکلت</span>
+<span class="price">۸۶</span>
+</div>
 
-      <div class="phone-box">
+<div class="menu-item">
+<span>ماسالا</span>
+<span class="price">۸۵</span>
+</div>
 
-        <input
-          id="phone"
-          type="tel"
-          inputmode="tel"
-          placeholder="شماره موبایل را وارد کنید"
-        >
+<div class="menu-item">
+<span>لته</span>
+<span class="price">۱۴۰</span>
+</div>
 
-        <button
-          type="button"
-          id="spinBtn"
-          class="spin-btn"
-          onclick="spinWheel()"
-        >
-          🎡 بچرخون!
-        </button>
+<div class="menu-item">
+<span>کاپوچینو</span>
+<span class="price">۸۰</span>
+</div>
 
-      </div>
+<div class="menu-item">
+<span>شیر پسته</span>
+<span class="price">۸۵</span>
+</div>
 
+<div class="menu-item">
+<span>شیر زعفران</span>
+<span class="price">۸۵</span>
+</div>
 
-      <div id="resultBox" class="result-box">
+<div class="menu-item">
+<span>موکا</span>
+<span class="price">۱۵۰</span>
+</div>
 
-        <button
-          type="button"
-          class="close-btn"
-          onclick="closeResult()"
-        >
-          ×
-        </button>
+</section>
 
-        <div id="resultIcon" class="result-icon"></div>
 
-        <div id="resultTitle" class="result-title"></div>
+<section id="cold" class="menu-section">
 
-        <div id="resultText" class="result-text"></div>
+<h2 class="menu-title">🧊 سرد</h2>
 
-        <div
-          id="codeContainer"
-          class="code-box"
-          style="display:none;"
-        >
+<div class="menu-item">
+<span>آیس لته</span>
+<span class="price">۱۵۰</span>
+</div>
 
-          <div class="code-label">
-            کد تخفیف شما
-          </div>
+<div class="menu-item">
+<span>آیس موکا</span>
+<span class="price">۱۶۰</span>
+</div>
 
-          <div
-            id="discountCode"
-            class="discount-code"
-          ></div>
+</section>
 
-          <button
-            type="button"
-            class="copy-btn"
-            onclick="copyCode()"
-          >
-            📋 کپی کد تخفیف
-          </button>
 
-        </div>
+<section id="dessert" class="menu-section">
 
+<h2 class="menu-title">🍰 دسر</h2>
 
-        <div
-          id="freeButtons"
-          class="free-buttons"
-          style="display:none;"
-        >
+<div class="menu-item">
+<span>(کیک شکلاتی (هر اسلایس</span>
+<span class="price">۷۰</span>
+</div>
 
-          <button
-            type="button"
-            class="free-btn"
-            onclick="claimFreeItem('قهوه')"
-          >
-            ☕ قهوه رایگان
-          </button>
+</section>
 
-          <button
-            type="button"
-            class="free-btn"
-            onclick="claimFreeItem('چای')"
-          >
-            🍵 چای رایگان
-          </button>
 
-          <button
-            type="button"
-            class="free-btn"
-            onclick="claimFreeItem('کیک')"
-          >
-            🍰 کیک رایگان
-          </button>
+<section id="wheel" class="menu-section">
 
-        </div>
+<h2 class="menu-title">🎡 گردونه شانس</h2>
 
-      </div>
+<div class="wheel-area">
 
+<div class="phone-box">
 
-      <div class="wheel-wrap">
+<input
+id="phone"
+type="tel"
+inputmode="tel"
+placeholder="شماره موبایل را وارد کنید"
+>
 
-        <div class="pointer"></div>
+<button
+type="button"
+id="spinBtn"
+class="spin-btn"
+>
+🎡 بچرخون!
+</button>
 
-        <div id="wheelCircle">
+</div>
 
-          <div class="wheel-label l1">
-            <span>۲۰٪</span>
-          </div>
 
-          <div class="wheel-label l2">
-            <span>۱۵٪</span>
-          </div>
+<div id="resultBox" class="result-box">
 
-          <div class="wheel-label l3">
-            <span>۱۲٪</span>
-          </div>
+<button
+type="button"
+class="close-btn"
+id="closeResultBtn"
+>
+×
+</button>
 
-          <div class="wheel-label l4">
-            <span>۶٪</span>
-          </div>
+<div id="resultIcon" class="result-icon"></div>
 
-          <div class="wheel-label l5">
-            <span>۲٪</span>
-          </div>
+<div id="resultTitle" class="result-title"></div>
 
-          <div class="wheel-label l6">
-            <span>۴٪</span>
-          </div>
+<div id="resultText" class="result-text"></div>
 
-          <div class="wheel-label l7">
-            <span>🎁</span>
-          </div>
+<div
+id="codeContainer"
+class="code-box"
+style="display:none;"
+>
 
-          <div class="wheel-label l8">
-            <span>پوچ</span>
-          </div>
+<div class="code-label">
+کد تخفیف شما
+</div>
 
-          <div class="wheel-center">
-            🎡
-          </div>
+<div
+id="discountCode"
+class="discount-code"
+></div>
 
-        </div>
+<button
+type="button"
+class="copy-btn"
+id="copyCodeBtn"
+>
+📋 کپی کد تخفیف
+</button>
 
-      </div>
+</div>
 
 
-      <div class="note">
-        هر شماره موبایل فقط طبق قوانین گردونه می‌تواند جایزه دریافت کند.
-      </div>
+<div
+id="freeButtons"
+class="free-buttons"
+style="display:none;"
+>
 
-    </div>
+<button
+type="button"
+class="free-btn"
+data-item="قهوه"
+>
+☕ قهوه رایگان
+</button>
 
-  </section>
+<button
+type="button"
+class="free-btn"
+data-item="چای"
+>
+🍵 چای رایگان
+</button>
+
+<button
+type="button"
+class="free-btn"
+data-item="کیک"
+>
+🍰 کیک رایگان
+</button>
+
+</div>
+
+</div>
+
+
+<div class="wheel-wrap">
+
+<div class="pointer"></div>
+
+<div id="wheelCircle">
+
+<div class="wheel-label l1">
+<span>۲۰٪</span>
+</div>
+
+<div class="wheel-label l2">
+<span>۱۵٪</span>
+</div>
+
+<div class="wheel-label l3">
+<span>۱۲٪</span>
+</div>
+
+<div class="wheel-label l4">
+<span>۶٪</span>
+</div>
+
+<div class="wheel-label l5">
+<span>۲٪</span>
+</div>
+
+<div class="wheel-label l6">
+<span>۴٪</span>
+</div>
+
+<div class="wheel-label l7">
+<span>🎁</span>
+</div>
+
+<div class="wheel-label l8">
+<span>پوچ</span>
+</div>
+
+<div class="wheel-center">
+🎡
+</div>
+
+</div>
+
+</div>
+
+
+<div class="note">
+هر شماره موبایل فقط طبق قوانین گردونه می‌تواند جایزه دریافت کند.
+</div>
+
+</div>
+
+</section>
 
 </div>
 
 
 <script>
 
+/* =========================
+   CONFIG
+========================= */
+
 const API_URL =
-  "https://cafe-di-discount.miladsh00.workers.dev";
+"https://cafe-di-discount.miladsh00.workers.dev";
 
 let currentRotation = 0;
 let spinning = false;
@@ -846,48 +829,73 @@ let spinning = false;
 
 /* =========================
    TABS
+   این قسمت مستقل از onclick است
 ========================= */
 
-function showCat(cat, btn){
+document.addEventListener("DOMContentLoaded", function(){
+
+  const tabs =
+    document.querySelectorAll(".tab");
 
   const sections =
     document.querySelectorAll(".menu-section");
 
-  sections.forEach(function(section){
 
-    section.classList.remove("active");
-    section.style.display = "none";
+  function openTab(category, clickedTab){
 
-  });
+    sections.forEach(function(section){
 
+      section.classList.remove("active");
+      section.style.display = "none";
 
-  const target =
-    document.getElementById(cat);
-
-  if(target){
-
-    target.classList.add("active");
-    target.style.display = "block";
-
-  }
+    });
 
 
-  document
-    .querySelectorAll(".tab")
-    .forEach(function(tab){
+    const selected =
+      document.getElementById(category);
+
+    if(selected){
+
+      selected.classList.add("active");
+      selected.style.display = "block";
+
+    }
+
+
+    tabs.forEach(function(tab){
 
       tab.classList.remove("active");
 
     });
 
 
-  if(btn){
-
-    btn.classList.add("active");
+    clickedTab.classList.add("active");
 
   }
 
-}
+
+  tabs.forEach(function(tab){
+
+    tab.addEventListener("click", function(){
+
+      openTab(
+        this.getAttribute("data-cat"),
+        this
+      );
+
+    });
+
+  });
+
+
+  /* تب قهوه در شروع */
+
+  openTab(
+    "coffee",
+    document.querySelector('.tab[data-cat="coffee"]')
+  );
+
+});
 
 
 /* =========================
@@ -1077,18 +1085,25 @@ function showResult(data){
    CLOSE RESULT
 ========================= */
 
-function closeResult(){
+document
+  .getElementById("closeResultBtn")
+  .addEventListener("click", function(){
 
-  document
-    .getElementById("resultBox")
-    .classList.remove("show");
+    document
+      .getElementById("resultBox")
+      .classList.remove("show");
 
-}
+  });
 
 
 /* =========================
    SPIN
 ========================= */
+
+document
+  .getElementById("spinBtn")
+  .addEventListener("click", spinWheel);
+
 
 async function spinWheel(){
 
@@ -1129,7 +1144,9 @@ async function spinWheel(){
     "🎡 در حال چرخش...";
 
 
-  closeResult();
+  document
+    .getElementById("resultBox")
+    .classList.remove("show");
 
 
   try{
@@ -1216,4 +1233,119 @@ async function spinWheel(){
     wheel.style.transform =
       "rotate(" +
       currentRotation +
-      "de
+      "deg)";
+
+
+    setTimeout(function(){
+
+      showResult(data);
+
+      spinning = false;
+
+      spinBtn.disabled = false;
+
+      spinBtn.textContent =
+        "🎡 دوباره بچرخون";
+
+    },4600);
+
+
+  }
+  catch(error){
+
+    alert(
+      error.message ||
+      "خطایی رخ داد."
+    );
+
+
+    spinning = false;
+
+    spinBtn.disabled = false;
+
+    spinBtn.textContent =
+      "🎡 بچرخون!";
+
+  }
+
+}
+
+
+/* =========================
+   COPY CODE
+========================= */
+
+document
+  .getElementById("copyCodeBtn")
+  .addEventListener("click", copyCode);
+
+
+async function copyCode(){
+
+  const code =
+    document
+      .getElementById("discountCode")
+      .textContent
+      .trim();
+
+
+  if(!code)
+    return;
+
+
+  try{
+
+    await navigator.clipboard.writeText(code);
+
+    alert(
+      "کد تخفیف کپی شد ✅"
+    );
+
+  }
+  catch(error){
+
+    const temp =
+      document.createElement("textarea");
+
+    temp.value = code;
+
+    temp.style.position = "fixed";
+
+    temp.style.opacity = "0";
+
+    document.body.appendChild(temp);
+
+    temp.focus();
+
+    temp.select();
+
+
+    try{
+
+      document.execCommand("copy");
+
+      alert(
+        "کد تخفیف کپی شد ✅"
+      );
+
+    }
+    catch(e){
+
+      alert(
+        "کپی خودکار انجام نشد؛ کد را لمس و کپی کنید."
+      );
+
+    }
+
+
+    temp.remove();
+
+  }
+
+}
+
+
+/* =========================
+   FREE ITEM
+========================= */
+  

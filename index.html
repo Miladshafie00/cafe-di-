@@ -832,7 +832,6 @@ function showResult(data){
 
 }
 
-
 /* =========================
    SPIN
 ========================= */
@@ -892,36 +891,64 @@ async function spinWheel(){
 
     const index=prizeIndex(prize);
 
-    const targetAngle=
-      360-(index*45+22.5);
+    /*
+      جای دقیق وسط هر خانه گردونه:
+      
+      ۲۰٪ = 22.5°
+      ۱۵٪ = 67.5°
+      ۱۲٪ = 112.5°
+      ۶٪  = 157.5°
+      ۲٪  = 202.5°
+      ۴٪  = 247.5°
+      🎁  = 292.5°
+      پوچ = 337.5°
+    */
+
+    const prizeCenter=
+      (index * 45) + 22.5;
+
+    /*
+      چون فلش بالای گردونه است،
+      گردونه را به اندازه‌ای می‌چرخانیم
+      که مرکز جایزه دقیقاً زیر فلش قرار بگیرد.
+    */
 
     const currentMod=
-      ((currentRotation%360)+360)%360;
+      ((currentRotation % 360) + 360) % 360;
 
-    const extra=
-      (targetAngle-currentMod+360)%360;
+    const desiredRotation=
+      (360 - prizeCenter + 360) % 360;
+
+    const extraRotation=
+      (desiredRotation - currentMod + 360) % 360;
 
     currentRotation+=
-      360*7+extra;
+      (360 * 8) + extraRotation;
 
-    wheel.style.setProperty(
-      "--wheel-rotation",
-      currentRotation+"deg"
-    );
+    /*
+      اول transition را تنظیم می‌کنیم،
+      بعد چرخش را اعمال می‌کنیم.
+    */
 
     wheel.style.transition=
       "transform 4.5s cubic-bezier(.12,.75,.16,1)";
 
     wheel.style.transform=
-      "rotate("+currentRotation+"deg)";
+      "rotate(" + currentRotation + "deg)";
 
+    /*
+      چرخش تمام شد → نتیجه نمایش داده شود
+    */
 
     setTimeout(function(){
 
       showResult(data);
 
-    },4600);
+      spinning=false;
+      spinBtn.disabled=false;
+      spinBtn.textContent="🎡 بچرخون!";
 
+    },4600);
 
   }catch(error){
 
@@ -937,8 +964,6 @@ async function spinWheel(){
   }
 
 }
-
-
 /* =========================
    SPIN BUTTON
 ========================= */

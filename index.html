@@ -3,9 +3,11 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
 <title>کافه دی</title>
 
 <style>
+
 *{
   box-sizing:border-box;
 }
@@ -74,13 +76,16 @@ h1{
   text-decoration:none;
   font-size:14px;
   font-weight:bold;
+
   background:linear-gradient(
     135deg,
     #833ab4 0%,
     #fd1d1d 55%,
     #fcb045 100%
   );
+
   border:1px solid rgba(255,255,255,.45);
+
   box-shadow:
     0 5px 18px rgba(253,29,29,.25),
     inset 0 1px 0 rgba(255,255,255,.25);
@@ -96,7 +101,6 @@ h1{
 
 .tab{
   appearance:none;
-  -webkit-appearance:none;
   border:1px solid #9c6233;
   background:#4a2818;
   color:#fff;
@@ -110,7 +114,6 @@ h1{
 
 .tab.active{
   background:#c47b37;
-  color:#fff;
   border-color:#e4aa68;
   box-shadow:0 5px 15px rgba(0,0,0,.25);
 }
@@ -178,11 +181,13 @@ h1{
   margin-top:12px;
   padding:14px;
   border-radius:14px;
+
   background:linear-gradient(
     135deg,
     #d69a50,
     #a85d28
   );
+
   color:#fff;
   font-size:16px;
   border:0;
@@ -207,52 +212,60 @@ h1{
 }
 
 
-/* =========================
-   WHEEL
-========================= */
+/* ==================================================
+   چرخ
+================================================== */
 
 #wheelCircle{
+
   position:absolute;
   inset:0;
 
   border-radius:50%;
+
   overflow:hidden;
 
   border:8px solid #d69a50;
 
-  /*
-    مهم:
-    اولین خانه از مرکز بالایی شروع می‌شود.
-  */
-
   background:
+
     conic-gradient(
+
       from -22.5deg,
 
       #8d4c25 0deg 45deg,
+
       #d18a3a 45deg 90deg,
+
       #6b3924 90deg 135deg,
+
       #b96d2e 135deg 180deg,
+
       #875025 180deg 225deg,
+
       #d59a4a 225deg 270deg,
+
       #713a24 270deg 315deg,
+
       #bd7430 315deg 360deg
     );
 
   transform:rotate(0deg);
 
-  transform-origin:center center;
+  transform-origin:center;
 
   will-change:transform;
 }
 
 
-/* خطوط بین خانه‌ها */
+/* خطوط بین قسمت‌ها */
 
 #wheelCircle::after{
+
   content:"";
 
   position:absolute;
+
   inset:0;
 
   border-radius:50%;
@@ -260,10 +273,12 @@ h1{
   pointer-events:none;
 
   background:
+
     repeating-conic-gradient(
+
       from -22.5deg,
 
-      rgba(255,255,255,.5)
+      rgba(255,255,255,.55)
       0deg 1deg,
 
       transparent
@@ -272,16 +287,18 @@ h1{
 }
 
 
-/* =========================
-   POINTER
-========================= */
+/* ==================================================
+   فلش
+================================================== */
 
 .pointer{
+
   position:absolute;
 
   z-index:100;
 
-  top:-7px;
+  top:-3px;
+
   left:50%;
 
   transform:translateX(-50%);
@@ -289,52 +306,62 @@ h1{
   width:0;
   height:0;
 
-  border-left:19px solid transparent;
-  border-right:19px solid transparent;
+  /*
+    نوک مثلث به سمت داخل چرخ است
+  */
 
-  border-top:0;
-  border-bottom:40px solid #fff;
+  border-left:18px solid transparent;
+
+  border-right:18px solid transparent;
+
+  border-top:38px solid #fff;
+
+  border-bottom:0;
 
   filter:
     drop-shadow(
-      0 2px 3px rgba(0,0,0,.5)
+      0 2px 3px rgba(0,0,0,.6)
     );
 }
 
 
-/* =========================
-   WHEEL LABELS
-========================= */
+/* ==================================================
+   نوشته‌های چرخ
+================================================== */
 
 .wheel-label{
+
   position:absolute;
 
   left:50%;
   top:50%;
 
-  width:50%;
-  height:50%;
+  width:0;
+  height:0;
 
-  transform-origin:0 0;
+  z-index:20;
 
   pointer-events:none;
-
-  z-index:10;
 }
 
 
+/*
+  هر نوشته دقیقاً روی مرکز
+  همان قسمت قرار می‌گیرد.
+
+  شعاع چرخ تقریباً 190px است.
+*/
+
 .wheel-label span{
+
   position:absolute;
 
-  /*
-    متن در قسمت بالایی شعاع قرار می‌گیرد.
-  */
+  left:-35px;
+  top:-150px;
 
-  top:8%;
-  left:50%;
+  width:70px;
 
-  transform:
-    translateX(-50%);
+  text-align:center;
 
   font-size:23px;
 
@@ -347,20 +374,21 @@ h1{
     0 0 3px rgba(0,0,0,.9);
 
   white-space:nowrap;
+
 }
 
 
 /*
-  ترتیب دقیق:
-  
-  ۰ = ۲۰٪
-  ۱ = ۱۵٪
-  ۲ = ۱۲٪
-  ۳ = ۶٪
-  ۴ = ۲٪
-  ۵ = ۴٪
-  ۶ = 🎁
-  ۷ = پوچ
+  زاویه مرکز هر قسمت:
+
+  ۲۰٪  = 0
+  ۱۵٪  = 45
+  ۱۲٪  = 90
+  ۶٪   = 135
+  ۲٪   = 180
+  ۴٪   = 225
+  🎁   = 270
+  پوچ  = 315
 */
 
 .l1{
@@ -396,14 +424,15 @@ h1{
 }
 
 
-/* =========================
-   CENTER
-========================= */
+/* ==================================================
+   مرکز
+================================================== */
 
 .wheel-center{
+
   position:absolute;
 
-  z-index:30;
+  z-index:40;
 
   top:50%;
   left:50%;
@@ -429,11 +458,12 @@ h1{
 }
 
 
-/* =========================
-   RESULT
-========================= */
+/* ==================================================
+   نتیجه
+================================================== */
 
 .result-box{
+
   display:none;
 
   position:relative;
@@ -459,6 +489,7 @@ h1{
 }
 
 .close-btn{
+
   position:absolute;
 
   top:8px;
@@ -485,6 +516,7 @@ h1{
 }
 
 .result-title{
+
   color:#f1bd78;
 
   font-size:21px;
@@ -495,17 +527,19 @@ h1{
 }
 
 .result-text{
+
   line-height:2;
 
   color:#f7eadc;
 }
 
 
-/* =========================
-   CODE
-========================= */
+/* ==================================================
+   کد تخفیف
+================================================== */
 
 .code-box{
+
   margin-top:15px;
 
   padding:12px;
@@ -518,6 +552,7 @@ h1{
 }
 
 .code-label{
+
   color:#cbb1a0;
 
   font-size:12px;
@@ -526,6 +561,7 @@ h1{
 }
 
 .discount-code{
+
   direction:ltr;
 
   font-size:22px;
@@ -540,6 +576,7 @@ h1{
 }
 
 .copy-btn{
+
   width:100%;
 
   margin-top:10px;
@@ -564,11 +601,12 @@ h1{
 }
 
 
-/* =========================
-   FREE ITEMS
-========================= */
+/* ==================================================
+   آیتم رایگان
+================================================== */
 
 .free-buttons{
+
   display:flex;
 
   gap:8px;
@@ -581,6 +619,7 @@ h1{
 }
 
 .free-btn{
+
   padding:11px 18px;
 
   border-radius:12px;
@@ -598,12 +637,17 @@ h1{
   font-family:inherit;
 }
 
+.free-btn:disabled{
+  opacity:.5;
+}
 
-/* =========================
-   NOTE
-========================= */
+
+/* ==================================================
+   توضیح
+================================================== */
 
 .note{
+
   color:#bfa99b;
 
   font-size:12px;
@@ -614,9 +658,9 @@ h1{
 }
 
 
-/* =========================
-   MOBILE
-========================= */
+/* ==================================================
+   موبایل
+================================================== */
 
 @media(max-width:500px){
 
@@ -634,6 +678,7 @@ h1{
   }
 
 }
+
 </style>
 </head>
 
@@ -642,6 +687,10 @@ h1{
 
 <div class="container">
 
+
+<!-- ==================================================
+     HEADER
+================================================== -->
 
 <header class="header">
 
@@ -672,9 +721,9 @@ h1{
 </header>
 
 
-<!-- =========================
+<!-- ==================================================
      TABS
-========================= -->
+================================================== -->
 
 <div class="tabs">
 
@@ -721,9 +770,9 @@ h1{
 </div>
 
 
-<!-- =========================
+<!-- ==================================================
      COFFEE
-========================= -->
+================================================== -->
 
 <section
   id="coffee"
@@ -797,9 +846,9 @@ h1{
 </section>
 
 
-<!-- =========================
+<!-- ==================================================
      HOT
-========================= -->
+================================================== -->
 
 <section
   id="hot"
@@ -858,9 +907,9 @@ h1{
 </section>
 
 
-<!-- =========================
+<!-- ==================================================
      COLD
-========================= -->
+================================================== -->
 
 <section
   id="cold"
@@ -884,9 +933,9 @@ h1{
 </section>
 
 
-<!-- =========================
+<!-- ==================================================
      DESSERT
-========================= -->
+================================================== -->
 
 <section
   id="dessert"
@@ -912,9 +961,9 @@ h1{
 </section>
 
 
-<!-- =========================
+<!-- ==================================================
      WHEEL
-========================= -->
+================================================== -->
 
 <section
   id="wheel"
@@ -949,7 +998,9 @@ h1{
 </div>
 
 
-<!-- RESULT -->
+<!-- ==================================================
+     RESULT BOX
+================================================== -->
 
 <div
   id="resultBox"
@@ -964,26 +1015,21 @@ h1{
 ×
 </button>
 
-
 <div
   id="resultIcon"
   class="result-icon"
 ></div>
-
 
 <div
   id="resultTitle"
   class="result-title"
 ></div>
 
-
 <div
   id="resultText"
   class="result-text"
 ></div>
 
-
-<!-- CODE -->
 
 <div
   id="codeContainer"
@@ -1010,8 +1056,6 @@ h1{
 
 </div>
 
-
-<!-- FREE -->
 
 <div
   id="freeButtons"
@@ -1048,7 +1092,9 @@ h1{
 </div>
 
 
-<!-- WHEEL -->
+<!-- ==================================================
+     WHEEL
+================================================== -->
 
 <div class="wheel-wrap">
 
@@ -1062,36 +1108,29 @@ h1{
 <span>۲۰٪</span>
 </div>
 
-
 <div class="wheel-label l2">
 <span>۱۵٪</span>
 </div>
-
 
 <div class="wheel-label l3">
 <span>۱۲٪</span>
 </div>
 
-
 <div class="wheel-label l4">
 <span>۶٪</span>
 </div>
-
 
 <div class="wheel-label l5">
 <span>۲٪</span>
 </div>
 
-
 <div class="wheel-label l6">
 <span>۴٪</span>
 </div>
 
-
 <div class="wheel-label l7">
 <span>🎁</span>
 </div>
-
 
 <div class="wheel-label l8">
 <span>پوچ</span>
@@ -1122,17 +1161,17 @@ h1{
 
 <script>
 
-/* =========================
+/* ==================================================
    API
-========================= */
+================================================== */
 
-const API_URL=
+const API_URL =
 "https://cafe-di-discount.miladsh00.workers.dev/";
 
 
-/* =========================
+/* ==================================================
    TABS
-========================= */
+================================================== */
 
 function showCat(cat,btn){
 
@@ -1178,112 +1217,134 @@ function showCat(cat,btn){
 }
 
 
-/* =========================
+/* ==================================================
    ELEMENTS
-========================= */
+================================================== */
 
-const wheel=
+const wheel =
 document.getElementById("wheelCircle");
 
-const spinBtn=
+const spinBtn =
 document.getElementById("spinBtn");
 
-const phoneInput=
+const phoneInput =
 document.getElementById("phone");
 
-const resultBox=
+const resultBox =
 document.getElementById("resultBox");
 
-const resultIcon=
+const resultIcon =
 document.getElementById("resultIcon");
 
-const resultTitle=
+const resultTitle =
 document.getElementById("resultTitle");
 
-const resultText=
+const resultText =
 document.getElementById("resultText");
 
-const codeContainer=
+const codeContainer =
 document.getElementById("codeContainer");
 
-const discountCode=
+const discountCode =
 document.getElementById("discountCode");
 
-const freeButtons=
+const freeButtons =
 document.getElementById("freeButtons");
 
 
-/* =========================
+/* ==================================================
    STATE
-========================= */
+================================================== */
 
-let currentRotation=0;
+let currentRotation = 0;
 
-let spinning=false;
+let spinning = false;
 
 
-/* =========================
+/* ==================================================
    PRIZE ORDER
-========================= */
+================================================== */
 
-const PRIZES=[
+const PRIZES = [
+
   "۲۰٪",
+
   "۱۵٪",
+
   "۱۲٪",
+
   "۶٪",
+
   "۲٪",
+
   "۴٪",
+
   "🎁",
+
   "پوچ"
+
 ];
 
 
-/* =========================
-   NORMALIZE NUMBER
-========================= */
+/* ==================================================
+   NUMBER NORMALIZE
+================================================== */
 
 function normalizeNumber(value){
 
   return String(value ?? "")
+
     .replace(
       /[۰-۹]/g,
       function(d){
+
         return "۰۱۲۳۴۵۶۷۸۹".indexOf(d);
+
       }
     )
+
     .replace(
       /[٠-٩]/g,
       function(d){
+
         return "٠١٢٣٤٥٦٧٨٩".indexOf(d);
+
       }
     );
 
 }
 
 
-/* =========================
+/* ==================================================
    GET PRIZE
-========================= */
+================================================== */
 
 function getPrize(data){
 
-  if(!data) return "";
+  if(!data){
+    return "";
+  }
 
 
   /*
-    فقط فیلدهایی که احتمالاً
-    واقعاً جایزه هستند.
-
-    message را عمداً بررسی نمی‌کنیم.
+    فقط فیلدهای جایزه.
+    message عمداً استفاده نمی‌شود.
   */
 
-  const values=[
+  const values = [
+
     data.prize,
+
     data.result,
+
     data.reward,
+
     data.discountPercent,
+
     data.percent,
+
     data.discount
+
   ];
 
 
@@ -1299,7 +1360,7 @@ function getPrize(data){
     if(
       value !== undefined &&
       value !== null &&
-      String(value).trim()!==""
+      String(value).trim() !== ""
     ){
 
       return String(value);
@@ -1314,77 +1375,96 @@ function getPrize(data){
 }
 
 
-/* =========================
+/* ==================================================
    PRIZE INDEX
-========================= */
+================================================== */
 
 function getPrizeIndex(prize){
 
-  const p=
+  const p =
+
     normalizeNumber(prize)
+
       .toLowerCase()
+
       .replace(/٪/g,"%")
+
       .replace(/درصد/g,"%")
+
       .replace(/\s/g,"");
 
 
   /*
-    0 = ۲۰٪
-    1 = ۱۵٪
-    2 = ۱۲٪
-    3 = ۶٪
-    4 = ۲٪
-    5 = ۴٪
-    6 = 🎁
-    7 = پوچ
+    ترتیب:
+
+    ۰ = ۲۰٪
+    ۱ = ۱۵٪
+    ۲ = ۱۲٪
+    ۳ = ۶٪
+    ۴ = ۲٪
+    ۵ = ۴٪
+    ۶ = 🎁
+    ۷ = پوچ
   */
 
 
   if(
     p.includes("20%") ||
-    p==="20"
+    p === "20"
   ){
+
     return 0;
+
   }
 
 
   if(
     p.includes("15%") ||
-    p==="15"
+    p === "15"
   ){
+
     return 1;
+
   }
 
 
   if(
     p.includes("12%") ||
-    p==="12"
+    p === "12"
   ){
+
     return 2;
+
   }
 
 
   if(
     p.includes("6%") ||
-    p==="6"
+    p === "6"
   ){
+
     return 3;
+
   }
 
 
   if(
     p.includes("2%") ||
-    p==="2"
+    p === "2"
   ){
+
     return 4;
+
   }
 
 
   if(
     p.includes("4%") ||
-    p==="4"
+    p === "4"
   ){
+
     return 5;
+
   }
 
 
@@ -1394,7 +1474,9 @@ function getPrizeIndex(prize){
     p.includes("رایگان") ||
     p.includes("آیتم")
   ){
+
     return 6;
+
   }
 
 
@@ -1405,7 +1487,9 @@ function getPrizeIndex(prize){
     p.includes("no-prize") ||
     p.includes("no_prize")
   ){
+
     return 7;
+
   }
 
 
@@ -1414,20 +1498,9 @@ function getPrizeIndex(prize){
 }
 
 
-/* =========================
-   PRIZE NAME
-========================= */
-
-function prizeName(index){
-
-  return PRIZES[index] || "پوچ";
-
-}
-
-
-/* =========================
+/* ==================================================
    RESULT
-========================= */
+================================================== */
 
 function showResult(data,index){
 
@@ -1449,15 +1522,14 @@ function showResult(data,index){
 
 
   /* =========================
-     LOSE
+     پوچ
   ========================= */
 
-  if(index===7){
+  if(index === 7){
 
     resultIcon.textContent="😅";
 
-    resultTitle.textContent=
-      "پوچ شد!";
+    resultTitle.textContent="پوچ شد!";
 
     resultText.textContent=
       "این بار شانست یاری نکرد؛ دوباره امتحان کن.";
@@ -1468,31 +1540,26 @@ function showResult(data,index){
 
 
   /* =========================
-     DISCOUNT
+     تخفیف
   ========================= */
 
   if(
-    index>=0 &&
-    index<=5
+    index >= 0 &&
+    index <= 5
   ){
-
-    const prize=
-      prizeName(index);
-
 
     resultIcon.textContent="🎉";
 
-    resultTitle.textContent=
-      "تبریک!";
+    resultTitle.textContent="تبریک!";
 
 
     resultText.textContent=
       "تبریک! شما برنده "+
-      prize+
+      PRIZES[index]+
       " تخفیف شدید.";
 
 
-    const realCode=
+    const realCode =
       data.code ||
       data.discountCode ||
       data.couponCode ||
@@ -1501,8 +1568,7 @@ function showResult(data,index){
 
     if(realCode){
 
-      codeContainer.style.display=
-        "block";
+      codeContainer.style.display="block";
 
       discountCode.textContent=
         realCode;
@@ -1515,21 +1581,19 @@ function showResult(data,index){
 
 
   /* =========================
-     FREE ITEM
+     رایگان
   ========================= */
 
-  if(index===6){
+  if(index === 6){
 
     resultIcon.textContent="🎁";
 
-    resultTitle.textContent=
-      "تبریک!";
+    resultTitle.textContent="تبریک!";
 
     resultText.textContent=
       "تبریک! شما برنده یک آیتم رایگان شدید.";
 
-    freeButtons.style.display=
-      "flex";
+    freeButtons.style.display="flex";
 
     return;
 
@@ -1538,9 +1602,9 @@ function showResult(data,index){
 }
 
 
-/* =========================
+/* ==================================================
    SPIN
-========================= */
+================================================== */
 
 async function spinWheel(){
 
@@ -1549,7 +1613,7 @@ async function spinWheel(){
   }
 
 
-  const phone=
+  const phone =
     phoneInput.value.trim();
 
 
@@ -1585,7 +1649,7 @@ async function spinWheel(){
        REQUEST
     ========================= */
 
-    const response=
+    const response =
       await fetch(
         API_URL+"spin",
         {
@@ -1603,7 +1667,7 @@ async function spinWheel(){
       );
 
 
-    const data=
+    const data =
       await response.json();
 
 
@@ -1618,21 +1682,32 @@ async function spinWheel(){
     }
 
 
-    /* =========================
-       DETERMINE PRIZE
-    ========================= */
+    /* ==================================================
+       مهم‌ترین قسمت
+       
+       جایزه فقط یک بار تعیین می‌شود.
+    ================================================== */
 
-    const prize=
+    const prize =
       getPrize(data);
 
 
-    const index=
+    const index =
       getPrizeIndex(prize);
 
 
     /*
-      برای تست در Console
+      برای بررسی دقیق در Console
     */
+
+    console.log(
+      "========== WHEEL =========="
+    );
+
+    console.log(
+      "SERVER DATA:",
+      data
+    );
 
     console.log(
       "SERVER PRIZE:",
@@ -1640,103 +1715,104 @@ async function spinWheel(){
     );
 
     console.log(
-      "SELECTED INDEX:",
+      "INDEX:",
       index
     );
 
     console.log(
-      "SELECTED WHEEL PRIZE:",
+      "FINAL PRIZE:",
       PRIZES[index]
     );
 
+    console.log(
+      "============================"
+    );
 
-    /* =========================
-       CALCULATE ROTATION
-    ========================= */
 
-    const segmentAngle=45;
+    /* ==================================================
+       محاسبه زاویه
+       
+       هر خانه ۴۵ درجه است.
+       
+       مرکز خانه اول = ۰ درجه
+       مرکز خانه دوم = ۴۵
+       ...
+    ================================================== */
+
+    const segmentAngle = 45;
+
+
+    const targetAngle =
+      index * segmentAngle;
 
 
     /*
-      خانه اول یعنی ۲۰٪
-      مرکز آن دقیقاً ۰ درجه است.
-
-      خانه دوم ۴۵ درجه
-      خانه سوم ۹۰ درجه
-      ...
+      خانه موردنظر را به بالای چرخ می‌آوریم.
     */
 
-    const targetAngle=
-      index*segmentAngle;
-
-
-    /*
-      چرخ را به سمت خانه موردنظر
-      می‌چرخانیم تا آن خانه
-      زیر فلش قرار بگیرد.
-    */
-
-    const desiredRotation=
+    const targetRotation =
       -targetAngle;
 
 
-    const currentMod=
+    const currentMod =
       (
-        currentRotation%360+
+        currentRotation % 360 +
         360
-      )%360;
+      ) % 360;
 
 
-    const desiredMod=
+    const targetMod =
       (
-        desiredRotation%360+
+        targetRotation % 360 +
         360
-      )%360;
+      ) % 360;
 
 
-    let extra=
-      desiredMod-currentMod;
+    let extra =
+      targetMod - currentMod;
 
 
-    if(extra<0){
+    if(extra < 0){
 
-      extra+=360;
+      extra += 360;
 
     }
 
 
     /*
-      8 دور کامل
+      ۸ دور کامل
+      سپس توقف روی جایزه
     */
 
-    currentRotation+=
-      (360*8)+extra;
+    currentRotation +=
+      360 * 8 +
+      extra;
 
 
-    /* =========================
-       APPLY ROTATION
-    ========================= */
+    /* ==================================================
+       اجرای چرخش
+    ================================================== */
 
-    wheel.style.transition=
+    wheel.style.transition =
       "transform 4.5s cubic-bezier(.12,.75,.16,1)";
 
 
-    wheel.style.transform=
+    wheel.style.transform =
       "rotate("+
       currentRotation+
       "deg)";
 
 
-    /* =========================
-       SHOW RESULT
-    ========================= */
+    /* ==================================================
+       پایان
+    ================================================== */
 
     setTimeout(
       function(){
 
         /*
-          دقیقاً همان index
-          که برای چرخ استفاده شد.
+          همان index قبلی.
+          دوباره محاسبه نمی‌شود.
         */
 
         showResult(
@@ -1780,9 +1856,9 @@ async function spinWheel(){
 }
 
 
-/* =========================
+/* ==================================================
    SPIN BUTTON
-========================= */
+================================================== */
 
 spinBtn.addEventListener(
   "click",
@@ -1790,14 +1866,12 @@ spinBtn.addEventListener(
 );
 
 
-/* =========================
-   CLOSE
-========================= */
+/* ==================================================
+   CLOSE RESULT
+================================================== */
 
 document
-  .getElementById(
-    "closeResultBtn"
-  )
+  .getElementById("closeResultBtn")
   .addEventListener(
     "click",
     function(){
@@ -1810,14 +1884,12 @@ document
   );
 
 
-/* =========================
-   COPY
-========================= */
+/* ==================================================
+   COPY CODE
+================================================== */
 
 document
-  .getElementById(
-    "copyCodeBtn"
-  )
+  .getElementById("copyCodeBtn")
   .addEventListener(
     "click",
     copyCode
@@ -1826,7 +1898,7 @@ document
 
 async function copyCode(){
 
-  const code=
+  const code =
     discountCode.textContent.trim();
 
 
@@ -1848,7 +1920,7 @@ async function copyCode(){
 
   }catch(error){
 
-    const temp=
+    const temp =
       document.createElement(
         "textarea"
       );
@@ -1897,9 +1969,9 @@ async function copyCode(){
 }
 
 
-/* =========================
+/* ==================================================
    FREE ITEM
-========================= */
+================================================== */
 
 document
   .querySelectorAll(".free-btn")
@@ -1923,7 +1995,7 @@ document
 
 async function claimFreeItem(item){
 
-  const phone=
+  const phone =
     phoneInput.value.trim();
 
 
@@ -1940,7 +2012,7 @@ async function claimFreeItem(item){
   }
 
 
-  const buttons=
+  const buttons =
     document.querySelectorAll(
       ".free-btn"
     );
@@ -1957,7 +2029,7 @@ async function claimFreeItem(item){
 
   try{
 
-    const response=
+    const response =
       await fetch(
         API_URL+"free-item",
         {
@@ -1976,7 +2048,7 @@ async function claimFreeItem(item){
       );
 
 
-    const data=
+    const data =
       await response.json();
 
 
@@ -1991,7 +2063,7 @@ async function claimFreeItem(item){
     }
 
 
-    resultText.textContent=
+    resultText.textContent =
       data.message ||
       "آیتم رایگان با موفقیت ثبت شد ✅";
 
@@ -2021,9 +2093,9 @@ async function claimFreeItem(item){
 }
 
 
-/* =========================
+/* ==================================================
    DEFAULT TAB
-========================= */
+================================================== */
 
 showCat(
   "coffee",

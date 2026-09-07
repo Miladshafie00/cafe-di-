@@ -32,14 +32,9 @@ body{
     color:#fff;
     min-height:100vh;
     padding-bottom:30px;
-
     background:
-        linear-gradient(
-            rgba(12,12,12,.88),
-            rgba(12,12,12,.94)
-        ),
+        linear-gradient(rgba(12,12,12,.88),rgba(12,12,12,.94)),
         var(--bg-image);
-
     background-size:cover;
     background-position:center;
     background-attachment:fixed;
@@ -57,20 +52,12 @@ header{
 .logo-container{
     width:110px;
     height:110px;
-
     margin:0 auto 12px;
-
     border-radius:50%;
-
     border:2.5px solid var(--gold);
-
-    box-shadow:
-        0 0 25px rgba(229,184,130,.35);
-
+    box-shadow:0 0 25px rgba(229,184,130,.35);
     overflow:hidden;
-
     background:#181818;
-
     display:flex;
     align-items:center;
     justify-content:center;
@@ -85,23 +72,16 @@ header{
 
 .logo-placeholder{
     display:none;
-
     font-family:var(--font-title);
     font-size:42px;
-
     color:var(--gold-bright);
 }
 
 header h1{
     font-family:var(--font-title);
-
     font-size:2.5rem;
-
     color:var(--gold-bright);
-
-    text-shadow:
-        0 0 16px rgba(229,184,130,.45);
-
+    text-shadow:0 0 16px rgba(229,184,130,.45);
     margin-bottom:2px;
 }
 
@@ -113,21 +93,14 @@ header h1{
 
 .quote-box{
     max-width:480px;
-
     margin:0 auto;
-
     padding:8px 13px;
-
     background:rgba(229,184,130,.05);
-
     border-right:3px solid var(--gold);
     border-left:3px solid var(--gold);
-
     border-radius:12px;
-
     font-size:.76rem;
     line-height:1.8;
-
     color:#e0d0be;
 }
 
@@ -135,28 +108,17 @@ header h1{
 /* ================= NAV ================= */
 
 .category-nav{
-
     position:sticky;
     top:0;
     z-index:100;
-
     width:100%;
-
     display:flex;
-
     gap:5px;
-
     padding:10px 5px;
-
     background:rgba(14,14,14,.96);
-
     backdrop-filter:blur(12px);
-
-    border-bottom:
-        1px solid rgba(229,184,130,.22);
-
+    border-bottom:1px solid rgba(229,184,130,.22);
     overflow-x:auto;
-
     scrollbar-width:none;
 }
 
@@ -164,54 +126,25 @@ header h1{
     display:none;
 }
 
-
-/* مهم: دکمه‌ها لینک هستند */
-
 .cat-btn{
-
     flex:1 0 auto;
-
     min-width:65px;
-
     padding:7px 8px;
-
     border-radius:25px;
-
-    border:
-        1px solid rgba(229,184,130,.5);
-
-    background:
-        rgba(255,255,255,.04);
-
+    border:1px solid rgba(229,184,130,.5);
+    background:rgba(255,255,255,.04);
     color:var(--gold);
-
     font-family:var(--font-title);
-
     font-size:.74rem;
-
     text-align:center;
-
     white-space:nowrap;
-
-    text-decoration:none;
-
     cursor:pointer;
-
-    display:block;
 }
 
-.cat-btn:hover,
-.cat-btn:active{
-
-    background:
-        linear-gradient(
-            135deg,
-            #e5b882,
-            #c79053
-        );
-
+.cat-btn.active,
+.cat-btn:hover{
+    background:linear-gradient(135deg,#e5b882,#c79053);
     color:#111;
-
     border-color:#ffd194;
 }
 
@@ -220,9 +153,7 @@ header h1{
 
 main{
     max-width:580px;
-
     margin:18px auto;
-
     padding:0 14px;
 }
 
@@ -230,94 +161,55 @@ main{
 /* ================= MENU ================= */
 
 .menu-section{
-
-    display:none;
-
+    display:none !important;
 }
 
 .menu-section.active{
-
-    display:block;
-
+    display:block !important;
 }
 
 .menu-section h2{
-
     text-align:center;
-
     font-family:var(--font-title);
-
     font-size:1.9rem;
-
     color:var(--gold-bright);
-
     margin-bottom:16px;
-
-    text-shadow:
-        0 0 10px rgba(229,184,130,.25);
+    text-shadow:0 0 10px rgba(229,184,130,.25);
 }
 
-
 .card{
-
-    background:
-        rgba(255,255,255,.045);
-
-    border:
-        1px solid rgba(255,255,255,.08);
-
+    background:rgba(255,255,255,.045);
+    border:1px solid rgba(255,255,255,.08);
     backdrop-filter:blur(8px);
-
     border-radius:14px;
-
     padding:11px 15px;
-
     margin-bottom:9px;
-
     display:flex;
-
     justify-content:space-between;
-
     align-items:center;
 }
 
-
 .item-name{
-
     font-size:.9rem;
-
     font-weight:600;
-
     color:#fff;
 }
 
-
 .price-wrapper{
-
     display:flex;
-
     align-items:baseline;
-
     gap:4px;
-
     flex-shrink:0;
 }
 
-
 .price-tag{
-
     font-family:var(--font-title);
-
     color:var(--gold-bright);
-
     font-size:1.2rem;
 }
 
-
 .currency{
-
     font-size:.65rem;
-
     color:#c4c4c4;
 }
 
@@ -325,279 +217,154 @@ main{
 /* ================= WHEEL ================= */
 
 #wheel-section{
-
-    display:none;
-
+    display:none !important;
     text-align:center;
-
 }
 
 #wheel-section.active{
-
-    display:block;
-
+    display:block !important;
 }
 
 .wheel-title{
-
     font-family:var(--font-title);
-
     font-size:1.9rem;
-
     color:var(--gold-bright);
-
     margin-bottom:3px;
 }
 
 .wheel-subtitle{
-
     color:#ccc;
-
     font-size:.76rem;
-
     margin-bottom:12px;
 }
 
-
 .phone-input{
-
     width:100%;
-
     max-width:310px;
-
     padding:10px;
-
     border-radius:10px;
-
-    border:
-        1px solid rgba(229,184,130,.55);
-
-    background:
-        rgba(0,0,0,.4);
-
+    border:1px solid rgba(229,184,130,.55);
+    background:rgba(0,0,0,.4);
     color:#fff;
-
     outline:none;
-
     text-align:center;
-
     direction:ltr;
-
     font-family:var(--font-body);
 }
 
-
 .wheel-area{
-
     position:relative;
-
     width:250px;
     height:250px;
-
     margin:22px auto 17px;
 }
 
-
 .pointer{
-
     position:absolute;
-
     z-index:20;
-
     left:50%;
-
     top:-6px;
-
     transform:translateX(-50%);
-
     width:0;
     height:0;
-
     border-left:13px solid transparent;
-
     border-right:13px solid transparent;
-
     border-top:27px solid #fff;
-
-    filter:
-        drop-shadow(0 2px 3px #000);
+    filter:drop-shadow(0 2px 3px #000);
 }
-
 
 .wheel{
-
     position:relative;
-
     width:100%;
     height:100%;
-
     border-radius:50%;
-
     border:7px solid #d4af73;
-
     overflow:hidden;
 
-    background:
+    background:conic-gradient(
+        #4b3020 0deg 45deg,
+        #a96f39 45deg 90deg,
+        #6e482d 90deg 135deg,
+        #b47c43 135deg 180deg,
+        #573823 180deg 225deg,
+        #c18c52 225deg 270deg,
+        #80512c 270deg 315deg,
+        #d5a15e 315deg 360deg
+    );
 
-        conic-gradient(
-
-            #4b3020 0deg 45deg,
-
-            #a96f39 45deg 90deg,
-
-            #6e482d 90deg 135deg,
-
-            #b47c43 135deg 180deg,
-
-            #573823 180deg 225deg,
-
-            #c18c52 225deg 270deg,
-
-            #80512c 270deg 315deg,
-
-            #d5a15e 315deg 360deg
-        );
-
-    transition:
-        transform 5s cubic-bezier(.12,.72,.16,1);
-
-    box-shadow:
-        0 5px 25px rgba(0,0,0,.5);
+    transition:transform 5s cubic-bezier(.12,.72,.16,1);
+    box-shadow:0 5px 25px rgba(0,0,0,.5);
 }
-
 
 .wheel-center{
-
     position:absolute;
-
     z-index:10;
-
     width:45px;
     height:45px;
-
     left:50%;
     top:50%;
-
-    transform:
-        translate(-50%,-50%);
-
+    transform:translate(-50%,-50%);
     border-radius:50%;
-
     background:#151515;
-
-    border:
-        4px solid var(--gold);
+    border:4px solid var(--gold);
 }
 
-
-/* نوشته‌های گردونه */
-
 .wlabel{
-
     position:absolute;
-
     left:50%;
     top:50%;
-
     width:65px;
-
     margin-left:-32.5px;
     margin-top:-9px;
-
     text-align:center;
-
     font-family:var(--font-title);
-
     font-size:.67rem;
-
     color:#fff;
-
-    text-shadow:
-        0 1px 4px #000;
+    text-shadow:0 1px 4px #000;
 }
 
 .w1{
-    transform:
-        rotate(22.5deg)
-        translateY(-91px)
-        rotate(-22.5deg);
+    transform:rotate(22.5deg) translateY(-91px) rotate(-22.5deg);
 }
 
 .w2{
-    transform:
-        rotate(67.5deg)
-        translateY(-91px)
-        rotate(-67.5deg);
+    transform:rotate(67.5deg) translateY(-91px) rotate(-67.5deg);
 }
 
 .w3{
-    transform:
-        rotate(112.5deg)
-        translateY(-91px)
-        rotate(-112.5deg);
+    transform:rotate(112.5deg) translateY(-91px) rotate(-112.5deg);
 }
 
 .w4{
-    transform:
-        rotate(157.5deg)
-        translateY(-91px)
-        rotate(-157.5deg);
+    transform:rotate(157.5deg) translateY(-91px) rotate(-157.5deg);
 }
 
 .w5{
-    transform:
-        rotate(202.5deg)
-        translateY(-91px)
-        rotate(-202.5deg);
+    transform:rotate(202.5deg) translateY(-91px) rotate(-202.5deg);
 }
 
 .w6{
-    transform:
-        rotate(247.5deg)
-        translateY(-91px)
-        rotate(-247.5deg);
+    transform:rotate(247.5deg) translateY(-91px) rotate(-247.5deg);
 }
 
 .w7{
-    transform:
-        rotate(292.5deg)
-        translateY(-91px)
-        rotate(-292.5deg);
+    transform:rotate(292.5deg) translateY(-91px) rotate(-292.5deg);
 }
 
 .w8{
-    transform:
-        rotate(337.5deg)
-        translateY(-91px)
-        rotate(-337.5deg);
+    transform:rotate(337.5deg) translateY(-91px) rotate(-337.5deg);
 }
 
-
 .spin-button{
-
     width:100%;
-
     max-width:310px;
-
     padding:11px;
-
     border:0;
-
     border-radius:10px;
-
-    background:
-        linear-gradient(
-            135deg,
-            #e5b882,
-            #c79053
-        );
-
+    background:linear-gradient(135deg,#e5b882,#c79053);
     color:#111;
-
     font-family:var(--font-title);
-
     font-size:.95rem;
-
     cursor:pointer;
 }
 
@@ -605,118 +372,67 @@ main{
     opacity:.55;
 }
 
-
 .result{
-
     min-height:45px;
-
     margin-top:12px;
-
     line-height:1.9;
-
     font-size:.82rem;
 }
 
 .win{
-
     color:var(--gold-bright);
-
     font-family:var(--font-title);
-
     font-size:1.05rem;
 }
 
 .code{
-
     display:inline-block;
-
     direction:ltr;
-
     padding:3px 9px;
-
-    border:
-        1px dashed var(--gold);
-
+    border:1px dashed var(--gold);
     border-radius:7px;
-
     color:var(--gold-bright);
-
-    background:
-        rgba(229,184,130,.1);
-
+    background:rgba(229,184,130,.1);
     font-weight:bold;
 }
 
-
 .free-box{
-
     display:none;
-
     width:100%;
-
     max-width:310px;
-
     margin:10px auto;
-
     padding:12px;
-
-    border:
-        1px solid rgba(229,184,130,.35);
-
+    border:1px solid rgba(229,184,130,.35);
     border-radius:11px;
-
-    background:
-        rgba(0,0,0,.3);
+    background:rgba(0,0,0,.3);
 }
 
 .free-box p{
-
     font-size:.78rem;
-
     margin-bottom:7px;
 }
 
 .free-item{
-
     width:100%;
-
     padding:9px;
-
     border-radius:8px;
-
-    border:
-        1px solid rgba(229,184,130,.5);
-
-    background:
-        rgba(0,0,0,.35);
-
+    border:1px solid rgba(229,184,130,.5);
+    background:rgba(0,0,0,.35);
     color:#fff;
-
     text-align:center;
-
     font-family:var(--font-body);
-
     outline:none;
 }
 
 .free-button{
-
     width:100%;
-
     margin-top:7px;
-
     padding:9px;
-
     border:0;
-
     border-radius:8px;
-
     background:var(--gold);
-
     color:#111;
-
     font-family:var(--font-title);
-
     cursor:pointer;
 }
 
@@ -724,63 +440,43 @@ main{
 /* ================= FOOTER ================= */
 
 footer{
-
     text-align:center;
-
     margin-top:30px;
-
     padding:15px;
 }
 
 .instagram-badge{
-
     display:inline-flex;
-
     align-items:center;
-
     gap:7px;
-
-    background:
-        linear-gradient(
-            45deg,
-            #f09433,
-            #e6683c,
-            #dc2743,
-            #cc2366,
-            #bc1888
-        );
-
+    background:linear-gradient(
+        45deg,
+        #f09433,
+        #e6683c,
+        #dc2743,
+        #cc2366,
+        #bc1888
+    );
     color:#fff;
-
     text-decoration:none;
-
     padding:9px 18px;
-
     border-radius:30px;
-
     font-weight:600;
-
     font-size:.8rem;
-
     direction:ltr;
 }
 
 .instagram-badge svg{
-
     width:18px;
     height:18px;
-
     fill:currentColor;
 }
 
 </style>
 </head>
 
-
 <body>
 
-
-<!-- ================= HEADER ================= -->
 
 <header>
 
@@ -790,80 +486,47 @@ footer{
     id="mainLogo"
     src="s.jpg"
     alt="لوگوی کافه دی"
-    onerror="
-        this.style.display='none';
-        document.getElementById('altText').style.display='block';
-    "
+    onerror="this.style.display='none';document.getElementById('altText').style.display='block';"
 >
 
-<span id="altText" class="logo-placeholder">
-دی
-</span>
+<span id="altText" class="logo-placeholder">دی</span>
 
 </div>
 
 <h1>کافه دی</h1>
 
-<p class="subtitle">
-طعم دلچسب لحظه‌های ناب
-</p>
+<p class="subtitle">طعم دلچسب لحظه‌های ناب</p>
 
 <div class="quote-box">
-
 «زندگی مثل یک فنجان قهوه است؛ تلخ و گرم، اما عطر و لحظه‌هایش تا ابد ماندگار... خوش آمدید به خلوت دنج کافه دی»
-
 </div>
 
 </header>
 
 
-
-<!-- ================= NAV ================= -->
-
 <nav class="category-nav">
 
-<button
-    type="button"
-    class="cat-btn"
-    onclick="showSection('coffee',this)"
->
+<button type="button" class="cat-btn" onclick="showSection('coffee',this)">
 منوی قهوه
 </button>
 
-<button
-    type="button"
-    class="cat-btn"
-    onclick="showSection('hot',this)"
->
+<button type="button" class="cat-btn" onclick="showSection('hot',this)">
 بار گرم
 </button>
 
-<button
-    type="button"
-    class="cat-btn"
-    onclick="showSection('cold',this)"
->
+<button type="button" class="cat-btn" onclick="showSection('cold',this)">
 بار سرد
 </button>
 
-<button
-    type="button"
-    class="cat-btn"
-    onclick="showSection('dessert',this)"
->
+<button type="button" class="cat-btn" onclick="showSection('dessert',this)">
 دسر
 </button>
 
-<button
-    type="button"
-    class="cat-btn"
-    onclick="showSection('wheel',this)"
->
+<button type="button" class="cat-btn" onclick="showSection('wheel',this)">
 🎡 گردونه شانس
 </button>
 
 </nav>
-
 
 
 <main>
@@ -871,10 +534,7 @@ footer{
 
 <!-- ================= قهوه ================= -->
 
-<section
-    id="coffee"
-    class="menu-section"
->
+<section id="coffee" class="menu-section">
 
 <h2>قهوه‌های تخصصی</h2>
 
@@ -977,13 +637,9 @@ footer{
 </section>
 
 
-
 <!-- ================= بار گرم ================= -->
 
-<section
-    id="hot"
-    class="menu-section"
->
+<section id="hot" class="menu-section">
 
 <h2>نوشیدنی‌های گرم</h2>
 
@@ -1062,13 +718,9 @@ footer{
 </section>
 
 
-
 <!-- ================= بار سرد ================= -->
 
-<section
-    id="cold"
-    class="menu-section"
->
+<section id="cold" class="menu-section">
 
 <h2>نوشیدنی‌های سرد</h2>
 
@@ -1091,18 +743,14 @@ footer{
 </section>
 
 
-
 <!-- ================= دسر ================= -->
 
-<section
-    id="dessert"
-    class="menu-section"
->
+<section id="dessert" class="menu-section">
 
 <h2>کیک و دسر</h2>
 
 <div class="card">
-<span class="item-name">(کیک شکلاتی (هر اسلایس</span>
+<span class="item-name">کیک شکلاتی (هر اسلایس)</span>
 <div class="price-wrapper">
 <span class="price-tag">۷۰</span>
 <span class="currency">هزار تومان</span>
@@ -1112,19 +760,15 @@ footer{
 </section>
 
 
-
 <!-- ================= گردونه ================= -->
 
 <section id="wheel-section">
 
-<h2 class="wheel-title">
-🎡 گردونه شانس
-</h2>
+<h2 class="wheel-title">🎡 گردونه شانس</h2>
 
 <p class="wheel-subtitle">
 شماره موبایلت رو وارد کن و شانست رو امتحان کن
 </p>
-
 
 <input
     id="phone"
@@ -1135,15 +779,11 @@ footer{
     placeholder="شماره موبایل"
 >
 
-
 <div class="wheel-area">
 
 <div class="pointer"></div>
 
-<div
-    id="wheel"
-    class="wheel"
->
+<div id="wheel" class="wheel">
 
 <div class="wlabel w1">پوچ</div>
 <div class="wlabel w2">تخفیف</div>
@@ -1160,41 +800,24 @@ footer{
 
 </div>
 
-
-<button
-    type="button"
-    id="spin"
-    class="spin-button"
->
+<button type="button" id="spin" class="spin-button">
 🎯 چرخاندن گردونه
 </button>
 
+<div id="result" class="result"></div>
 
-<div
-    id="result"
-    class="result"
-></div>
+<div id="freeBox" class="free-box">
 
+<p>🎁 یک آیتم رایگان برنده شدی!</p>
 
-<div
-    id="freeBox"
-    class="free-box"
->
-
-<p>
-🎁 یک آیتم رایگان برنده شدی!
-</p>
-
-<p>
-فقط یک آیتم انتخاب کن:
-</p>
+<p>فقط یک آیتم انتخاب کن:</p>
 
 <input
     id="freeItem"
     class="free-item"
     type="text"
     maxlength="100"
-    placeholder="مثلاً لاته"
+    placeholder="مثلاً لته"
 >
 
 <button
@@ -1212,14 +835,12 @@ footer{
 </main>
 
 
-
-<!-- ================= FOOTER ================= -->
-
 <footer>
 
 <a
     href="https://instagram.com/cafedey2026"
     target="_blank"
+    rel="noopener"
     class="instagram-badge"
 >
 
@@ -1236,101 +857,61 @@ footer{
 </footer>
 
 
-
 <script>
 
-/* ==================================================
-   سیستم انتخاب منو
-   ================================================== */
+/* =========================
+   انتخاب سربرگ
+========================= */
 
-function showSection(section, button){
+function showSection(section,button){
 
-    /* مخفی کردن تمام بخش‌ها */
-
-    document
-    .querySelectorAll(".menu-section")
-    .forEach(function(item){
-
+    document.querySelectorAll(".menu-section").forEach(function(item){
         item.classList.remove("active");
-
     });
 
+    document.getElementById("wheel-section").classList.remove("active");
 
-    /* مخفی کردن گردونه */
-
-    document
-    .getElementById("wheel-section")
-    .classList.remove("active");
-
-
-    /* خاموش کردن تمام دکمه‌ها */
-
-    document
-    .querySelectorAll(".cat-btn")
-    .forEach(function(btn){
-
+    document.querySelectorAll(".cat-btn").forEach(function(btn){
         btn.classList.remove("active");
-
     });
-
-
-    /* فعال کردن دکمه */
 
     button.classList.add("active");
 
-
-    /* نمایش بخش مورد نظر */
-
     if(section === "wheel"){
 
-        document
-        .getElementById("wheel-section")
-        .classList.add("active");
+        document.getElementById("wheel-section").classList.add("active");
 
     }else{
 
-        document
-        .getElementById(section)
-        .classList.add("active");
+        document.getElementById(section).classList.add("active");
 
     }
 
 }
 
 
-/* ==================================================
-   منوی قهوه در شروع
-   ================================================== */
+/* =========================
+   نمایش قهوه در شروع
+========================= */
 
-document
-.addEventListener(
-    "DOMContentLoaded",
-    function(){
+document.addEventListener("DOMContentLoaded",function(){
 
-        var firstButton =
-        document.querySelector(
-            ".cat-btn"
-        );
+    showSection(
+        "coffee",
+        document.querySelector(".cat-btn")
+    );
 
-        showSection(
-            "coffee",
-            firstButton
-        );
-
-    }
-);
+});
 
 
-
-/* ==================================================
+/* =========================
    گردونه
-   ================================================== */
+========================= */
 
 var WORKER =
 "https://cafe-di-discount.miladsh00.workers.dev/";
 
 var spinning = false;
-
 var rotation = 0;
 
 
@@ -1339,15 +920,11 @@ function normalizePhone(value){
     return String(value)
 
     .replace(/[۰-۹]/g,function(d){
-
         return "۰۱۲۳۴۵۶۷۸۹".indexOf(d);
-
     })
 
     .replace(/[٠-٩]/g,function(d){
-
         return "٠١٢٣٤٥٦٧٨٩".indexOf(d);
-
     })
 
     .replace(/[\s\-()]/g,"")
@@ -1357,25 +934,130 @@ function normalizePhone(value){
 }
 
 
-document
-.getElementById("spin")
-.addEventListener(
-    "click",
-    async function(){
+document.getElementById("spin").addEventListener("click",async function(){
 
-        if(spinning){
+    if(spinning){
+        return;
+    }
+
+    var phone =
+    normalizePhone(
+        document.getElementById("phone").value
+    );
+
+    var result =
+    document.getElementById("result");
+
+    if(!/^09\d{9}$/.test(phone)){
+
+        result.innerHTML =
+        "❌ لطفاً شماره موبایل معتبر وارد کنید.";
+
+        return;
+    }
+
+    spinning = true;
+    this.disabled = true;
+
+    result.innerHTML =
+    "⏳ در حال بررسی...";
+
+
+    try{
+
+        var checkResponse =
+        await fetch(
+            WORKER +
+            "check?phone=" +
+            encodeURIComponent(phone)
+        );
+
+        var check =
+        await checkResponse.json();
+
+
+        if(check.canSpin === false){
+
+            result.innerHTML =
+            "⚠️ این شماره قبلاً از گردونه استفاده کرده است.";
+
+            spinning = false;
+            this.disabled = false;
+
             return;
         }
 
 
-        var phone =
-        normalizePhone(
-            document
-            .getElementById("phone")
-            .value
+        var response =
+        await fetch(
+            WORKER + "spin",
+            {
+                method:"POST",
+
+                headers:{
+                    "Content-Type":"application/json"
+                },
+
+                body:JSON.stringify({
+                    phone:phone
+                })
+            }
         );
 
 
-        var result =
-        document
-        .getEl
+        var data =
+        await response.json();
+
+
+        if(!response.ok){
+
+            result.innerHTML =
+            "❌ " +
+            (
+                data.message ||
+                "خطایی رخ داد."
+            );
+
+            spinning = false;
+            this.disabled = false;
+
+            return;
+        }
+
+
+        var prize = data.result;
+
+
+        var target = 0;
+
+
+        if(prize.type === "lose"){
+
+            target = 0;
+
+        }else if(prize.type === "free"){
+
+            target = 7;
+
+        }else{
+
+            target =
+            1 +
+            Math.floor(
+                Math.random() * 6
+            );
+
+        }
+
+
+        var targetAngle =
+        360 -
+        (
+            target * 45 +
+            22.5
+        );
+
+
+        rotation +=
+        2160 +
+  

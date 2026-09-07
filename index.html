@@ -10,6 +10,7 @@
 <link href="https://fonts.googleapis.com/css2?family=Lalezar&family=Vazirmatn:wght@300;400;600;700&display=swap" rel="stylesheet">
 
 <style>
+
 :root{
     --bg-image:url('m.jpg');
     --gold:#e5b882;
@@ -39,6 +40,11 @@ body{
     padding-bottom:30px;
 }
 
+
+/* =========================
+   HEADER
+========================= */
+
 header{
     text-align:center;
     padding:30px 15px 12px;
@@ -48,11 +54,15 @@ header{
     width:110px;
     height:110px;
     margin:0 auto 12px;
+
     border-radius:50%;
     border:2.5px solid var(--gold);
+
     box-shadow:0 0 25px rgba(229,184,130,.35);
+
     overflow:hidden;
     background:#181818;
+
     display:flex;
     align-items:center;
     justify-content:center;
@@ -66,10 +76,10 @@ header{
 }
 
 .logo-placeholder{
+    display:none;
     font-family:var(--font-title);
     font-size:42px;
     color:var(--gold-bright);
-    display:none;
 }
 
 header h1{
@@ -88,55 +98,106 @@ header h1{
 .quote-box{
     max-width:480px;
     margin:0 auto;
+
     padding:8px 13px;
+
     background:rgba(229,184,130,.05);
+
     border-right:3px solid var(--gold);
     border-left:3px solid var(--gold);
+
     border-radius:12px;
+
     font-size:.76rem;
     line-height:1.8;
+
     color:#e0d0be;
 }
 
+
+/* =========================
+   CATEGORY BUTTONS
+========================= */
+
 .category-nav{
-    display:flex;
-    justify-content:center;
-    gap:5px;
-    padding:10px 6px;
     position:sticky;
     top:0;
-    background:rgba(14,14,14,.95);
-    backdrop-filter:blur(12px);
     z-index:100;
+
+    display:flex;
+    width:100%;
+
+    justify-content:center;
+
+    gap:5px;
+
+    padding:10px 5px;
+
+    background:rgba(14,14,14,.95);
+
+    backdrop-filter:blur(12px);
+
     border-bottom:1px solid rgba(229,184,130,.22);
-    overflow:hidden;
+
+    overflow-x:auto;
+    scrollbar-width:none;
+}
+
+.category-nav::-webkit-scrollbar{
+    display:none;
 }
 
 .cat-btn{
+    flex:1 1 auto;
+
+    min-width:0;
+
     background:rgba(255,255,255,.04);
+
     border:1px solid rgba(229,184,130,.5);
+
     color:var(--gold);
-    padding:5px 8px;
+
+    padding:6px 5px;
+
     border-radius:25px;
+
     cursor:pointer;
+
     font-family:var(--font-title);
-    font-size:.73rem;
+
+    font-size:.74rem;
+
     white-space:nowrap;
-    flex-shrink:0;
+
+    text-align:center;
 }
 
 .cat-btn.active{
     background:linear-gradient(135deg,#e5b882,#c79053);
+
     color:#121212;
+
     border-color:#ffd194;
+
     box-shadow:0 0 14px rgba(229,184,130,.45);
 }
+
+
+/* =========================
+   MAIN
+========================= */
 
 main{
     max-width:580px;
     margin:18px auto;
     padding:0 14px;
 }
+
+
+/* =========================
+   MENU
+========================= */
 
 .menu-section{
     display:none;
@@ -148,21 +209,33 @@ main{
 
 .menu-section h2{
     text-align:center;
+
     font-family:var(--font-title);
+
     font-size:1.9rem;
+
     color:var(--gold-bright);
+
     margin-bottom:16px;
 }
 
 .card{
     background:rgba(255,255,255,.045);
+
     border:1px solid rgba(255,255,255,.08);
+
     backdrop-filter:blur(8px);
+
     border-radius:14px;
+
     padding:11px 15px;
+
     margin-bottom:9px;
+
     display:flex;
+
     justify-content:space-between;
+
     align-items:center;
 }
 
@@ -191,7 +264,9 @@ main{
 }
 
 
-/* گردونه */
+/* =========================
+   WHEEL
+========================= */
 
 #wheel-section{
     display:none;
@@ -218,83 +293,124 @@ main{
 .phone-input{
     width:100%;
     max-width:310px;
+
     padding:10px;
+
     border-radius:10px;
+
     border:1px solid rgba(229,184,130,.55);
+
     background:rgba(0,0,0,.4);
-    color:white;
+
+    color:#fff;
+
     outline:none;
+
     text-align:center;
+
     direction:ltr;
+
     font-family:var(--font-body);
 }
 
 .wheel-area{
     position:relative;
+
     width:250px;
     height:250px;
+
     margin:22px auto 17px;
 }
 
 .pointer{
     position:absolute;
+
     z-index:20;
+
     left:50%;
     top:-5px;
+
     transform:translateX(-50%);
+
     width:0;
     height:0;
+
     border-left:13px solid transparent;
     border-right:13px solid transparent;
     border-top:27px solid white;
+
     filter:drop-shadow(0 2px 3px black);
 }
 
 .wheel{
     position:relative;
+
     width:100%;
     height:100%;
+
     border-radius:50%;
+
     border:7px solid #d4af73;
+
     overflow:hidden;
-    background:conic-gradient(
-        #4b3020 0deg 45deg,
-        #a96f39 45deg 90deg,
-        #6e482d 90deg 135deg,
-        #b47c43 135deg 180deg,
-        #573823 180deg 225deg,
-        #c18c52 225deg 270deg,
-        #80512c 270deg 315deg,
-        #d5a15e 315deg 360deg
-    );
-    transition:transform 5s cubic-bezier(.12,.72,.16,1);
+
+    background:
+        conic-gradient(
+            #4b3020 0deg 45deg,
+            #a96f39 45deg 90deg,
+            #6e482d 90deg 135deg,
+            #b47c43 135deg 180deg,
+            #573823 180deg 225deg,
+            #c18c52 225deg 270deg,
+            #80512c 270deg 315deg,
+            #d5a15e 315deg 360deg
+        );
+
+    transition:
+        transform 5s cubic-bezier(.12,.72,.16,1);
+
     box-shadow:0 5px 25px rgba(0,0,0,.5);
 }
 
 .wheel-center{
     position:absolute;
+
     z-index:10;
+
     width:45px;
     height:45px;
+
     left:50%;
     top:50%;
+
     transform:translate(-50%,-50%);
+
     border-radius:50%;
+
     background:#151515;
+
     border:4px solid var(--gold);
 }
 
 .wlabel{
     position:absolute;
+
     left:50%;
     top:50%;
+
     width:65px;
+
     margin-left:-32.5px;
     margin-top:-9px;
+
     text-align:center;
+
     font-family:var(--font-title);
+
     font-size:.67rem;
-    color:white;
+
+    color:#fff;
+
     text-shadow:0 1px 4px #000;
 }
 
@@ -310,13 +426,21 @@ main{
 .spin-button{
     width:100%;
     max-width:310px;
+
     padding:11px;
+
     border:0;
+
     border-radius:10px;
+
     background:linear-gradient(135deg,#e5b882,#c79053);
+
     color:#111;
+
     font-family:var(--font-title);
+
     font-size:.95rem;
+
     cursor:pointer;
 }
 
@@ -326,36 +450,54 @@ main{
 
 .result{
     min-height:45px;
+
     margin-top:12px;
+
     line-height:1.9;
+
     font-size:.82rem;
 }
 
 .win{
     color:var(--gold-bright);
+
     font-family:var(--font-title);
+
     font-size:1.05rem;
 }
 
 .code{
     display:inline-block;
+
     direction:ltr;
+
     padding:3px 9px;
+
     border:1px dashed var(--gold);
+
     border-radius:7px;
+
     color:var(--gold-bright);
+
     background:rgba(229,184,130,.1);
+
     font-weight:bold;
 }
 
 .free-box{
     display:none;
+
     width:100%;
     max-width:310px;
+
     margin:10px auto;
+
     padding:12px;
+
     border:1px solid rgba(229,184,130,.35);
+
     border-radius:11px;
+
     background:rgba(0,0,0,.3);
 }
 
@@ -366,45 +508,86 @@ main{
 
 .free-item{
     width:100%;
+
     padding:9px;
+
     border-radius:8px;
+
     border:1px solid rgba(229,184,130,.5);
+
     background:rgba(0,0,0,.35);
-    color:white;
+
+    color:#fff;
+
     text-align:center;
+
     font-family:var(--font-body);
+
     outline:none;
 }
 
 .free-button{
     width:100%;
+
     margin-top:7px;
+
     padding:9px;
+
     border:0;
+
     border-radius:8px;
+
     background:var(--gold);
+
     color:#111;
+
     font-family:var(--font-title);
+
     cursor:pointer;
 }
 
+
+/* =========================
+   FOOTER
+========================= */
+
 footer{
     text-align:center;
+
     margin-top:30px;
+
     padding:15px;
 }
 
 .instagram-badge{
     display:inline-flex;
+
     align-items:center;
+
     gap:7px;
-    background:linear-gradient(45deg,#f09433,#e6683c,#dc2743,#cc2366,#bc1888);
+
+    background:
+        linear-gradient(
+            45deg,
+            #f09433,
+            #e6683c,
+            #dc2743,
+            #cc2366,
+            #bc1888
+        );
+
     color:#fff;
+
     text-decoration:none;
+
     padding:9px 18px;
+
     border-radius:30px;
+
     font-weight:600;
+
     font-size:.8rem;
+
     direction:ltr;
 }
 
@@ -414,22 +597,12 @@ footer{
     fill:currentColor;
 }
 
-@media(max-width:390px){
-    .cat-btn{
-        padding:5px 6px;
-        font-size:.68rem;
-    }
-
-    .wheel-area{
-        width:230px;
-        height:230px;
-    }
-}
 </style>
 </head>
 
 
 <body>
+
 
 <header>
 
@@ -442,7 +615,9 @@ alt="لوگوی کافه دی"
 onerror="this.style.display='none';document.getElementById('altText').style.display='block';"
 >
 
-<span id="altText" class="logo-placeholder">دی</span>
+<span id="altText" class="logo-placeholder">
+دی
+</span>
 
 </div>
 
@@ -459,35 +634,39 @@ onerror="this.style.display='none';document.getElementById('altText').style.disp
 </header>
 
 
+
 <nav class="category-nav">
 
-<button class="cat-btn active" data-section="coffee">
+<button type="button" class="cat-btn active" data-section="coffee">
 منوی قهوه
 </button>
 
-<button class="cat-btn" data-section="hot">
+<button type="button" class="cat-btn" data-section="hot">
 بار گرم
 </button>
 
-<button class="cat-btn" data-section="cold">
+<button type="button" class="cat-btn" data-section="cold">
 بار سرد
 </button>
 
-<button class="cat-btn" data-section="dessert">
+<button type="button" class="cat-btn" data-section="dessert">
 دسر
 </button>
 
-<button class="cat-btn" data-section="wheel">
+<button type="button" class="cat-btn" data-section="wheel">
 🎡 گردونه شانس
 </button>
 
 </nav>
 
 
+
 <main>
 
 
-<!-- قهوه -->
+<!-- =========================
+     قهوه
+========================= -->
 
 <section id="coffee" class="menu-section active">
 
@@ -592,7 +771,10 @@ onerror="this.style.display='none';document.getElementById('altText').style.disp
 </section>
 
 
-<!-- بار گرم -->
+
+<!-- =========================
+     بار گرم
+========================= -->
 
 <section id="hot" class="menu-section">
 
@@ -673,7 +855,10 @@ onerror="this.style.display='none';document.getElementById('altText').style.disp
 </section>
 
 
-<!-- بار سرد -->
+
+<!-- =========================
+     بار سرد
+========================= -->
 
 <section id="cold" class="menu-section">
 
@@ -698,7 +883,10 @@ onerror="this.style.display='none';document.getElementById('altText').style.disp
 </section>
 
 
-<!-- دسر -->
+
+<!-- =========================
+     دسر
+========================= -->
 
 <section id="dessert" class="menu-section">
 
@@ -715,7 +903,10 @@ onerror="this.style.display='none';document.getElementById('altText').style.disp
 </section>
 
 
-<!-- گردونه -->
+
+<!-- =========================
+     گردونه
+========================= -->
 
 <section id="wheel-section">
 
@@ -760,6 +951,7 @@ placeholder="شماره موبایل"
 
 
 <button
+type="button"
 id="spin"
 class="spin-button"
 >
@@ -785,6 +977,7 @@ placeholder="مثلاً لاته"
 >
 
 <button
+type="button"
 id="freeButton"
 class="free-button"
 >
@@ -798,6 +991,7 @@ class="free-button"
 </main>
 
 
+
 <footer>
 
 <a
@@ -808,7 +1002,7 @@ class="instagram-badge"
 
 <svg viewBox="0 0 24 24">
 
-<path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.78 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.204-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.79 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/>
+<path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-4.92-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.78 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.204-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.79 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/>
 
 </svg>
 
@@ -819,301 +1013,167 @@ class="instagram-badge"
 </footer>
 
 
+
 <script>
 
-const WORKER =
+/* =========================
+   جابه‌جایی منوها
+========================= */
+
+var buttons =
+document.querySelectorAll(".cat-btn");
+
+var sections =
+document.querySelectorAll(".menu-section");
+
+var wheelSection =
+document.getElementById("wheel-section");
+
+
+buttons.forEach(function(button){
+
+    button.addEventListener("click",function(){
+
+        var target =
+        this.getAttribute("data-section");
+
+
+        /* همه دکمه‌ها خاموش */
+
+        buttons.forEach(function(btn){
+            btn.classList.remove("active");
+        });
+
+
+        /* همه منوها مخفی */
+
+        sections.forEach(function(section){
+            section.classList.remove("active");
+        });
+
+
+        /* گردونه هم مخفی */
+
+        wheelSection.classList.remove("active");
+
+
+        /* دکمه انتخاب‌شده */
+
+        this.classList.add("active");
+
+
+        /* نمایش مقصد */
+
+        if(target === "wheel"){
+
+            wheelSection.classList.add("active");
+
+        }else{
+
+            var selected =
+            document.getElementById(target);
+
+            if(selected){
+                selected.classList.add("active");
+            }
+
+        }
+
+    });
+
+});
+
+
+
+/* =========================
+   اتصال گردونه
+========================= */
+
+var WORKER =
 "https://cafe-di-discount.miladsh00.workers.dev/";
 
 
-/* تغییر دسته‌ها */
-
-document.querySelectorAll(".cat-btn").forEach(function(button){
-
-button.addEventListener("click",function(){
-
-document.querySelectorAll(".cat-btn").forEach(function(btn){
-btn.classList.remove("active");
-});
-
-document.querySelectorAll(".menu-section").forEach(function(section){
-section.classList.remove("active");
-});
-
-document.getElementById("wheel-section").classList.remove("active");
-
-this.classList.add("active");
-
-const section =
-this.getAttribute("data-section");
-
-if(section==="wheel"){
-
-document.getElementById("wheel-section").classList.add("active");
-
-}else{
-
-document.getElementById(section).classList.add("active");
-
-}
-
-});
-
-});
-
-
-/* تبدیل شماره */
-
 function normalizePhone(value){
 
-return String(value)
-.replace(/[۰-۹]/g,function(d){
-return "۰۱۲۳۴۵۶۷۸۹".indexOf(d);
-})
-.replace(/[٠-٩]/g,function(d){
-return "٠١٢٣٤٥٦٧٨٩".indexOf(d);
-})
-.replace(/[\s\-()]/g,"")
-.trim();
+    return String(value)
+
+    .replace(/[۰-۹]/g,function(d){
+        return "۰۱۲۳۴۵۶۷۸۹".indexOf(d);
+    })
+
+    .replace(/[٠-٩]/g,function(d){
+        return "٠١٢٣٤٥٦٧٨٩".indexOf(d);
+    })
+
+    .replace(/[\s\-()]/g,"")
+
+    .trim();
 
 }
 
 
-/* گردونه */
+var spinning=false;
+var rotation=0;
 
-let spinning=false;
-let rotation=0;
 
+document.getElementById("spin").addEventListener(
+"click",
+async function(){
 
-document.getElementById("spin").addEventListener("click",async function(){
+    if(spinning){
+        return;
+    }
 
-if(spinning)return;
 
+    var phone =
+    normalizePhone(
+        document.getElementById("phone").value
+    );
 
-const phone=
-normalizePhone(
-document.getElementById("phone").value
-);
 
+    var result =
+    document.getElementById("result");
 
-const result=
-document.getElementById("result");
 
+    if(!/^09\d{9}$/.test(phone)){
 
-if(!/^09\d{9}$/.test(phone)){
+        result.innerHTML =
+        "❌ لطفاً شماره موبایل معتبر وارد کنید.";
 
-result.innerHTML=
-"❌ لطفاً شماره موبایل معتبر وارد کنید.";
+        return;
+    }
 
-return;
 
-}
+    spinning=true;
+    this.disabled=true;
 
+    result.innerHTML =
+    "⏳ در حال بررسی...";
 
-spinning=true;
 
-this.disabled=true;
+    try{
 
-result.innerHTML=
-"⏳ در حال بررسی...";
+        var checkResponse =
+        await fetch(
+            WORKER+
+            "check?phone="+
+            encodeURIComponent(phone)
+        );
 
 
-try{
+        var check =
+        await checkResponse.json();
 
-/* بررسی اینکه قبلاً بازی کرده یا نه */
 
-const checkResponse=
-await fetch(
-WORKER+
-"check?phone="+
-encodeURIComponent(phone)
-);
+        if(check.canSpin === false){
 
+            result.innerHTML =
+            "⚠️ این شماره قبلاً از گردونه استفاده کرده است.";
 
-const check=
-await checkResponse.json();
+            spinning=false;
 
+            return;
+        }
 
-if(check.canSpin===false){
 
-result.innerHTML=
-"⚠️ این شماره قبلاً از گردونه استفاده کرده است.";
-
-spinning=false;
-
-return;
-
-}
-
-
-/* درخواست چرخش */
-
-const response=
-await fetch(
-WORKER+"spin",
-{
-method:"POST",
-
-headers:{
-"Content-Type":"application/json"
-},
-
-body:JSON.stringify({
-phone:phone
-})
-
-}
-);
-
-
-const data=
-await response.json();
-
-
-if(!response.ok){
-
-result.innerHTML=
-"❌ "+
-(data.message||"خطایی رخ داد.");
-
-spinning=false;
-
-this.disabled=false;
-
-return;
-
-}
-
-
-const prize=data.result;
-
-
-/*
-نتیجه واقعی از Worker می‌آید.
-خود کاربر درصدها را نمی‌بیند.
-*/
-
-let target=0;
-
-
-if(prize.type==="lose"){
-
-target=0;
-
-}else if(prize.type==="free"){
-
-target=7;
-
-}else{
-
-target=
-1+
-Math.floor(Math.random()*6);
-
-}
-
-
-const targetAngle=
-360-(target*45+22.5);
-
-
-rotation +=
-2160+
-targetAngle-
-(rotation%360);
-
-
-document.getElementById("wheel").style.transform=
-"rotate("+rotation+"deg)";
-
-
-result.innerHTML=
-"🎡 در حال چرخش...";
-
-
-setTimeout(function(){
-
-
-if(prize.type==="lose"){
-
-result.innerHTML=
-'<span class="win">😅 این بار پوچ شد!</span>';
-
-}
-
-else if(prize.type==="free"){
-
-result.innerHTML=
-'<span class="win">🎁 یک آیتم رایگان برنده شدی!</span>'+
-"<br>کد: "+
-'<span class="code">'+
-(prize.code||"")+
-"</span>";
-
-document.getElementById("freeBox").style.display=
-"block";
-
-}
-
-else{
-
-result.innerHTML=
-'<span class="win">🎉 '+
-(prize.label||"جایزه")+
-"</span>"+
-"<br>کد تخفیف: "+
-'<span class="code">'+
-(prize.code||"")+
-"</span>";
-
-}
-
-spinning=false;
-
-},5200);
-
-}
-catch(error){
-
-console.error(error);
-
-result.innerHTML=
-"❌ ارتباط با سرور برقرار نشد.";
-
-spinning=false;
-
-this.disabled=false;
-
-}
-
-});
-
-
-/* ثبت آیتم رایگان */
-
-document.getElementById("freeButton").addEventListener("click",async function(){
-
-const phone=
-normalizePhone(
-document.getElementById("phone").value
-);
-
-const item=
-document.getElementById("freeItem").value.trim();
-
-
-if(!item){
-
-alert("نام آیتم را وارد کنید.");
-
-return;
-
-}
-
-
-this.disabled=true;
-
-
-try{
-
-const response=
-await 
+  

@@ -725,21 +725,132 @@ function normalizeNumber(value){
 
 
 /* =========================
+   GET PRIZE
+========================= */
+
+function getPrize(data){
+
+  if(!data) return "";
+
+  const values=[
+    data.prize,
+    data.result,
+    data.reward,
+    data.discount,
+    data.discountPercent,
+    data.percent,
+    data.message
+  ];
+
+  for(let i=0;i<values.length;i++){
+
+    const value=values[i];
+
+    if(value !== undefined &&
+       value !== null &&
+       String(value).trim() !== ""){
+
+      const text=String(value);
+
+      if(
+        text.includes("۲۰") ||
+        text.includes("۱۵") ||
+        text.includes("۱۲") ||
+        text.includes("۶") ||
+        text.includes("۲") ||
+        text.includes("۴") ||
+        text.includes("20") ||
+        text.includes("15") ||
+        text.includes("12") ||
+        text.includes("6") ||
+        text.includes("2") ||
+        text.includes("4") ||
+        text.includes("رایگان") ||
+        text.includes("آیتم") ||
+        text.includes("free") ||
+        text.includes("پوچ") ||
+        text.includes("nothing") ||
+        text.includes("lose")
+      ){
+
+        return text;
+
+      }
+
+    }
+
+  }
+
+  return "";
+
+}
+
+
+/* =========================
    PRIZE INDEX
 ========================= */
 
 function prizeIndex(prize){
 
-  const p=normalizeNumber(prize)
+  let p=normalizeNumber(prize)
     .toLowerCase()
+    .replace(/٪/g,"%")
     .replace(/\s/g,"");
 
-  if(p.includes("20%") || p.includes("20")) return 0;
-  if(p.includes("15%") || p.includes("15")) return 1;
-  if(p.includes("12%") || p.includes("12")) return 2;
-  if(p.includes("6%") || p.includes("6")) return 3;
-  if(p.includes("2%") || p.includes("2")) return 4;
-  if(p.includes("4%") || p.includes("4")) return 5;
+  /*
+    ترتیب دقیق خانه‌های گردونه:
+
+    ۰ = ۲۰٪
+    ۱ = ۱۵٪
+    ۲ = ۱۲٪
+    ۳ = ۶٪
+    ۴ = ۲٪
+    ۵ = ۴٪
+    ۶ = 🎁
+    ۷ = پوچ
+  */
+
+  if(
+    p.includes("20%") ||
+    p.includes("20")
+  ){
+    return 0;
+  }
+
+  if(
+    p.includes("15%") ||
+    p.includes("15")
+  ){
+    return 1;
+  }
+
+  if(
+    p.includes("12%") ||
+    p.includes("12")
+  ){
+    return 2;
+  }
+
+  if(
+    p.includes("6%") ||
+    p.includes("6")
+  ){
+    return 3;
+  }
+
+  if(
+    p.includes("2%") ||
+    p.includes("2")
+  ){
+    return 4;
+  }
+
+  if(
+    p.includes("4%") ||
+    p.includes("4")
+  ){
+    return 5;
+  }
 
   if(
     p.includes("free") ||
@@ -747,6 +858,15 @@ function prizeIndex(prize){
     p.includes("آیتم")
   ){
     return 6;
+  }
+
+  if(
+    p.includes("پوچ") ||
+    p.includes("nothing") ||
+    p.includes("lose") ||
+    p.includes("no prize")
+  ){
+    return 7;
   }
 
   return 7;
@@ -770,12 +890,7 @@ function showResult(data){
   resultTitle.textContent="";
   resultText.textContent="";
 
-  const prize=
-    data.prize ||
-    data.result ||
-    data.reward ||
-    data.message ||
-    "";
+  const prize=getPrize(data);
 
   const index=prizeIndex(prize);
 
@@ -783,7 +898,9 @@ function showResult(data){
   if(index===7){
 
     resultIcon.textContent="😅";
+
     resultTitle.textContent="پوچ شد!";
+
     resultText.textContent=
       "این بار شانست یاری نکرد؛ دوباره امتحان کن.";
 
@@ -794,6 +911,7 @@ function showResult(data){
   if(index>=0 && index<=5){
 
     resultIcon.textContent="🎉";
+
     resultTitle.textContent="تبریک!";
 
     resultText.textContent=
@@ -810,6 +928,7 @@ function showResult(data){
     if(realCode){
 
       codeContainer.style.display="block";
+
       discountCode.textContent=realCode;
 
     }
@@ -821,6 +940,7 @@ function showResult(data){
   if(index===6){
 
     resultIcon.textContent="🎉";
+
     resultTitle.textContent="تبریک!";
 
     resultText.textContent=
@@ -831,6 +951,7 @@ function showResult(data){
   }
 
 }
+
 
 /* =========================
    SPIN
@@ -845,16 +966,20 @@ async function spinWheel(){
   if(!phone){
 
     alert("لطفاً شماره موبایل را وارد کنید.");
-    phoneInput.focus();
-    return;
 
+    phoneInput.focus();
+
+    return;
   }
 
   spinning=true;
+
   spinBtn.disabled=true;
+
   spinBtn.textContent="در حال چرخش...";
 
   resultBox.classList.remove("show");
+
 
   try{
 
@@ -862,16 +987,20 @@ async function spinWheel(){
       API_URL+"spin",
       {
         method:"POST",
+
         headers:{
           "Content-Type":"application/json"
         },
+
         body:JSON.stringify({
           phone:phone
         })
       }
     );
 
+
     const data=await response.json();
+
 
     if(!response.ok){
 
@@ -883,61 +1012,80 @@ async function spinWheel(){
 
     }
 
-    const prize=
-      data.prize ||
-      data.result ||
-      data.reward ||
-      "";
+
+    /*
+      جایزه واقعی که Worker برگردانده
+      را پیدا می‌کنیم.
+    */
+
+    const prize=getPrize(data);
+
+
+    /*
+      شماره خانه‌ی واقعی جایزه
+      از روی همان جایزه مشخص می‌شود.
+    */
 
     const index=prizeIndex(prize);
 
+
     /*
-      جای دقیق وسط هر خانه گردونه:
-      
-      ۲۰٪ = 22.5°
-      ۱۵٪ = 67.5°
-      ۱۲٪ = 112.5°
-      ۶٪  = 157.5°
-      ۲٪  = 202.5°
-      ۴٪  = 247.5°
-      🎁  = 292.5°
-      پوچ = 337.5°
+      ترتیب خانه‌ها:
+
+      ۲۰٪  = 0
+      ۱۵٪  = 1
+      ۱۲٪  = 2
+      ۶٪   = 3
+      ۲٪   = 4
+      ۴٪   = 5
+      🎁   = 6
+      پوچ  = 7
     */
 
-    const prizeCenter=
+
+    const targetAngle=
       (index * 45) + 22.5;
 
+
     /*
-      چون فلش بالای گردونه است،
-      گردونه را به اندازه‌ای می‌چرخانیم
-      که مرکز جایزه دقیقاً زیر فلش قرار بگیرد.
+      زاویه‌ای که باید گردونه بچرخد
+      تا مرکز همان خانه دقیقاً زیر فلش قرار بگیرد.
     */
+
+    const desiredRotation=
+      (360 - targetAngle) % 360;
+
 
     const currentMod=
       ((currentRotation % 360) + 360) % 360;
 
-    const desiredRotation=
-      (360 - prizeCenter + 360) % 360;
 
     const extraRotation=
       (desiredRotation - currentMod + 360) % 360;
 
-    currentRotation+=
-      (360 * 8) + extraRotation;
 
     /*
-      اول transition را تنظیم می‌کنیم،
-      بعد چرخش را اعمال می‌کنیم.
+      حداقل ۸ دور کامل
+      + رسیدن دقیق به خانه‌ی جایزه
     */
+
+    currentRotation +=
+      (360 * 8) + extraRotation;
+
 
     wheel.style.transition=
       "transform 4.5s cubic-bezier(.12,.75,.16,1)";
 
+
     wheel.style.transform=
-      "rotate(" + currentRotation + "deg)";
+      "rotate(" +
+      currentRotation +
+      "deg)";
+
 
     /*
-      چرخش تمام شد → نتیجه نمایش داده شود
+      بعد از تمام شدن انیمیشن
+      نتیجه نمایش داده می‌شود.
     */
 
     setTimeout(function(){
@@ -945,10 +1093,13 @@ async function spinWheel(){
       showResult(data);
 
       spinning=false;
+
       spinBtn.disabled=false;
+
       spinBtn.textContent="🎡 بچرخون!";
 
     },4600);
+
 
   }catch(error){
 
@@ -958,12 +1109,16 @@ async function spinWheel(){
     );
 
     spinning=false;
+
     spinBtn.disabled=false;
+
     spinBtn.textContent="🎡 بچرخون!";
 
   }
 
 }
+
+
 /* =========================
    SPIN BUTTON
 ========================= */
@@ -993,12 +1148,17 @@ document
 
 document
   .getElementById("copyCodeBtn")
-  .addEventListener("click",copyCode);
+  .addEventListener("click",copyCode
+                    );
 
+
+/* =========================
+   COPY CODE
+========================= */
 
 async function copyCode(){
 
-  const code=
+  const code =
     discountCode.textContent.trim();
 
   if(!code) return;
@@ -1011,12 +1171,12 @@ async function copyCode(){
 
   }catch(error){
 
-    const temp=
+    const temp =
       document.createElement("textarea");
 
-    temp.value=code;
-    temp.style.position="fixed";
-    temp.style.opacity="0";
+    temp.value = code;
+    temp.style.position = "fixed";
+    temp.style.opacity = "0";
 
     document.body.appendChild(temp);
 
@@ -1068,30 +1228,33 @@ document
 
 async function claimFreeItem(item){
 
-  const phone=
+  const phone =
     phoneInput.value.trim();
 
   if(!phone){
 
     alert("لطفاً شماره موبایل را وارد کنید.");
+
     phoneInput.focus();
+
     return;
 
   }
 
-  const buttons=
+  const buttons =
     document.querySelectorAll(".free-btn");
 
   buttons.forEach(function(button){
-    button.disabled=true;
-  });
 
+    button.disabled = true;
+
+  });
 
   try{
 
-    const response=
+    const response =
       await fetch(
-        API_URL+"free-item",
+        API_URL + "free-item",
         {
           method:"POST",
 
@@ -1107,10 +1270,8 @@ async function claimFreeItem(item){
         }
       );
 
-
-    const data=
+    const data =
       await response.json();
-
 
     if(!response.ok){
 
@@ -1122,13 +1283,11 @@ async function claimFreeItem(item){
 
     }
 
-
-    resultText.textContent=
+    resultText.textContent =
       data.message ||
       "آیتم رایگان با موفقیت ثبت شد ✅";
 
-    freeButtons.style.display="none";
-
+    freeButtons.style.display = "none";
 
   }catch(error){
 
@@ -1138,13 +1297,17 @@ async function claimFreeItem(item){
     );
 
     buttons.forEach(function(button){
-      button.disabled=false;
+
+      button.disabled = false;
+
     });
 
   }
 
 }
-  /* =========================
+
+
+/* =========================
    DEFAULT TAB
 ========================= */
 

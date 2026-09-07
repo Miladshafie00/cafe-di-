@@ -355,5 +355,206 @@
             showCat('coffee', document.querySelector('.cat-btn[data-cat="coffee"]'));
         });
     </script>
+    <!-- گردونه شانس کافه دی -->
+<style>
+  #cafeWheelBox{
+    margin:30px auto;
+    max-width:500px;
+    padding:20px;
+    text-align:center;
+    background:rgba(0,0,0,.65);
+    border:1px solid #d4af37;
+    border-radius:18px;
+    color:#fff;
+  }
+
+  #cafeWheelBox h2{
+    margin-top:0;
+    color:#d4af37;
+  }
+
+  #cafeWheelPhone{
+    width:90%;
+    padding:13px;
+    border-radius:10px;
+    border:1px solid #d4af37;
+    text-align:center;
+    font-size:16px;
+    margin-bottom:10px;
+  }
+
+  #cafeWheelButton{
+    padding:12px 25px;
+    border:0;
+    border-radius:10px;
+    background:#d4af37;
+    color:#000;
+    font-weight:bold;
+    cursor:pointer;
+  }
+
+  #cafeWheelButton:disabled{
+    opacity:.5;
+    cursor:not-allowed;
+  }
+
+  #cafeWheelResult{
+    margin-top:20px;
+    font-size:18px;
+    line-height:2;
+  }
+
+  #cafeFreeItem{
+    display:none;
+    margin-top:15px;
+  }
+
+  #cafeFreeItem input{
+    width:90%;
+    padding:12px;
+    border-radius:10px;
+    border:1px solid #d4af37;
+    text-align:center;
+    font-size:16px;
+  }
+
+  #cafeFreeItem button{
+    margin-top:10px;
+    padding:10px 20px;
+    border:0;
+    border-radius:10px;
+    background:#d4af37;
+    cursor:pointer;
+  }
+</style>
+
+<div id="cafeWheelBox">
+  <h2>🎡 گردونه شانس کافه دی</h2>
+
+  <p>شماره موبایل خود را وارد کنید</p>
+
+  <input
+    id="cafeWheelPhone"
+    type="tel"
+    inputmode="numeric"
+    placeholder="مثلاً 09123456789"
+  >
+
+  <br>
+
+  <button id="cafeWheelButton" onclick="cafeSpin()">
+    🎯 چرخاندن گردونه
+  </button>
+
+  <div id="cafeWheelResult"></div>
+
+  <div id="cafeFreeItem">
+    <p>🎁 شما برنده یک آیتم رایگان شدید!</p>
+    <p>نام آیتم موردنظر را وارد کنید:</p>
+
+    <input
+      id="cafeFreeItemInput"
+      type="text"
+      placeholder="مثلاً لاته"
+    >
+
+    <br>
+
+    <button onclick="saveCafeFreeItem()">
+      ثبت آیتم رایگان
+    </button>
+  </div>
+</div>
+
+<script>
+const CAFE_WORKER =
+  "https://cafe-di-discount.miladsh00.workers.dev";
+
+let cafeCurrentPhone = "";
+
+function cafeShow(message){
+  document.getElementById("cafeWheelResult").innerHTML = message;
+}
+
+async function cafeSpin(){
+
+  const phone =
+    document.getElementById("cafeWheelPhone").value.trim();
+
+  if(!/^09\d{9}$/.test(
+    phone
+      .replace(/[۰-۹]/g,d=>"۰۱۲۳۴۵۶۷۸۹".indexOf(d))
+      .replace(/[٠-٩]/g,d=>"٠١٢٣٤٥٦٧٨٩".indexOf(d))
+  )){
+    cafeShow("❌ شماره موبایل معتبر نیست.");
+    return;
+  }
+
+  cafeCurrentPhone = phone;
+
+  const button =
+    document.getElementById("cafeWheelButton");
+
+  button.disabled = true;
+  cafeShow("⏳ در حال چرخاندن گردونه...");
+
+  try{
+
+    const checkResponse = await fetch(
+      CAFE_WORKER +
+      "/check?phone=" +
+      encodeURIComponent(phone)
+    );
+
+    const check = await checkResponse.json();
+
+    if(check.exists){
+
+      const r = check.record;
+
+      if(r.type === "free"){
+
+        cafeShow(
+          "🎁 این شماره قبلاً برنده شده است.<br>" +
+          "جایزه: " + r.label + "<br>" +
+          "کد: <strong>" + r.code + "</strong>"
+        );
+
+        if(!r.freeItem && !r.used){
+          document.getElementById("cafeFreeItem").style.display =
+            "block";
+        }
+
+      }else{
+
+        cafeShow(
+          "🎁 این شماره قبلاً گردونه را چرخانده است.<br>" +
+          "نتیجه: " + r.label + "<br>" +
+          "کد تخفیف: <strong>" + r.code + "</strong>"
+        );
+      }
+
+      return;
+    }
+
+    const spinResponse = await fetch(
+      CAFE_WORKER + "/spin",
+      {
+        method:"POST",
+        headers:{
+          "Content-Type":"application/json"
+        },
+        body:JSON.stringify({
+          phone:phone
+        })
+      }
+    );
+
+    const data = await spinResponse.json();
+
+    if(!data.ok){
+
+      cafeShow(
+        "
 </body>
 </html>

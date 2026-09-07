@@ -24,19 +24,24 @@ body{
     font-family:Tahoma,Arial,sans-serif;
 }
 
-/* ================= HEADER ================= */
+
+/* ================================================= */
+/* HEADER */
+/* ================================================= */
 
 .header{
     text-align:center;
-    padding:25px 15px 15px;
+    padding:22px 15px 10px;
 }
 
 .logo-box{
     width:105px;
     height:105px;
-    margin:0 auto 12px;
+    margin:0 auto 10px;
+
     border-radius:50%;
     overflow:hidden;
+
     background:#241812;
     border:2px solid rgba(255,255,255,.15);
 
@@ -60,43 +65,98 @@ body{
 }
 
 .header h1{
-    margin:5px 0;
+    margin:4px 0;
     font-size:25px;
 }
 
 .subtitle{
     color:#cdb9a5;
     font-size:13px;
+    margin-top:3px;
 }
 
 .quote{
     max-width:500px;
-    margin:18px auto;
+    margin:12px auto 8px;
+
     color:#d7c2ad;
-    font-size:12px;
+
+    font-size:11px;
     line-height:2;
 }
 
 
-/* ================= TABS ================= */
+/* ================================================= */
+/* INSTAGRAM TOP */
+/* ================================================= */
+
+.instagram-top{
+    display:inline-flex;
+    align-items:center;
+    justify-content:center;
+
+    gap:7px;
+
+    margin:7px auto 12px;
+
+    padding:9px 17px;
+
+    border-radius:25px;
+
+    background:#241812;
+
+    border:1px solid #765238;
+
+    color:#e2ad70;
+
+    text-decoration:none;
+
+    font-size:12px;
+    font-weight:bold;
+
+    transition:.2s;
+}
+
+.instagram-top:hover{
+    background:#342319;
+    transform:translateY(-1px);
+}
+
+.instagram-icon{
+    font-size:15px;
+}
+
+
+/* ================================================= */
+/* TABS */
+/* ================================================= */
 
 .tabs{
     display:flex;
     flex-wrap:wrap;
+
     justify-content:center;
+
     gap:7px;
-    padding:10px;
-    margin-bottom:15px;
+
+    padding:8px 10px 18px;
 }
 
 .tab{
     border:1px solid #6b4a31;
+
     background:#241812;
+
     color:#e6d3bf;
-    padding:8px 12px;
+
+    padding:8px 13px;
+
     border-radius:20px;
+
     cursor:pointer;
+
     font-family:inherit;
+
     font-size:11px;
 }
 
@@ -110,40 +170,44 @@ body{
 }
 
 
-/* ================= ALL MENUS ================= */
-
-/*
-   مهم:
-   همه منوها همیشه نمایش داده می‌شوند.
-*/
+/* ================================================= */
+/* ALL MENUS */
+/* ================================================= */
 
 .menu-section{
-    display:block !important;
+    display:block;
 
     width:min(650px,92%);
+
     margin:0 auto;
-    padding-bottom:25px;
+
+    padding-bottom:22px;
 }
 
 .menu-title{
     text-align:center;
-    margin:8px 0 18px;
+
+    margin:7px 0 15px;
 
     color:#e2b27d;
-    font-size:19px;
+
+    font-size:18px;
 }
 
 .menu-item{
     display:flex;
+
     align-items:center;
+
     justify-content:space-between;
 
     gap:15px;
 
-    padding:12px 14px;
-    margin:7px 0;
+    padding:11px 13px;
 
-    border-radius:12px;
+    margin:6px 0;
+
+    border-radius:11px;
 
     background:linear-gradient(
         135deg,
@@ -155,7 +219,7 @@ body{
 }
 
 .item-name{
-    font-size:12px;
+    font-size:11px;
     line-height:1.8;
 }
 
@@ -163,49 +227,67 @@ body{
     flex-shrink:0;
 
     color:#e2ad70;
-    font-size:12px;
+
+    font-size:11px;
+
     font-weight:bold;
+
     white-space:nowrap;
 }
 
 .price::after{
     content:" تومان";
+
     color:#bca28d;
-    font-size:9px;
+
+    font-size:8px;
+
     font-weight:normal;
 }
 
 
-/* ================= WHEEL ================= */
+/* ================================================= */
+/* WHEEL SECTION */
+/* ================================================= */
 
 #wheel-section{
     display:none;
 
     width:min(650px,92%);
+
     margin:0 auto;
 
     text-align:center;
+
     padding-bottom:40px;
 }
 
 .wheel-title{
     color:#e2b27d;
+
     font-size:19px;
-    margin:10px 0;
+
+    margin:8px 0 6px;
 }
 
 .wheel-description{
     color:#cdb9a5;
+
     font-size:11px;
+
     line-height:2;
+
     margin-bottom:18px;
 }
 
 
+/* ================================================= */
 /* PHONE */
+/* ================================================= */
 
 .phone-box{
     display:flex;
+
     gap:7px;
 
     max-width:380px;
@@ -219,6 +301,7 @@ body{
     min-width:0;
 
     border:0;
+
     outline:0;
 
     border-radius:10px;
@@ -226,11 +309,13 @@ body{
     padding:11px;
 
     font-family:inherit;
+
     font-size:12px;
 
     text-align:center;
 
     background:#fff;
+
     color:#222;
 }
 
@@ -242,9 +327,11 @@ body{
     padding:0 15px;
 
     font-family:inherit;
+
     font-size:12px;
 
     background:#9a663c;
+
     color:#fff;
 
     cursor:pointer;
@@ -252,11 +339,14 @@ body{
 
 .spin-button:disabled{
     opacity:.5;
+
     cursor:not-allowed;
 }
 
 
+/* ================================================= */
 /* WHEEL */
+/* ================================================= */
 
 .wheel-wrap{
     position:relative;
@@ -271,17 +361,20 @@ body{
 .pointer{
     position:absolute;
 
-    z-index:10;
+    z-index:20;
 
     top:-9px;
+
     left:50%;
 
     transform:translateX(-50%);
 
     width:0;
+
     height:0;
 
     border-left:13px solid transparent;
+
     border-right:13px solid transparent;
 
     border-top:25px solid #fff;
@@ -292,6 +385,7 @@ body{
 .wheel{
 
     width:100%;
+
     height:100%;
 
     border-radius:50%;
@@ -336,11 +430,13 @@ body{
     display:flex;
 
     align-items:flex-start;
+
     justify-content:center;
 
     padding-top:17px;
 
     font-size:11px;
+
     font-weight:bold;
 
     color:#fff;
@@ -383,7 +479,7 @@ body{
 .wheel-center{
     position:absolute;
 
-    z-index:5;
+    z-index:10;
 
     width:62px;
     height:62px;
@@ -402,6 +498,7 @@ body{
     display:flex;
 
     align-items:center;
+
     justify-content:center;
 
     font-size:11px;
@@ -410,7 +507,9 @@ body{
 }
 
 
+/* ================================================= */
 /* RESULT */
+/* ================================================= */
 
 .result{
     min-height:45px;
@@ -441,7 +540,9 @@ body{
 }
 
 
+/* ================================================= */
 /* FREE ITEMS */
+/* ================================================= */
 
 .free-items{
     display:none;
@@ -487,8 +588,15 @@ body{
     background:#362319;
 }
 
+.free-item-btn:disabled{
+    opacity:.5;
+    cursor:not-allowed;
+}
 
-/* ================= FOOTER ================= */
+
+/* ================================================= */
+/* FOOTER */
+/* ================================================= */
 
 .footer{
     text-align:center;
@@ -500,25 +608,15 @@ body{
     font-size:10px;
 }
 
-.instagram{
-    display:inline-block;
 
-    margin-top:7px;
-
-    color:#dca873;
-
-    text-decoration:none;
-
-    direction:ltr;
-}
-
-
-/* ================= MOBILE ================= */
+/* ================================================= */
+/* MOBILE */
+/* ================================================= */
 
 @media(max-width:450px){
 
     .header{
-        padding-top:20px;
+        padding-top:18px;
     }
 
     .logo-box{
@@ -530,12 +628,17 @@ body{
         font-size:22px;
     }
 
+    .instagram-top{
+        font-size:11px;
+        padding:8px 14px;
+    }
+
     .tabs{
         gap:5px;
     }
 
     .tab{
-        padding:7px 9px;
+        padding:7px 10px;
         font-size:10px;
     }
 
@@ -544,11 +647,11 @@ body{
     }
 
     .item-name{
-        font-size:11px;
+        font-size:10.5px;
     }
 
     .price{
-        font-size:11px;
+        font-size:10.5px;
     }
 
     .wheel-label{
@@ -563,7 +666,9 @@ body{
 <body>
 
 
-<!-- ================= HEADER ================= -->
+<!-- ================================================= -->
+<!-- HEADER -->
+<!-- ================================================= -->
 
 <header class="header">
 
@@ -578,7 +683,10 @@ body{
             "
         >
 
-        <div id="logoFallback" class="logo-fallback">
+        <div
+            id="logoFallback"
+            class="logo-fallback"
+        >
             دی
         </div>
 
@@ -599,25 +707,51 @@ body{
         «بعضی لحظه‌ها فقط با یک فنجان قهوه کامل می‌شوند.»
     </div>
 
+
+    <!-- اینستاگرام بالای صفحه -->
+
+    <a
+        class="instagram-top"
+        href="https://instagram.com/cafedey2026"
+        target="_blank"
+        rel="noopener"
+    >
+
+        <span class="instagram-icon">
+            📷
+        </span>
+
+        <span>
+            Instagram | @cafedey2026
+        </span>
+
+    </a>
+
 </header>
 
 
 
-<!-- ================= TABS ================= -->
+<!-- ================================================= -->
+<!-- TABS -->
+<!-- ================================================= -->
 
 <nav class="tabs">
 
     <button
+        id="menuTab"
         class="tab active"
-        onclick="openWheel()"
+        type="button"
+        onclick="showMenu(this)"
     >
         منوی کافه
     </button>
 
 
     <button
+        id="wheelTab"
         class="tab"
-        onclick="openWheelOnly()"
+        type="button"
+        onclick="showWheel(this)"
     >
         🎡 گردونه شانس
     </button>
@@ -627,7 +761,7 @@ body{
 
 
 <!-- ================================================= -->
-<!--                     COFFEE                        -->
+<!-- COFFEE -->
 <!-- ================================================= -->
 
 <section
@@ -776,7 +910,7 @@ body{
 
 
 <!-- ================================================= -->
-<!--                     HOT                           -->
+<!-- HOT -->
 <!-- ================================================= -->
 
 <section
@@ -790,6 +924,7 @@ body{
 
 
     <div class="menu-item">
+
         <span class="item-name">
             کافی میکس
         </span>
@@ -797,10 +932,12 @@ body{
         <span class="price">
             ۸۰
         </span>
+
     </div>
 
 
     <div class="menu-item">
+
         <span class="item-name">
             چای کرک
         </span>
@@ -808,10 +945,12 @@ body{
         <span class="price">
             ۸۵
         </span>
+
     </div>
 
 
     <div class="menu-item">
+
         <span class="item-name">
             هات چاکلت
         </span>
@@ -819,10 +958,12 @@ body{
         <span class="price">
             ۸۶
         </span>
+
     </div>
 
 
     <div class="menu-item">
+
         <span class="item-name">
             ماسالا
         </span>
@@ -830,10 +971,12 @@ body{
         <span class="price">
             ۸۵
         </span>
+
     </div>
 
 
     <div class="menu-item">
+
         <span class="item-name">
             لته
         </span>
@@ -841,10 +984,12 @@ body{
         <span class="price">
             ۱۴۰
         </span>
+
     </div>
 
 
     <div class="menu-item">
+
         <span class="item-name">
             کاپوچینو
         </span>
@@ -852,10 +997,12 @@ body{
         <span class="price">
             ۸۰
         </span>
+
     </div>
 
 
     <div class="menu-item">
+
         <span class="item-name">
             شیر پسته
         </span>
@@ -863,10 +1010,12 @@ body{
         <span class="price">
             ۸۵
         </span>
+
     </div>
 
 
     <div class="menu-item">
+
         <span class="item-name">
             شیر زعفران
         </span>
@@ -874,10 +1023,12 @@ body{
         <span class="price">
             ۸۵
         </span>
+
     </div>
 
 
     <div class="menu-item">
+
         <span class="item-name">
             موکا
         </span>
@@ -885,6 +1036,7 @@ body{
         <span class="price">
             ۱۵۰
         </span>
+
     </div>
 
 </section>
@@ -892,7 +1044,7 @@ body{
 
 
 <!-- ================================================= -->
-<!--                     COLD                          -->
+<!-- COLD -->
 <!-- ================================================= -->
 
 <section
@@ -935,7 +1087,7 @@ body{
 
 
 <!-- ================================================= -->
-<!--                     DESSERT                       -->
+<!-- DESSERT -->
 <!-- ================================================= -->
 
 <section
@@ -965,7 +1117,7 @@ body{
 
 
 <!-- ================================================= -->
-<!--                     WHEEL                         -->
+<!-- WHEEL -->
 <!-- ================================================= -->
 
 <section id="wheel-section">
@@ -1000,6 +1152,7 @@ body{
         <button
             id="spinBtn"
             class="spin-button"
+            type="button"
             onclick="spinWheel()"
         >
             بچرخون
@@ -1008,6 +1161,8 @@ body{
     </div>
 
 
+
+    <!-- گردونه -->
 
     <div class="wheel-wrap">
 
@@ -1069,6 +1224,8 @@ body{
 
 
 
+    <!-- آیتم‌های رایگان -->
+
     <div
         id="freeItems"
         class="free-items"
@@ -1081,6 +1238,7 @@ body{
 
         <button
             class="free-item-btn"
+            type="button"
             onclick="chooseFreeItem('تک ۱۰۰٪ روبوستا')"
         >
             تک ۱۰۰٪ روبوستا
@@ -1089,6 +1247,7 @@ body{
 
         <button
             class="free-item-btn"
+            type="button"
             onclick="chooseFreeItem('کافی میکس')"
         >
             کافی میکس
@@ -1097,6 +1256,7 @@ body{
 
         <button
             class="free-item-btn"
+            type="button"
             onclick="chooseFreeItem('چای کرک')"
         >
             چای کرک
@@ -1105,6 +1265,7 @@ body{
 
         <button
             class="free-item-btn"
+            type="button"
             onclick="chooseFreeItem('هات چاکلت')"
         >
             هات چاکلت
@@ -1113,6 +1274,7 @@ body{
 
         <button
             class="free-item-btn"
+            type="button"
             onclick="chooseFreeItem('کیک شکلاتی')"
         >
             کیک شکلاتی
@@ -1124,32 +1286,27 @@ body{
 
 
 
-<!-- ================= FOOTER ================= -->
+<!-- ================================================= -->
+<!-- FOOTER -->
+<!-- ================================================= -->
 
 <footer class="footer">
 
-    کافه دی
-
-    <br>
-
-    <a
-        class="instagram"
-        href="https://instagram.com/cafedey2026"
-        target="_blank"
-        rel="noopener"
-    >
-        Instagram
-    </a>
+    © کافه دی
 
 </footer>
 
 
 
 <!-- ================================================= -->
-<!--                     JAVASCRIPT                    -->
+<!-- JAVASCRIPT -->
 <!-- ================================================= -->
 
 <script>
+
+/* ================================================= */
+/* WORKER */
+/* ================================================= */
 
 const WORKER_URL =
     "https://cafe-di-discount.miladsh00.workers.dev";
@@ -1161,149 +1318,47 @@ let currentPhone = "";
 
 
 /* ================================================= */
-/*                 SHOW CAFE MENU                    */
+/* MENU */
 /* ================================================= */
 
-function openWheel(){
+function showMenu(button){
 
     /*
-       همه منوها نمایش داده شوند
+       همه منوها نمایش داده می‌شوند.
     */
 
-    document.querySelectorAll(".menu-section").forEach(section=>{
-        section.style.display = "block";
+    document.querySelectorAll(".menu-section")
+        .forEach(section => {
+
+            section.style.display = "block";
+
+        });
+
+
+    document.getElementById(
+        "wheel-section"
+    ).style.display = "none";
+
+
+    document.querySelectorAll(".tab")
+        .forEach(tab => {
+
+            tab.classList.remove("active");
+
+        });
+
+
+    button.classList.add("active");
+
+
+    window.scrollTo({
+        top:0,
+        behavior:"smooth"
     });
 
-
-    document.getElementById("wheel-section").style.display = "none";
-
-
-    document.querySelectorAll(".tab").forEach(tab=>{
-        tab.classList.remove("active");
-    });
-
-
-    event.currentTarget.classList.add("active");
-
 }
 
 
 /* ================================================= */
-/*                 SHOW WHEEL                        */
-/* ================================================= */
-
-function openWheelOnly(){
-
-    document.querySelectorAll(".menu-section").forEach(section=>{
-        section.style.display = "none";
-    });
-
-
-    document.getElementById("wheel-section").style.display = "block";
-
-
-    document.querySelectorAll(".tab").forEach(tab=>{
-        tab.classList.remove("active");
-    });
-
-
-    event.currentTarget.classList.add("active");
-
-}
-
-
-/* ================================================= */
-/*                 PHONE FORMAT                      */
-/* ================================================= */
-
-function normalizePhone(phone){
-
-    phone = phone.trim();
-
-    phone = phone.replace(/\s+/g,"");
-
-    if(phone.startsWith("+98")){
-        phone = "0" + phone.substring(3);
-    }
-
-    if(phone.startsWith("0098")){
-        phone = "0" + phone.substring(4);
-    }
-
-    return phone;
-
-}
-
-
-/* ================================================= */
-/*                 VALID PHONE                       */
-/* ================================================= */
-
-function validPhone(phone){
-
-    return /^09\d{9}$/.test(phone);
-
-}
-
-
-/* ================================================= */
-/*                 RESULT                            */
-/* ================================================= */
-
-function showResult(message,type){
-
-    const result =
-        document.getElementById("result");
-
-    result.innerHTML = message;
-
-    result.className =
-        "result " + (type || "");
-
-}
-
-
-/* ================================================= */
-/*                 SPIN                              */
-/* ================================================= */
-
-async function spinWheel(){
-
-    const input =
-        document.getElementById("phone");
-
-    const button =
-        document.getElementById("spinBtn");
-
-
-    let phone =
-        normalizePhone(input.value);
-
-
-    if(!validPhone(phone)){
-
-        showResult(
-            "لطفاً یک شماره موبایل معتبر وارد کن.",
-            "error"
-        );
-
-        return;
-
-    }
-
-
-    currentPhone = phone;
-
-
-    button.disabled = true;
-
-    showResult(
-        "در حال بررسی شانس شما...",
-        ""
-    );
-
-
-    try{
-
-        /*
-           اول بررسی می‌کنیم این شماره قبلا
+/* WHEEL TAB */
+/* =====================

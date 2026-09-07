@@ -401,6 +401,7 @@ h1{
 }
 
 @media(max-width:500px){
+
   .tab{
     flex:1 1 calc(50% - 8px);
   }
@@ -413,6 +414,7 @@ h1{
     width:60px;
     height:60px;
   }
+
 }
 </style>
 </head>
@@ -440,6 +442,7 @@ h1{
 </a>
 
 </header>
+
 
 <div class="tabs">
 
@@ -475,6 +478,7 @@ h1{
 
 </div>
 
+
 <section id="coffee" class="menu-section active">
 
 <h2 class="menu-title">☕ قهوه</h2>
@@ -494,6 +498,7 @@ h1{
 
 </section>
 
+
 <section id="hot" class="menu-section">
 
 <h2 class="menu-title">🔥 گرم</h2>
@@ -510,6 +515,7 @@ h1{
 
 </section>
 
+
 <section id="cold" class="menu-section">
 
 <h2 class="menu-title">🧊 سرد</h2>
@@ -518,6 +524,7 @@ h1{
 <div class="menu-item"><span>آیس موکا</span><span class="price">۱۶۰</span></div>
 
 </section>
+
 
 <section id="dessert" class="menu-section">
 
@@ -529,6 +536,7 @@ h1{
 </div>
 
 </section>
+
 
 <section id="wheel" class="menu-section">
 
@@ -551,6 +559,7 @@ h1{
 
 </div>
 
+
 <div id="resultBox" class="result-box">
 
 <button type="button"
@@ -564,6 +573,7 @@ h1{
 <div id="resultTitle" class="result-title"></div>
 
 <div id="resultText" class="result-text"></div>
+
 
 <div id="codeContainer"
      class="code-box"
@@ -583,6 +593,7 @@ h1{
 </button>
 
 </div>
+
 
 <div id="freeButtons"
      class="free-buttons"
@@ -610,6 +621,7 @@ h1{
 
 </div>
 
+
 <div class="wheel-wrap">
 
 <div class="pointer"></div>
@@ -633,6 +645,7 @@ h1{
 
 </div>
 
+
 <div class="note">
 هر شماره موبایل فقط طبق قوانین گردونه می‌تواند جایزه دریافت کند.
 </div>
@@ -642,6 +655,7 @@ h1{
 </section>
 
 </div>
+
 
 <script>
 
@@ -693,6 +707,10 @@ function showCat(cat,btn){
 let currentRotation=0;
 let spinning=false;
 
+/* مهم:
+   آخرین خانه‌ای که گردونه برایش چرخیده */
+let lastPrizeIndex=7;
+
 const wheel=document.getElementById("wheelCircle");
 const spinBtn=document.getElementById("spinBtn");
 const phoneInput=document.getElementById("phone");
@@ -732,6 +750,11 @@ function getPrize(data){
 
   if(!data) return "";
 
+  /*
+    اولویت با prize است.
+    بعد result و reward و ...
+  */
+
   const values=[
     data.prize,
     data.result,
@@ -746,36 +769,13 @@ function getPrize(data){
 
     const value=values[i];
 
-    if(value !== undefined &&
-       value !== null &&
-       String(value).trim() !== ""){
+    if(
+      value !== undefined &&
+      value !== null &&
+      String(value).trim() !== ""
+    ){
 
-      const text=String(value);
-
-      if(
-        text.includes("۲۰") ||
-        text.includes("۱۵") ||
-        text.includes("۱۲") ||
-        text.includes("۶") ||
-        text.includes("۲") ||
-        text.includes("۴") ||
-        text.includes("20") ||
-        text.includes("15") ||
-        text.includes("12") ||
-        text.includes("6") ||
-        text.includes("2") ||
-        text.includes("4") ||
-        text.includes("رایگان") ||
-        text.includes("آیتم") ||
-        text.includes("free") ||
-        text.includes("پوچ") ||
-        text.includes("nothing") ||
-        text.includes("lose")
-      ){
-
-        return text;
-
-      }
+      return String(value);
 
     }
 
@@ -792,13 +792,14 @@ function getPrize(data){
 
 function prizeIndex(prize){
 
-  let p=normalizeNumber(prize)
+  const p=normalizeNumber(prize)
     .toLowerCase()
     .replace(/٪/g,"%")
     .replace(/\s/g,"");
 
+
   /*
-    ترتیب دقیق خانه‌های گردونه:
+    ترتیب دقیق گردونه:
 
     ۰ = ۲۰٪
     ۱ = ۱۵٪
@@ -810,12 +811,14 @@ function prizeIndex(prize){
     ۷ = پوچ
   */
 
+
   if(
     p.includes("20%") ||
     p.includes("20")
   ){
     return 0;
   }
+
 
   if(
     p.includes("15%") ||
@@ -824,12 +827,14 @@ function prizeIndex(prize){
     return 1;
   }
 
+
   if(
     p.includes("12%") ||
     p.includes("12")
   ){
     return 2;
   }
+
 
   if(
     p.includes("6%") ||
@@ -838,12 +843,14 @@ function prizeIndex(prize){
     return 3;
   }
 
+
   if(
     p.includes("2%") ||
     p.includes("2")
   ){
     return 4;
   }
+
 
   if(
     p.includes("4%") ||
@@ -852,13 +859,16 @@ function prizeIndex(prize){
     return 5;
   }
 
+
   if(
     p.includes("free") ||
     p.includes("رایگان") ||
-    p.includes("آیتم")
+    p.includes("آیتم") ||
+    p.includes("gift")
   ){
     return 6;
   }
+
 
   if(
     p.includes("پوچ") ||
@@ -869,7 +879,31 @@ function prizeIndex(prize){
     return 7;
   }
 
+
   return 7;
+
+}
+
+
+/* =========================
+   PRIZE NAME BY INDEX
+========================= */
+
+function prizeName(index){
+
+  const prizes=[
+    "۲۰٪",
+    "۱۵٪",
+    "۱۲٪",
+    "۶٪",
+    "۲٪",
+    "۴٪",
+    "آیتم رایگان",
+    "پوچ"
+  ];
+
+  return prizes[index] || "پوچ";
+
 }
 
 
@@ -877,7 +911,7 @@ function prizeIndex(prize){
    RESULT
 ========================= */
 
-function showResult(data){
+function showResult(data,index){
 
   resultBox.classList.add("show");
 
@@ -890,10 +924,23 @@ function showResult(data){
   resultTitle.textContent="";
   resultText.textContent="";
 
-  const prize=getPrize(data);
 
-  const index=prizeIndex(prize);
+  /*
+    خیلی مهم:
 
+    دیگر اینجا index را از data دوباره
+    محاسبه نمی‌کنیم.
+
+    همان index که گردونه با آن چرخیده
+    مستقیماً استفاده می‌شود.
+  */
+
+  lastPrizeIndex=index;
+
+
+  /* =========================
+     پوچ
+  ========================= */
 
   if(index===7){
 
@@ -908,7 +955,13 @@ function showResult(data){
   }
 
 
+  /* =========================
+     تخفیف
+  ========================= */
+
   if(index>=0 && index<=5){
+
+    const prize=prizeName(index);
 
     resultIcon.textContent="🎉";
 
@@ -919,11 +972,13 @@ function showResult(data){
       prize+
       " تخفیف شدید.";
 
+
     const realCode=
       data.code ||
       data.discountCode ||
       data.couponCode ||
       "";
+
 
     if(realCode){
 
@@ -936,6 +991,10 @@ function showResult(data){
     return;
   }
 
+
+  /* =========================
+     آیتم رایگان
+  ========================= */
 
   if(index===6){
 
@@ -961,7 +1020,10 @@ async function spinWheel(){
 
   if(spinning) return;
 
-  const phone=phoneInput.value.trim();
+
+  const phone=
+    phoneInput.value.trim();
+
 
   if(!phone){
 
@@ -971,6 +1033,7 @@ async function spinWheel(){
 
     return;
   }
+
 
   spinning=true;
 
@@ -983,23 +1046,25 @@ async function spinWheel(){
 
   try{
 
-    const response=await fetch(
-      API_URL+"spin",
-      {
-        method:"POST",
+    const response=
+      await fetch(
+        API_URL+"spin",
+        {
+          method:"POST",
 
-        headers:{
-          "Content-Type":"application/json"
-        },
+          headers:{
+            "Content-Type":"application/json"
+          },
 
-        body:JSON.stringify({
-          phone:phone
-        })
-      }
-    );
+          body:JSON.stringify({
+            phone:phone
+          })
+        }
+      );
 
 
-    const data=await response.json();
+    const data=
+      await response.json();
 
 
     if(!response.ok){
@@ -1014,63 +1079,76 @@ async function spinWheel(){
 
 
     /*
-      جایزه واقعی که Worker برگردانده
-      را پیدا می‌کنیم.
+      جایزه را فقط یک بار می‌خوانیم.
     */
 
-    const prize=getPrize(data);
+    const prize=
+      getPrize(data);
 
 
     /*
-      شماره خانه‌ی واقعی جایزه
-      از روی همان جایزه مشخص می‌شود.
+      خانه‌ی جایزه فقط یک بار تعیین می‌شود.
     */
 
-    const index=prizeIndex(prize);
+    const index=
+      prizeIndex(prize);
 
 
     /*
-      ترتیب خانه‌ها:
-
-      ۲۰٪  = 0
-      ۱۵٪  = 1
-      ۱۲٪  = 2
-      ۶٪   = 3
-      ۲٪   = 4
-      ۴٪   = 5
-      🎁   = 6
-      پوچ  = 7
+      این index ذخیره می‌شود تا
+      پیام نتیجه دقیقاً همان خانه باشد.
     */
 
+    lastPrizeIndex=index;
+
+
+    /*
+      مرکز هر خانه:
+
+      ۲۰٪  = 22.5
+      ۱۵٪  = 67.5
+      ۱۲٪  = 112.5
+      ۶٪   = 157.5
+      ۲٪   = 202.5
+      ۴٪   = 247.5
+      🎁   = 292.5
+      پوچ  = 337.5
+    */
 
     const targetAngle=
-      (index * 45) + 22.5;
+      (index*45)+22.5;
 
 
     /*
-      زاویه‌ای که باید گردونه بچرخد
-      تا مرکز همان خانه دقیقاً زیر فلش قرار بگیرد.
+      چرخش لازم برای آوردن مرکز
+      خانه روی فلش
     */
 
     const desiredRotation=
-      (360 - targetAngle) % 360;
+      (360-targetAngle)%360;
 
 
     const currentMod=
-      ((currentRotation % 360) + 360) % 360;
+      ((currentRotation%360)+360)%360;
 
 
     const extraRotation=
-      (desiredRotation - currentMod + 360) % 360;
+      (desiredRotation-currentMod+360)%360;
 
 
     /*
-      حداقل ۸ دور کامل
-      + رسیدن دقیق به خانه‌ی جایزه
+      ۸ دور کامل
+      + رسیدن دقیق به جایزه
     */
 
-    currentRotation +=
-      (360 * 8) + extraRotation;
+    currentRotation+=
+      (360*8)+extraRotation;
+
+
+    wheel.style.setProperty(
+      "--wheel-rotation",
+      currentRotation+"deg"
+    );
 
 
     wheel.style.transition=
@@ -1078,19 +1156,19 @@ async function spinWheel(){
 
 
     wheel.style.transform=
-      "rotate(" +
-      currentRotation +
+      "rotate("+
+      currentRotation+
       "deg)";
 
 
     /*
-      بعد از تمام شدن انیمیشن
-      نتیجه نمایش داده می‌شود.
+      بعد از پایان چرخش:
+      همان index را به showResult می‌دهیم.
     */
 
     setTimeout(function(){
 
-      showResult(data);
+      showResult(data,index);
 
       spinning=false;
 
@@ -1135,11 +1213,14 @@ spinBtn.addEventListener(
 
 document
   .getElementById("closeResultBtn")
-  .addEventListener("click",function(){
+  .addEventListener(
+    "click",
+    function(){
 
-    resultBox.classList.remove("show");
+      resultBox.classList.remove("show");
 
-  });
+    }
+  );
 
 
 /* =========================
@@ -1148,20 +1229,20 @@ document
 
 document
   .getElementById("copyCodeBtn")
-  .addEventListener("click",copyCode
-                    );
+  .addEventListener(
+    "click",
+    copyCode
+  );
 
-
-/* =========================
-   COPY CODE
-========================= */
 
 async function copyCode(){
 
-  const code =
+  const code=
     discountCode.textContent.trim();
 
+
   if(!code) return;
+
 
   try{
 
@@ -1169,25 +1250,33 @@ async function copyCode(){
 
     alert("کد تخفیف کپی شد ✅");
 
+
   }catch(error){
 
-    const temp =
+    const temp=
       document.createElement("textarea");
 
-    temp.value = code;
-    temp.style.position = "fixed";
-    temp.style.opacity = "0";
+
+    temp.value=code;
+
+    temp.style.position="fixed";
+
+    temp.style.opacity="0";
+
 
     document.body.appendChild(temp);
 
     temp.focus();
+
     temp.select();
+
 
     try{
 
       document.execCommand("copy");
 
       alert("کد تخفیف کپی شد ✅");
+
 
     }catch(e){
 
@@ -1196,6 +1285,7 @@ async function copyCode(){
       );
 
     }
+
 
     temp.remove();
 
@@ -1228,8 +1318,9 @@ document
 
 async function claimFreeItem(item){
 
-  const phone =
+  const phone=
     phoneInput.value.trim();
+
 
   if(!phone){
 
@@ -1241,20 +1332,23 @@ async function claimFreeItem(item){
 
   }
 
-  const buttons =
+
+  const buttons=
     document.querySelectorAll(".free-btn");
+
 
   buttons.forEach(function(button){
 
-    button.disabled = true;
+    button.disabled=true;
 
   });
 
+
   try{
 
-    const response =
+    const response=
       await fetch(
-        API_URL + "free-item",
+        API_URL+"free-item",
         {
           method:"POST",
 
@@ -1270,8 +1364,10 @@ async function claimFreeItem(item){
         }
       );
 
-    const data =
+
+    const data=
       await response.json();
+
 
     if(!response.ok){
 
@@ -1283,11 +1379,14 @@ async function claimFreeItem(item){
 
     }
 
-    resultText.textContent =
+
+    resultText.textContent=
       data.message ||
       "آیتم رایگان با موفقیت ثبت شد ✅";
 
-    freeButtons.style.display = "none";
+
+    freeButtons.style.display="none";
+
 
   }catch(error){
 
@@ -1296,9 +1395,10 @@ async function claimFreeItem(item){
       "خطایی رخ داد."
     );
 
+
     buttons.forEach(function(button){
 
-      button.disabled = false;
+      button.disabled=false;
 
     });
 

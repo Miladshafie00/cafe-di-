@@ -6,7 +6,11 @@
 <title>کافه دی</title>
 
 <style>
-*{box-sizing:border-box;margin:0;padding:0}
+*{
+  box-sizing:border-box;
+  margin:0;
+  padding:0;
+}
 
 :root{
   --gold:#d8a85b;
@@ -62,6 +66,42 @@ h1{
   line-height:1.8;
 }
 
+/* اینستاگرام */
+.instagram-top{
+  display:inline-flex;
+  align-items:center;
+  justify-content:center;
+  gap:8px;
+  margin:7px auto 5px;
+  padding:9px 18px;
+  border-radius:25px;
+  text-decoration:none;
+  color:#fff;
+  font-size:.78rem;
+  font-weight:bold;
+  direction:rtl;
+
+  background:
+    linear-gradient(
+      135deg,
+      #833ab4 0%,
+      #c13584 35%,
+      #fd1d1d 68%,
+      #fcb045 100%
+    );
+
+  border:2px solid rgba(255,255,255,.8);
+
+  box-shadow:
+    0 4px 16px rgba(0,0,0,.4),
+    0 0 14px rgba(253,29,29,.25);
+}
+
+.instagram-top span{
+  direction:ltr;
+  font-size:.72rem;
+}
+
 /* تب ها */
 .tabs{
   width:100%;
@@ -107,8 +147,14 @@ h1{
 }
 
 @keyframes fade{
-  from{opacity:0;transform:translateY(5px)}
-  to{opacity:1;transform:translateY(0)}
+  from{
+    opacity:0;
+    transform:translateY(5px);
+  }
+  to{
+    opacity:1;
+    transform:translateY(0);
+  }
 }
 
 .section-title{
@@ -179,7 +225,7 @@ h1{
   margin-bottom:12px;
 }
 
-/* محفظه گردونه */
+/* محدوده گردونه */
 .spin-area{
   position:relative;
   width:300px;
@@ -188,29 +234,41 @@ h1{
   margin:0 auto 8px;
 }
 
-/* فلش */
+/* فلش ثابت */
 .pointer{
   position:absolute;
-  z-index:20;
+  z-index:30;
   top:2px;
   left:50%;
   transform:translateX(-50%);
+
   width:0;
   height:0;
+
   border-left:15px solid transparent;
   border-right:15px solid transparent;
   border-top:30px solid #fff;
+
   filter:drop-shadow(0 2px 3px #000);
 }
 
-/* خود گردونه */
-.wheel{
+/* محفظه ثابت */
+.wheel-wrap{
   position:absolute;
   width:270px;
   height:270px;
   top:27px;
   left:50%;
-  margin-left:-135px;
+  transform:translateX(-50%);
+}
+
+/* فقط دایره می چرخد */
+.wheel{
+  position:absolute;
+  inset:0;
+
+  width:270px;
+  height:270px;
 
   border-radius:50%;
   border:7px solid #f3c66d;
@@ -232,21 +290,30 @@ h1{
     inset 0 0 0 2px rgba(255,255,255,.18);
 
   transform:rotate(0deg);
-  transition:transform 4.5s cubic-bezier(.12,.75,.16,1);
+
+  transition:
+    transform 4.5s cubic-bezier(.12,.75,.16,1);
 }
 
-/*
-  نوشته‌ها با absolute روی هر برش قرار گرفته‌اند.
-  بنابراین همراه خود گردونه می‌چرخند و کج نمی‌شوند.
-*/
+/* نوشته ها ثابت */
+.wheel-labels{
+  position:absolute;
+  inset:0;
+  z-index:10;
+  pointer-events:none;
+}
+
 .wheel-label{
   position:absolute;
+
+  width:60px;
+  height:35px;
+
   left:50%;
   top:50%;
-  width:82px;
-  height:38px;
-  margin-left:-41px;
-  margin-top:-19px;
+
+  margin-left:-30px;
+  margin-top:-17px;
 
   display:flex;
   align-items:center;
@@ -255,60 +322,67 @@ h1{
   color:#fff;
   font-size:.82rem;
   font-weight:bold;
+
   text-shadow:0 2px 3px #000;
-
-  transform-origin:center;
 }
 
-/* جای دقیق نوشته‌ها در هشت برش */
-.wheel-label:nth-child(1){
-  transform:translateY(-91px) rotate(0deg);
+/* موقعیت نوشته ها */
+.l1{
+  transform:translate(-50%,-108px);
 }
 
-.wheel-label:nth-child(2){
-  transform:rotate(45deg) translateY(-91px) rotate(-45deg);
+.l2{
+  transform:translate(28px,-73px);
 }
 
-.wheel-label:nth-child(3){
-  transform:rotate(90deg) translateY(-91px) rotate(-90deg);
+.l3{
+  transform:translate(48px,-17px);
 }
 
-.wheel-label:nth-child(4){
-  transform:rotate(135deg) translateY(-91px) rotate(-135deg);
+.l4{
+  transform:translate(28px,43px);
 }
 
-.wheel-label:nth-child(5){
-  transform:rotate(180deg) translateY(-91px) rotate(-180deg);
+.l5{
+  transform:translate(-50%,73px);
 }
 
-.wheel-label:nth-child(6){
-  transform:rotate(225deg) translateY(-91px) rotate(-225deg);
+.l6{
+  transform:translate(-88px,43px);
 }
 
-.wheel-label:nth-child(7){
-  transform:rotate(270deg) translateY(-91px) rotate(-270deg);
+.l7{
+  transform:translate(-108px,-17px);
 }
 
-.wheel-label:nth-child(8){
-  transform:rotate(315deg) translateY(-91px) rotate(-315deg);
+.l8{
+  transform:translate(-88px,-73px);
 }
 
-/* مرکز گردونه */
+/* مرکز ثابت */
 .wheel-center{
   position:absolute;
-  z-index:10;
+  z-index:20;
+
   width:58px;
   height:58px;
+
   left:50%;
   top:50%;
+
   transform:translate(-50%,-50%);
+
   border-radius:50%;
+
   background:#20150c;
   border:5px solid #f0bd68;
+
   display:flex;
   align-items:center;
   justify-content:center;
+
   font-size:1.3rem;
+
   box-shadow:0 2px 8px #000;
 }
 
@@ -317,11 +391,16 @@ h1{
   border:none;
   background:#e9b75f;
   color:#21170d;
+
   padding:12px 38px;
+
   border-radius:12px;
+
   font-size:.9rem;
   font-weight:bold;
+
   cursor:pointer;
+
   box-shadow:0 4px 12px rgba(0,0,0,.3);
 }
 
@@ -330,17 +409,25 @@ h1{
   cursor:not-allowed;
 }
 
-/* نتیجه بزرگ */
+/* نتیجه */
 .result-card{
   display:none;
+
   width:100%;
   max-width:390px;
+
   margin:15px auto 5px;
+
   padding:18px 12px;
+
   border-radius:18px;
+
   background:rgba(0,0,0,.72);
+
   border:2px solid #e9b75f;
+
   box-shadow:0 5px 22px rgba(0,0,0,.45);
+
   animation:resultPop .45s ease;
 }
 
@@ -353,9 +440,11 @@ h1{
     opacity:0;
     transform:scale(.7);
   }
+
   70%{
     transform:scale(1.05);
   }
+
   100%{
     opacity:1;
     transform:scale(1);
@@ -380,13 +469,18 @@ h1{
   color:#fff;
 }
 
-/* انتخاب آیتم رایگان */
+/* آیتم رایگان */
 .free-items{
   display:none;
+
   margin:13px auto 0;
+
   max-width:390px;
+
   padding:13px;
+
   border-radius:15px;
+
   background:rgba(0,0,0,.48);
 }
 
@@ -404,30 +498,21 @@ h1{
   border:1px solid #d8a85b;
   background:rgba(0,0,0,.45);
   color:white;
+
   border-radius:8px;
+
   padding:8px 10px;
+
   margin:3px;
+
   cursor:pointer;
+
   font-size:.72rem;
 }
 
 footer{
   text-align:center;
   padding:14px 10px 20px;
-}
-
-/* پیج کافه بالاتر و واضح‌تر */
-.instagram{
-  display:inline-block;
-  color:#fff;
-  text-decoration:none;
-  background:rgba(0,0,0,.72);
-  border:2px solid rgba(216,168,91,.7);
-  padding:10px 20px;
-  border-radius:22px;
-  font-size:.82rem;
-  font-weight:bold;
-  box-shadow:0 4px 15px rgba(0,0,0,.35);
 }
 
 @media(max-width:420px){
@@ -450,18 +535,23 @@ footer{
     font-size:.72rem;
   }
 
+  .wheel-wrap{
+    width:250px;
+    height:250px;
+  }
+
   .wheel{
     width:250px;
     height:250px;
-    margin-left:-125px;
-  }
-
-  .spin-area{
-    height:295px;
   }
 
   .wheel-label{
     font-size:.75rem;
+  }
+
+  .instagram-top{
+    font-size:.72rem;
+    padding:8px 14px;
   }
 }
 </style>
@@ -471,97 +561,226 @@ footer{
 
 <header>
 
-  <img src="s.jpg" class="logo" alt="کافه دی">
+<img
+  src="s.jpg"
+  class="logo"
+  alt="کافه دی"
+>
 
-  <h1>کافه دی</h1>
+<h1>کافه دی</h1>
 
-  <div class="subtitle">
-    طعم خوب، حال خوب ☕
-  </div>
+<div class="subtitle">
+طعم خوب، حال خوب ☕
+</div>
 
-  <div class="quote">
-    «هر فنجان قهوه، یک حال خوب تازه است.»
-  </div>
+<div class="quote">
+«هر فنجان قهوه، یک حال خوب تازه است.»
+</div>
+
+<a
+  class="instagram-top"
+  href="https://instagram.com/cafedey2026"
+  target="_blank"
+>
+📸 اینستاگرام کافه دی
+<span>@cafedey2026</span>
+</a>
 
 </header>
 
 <nav class="tabs">
 
-  <button class="tab active" onclick="showCat('coffee',this)">
-    ☕ قهوه
-  </button>
+<button
+  class="tab active"
+  onclick="showCat('coffee',this)"
+>
+☕ قهوه
+</button>
 
-  <button class="tab" onclick="showCat('hot',this)">
-    🔥 بار گرم
-  </button>
+<button
+  class="tab"
+  onclick="showCat('hot',this)"
+>
+🔥 بار گرم
+</button>
 
-  <button class="tab" onclick="showCat('cold',this)">
-    🧊 بار سرد
-  </button>
+<button
+  class="tab"
+  onclick="showCat('cold',this)"
+>
+🧊 بار سرد
+</button>
 
-  <button class="tab" onclick="showCat('dessert',this)">
-    🍰 دسر
-  </button>
+<button
+  class="tab"
+  onclick="showCat('dessert',this)"
+>
+🍰 دسر
+</button>
 
-  <button class="tab" onclick="showCat('wheel',this)">
-    🎡 گردونه
-  </button>
+<button
+  class="tab"
+  onclick="showCat('wheel',this)"
+>
+🎡 گردونه
+</button>
 
 </nav>
 
 <main id="menu-content">
 
 <!-- قهوه -->
+
 <section id="coffee" class="menu-section active">
 
-<h2 class="section-title">☕ منوی قهوه</h2>
+<h2 class="section-title">
+☕ منوی قهوه
+</h2>
 
-<div class="item"><span class="item-name">تک ۱۰۰٪ روبوستا</span><span class="price">۶۰</span></div>
-<div class="item"><span class="item-name">دبل ۱۰۰٪ روبوستا</span><span class="price">۷۰</span></div>
-<div class="item"><span class="item-name">تک ۸۰/۲۰ روبوستا</span><span class="price">۶۰</span></div>
-<div class="item"><span class="item-name">دبل ۸۰/۲۰ روبوستا</span><span class="price">۷۰</span></div>
-<div class="item"><span class="item-name">تک ۷۰/۳۰ روبوستا</span><span class="price">۶۵</span></div>
-<div class="item"><span class="item-name">دبل ۷۰/۳۰ روبوستا</span><span class="price">۷۵</span></div>
-<div class="item"><span class="item-name">تک ۱۰۰٪ عربیکا</span><span class="price">۱۱۰</span></div>
-<div class="item"><span class="item-name">دبل ۱۰۰٪ عربیکا</span><span class="price">۱۲۰</span></div>
-<div class="item"><span class="item-name">تک ۸۰/۲۰ عربیکا</span><span class="price">۸۰</span></div>
-<div class="item"><span class="item-name">دبل ۸۰/۲۰ عربیکا</span><span class="price">۹۰</span></div>
-<div class="item"><span class="item-name">تک ۷۰/۳۰ عربیکا</span><span class="price">۸۵</span></div>
-<div class="item"><span class="item-name">دبل ۷۰/۳۰ عربیکا</span><span class="price">۹۵</span></div>
+<div class="item">
+<span class="item-name">تک ۱۰۰٪ روبوستا</span>
+<span class="price">۶۰</span>
+</div>
+
+<div class="item">
+<span class="item-name">دبل ۱۰۰٪ روبوستا</span>
+<span class="price">۷۰</span>
+</div>
+
+<div class="item">
+<span class="item-name">تک ۸۰/۲۰ روبوستا</span>
+<span class="price">۶۰</span>
+</div>
+
+<div class="item">
+<span class="item-name">دبل ۸۰/۲۰ روبوستا</span>
+<span class="price">۷۰</span>
+</div>
+
+<div class="item">
+<span class="item-name">تک ۷۰/۳۰ روبوستا</span>
+<span class="price">۶۵</span>
+</div>
+
+<div class="item">
+<span class="item-name">دبل ۷۰/۳۰ روبوستا</span>
+<span class="price">۷۵</span>
+</div>
+
+<div class="item">
+<span class="item-name">تک ۱۰۰٪ عربیکا</span>
+<span class="price">۱۱۰</span>
+</div>
+
+<div class="item">
+<span class="item-name">دبل ۱۰۰٪ عربیکا</span>
+<span class="price">۱۲۰</span>
+</div>
+
+<div class="item">
+<span class="item-name">تک ۸۰/۲۰ عربیکا</span>
+<span class="price">۸۰</span>
+</div>
+
+<div class="item">
+<span class="item-name">دبل ۸۰/۲۰ عربیکا</span>
+<span class="price">۹۰</span>
+</div>
+
+<div class="item">
+<span class="item-name">تک ۷۰/۳۰ عربیکا</span>
+<span class="price">۸۵</span>
+</div>
+
+<div class="item">
+<span class="item-name">دبل ۷۰/۳۰ عربیکا</span>
+<span class="price">۹۵</span>
+</div>
 
 </section>
 
-<!-- گرم -->
+<!-- بار گرم -->
+
 <section id="hot" class="menu-section">
 
-<h2 class="section-title">🔥 بار گرم</h2>
+<h2 class="section-title">
+🔥 بار گرم
+</h2>
 
-<div class="item"><span class="item-name">کافی میکس</span><span class="price">۸۰</span></div>
-<div class="item"><span class="item-name">چای کرک</span><span class="price">۸۵</span></div>
-<div class="item"><span class="item-name">هات چاکلت</span><span class="price">۸۶</span></div>
-<div class="item"><span class="item-name">ماسالا</span><span class="price">۸۵</span></div>
-<div class="item"><span class="item-name">لته</span><span class="price">۱۴۰</span></div>
-<div class="item"><span class="item-name">کاپوچینو</span><span class="price">۸۰</span></div>
-<div class="item"><span class="item-name">شیر پسته</span><span class="price">۸۵</span></div>
-<div class="item"><span class="item-name">شیر زعفران</span><span class="price">۸۵</span></div>
-<div class="item"><span class="item-name">موکا</span><span class="price">۱۵۰</span></div>
+<div class="item">
+<span class="item-name">کافی میکس</span>
+<span class="price">۸۰</span>
+</div>
+
+<div class="item">
+<span class="item-name">چای کرک</span>
+<span class="price">۸۵</span>
+</div>
+
+<div class="item">
+<span class="item-name">هات چاکلت</span>
+<span class="price">۸۶</span>
+</div>
+
+<div class="item">
+<span class="item-name">ماسالا</span>
+<span class="price">۸۵</span>
+</div>
+
+<div class="item">
+<span class="item-name">لته</span>
+<span class="price">۱۴۰</span>
+</div>
+
+<div class="item">
+<span class="item-name">کاپوچینو</span>
+<span class="price">۸۰</span>
+</div>
+
+<div class="item">
+<span class="item-name">شیر پسته</span>
+<span class="price">۸۵</span>
+</div>
+
+<div class="item">
+<span class="item-name">شیر زعفران</span>
+<span class="price">۸۵</span>
+</div>
+
+<div class="item">
+<span class="item-name">موکا</span>
+<span class="price">۱۵۰</span>
+</div>
 
 </section>
 
-<!-- سرد -->
+<!-- بار سرد -->
+
 <section id="cold" class="menu-section">
 
-<h2 class="section-title">🧊 بار سرد</h2>
+<h2 class="section-title">
+🧊 بار سرد
+</h2>
 
-<div class="item"><span class="item-name">آیس لته</span><span class="price">۱۵۰</span></div>
-<div class="item"><span class="item-name">آیس موکا</span><span class="price">۱۶۰</span></div>
+<div class="item">
+<span class="item-name">آیس لته</span>
+<span class="price">۱۵۰</span>
+</div>
+
+<div class="item">
+<span class="item-name">آیس موکا</span>
+<span class="price">۱۶۰</span>
+</div>
 
 </section>
 
 <!-- دسر -->
+
 <section id="dessert" class="menu-section">
 
-<h2 class="section-title">🍰 دسر</h2>
+<h2 class="section-title">
+🍰 دسر
+</h2>
 
 <div class="item">
 <span class="item-name">(کیک شکلاتی (هر اسلایس</span>
@@ -571,80 +790,138 @@ footer{
 </section>
 
 <!-- گردونه -->
+
 <section id="wheel" class="menu-section">
 
 <div class="wheel-box">
 
-<h2 class="wheel-title">🎡 گردونه شانس</h2>
+<h2 class="wheel-title">
+🎡 گردونه شانس
+</h2>
 
 <p class="wheel-desc">
 شماره موبایلت رو وارد کن و شانست رو امتحان کن!
 </p>
 
 <input
-id="phone"
-class="phone"
-type="tel"
-inputmode="numeric"
-maxlength="13"
-placeholder="09xxxxxxxxx"
+  id="phone"
+  class="phone"
+  type="tel"
+  inputmode="numeric"
+  maxlength="13"
+  placeholder="09xxxxxxxxx"
 >
 
 <div class="spin-area">
 
 <div class="pointer"></div>
 
-<div id="wheel" class="wheel">
+<div class="wheel-wrap">
 
-<div class="wheel-label">۲۰٪</div>
-<div class="wheel-label">۱۵٪</div>
-<div class="wheel-label">۱۲٪</div>
-<div class="wheel-label">۶٪</div>
-<div class="wheel-label">۲٪</div>
-<div class="wheel-label">۴٪</div>
-<div class="wheel-label">🎁</div>
-<div class="wheel-label">پوچ</div>
+<div
+  id="wheel"
+  class="wheel"
+></div>
 
-<div class="wheel-center">☕</div>
+<div class="wheel-labels">
+
+<div class="wheel-label l1">۲۰٪</div>
+<div class="wheel-label l2">۱۵٪</div>
+<div class="wheel-label l3">۱۲٪</div>
+<div class="wheel-label l4">۶٪</div>
+<div class="wheel-label l5">۲٪</div>
+<div class="wheel-label l6">۴٪</div>
+<div class="wheel-label l7">🎁</div>
+<div class="wheel-label l8">پوچ</div>
+
+</div>
+
+<div class="wheel-center">
+☕
+</div>
 
 </div>
 
 </div>
 
 <button
-id="spinBtn"
-class="spin-btn"
-onclick="spinWheel()"
+  id="spinBtn"
+  class="spin-btn"
+  onclick="spinWheel()"
 >
 🎡 بچرخون
 </button>
 
-<div id="resultCard" class="result-card">
+<div
+  id="resultCard"
+  class="result-card"
+>
 
-<div id="resultIcon" class="result-icon">🎉</div>
+<div
+  id="resultIcon"
+  class="result-icon"
+>
+🎉
+</div>
 
-<div id="resultTitle" class="result-title">
+<div
+  id="resultTitle"
+  class="result-title"
+>
 تبریک!
 </div>
 
-<div id="resultText" class="result-text">
-</div>
+<div
+  id="resultText"
+  class="result-text"
+></div>
 
 </div>
 
-<div id="freeItems" class="free-items">
+<div
+  id="freeItems"
+  class="free-items"
+>
 
-<p>🎁 آیتم رایگانت رو انتخاب کن:</p>
+<p>
+🎁 آیتم رایگانت رو انتخاب کن:
+</p>
 
-<button class="free-item-btn" onclick="chooseFreeItem('کافی میکس')">کافی میکس</button>
-<button class="free-item-btn" onclick="chooseFreeItem('چای کرک')">چای کرک</button>
-<button class="free-item-btn" onclick="chooseFreeItem('هات چاکلت')">هات چاکلت</button>
-<button class="free-item-btn" onclick="chooseFreeItem('ماسالا')">ماسالا</button>
-<button class="free-item-btn" onclick="chooseFreeItem('لته')">لته</button>
-<button class="free-item-btn" onclick="chooseFreeItem('کاپوچینو')">کاپوچینو</button>
-<button class="free-item-btn" onclick="chooseFreeItem('شیر پسته')">شیر پسته</button>
-<button class="free-item-btn" onclick="chooseFreeItem('شیر زعفران')">شیر زعفران</button>
-<button class="free-item-btn" onclick="chooseFreeItem('موکا')">موکا</button>
+<button class="free-item-btn" onclick="chooseFreeItem('کافی میکس')">
+کافی میکس
+</button>
+
+<button class="free-item-btn" onclick="chooseFreeItem('چای کرک')">
+چای کرک
+</button>
+
+<button class="free-item-btn" onclick="chooseFreeItem('هات چاکلت')">
+هات چاکلت
+</button>
+
+<button class="free-item-btn" onclick="chooseFreeItem('ماسالا')">
+ماسالا
+</button>
+
+<button class="free-item-btn" onclick="chooseFreeItem('لته')">
+لته
+</button>
+
+<button class="free-item-btn" onclick="chooseFreeItem('کاپوچینو')">
+کاپوچینو
+</button>
+
+<button class="free-item-btn" onclick="chooseFreeItem('شیر پسته')">
+شیر پسته
+</button>
+
+<button class="free-item-btn" onclick="chooseFreeItem('شیر زعفران')">
+شیر زعفران
+</button>
+
+<button class="free-item-btn" onclick="chooseFreeItem('موکا')">
+موکا
+</button>
 
 </div>
 
@@ -653,18 +930,6 @@ onclick="spinWheel()"
 </section>
 
 </main>
-
-<footer>
-
-<a
-class="instagram"
-href="https://instagram.com/cafedey2026"
-target="_blank"
->
-📷 پیج کافه دی — @cafedey2026
-</a>
-
-</footer>
 
 <script>
 
@@ -675,337 +940,479 @@ let spinning=false;
 let currentPrize=null;
 let currentRotation=0;
 
+
+/* تب ها */
+
 function showCat(cat,btn){
 
-document.querySelectorAll(".menu-section")
+document
+.querySelectorAll(".menu-section")
 .forEach(section=>{
-section.classList.remove("active");
+  section.classList.remove("active");
 });
 
 const target=document.getElementById(cat);
 
 if(target){
-target.classList.add("active");
+  target.classList.add("active");
 }
 
-document.querySelectorAll(".tab")
+document
+.querySelectorAll(".tab")
 .forEach(tab=>{
-tab.classList.remove("active");
+  tab.classList.remove("active");
 });
 
 if(btn){
-btn.classList.add("active");
+  btn.classList.add("active");
 }
 
 window.scrollTo({
-top:0,
-behavior:"smooth"
+  top:0,
+  behavior:"smooth"
 });
 
 }
+
+
+/* شماره */
 
 function normalizePhone(value){
 
 let phone=String(value||"")
-.replace(/[۰-۹]/g,d=>"۰۱۲۳۴۵۶۷۸۹".indexOf(d))
-.replace(/[٠-٩]/g,d=>"٠١٢٣٤٥٦٧٨٩".indexOf(d))
+
+.replace(
+  /[۰-۹]/g,
+  d=>"۰۱۲۳۴۵۶۷۸۹".indexOf(d)
+)
+
+.replace(
+  /[٠-٩]/g,
+  d=>"٠١٢٣٤٥٦٧٨٩".indexOf(d)
+)
+
 .replace(/\D/g,"");
 
 if(phone.startsWith("0098")){
-phone="0"+phone.slice(4);
+  phone="0"+phone.slice(4);
 }
 
 if(phone.startsWith("98")){
-phone="0"+phone.slice(2);
+  phone="0"+phone.slice(2);
 }
 
 return phone;
 
 }
 
+
+/* گرفتن جایزه */
+
 function getPrize(data){
 
 if(!data)return null;
 
 if(typeof data==="string"){
-return data;
+  return data;
 }
 
 return(
-data.prize ??
-data.result ??
-data.discount ??
-data.reward ??
-data.win ??
-data.value ??
-null
+  data.prize ??
+  data.result ??
+  data.discount ??
+  data.reward ??
+  data.win ??
+  data.value ??
+  null
 );
 
 }
 
+
+/* تشخیص قسمت گردونه */
+
 function prizeIndex(prize){
 
-const p=String(prize||"")
+const p=
+String(prize||"")
 .toLowerCase()
 .replace(/٪/g,"%")
 .trim();
 
-if(p.includes("20")||p.includes("۲۰"))return 0;
-if(p.includes("15")||p.includes("۱۵"))return 1;
-if(p.includes("12")||p.includes("۱۲"))return 2;
-if(p.includes("6")||p.includes("۶"))return 3;
-if(p.includes("2")||p.includes("۲"))return 4;
-if(p.includes("4")||p.includes("۴"))return 5;
+if(p.includes("20")||p.includes("۲۰"))
+return 0;
+
+if(p.includes("15")||p.includes("۱۵"))
+return 1;
+
+if(p.includes("12")||p.includes("۱۲"))
+return 2;
+
+if(p.includes("6")||p.includes("۶"))
+return 3;
+
+if(p.includes("2")||p.includes("۲"))
+return 4;
+
+if(p.includes("4")||p.includes("۴"))
+return 5;
 
 if(
-p.includes("free")||
-p.includes("رایگان")||
-p.includes("آیتم")
-)return 6;
+  p.includes("free")||
+  p.includes("رایگان")||
+  p.includes("آیتم")
+)
+return 6;
 
 return 7;
 
 }
 
+
+/* نمایش نتیجه */
+
 function showResult(prize){
 
-const p=String(prize||"")
+const p=
+String(prize||"")
 .toLowerCase()
 .trim();
 
-const card=document.getElementById("resultCard");
-const icon=document.getElementById("resultIcon");
-const title=document.getElementById("resultTitle");
-const text=document.getElementById("resultText");
-const free=document.getElementById("freeItems");
+const card=
+document.getElementById("resultCard");
+
+const icon=
+document.getElementById("resultIcon");
+
+const title=
+document.getElementById("resultTitle");
+
+const text=
+document.getElementById("resultText");
+
+const free=
+document.getElementById("freeItems");
 
 free.classList.remove("show");
 
+
 if(
-p.includes("free")||
-p.includes("رایگان")||
-p.includes("آیتم")
+  p.includes("free")||
+  p.includes("رایگان")||
+  p.includes("آیتم")
 ){
 
 icon.textContent="🎁";
+
 title.textContent="🎉 برنده شدی!";
-text.textContent="یک آیتم کاملاً رایگان مهمون کافه دی هستی!";
+
+text.textContent=
+"یک آیتم کاملاً رایگان مهمون کافه دی هستی.";
+
 free.classList.add("show");
 
-}else if(
-p.includes("20")||
-p.includes("۲۰")
+}
+
+else if(
+  p.includes("20")||
+  p.includes("۲۰")
 ){
 
 icon.textContent="🔥";
 title.textContent="۲۰٪ تخفیف!";
 text.textContent="تبریک! ۲۰٪ تخفیف برنده شدی.";
 
-}else if(
-p.includes("15")||
-p.includes("۱۵")
+}
+
+else if(
+  p.includes("15")||
+  p.includes("۱۵")
 ){
 
 icon.textContent="🔥";
 title.textContent="۱۵٪ تخفیف!";
 text.textContent="تبریک! ۱۵٪ تخفیف برنده شدی.";
 
-}else if(
-p.includes("12")||
-p.includes("۱۲")
+}
+
+else if(
+  p.includes("12")||
+  p.includes("۱۲")
 ){
 
 icon.textContent="🔥";
 title.textContent="۱۲٪ تخفیف!";
 text.textContent="تبریک! ۱۲٪ تخفیف برنده شدی.";
 
-}else if(
-p.includes("6")||
-p.includes("۶")
+}
+
+else if(
+  p.includes("6")||
+  p.includes("۶")
 ){
 
 icon.textContent="🔥";
 title.textContent="۶٪ تخفیف!";
 text.textContent="تبریک! ۶٪ تخفیف برنده شدی.";
 
-}else if(
-p.includes("2")||
-p.includes("۲")
+}
+
+else if(
+  p.includes("2")||
+  p.includes("۲")
 ){
 
 icon.textContent="🔥";
 title.textContent="۲٪ تخفیف!";
 text.textContent="تبریک! ۲٪ تخفیف برنده شدی.";
 
-}else if(
-p.includes("4")||
-p.includes("۴")
+}
+
+else if(
+  p.includes("4")||
+  p.includes("۴")
 ){
 
 icon.textContent="🔥";
 title.textContent="۴٪ تخفیف!";
 text.textContent="تبریک! ۴٪ تخفیف برنده شدی.";
 
-}else{
+}
+
+else{
 
 icon.textContent="😅";
+
 title.textContent="پوچ شد!";
-text.textContent="این بار شانست نگرفت؛ دفعه بعد دوباره امتحان کن.";
+
+text.textContent=
+"این بار شانست نگرفت؛ دفعه بعد دوباره امتحان کن.";
 
 }
 
 card.classList.remove("show");
 
-/* ری‌استارت انیمیشن کارت */
 void card.offsetWidth;
 
 card.classList.add("show");
 
 }
 
+
+/* چرخش */
+
 async function spinWheel(){
 
 if(spinning)return;
 
-const phone=normalizePhone(
-document.getElementById("phone").value
+const phone=
+normalizePhone(
+  document.getElementById("phone").value
 );
 
-const resultCard=document.getElementById("resultCard");
-const freeItems=document.getElementById("freeItems");
-const spinBtn=document.getElementById("spinBtn");
+const resultCard=
+document.getElementById("resultCard");
+
+const freeItems=
+document.getElementById("freeItems");
+
+const spinBtn=
+document.getElementById("spinBtn");
+
 
 if(!/^09\d{9}$/.test(phone)){
 
 resultCard.classList.add("show");
 
-document.getElementById("resultIcon").textContent="⚠️";
-document.getElementById("resultTitle").textContent="شماره نامعتبر";
-document.getElementById("resultText").textContent=
+document.getElementById("resultIcon")
+.textContent="⚠️";
+
+document.getElementById("resultTitle")
+.textContent="شماره نامعتبر";
+
+document.getElementById("resultText")
+.textContent=
 "یک شماره موبایل معتبر وارد کن.";
 
 return;
 
 }
 
+
 spinning=true;
+
 spinBtn.disabled=true;
+
 resultCard.classList.remove("show");
+
 freeItems.classList.remove("show");
+
 
 try{
 
 /* بررسی استفاده قبلی */
 
-const checkResponse=await fetch(
-WORKER_URL+"/check?phone="+encodeURIComponent(phone),
-{
-method:"GET",
-cache:"no-store"
-}
+const checkResponse=
+await fetch(
+  WORKER_URL+
+  "/check?phone="+
+  encodeURIComponent(phone),
+  {
+    method:"GET",
+    cache:"no-store"
+  }
 );
 
 let checkData=null;
 
 try{
-checkData=await checkResponse.json();
+  checkData=await checkResponse.json();
 }catch(e){}
 
+
 if(
-checkData &&
-(
-checkData.used===true||
-checkData.alreadyUsed===true||
-checkData.exists===true
-)
+  checkData &&
+  (
+    checkData.used===true||
+    checkData.alreadyUsed===true||
+    checkData.exists===true
+  )
 ){
 
 resultCard.classList.add("show");
 
-document.getElementById("resultIcon").textContent="⚠️";
-document.getElementById("resultTitle").textContent="قبلاً استفاده شده";
-document.getElementById("resultText").textContent=
+document.getElementById("resultIcon")
+.textContent="⚠️";
+
+document.getElementById("resultTitle")
+.textContent=
+"قبلاً استفاده شده";
+
+document.getElementById("resultText")
+.textContent=
 "این شماره قبلاً از گردونه استفاده کرده است.";
 
 spinning=false;
+
 spinBtn.disabled=false;
 
 return;
 
 }
 
-/* گرفتن نتیجه */
 
-const response=await fetch(
-WORKER_URL+"/spin",
-{
-method:"POST",
-headers:{
-"Content-Type":"application/json"
-},
-body:JSON.stringify({
-phone:phone
-})
-}
+/* دریافت جایزه */
+
+const response=
+await fetch(
+  WORKER_URL+"/spin",
+  {
+    method:"POST",
+
+    headers:{
+      "Content-Type":
+      "application/json"
+    },
+
+    body:JSON.stringify({
+      phone:phone
+    })
+  }
 );
 
-const data=await response.json();
+
+const data=
+await response.json();
+
 
 if(!response.ok){
+
 throw new Error(
-data.message||
-data.error||
-"خطا"
+  data.message||
+  data.error||
+  "خطا"
 );
+
 }
 
-const prize=getPrize(data);
+
+const prize=
+getPrize(data);
+
 
 if(!prize){
-throw new Error("نتیجه دریافت نشد");
+
+throw new Error(
+  "نتیجه دریافت نشد"
+);
+
 }
+
 
 currentPrize=prize;
 
-const index=prizeIndex(prize);
+
+/* پیدا کردن قسمت */
+
+const index=
+prizeIndex(prize);
+
 
 /*
-  هر بار حداقل 6 دور کامل می‌چرخد.
-  زاویه طوری تنظیم می‌شود که نتیجه زیر فلش قرار بگیرد.
+  هر قسمت ۴۵ درجه است.
+  مرکز قسمت اول ۲۲.۵ درجه است.
 */
 
 const targetAngle=
 360-
 (index*45+22.5);
 
+
 const currentMod=
-((currentRotation%360)+360)%360;
+(
+  (currentRotation%360)+360
+)%360;
+
 
 const extra=
-(targetAngle-currentMod+360)%360;
+(
+  targetAngle-
+  currentMod+
+  360
+)%360;
+
 
 currentRotation+=
 360*7+
 extra;
 
-const wheel=document.getElementById("wheel");
 
-/* اول مطمئن می‌شویم انیمیشن فعال است */
+/* فقط خود دایره */
+
+const wheel=
+document.getElementById("wheel");
+
 wheel.style.transition=
 "transform 4.5s cubic-bezier(.12,.75,.16,1)";
 
 wheel.style.transform=
-"rotate("+currentRotation+"deg)";
+"rotate("+
+currentRotation+
+"deg)";
 
-/* نتیجه بعد از پایان چرخش */
+
+/* نمایش نتیجه بعد از چرخش */
+
 setTimeout(()=>{
 
 showResult(prize);
 
 spinning=false;
+
 spinBtn.disabled=false;
 
 },4600);
+
 
 }catch(error){
 
@@ -1013,79 +1420,33 @@ console.error(error);
 
 resultCard.classList.add("show");
 
-document.getElementById("resultIcon").textContent="❌";
-document.getElementById("resultTitle").textContent="خطا";
-document.getElementById("resultText").textContent=
+document.getElementById("resultIcon")
+.textContent="❌";
+
+document.getElementById("resultTitle")
+.textContent="خطا";
+
+document.getElementById("resultText")
+.textContent=
 "اتصال به گردونه برقرار نشد. دوباره امتحان کن.";
 
 spinning=false;
+
 spinBtn.disabled=false;
 
 }
 
 }
 
+
+/* انتخاب آیتم رایگان */
+
 async function chooseFreeItem(item){
 
-const phone=normalizePhone(
-document.getElementById("phone").value
+const phone=
+normalizePhone(
+  document.getElementById("phone").value
 );
 
 const resultText=
-document.getElementById("resultText");
-
-if(!phone)return;
-
-resultText.textContent=
-"⏳ در حال ثبت آیتم...";
-
-try{
-
-const response=await fetch(
-WORKER_URL+"/free-item",
-{
-method:"POST",
-headers:{
-"Content-Type":"application/json"
-},
-body:JSON.stringify({
-phone:phone,
-item:item
-})
-}
-);
-
-const data=await response.json();
-
-if(!response.ok){
-throw new Error(
-data.message||
-data.error||
-"خطا"
-);
-}
-
-document.getElementById("resultIcon").textContent="🎁";
-document.getElementById("resultTitle").textContent="ثبت شد!";
-resultText.textContent=
-"آیتم رایگان شما: «"+item+"»";
-
-document
-.getElementById("freeItems")
-.classList.remove("show");
-
-}catch(error){
-
-console.error(error);
-
-resultText.textContent=
-"❌ ثبت آیتم انجام نشد. دوباره امتحان کن.";
-
-}
-
-}
-
-</script>
-
-</body>
-</html>
+document.getElementById("resultTex

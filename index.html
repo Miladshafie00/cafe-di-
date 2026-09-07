@@ -1,1062 +1,1416 @@
-<!DOCTYPE html>  <html lang="fa" dir="rtl">  
-<head>  
-<meta charset="UTF-8">  
-<meta name="viewport" content="width=device-width, initial-scale=1.0">  
-<title>کافه دی</title>  <style>  
-*{  
-  box-sizing:border-box;  
-}  
-  
-body{  
-  margin:0;  
-  font-family:Tahoma,Arial,sans-serif;  
-  background:#17110d url("m.jpg") center/cover fixed no-repeat;  
-  color:#fff;  
-}  
-  
-body::before{  
-  content:"";  
-  position:fixed;  
-  inset:0;  
-  background:rgba(0,0,0,.55);  
-  z-index:-1;  
-}  
-  
-.container{  
-  width:min(95%,650px);  
-  margin:auto;  
-  padding:20px 0 50px;  
-}  
-  
-.header{  
-  text-align:center;  
-  padding:20px 10px;  
-}  
-  
-.logo{  
-  width:110px;  
-  height:110px;  
-  object-fit:contain;  
-  border-radius:50%;  
-  margin-bottom:10px;  
-}  
-  
-.header h1{  
-  margin:5px 0;  
-  font-size:30px;  
-}  
-  
-.header a{  
-  color:#ffd27a;  
-  text-decoration:none;  
-}  
-  
-.poem{  
-  margin:18px auto;  
-  padding:18px;  
-  border-radius:18px;  
-  background:rgba(0,0,0,.48);  
-  line-height:2.1;  
-  font-size:15px;  
-}  
-  
-.tabs{  
-  display:flex;  
-  gap:7px;  
-  overflow-x:auto;  
-  padding:8px 0 14px;  
-  scrollbar-width:none;  
-}  
-  
-.tabs::-webkit-scrollbar{  
-  display:none;  
-}  
-  
-.tab{  
-  flex:0 0 auto;  
-  border:0;  
-  padding:12px 15px;  
-  border-radius:14px;  
-  background:rgba(255,255,255,.12);  
-  color:#fff;  
-  cursor:pointer;  
-  font-size:14px;  
-  transition:.2s;  
-}  
-  
-.tab.active{  
-  background:#c98238;  
-  box-shadow:0 4px 15px rgba(201,130,56,.35);  
-}  
-  
-.menu-section{  
-  display:none;  
-}  
-  
-.menu-section.active{  
-  display:block;  
-}  
-  
-.menu-list{  
-  display:flex;  
-  flex-direction:column;  
-  gap:10px;  
-}  
-  
-.menu-item{  
-  display:flex;  
-  align-items:center;  
-  justify-content:space-between;  
-  padding:15px 17px;  
-  border-radius:16px;  
-  background:rgba(30,20,15,.82);  
-  border:1px solid rgba(255,255,255,.08);  
-}  
-  
-.menu-name{  
-  font-size:15px;  
-}  
-  
-.price{  
-  color:#ffd27a;  
-  font-weight:bold;  
-  white-space:nowrap;  
-}  
-  
-.wheel-area{  
-  position:relative;  
-  display:flex;  
-  flex-direction:column;  
-  align-items:center;  
-  padding-top:10px;  
-}  
-  
-.result-box{  
-  display:none;  
-  width:100%;  
-  margin-bottom:20px;  
-  padding:20px;  
-  border-radius:20px;  
-  background:rgba(24,16,12,.96);  
-  border:1px solid rgba(255,210,122,.35);  
-  text-align:center;  
-  position:relative;  
-}  
-  
-.close-result{  
-  position:absolute;  
-  top:8px;  
-  left:12px;  
-  border:0;  
-  background:transparent;  
-  color:#fff;  
-  font-size:28px;  
-  cursor:pointer;  
-}  
-  
-.result-icon{  
-  font-size:42px;  
-  margin-bottom:8px;  
-}  
-  
-.result-title{  
-  font-size:22px;  
-  font-weight:bold;  
-  margin:5px 0 10px;  
-}  
-  
-.result-text{  
-  line-height:2;  
-  margin-bottom:15px;  
-}  
-  
-.code-box{  
-  display:none;  
-  margin-top:15px;  
-}  
-  
-.discount-code{  
-  direction:ltr;  
-  display:inline-block;  
-  min-width:180px;  
-  padding:13px 16px;  
-  border-radius:12px;  
-  background:#000;  
-  color:#ffd27a;  
-  font-size:20px;  
-  font-weight:bold;  
-  letter-spacing:2px;  
-  user-select:all;  
-}  
-  
-.copy-btn,  
-.free-btn,  
-.spin-btn{  
-  border:0;  
-  cursor:pointer;  
-  border-radius:13px;  
-  padding:12px 18px;  
-  font-size:15px;  
-  color:#fff;  
-}  
-  
-.copy-btn{  
-  margin-top:10px;  
-  background:#6c4525;  
-}  
-  
-.free-items{  
-  display:none;  
-  margin-top:15px;  
-}  
-  
-.free-items button{  
-  display:block;  
-  width:100%;  
-  margin:8px 0;  
-  background:#6c4525;  
-}  
-  
-.wheel-wrap{  
-  position:relative;  
-  width:min(88vw,430px);  
-  aspect-ratio:1;  
-}  
-  
-.pointer{  
-  position:absolute;  
-  z-index:20;  
-  top:-5px;  
-  left:50%;  
-  transform:translateX(-50%);  
-  width:0;  
-  height:0;  
-  border-left:17px solid transparent;  
-  border-right:17px solid transparent;  
-  border-top:0;  
-  border-bottom:35px solid #fff;  
-  filter:drop-shadow(0 2px 5px #000);  
-}  
-  
-#wheelCircle{  
-  --wheel-rotation:0deg;  
-  position:absolute;  
-  inset:0;  
-  border-radius:50%;  
-  overflow:hidden;  
-  border:8px solid #d69a50;  
-  box-shadow:  
-    0 0 0 4px rgba(0,0,0,.6),  
-    0 10px 35px rgba(0,0,0,.5);  
-  background:  
-    conic-gradient(  
-      #8d4c25 0deg 45deg,  
-      #d18a3a 45deg 90deg,  
-      #6b3924 90deg 135deg,  
-      #b96d2e 135deg 180deg,  
-      #875025 180deg 225deg,  
-      #d59a4a 225deg 270deg,  
-      #713a24 270deg 315deg,  
-      #bd7430 315deg 360deg  
-    );  
-  transform:rotate(0deg);  
-}  
-  
-.wheel-label{  
-  position:absolute;  
-  left:50%;  
-  top:50%;  
-  width:50%;  
-  height:50%;  
-  transform-origin:0 0;  
-  pointer-events:none;  
-}  
-  
-.wheel-label span{  
-  position:absolute;  
-  top:18%;  
-  left:50%;  
-  transform:  
-    translateX(-50%)  
-    rotate(calc(-22.5deg - var(--wheel-rotation)));  
-  font-size:23px;  
-  font-weight:bold;  
-  color:#fff;  
-  text-shadow:0 2px 4px #000;  
-  white-space:nowrap;  
-}  
-  
-.l1{transform:rotate(22.5deg);}  
-.l2{transform:rotate(67.5deg);}  
-.l3{transform:rotate(112.5deg);}  
-.l4{transform:rotate(157.5deg);}  
-.l5{transform:rotate(202.5deg);}  
-.l6{transform:rotate(247.5deg);}  
-.l7{transform:rotate(292.5deg);}  
-.l8{transform:rotate(337.5deg);}  
-  
-.wheel-center{  
-  position:absolute;  
-  z-index:15;  
-  left:50%;  
-  top:50%;  
-  transform:translate(-50%,-50%);  
-  width:70px;  
-  height:70px;  
-  border-radius:50%;  
-  background:#25170f;  
-  border:5px solid #e0a052;  
-  display:flex;  
-  align-items:center;  
-  justify-content:center;  
-  font-size:28px;  
-  box-shadow:0 3px 12px #000;  
-}  
-  
-.spin-btn{  
-  margin-top:25px;  
-  padding:15px 35px;  
-  background:#c98238;  
-  font-weight:bold;  
-  font-size:17px;  
-  box-shadow:0 5px 20px rgba(201,130,56,.35);  
-}  
-  
-.spin-btn:disabled{  
-  opacity:.5;  
-  cursor:not-allowed;  
-}  
-  
-.phone-box{  
-  width:100%;  
-  margin-top:15px;  
-}  
-  
-.phone-box input{  
-  width:100%;  
-  padding:14px;  
-  border-radius:12px;  
-  border:1px solid rgba(255,255,255,.15);  
-  background:rgba(0,0,0,.45);  
-  color:#fff;  
-  text-align:center;  
-  font-size:16px;  
-  outline:none;  
-}  
-  
-.note{  
-  text-align:center;  
-  opacity:.7;  
-  font-size:12px;  
-  margin-top:15px;  
-}  
-</style>  </head>  <body>  <div class="container">  <header class="header">  
-  <img src="s.jpg" class="logo" alt="کافه دی">    <h1>کافه دی</h1>    <a href="https://instagram.com/cafedey2026" target="_blank">  
-    @cafedey2026  
-  </a>    <div class="poem">  
-    اینجا کافه دی است؛  
-    جایی برای یک فنجان قهوه،  
-    یک حال خوب و چند دقیقه دور شدن از شلوغی دنیا ☕  
-  </div>  
-</header>  <div class="tabs" id="a9qqwb">  <button type="button"  
-class="tab active"  
-onclick="showCat('coffee', this)">
-☕ قهوه
-</button>
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>کافه دی</title>
 
-<button type="button"  
-class="tab"  
-onclick="showCat('hot', this)">
-🔥 گرم
-</button>
+<style>
+*{
+  box-sizing:border-box;
+}
 
-<button type="button"  
-class="tab"  
-onclick="showCat('cold', this)">
-🧊 سرد
-</button>
+html,body{
+  margin:0;
+  padding:0;
+}
 
-<button type="button"  
-class="tab"  
-onclick="showCat('dessert', this)">
-🍰 دسر
-</button>
+body{
+  font-family:Tahoma,Arial,sans-serif;
+  color:#fff;
+  background:#1b0f0a url("m.jpg") center/cover fixed;
+  min-height:100vh;
+}
 
-<button type="button"  
-class="tab"  
-onclick="showCat('wheel', this)">
-🎡 گردونه شانس
-</button>
+body::before{
+  content:"";
+  position:fixed;
+  inset:0;
+  background:rgba(0,0,0,.58);
+  z-index:-1;
+}
 
-</div>  <!-- COFFEE -->  <section id="coffee" class="menu-section active">    <div class="menu-list">  <div class="menu-item">  
-  <span class="menu-name">تک ۱۰۰٪ روبوستا</span>  
-  <span class="price">۶۰</span>  
-</div>  
+/* HEADER */
 
-<div class="menu-item">  
-  <span class="menu-name">دبل ۱۰۰٪ روبوستا</span>  
-  <span class="price">۷۰</span>  
-</div>  
+header{
+  text-align:center;
+  padding:25px 15px 15px;
+}
 
-<div class="menu-item">  
-  <span class="menu-name">تک ۸۰/۲۰ روبوستا</span>  
-  <span class="price">۶۰</span>  
-</div>  
+header img{
+  width:100px;
+  height:100px;
+  object-fit:contain;
+  border-radius:50%;
+}
 
-<div class="menu-item">  
-  <span class="menu-name">دبل ۸۰/۲۰ روبوستا</span>  
-  <span class="price">۷۰</span>  
-</div>  
+header h1{
+  margin:10px 0 5px;
+  font-size:30px;
+}
 
-<div class="menu-item">  
-  <span class="menu-name">تک ۷۰/۳۰ روبوستا</span>  
-  <span class="price">۶۵</span>  
-</div>  
+header p{
+  margin:0;
+  color:#ddd;
+}
 
-<div class="menu-item">  
-  <span class="menu-name">دبل ۷۰/۳۰ روبوستا</span>  
-  <span class="price">۷۵</span>  
-</div>  
+/* TABS */
 
-<div class="menu-item">  
-  <span class="menu-name">تک ۱۰۰٪ عربیکا</span>  
-  <span class="price">۱۱۰</span>  
-</div>  
+.tabs{
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  gap:8px;
+  flex-wrap:wrap;
+  padding:15px 10px;
+  position:sticky;
+  top:0;
+  z-index:1000;
+  background:rgba(20,10,5,.95);
+  backdrop-filter:blur(8px);
+}
 
-<div class="menu-item">  
-  <span class="menu-name">دبل ۱۰۰٪ عربیکا</span>  
-  <span class="price">۱۲۰</span>  
-</div>  
+.tab{
+  appearance:none;
+  -webkit-appearance:none;
+  border:1px solid #c88b45;
+  background:#29150c;
+  color:#fff;
+  padding:10px 15px;
+  border-radius:25px;
+  cursor:pointer;
+  font-family:inherit;
+  font-size:14px;
+  transition:.2s;
+}
 
-<div class="menu-item">  
-  <span class="menu-name">تک ۸۰/۲۰ عربیکا</span>  
-  <span class="price">۸۰</span>  
-</div>  
+.tab:hover{
+  background:#5a321b;
+}
 
-<div class="menu-item">  
-  <span class="menu-name">دبل ۸۰/۲۰ عربیکا</span>  
-  <span class="price">۹۰</span>  
-</div>  
+.tab.active{
+  background:#c88b45;
+  color:#160b06;
+  font-weight:bold;
+}
 
-<div class="menu-item">  
-  <span class="menu-name">تک ۷۰/۳۰ عربیکا</span>  
-  <span class="price">۸۵</span>  
-</div>  
+/* MENU SECTIONS */
 
-<div class="menu-item">  
-  <span class="menu-name">دبل ۷۰/۳۰ عربیکا</span>  
-  <span class="price">۹۵</span>  
+.menu-section{
+  display:none;
+  width:100%;
+  max-width:650px;
+  margin:20px auto;
+  padding:0 15px 35px;
+}
+
+.menu-section.active{
+  display:block;
+}
+
+.menu-title{
+  text-align:center;
+  margin:20px 0 15px;
+  font-size:24px;
+  color:#f3bd78;
+}
+
+.menu-item{
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  gap:15px;
+  background:rgba(40,22,14,.92);
+  border:1px solid rgba(200,139,69,.35);
+  padding:14px 16px;
+  margin:8px 0;
+  border-radius:14px;
+}
+
+.menu-item .price{
+  color:#f3bd78;
+  font-weight:bold;
+  white-space:nowrap;
+}
+
+/* PHONE */
+
+.phone-box{
+  max-width:500px;
+  margin:15px auto 20px;
+  padding:18px;
+  background:rgba(35,18,10,.92);
+  border-radius:18px;
+  text-align:center;
+  border:1px solid rgba(200,139,69,.3);
+}
+
+.phone-box input{
+  width:100%;
+  padding:13px;
+  border-radius:12px;
+  border:1px solid #b87a3d;
+  background:#160b07;
+  color:#fff;
+  outline:none;
+  text-align:center;
+  font-family:inherit;
+  font-size:16px;
+}
+
+.phone-box input::placeholder{
+  color:#aaa;
+}
+
+.message{
+  min-height:25px;
+  margin-top:8px;
+  color:#f3bd78;
+}
+
+/* WHEEL */
+
+.wheel-box{
+  text-align:center;
+}
+
+.wheel-wrap{
+  width:320px;
+  height:350px;
+  margin:20px auto 25px;
+  position:relative;
+}
+
+.wheel{
+  position:absolute;
+  width:280px;
+  height:280px;
+  left:20px;
+  top:30px;
+  border-radius:50%;
+
+  background:conic-gradient(
+    #d96b4c 0deg 45deg,
+    #e2a93b 45deg 90deg,
+    #76a85b 90deg 135deg,
+    #4f9ca5 135deg 180deg,
+    #8e70b8 180deg 225deg,
+    #d45b83 225deg 270deg,
+    #d89b54 270deg 315deg,
+    #777 315deg 360deg
+  );
+
+  border:8px solid #f1d09b;
+
+  box-shadow:
+    0 0 0 5px rgba(0,0,0,.25),
+    0 10px 30px rgba(0,0,0,.5);
+
+  z-index:2;
+  transform:rotate(0deg);
+  transition:transform 4.5s cubic-bezier(.12,.75,.16,1);
+}
+
+/* LABELS ROTATE WITH WHEEL */
+
+.wheel-labels{
+  position:absolute;
+  inset:0;
+  z-index:10;
+  pointer-events:none;
+  transform:rotate(0deg);
+  transition:transform 4.5s cubic-bezier(.12,.75,.16,1);
+}
+
+.wheel-label{
+  position:absolute;
+  left:50%;
+  top:50%;
+  width:64px;
+  height:34px;
+  margin-left:-32px;
+  margin-top:-17px;
+
+  display:flex;
+  align-items:center;
+  justify-content:center;
+
+  font-size:17px;
+  font-weight:bold;
+  color:#fff;
+  text-shadow:0 2px 4px #000;
+}
+
+.l1{
+  transform:rotate(22.5deg) translateY(-92px);
+}
+
+.l2{
+  transform:rotate(67.5deg) translateY(-92px);
+}
+
+.l3{
+  transform:rotate(112.5deg) translateY(-92px);
+}
+
+.l4{
+  transform:rotate(157.5deg) translateY(-92px);
+}
+
+.l5{
+  transform:rotate(202.5deg) translateY(-92px);
+}
+
+.l6{
+  transform:rotate(247.5deg) translateY(-92px);
+}
+
+.l7{
+  transform:rotate(292.5deg) translateY(-92px);
+}
+
+.l8{
+  transform:rotate(337.5deg) translateY(-92px);
+}
+
+/* KEEP TEXT UPRIGHT */
+
+.wheel-label span{
+  display:block;
+}
+
+.wheel-center{
+  position:absolute;
+  width:65px;
+  height:65px;
+  left:127px;
+  top:137px;
+
+  border-radius:50%;
+  background:#3b1c0e;
+  border:5px solid #f1d09b;
+
+  display:flex;
+  align-items:center;
+  justify-content:center;
+
+  font-size:30px;
+  z-index:20;
+}
+
+.pointer{
+  position:absolute;
+  top:5px;
+  left:50%;
+  transform:translateX(-50%);
+
+  width:0;
+  height:0;
+
+  border-left:15px solid transparent;
+  border-right:15px solid transparent;
+  border-top:35px solid #fff;
+
+  filter:drop-shadow(0 3px 3px #000);
+  z-index:30;
+}
+
+.spin-btn{
+  appearance:none;
+  border:0;
+  background:linear-gradient(135deg,#f0b15e,#c56e31);
+  color:#201006;
+  font-family:inherit;
+  font-size:18px;
+  font-weight:bold;
+  padding:14px 35px;
+  border-radius:30px;
+  cursor:pointer;
+  box-shadow:0 6px 18px rgba(0,0,0,.35);
+}
+
+.spin-btn:disabled{
+  opacity:.5;
+  cursor:not-allowed;
+}
+
+/* RESULT */
+
+.result{
+  display:none;
+  max-width:500px;
+  margin:25px auto;
+  padding:25px;
+  border-radius:20px;
+  background:rgba(35,18,10,.96);
+  border:1px solid #c88b45;
+  text-align:center;
+}
+
+.result.show{
+  display:block;
+}
+
+.result-icon{
+  font-size:55px;
+}
+
+.result h2{
+  color:#f3bd78;
+}
+
+.result p{
+  color:#eee;
+  line-height:2;
+}
+
+.free-items{
+  display:none;
+  margin-top:20px;
+}
+
+.free-items.show{
+  display:block;
+}
+
+.free-items button{
+  width:100%;
+  padding:12px;
+  margin:6px 0;
+  border:1px solid #c88b45;
+  border-radius:12px;
+  background:#2c170d;
+  color:#fff;
+  font-family:inherit;
+  cursor:pointer;
+}
+
+/* MOBILE */
+
+@media(max-width:500px){
+
+  .tabs{
+    gap:6px;
+  }
+
+  .tab{
+    padding:9px 11px;
+    font-size:13px;
+  }
+
+  .wheel-wrap{
+    transform:scale(.92);
+    transform-origin:top center;
+    margin-bottom:-5px;
+  }
+
+}
+</style>
+</head>
+
+<body>
+
+<!-- HEADER -->
+
+<header>
+  <img src="s.jpg" alt="کافه دی">
+  <h1>کافه دی</h1>
+  <p>منوی کافه و گردونه شانس</p>
+</header>
+
+
+<!-- TABS -->
+
+<div class="tabs">
+
+  <button
+    type="button"
+    class="tab active"
+    onclick="showCat('coffee', this)">
+    ☕ قهوه
+  </button>
+
+  <button
+    type="button"
+    class="tab"
+    onclick="showCat('hot', this)">
+    🔥 گرم
+  </button>
+
+  <button
+    type="button"
+    class="tab"
+    onclick="showCat('cold', this)">
+    🧊 سرد
+  </button>
+
+  <button
+    type="button"
+    class="tab"
+    onclick="showCat('dessert', this)">
+    🍰 دسر
+  </button>
+
+  <button
+    type="button"
+    class="tab"
+    onclick="showCat('wheel', this)">
+    🎡 گردونه شانس
+  </button>
+
 </div>
 
-  </div>  </section>  <!-- HOT -->  <section id="hot" class="menu-section">    <div class="menu-list">  <div class="menu-item">  
-  <span>کافی میکس</span>  
-  <span class="price">۸۰</span>  
-</div>  
 
-<div class="menu-item">  
-  <span>چای کرک</span>  
-  <span class="price">۸۵</span>  
-</div>  
+<!-- =========================
+     COFFEE
+========================= -->
 
-<div class="menu-item">  
-  <span>هات چاکلت</span>  
-  <span class="price">۸۶</span>  
-</div>  
+<section
+  id="coffee"
+  class="menu-section active">
 
-<div class="menu-item">  
-  <span>ماسالا</span>  
-  <span class="price">۸۵</span>  
-</div>  
+  <div class="menu-title">
+    ☕ قهوه
+  </div>
 
-<div class="menu-item">  
-  <span>لته</span>  
-  <span class="price">۱۴۰</span>  
-</div>  
+  <div class="menu-item">
+    <span>تک ۱۰۰٪ روبوستا</span>
+    <span class="price">۶۰</span>
+  </div>
 
-<div class="menu-item">  
-  <span>کاپوچینو</span>  
-  <span class="price">۸۰</span>  
-</div>  
+  <div class="menu-item">
+    <span>دبل ۱۰۰٪ روبوستا</span>
+    <span class="price">۷۰</span>
+  </div>
 
-<div class="menu-item">  
-  <span>شیر پسته</span>  
-  <span class="price">۸۵</span>  
-</div>  
+  <div class="menu-item">
+    <span>تک ۸۰/۲۰ روبوستا</span>
+    <span class="price">۶۰</span>
+  </div>
 
-<div class="menu-item">  
-  <span>شیر زعفران</span>  
-  <span class="price">۸۵</span>  
-</div>  
+  <div class="menu-item">
+    <span>دبل ۸۰/۲۰ روبوستا</span>
+    <span class="price">۷۰</span>
+  </div>
 
-<div class="menu-item">  
-  <span>موکا</span>  
-  <span class="price">۱۵۰</span>  
-</div>
+  <div class="menu-item">
+    <span>تک ۷۰/۳۰ روبوستا</span>
+    <span class="price">۶۵</span>
+  </div>
 
-  </div>  </section>  <!-- COLD -->  <section id="cold" class="menu-section">    <div class="menu-list">  <div class="menu-item">  
-  <span>آیس لته</span>  
-  <span class="price">۱۵۰</span>  
-</div>  
+  <div class="menu-item">
+    <span>دبل ۷۰/۳۰ روبوستا</span>
+    <span class="price">۷۵</span>
+  </div>
 
-<div class="menu-item">  
-  <span>آیس موکا</span>  
-  <span class="price">۱۶۰</span>  
-</div>
+  <div class="menu-item">
+    <span>تک ۱۰۰٪ عربیکا</span>
+    <span class="price">۱۱۰</span>
+  </div>
 
-  </div>  </section>  <!-- DESSERT -->  <section id="dessert" class="menu-section">    <div class="menu-list">  <div class="menu-item">  
-  <span>(کیک شکلاتی (هر اسلایس</span>  
-  <span class="price">۷۰</span>  
-</div>
+  <div class="menu-item">
+    <span>دبل ۱۰۰٪ عربیکا</span>
+    <span class="price">۱۲۰</span>
+  </div>
 
-  </div>  </section>  <!-- WHEEL -->  <section id="wheel" class="menu-section">    <div class="wheel-area">  <div id="resultBox" class="result-box">  
+  <div class="menu-item">
+    <span>تک ۸۰/۲۰ عربیکا</span>
+    <span class="price">۸۰</span>
+  </div>
 
-  <button  
-    type="button"  
-    class="close-result"  
-    onclick="closeResult()">  
-    ×  
-  </button>  
+  <div class="menu-item">
+    <span>دبل ۸۰/۲۰ عربیکا</span>
+    <span class="price">۹۰</span>
+  </div>
 
-  <div id="resultIcon" class="result-icon">🎉</div>  
+  <div class="menu-item">
+    <span>تک ۷۰/۳۰ عربیکا</span>
+    <span class="price">۸۵</span>
+  </div>
 
-  <div id="resultTitle" class="result-title">  
-    🎉 تبریک!  
-  </div>  
+  <div class="menu-item">
+    <span>دبل ۷۰/۳۰ عربیکا</span>
+    <span class="price">۹۵</span>
+  </div>
 
-  <div id="resultText" class="result-text"></div>  
-
-  <div id="codeBox" class="code-box">  
-
-    <div id="discountCode" class="discount-code"></div>  
-
-    <br>  
-
-    <button  
-      type="button"  
-      class="copy-btn"  
-      onclick="copyCode()">  
-      📋 کپی کد  
-    </button>  
-
-  </div>  
-
-  <div id="freeItems" class="free-items">  
-
-    <button  
-      type="button"  
-      class="free-btn"  
-      onclick="claimFreeItem('قهوه')">  
-      ☕ قهوه  
-    </button>  
-
-    <button  
-      type="button"  
-      class="free-btn"  
-      onclick="claimFreeItem('چای')">  
-      🍵 چای  
-    </button>  
-
-    <button  
-      type="button"  
-      class="free-btn"  
-      onclick="claimFreeItem('کیک')">  
-      🍰 کیک  
-    </button>  
-
-  </div>  
-
-</div>  
+</section>
 
 
-<div class="phone-box">  
+<!-- =========================
+     HOT
+========================= -->
 
-  <input  
-    id="phone"  
-    type="tel"  
-    inputmode="tel"  
-    placeholder="شماره موبایل خود را وارد کنید">  
+<section
+  id="hot"
+  class="menu-section">
 
-</div>  
+  <div class="menu-title">
+    🔥 نوشیدنی گرم
+  </div>
+
+  <div class="menu-item">
+    <span>کافی میکس</span>
+    <span class="price">۸۰</span>
+  </div>
+
+  <div class="menu-item">
+    <span>چای کرک</span>
+    <span class="price">۸۵</span>
+  </div>
+
+  <div class="menu-item">
+    <span>هات چاکلت</span>
+    <span class="price">۸۶</span>
+  </div>
+
+  <div class="menu-item">
+    <span>ماسالا</span>
+    <span class="price">۸۵</span>
+  </div>
+
+  <div class="menu-item">
+    <span>لته</span>
+    <span class="price">۱۴۰</span>
+  </div>
+
+  <div class="menu-item">
+    <span>کاپوچینو</span>
+    <span class="price">۸۰</span>
+  </div>
+
+  <div class="menu-item">
+    <span>شیر پسته</span>
+    <span class="price">۸۵</span>
+  </div>
+
+  <div class="menu-item">
+    <span>شیر زعفران</span>
+    <span class="price">۸۵</span>
+  </div>
+
+  <div class="menu-item">
+    <span>موکا</span>
+    <span class="price">۱۵۰</span>
+  </div>
+
+</section>
 
 
-<div class="wheel-wrap">  
+<!-- =========================
+     COLD
+========================= -->
 
-  <div class="pointer"></div>  
+<section
+  id="cold"
+  class="menu-section">
 
-  <div id="wheelCircle">  
+  <div class="menu-title">
+    🧊 نوشیدنی سرد
+  </div>
 
-    <div class="wheel-label l1">  
-      <span>۲۰٪</span>  
-    </div>  
+  <div class="menu-item">
+    <span>آیس لته</span>
+    <span class="price">۱۵۰</span>
+  </div>
 
-    <div class="wheel-label l2">  
-      <span>۱۵٪</span>  
-    </div>  
+  <div class="menu-item">
+    <span>آیس موکا</span>
+    <span class="price">۱۶۰</span>
+  </div>
 
-    <div class="wheel-label l3">  
-      <span>۱۲٪</span>  
-    </div>  
-
-    <div class="wheel-label l4">  
-      <span>۶٪</span>  
-    </div>  
-
-    <div class="wheel-label l5">  
-      <span>۲٪</span>  
-    </div>  
-
-    <div class="wheel-label l6">  
-      <span>۴٪</span>  
-    </div>  
-
-    <div class="wheel-label l7">  
-      <span>🎁</span>  
-    </div>  
-
-    <div class="wheel-label l8">  
-      <span>پوچ</span>  
-    </div>  
-
-    <div class="wheel-center">  
-      🎡  
-    </div>  
-
-  </div>  
-
-</div>  
+</section>
 
 
-<button  
-  id="spinBtn"  
-  type="button"  
-  class="spin-btn"  
-  onclick="spinWheel()">  
-  🎯 چرخاندن گردونه  
-</button>  
+<!-- =========================
+     DESSERT
+========================= -->
 
-<div class="note">  
-  هر شماره موبایل فقط طبق قوانین گردونه امکان استفاده دارد.  
-</div>
+<section
+  id="dessert"
+  class="menu-section">
 
-  </div>  </section>  </div>  <script>  
-  
-const API = "https://cafe-di-discount.miladsh00.workers.dev";  
-  
-let currentRotation = 0;  
-let spinning = false;  
-  
-  
-/* =========================  
-   TABS  
-========================= */  
-  
-function showCat(cat, btn){  
-  
-  const sections = document.querySelectorAll(".menu-section");  
-  
-  sections.forEach(function(section){  
-  
-    section.classList.remove("active");  
-    section.style.display = "none";  
-  
-  });  
-  
-  const target = document.getElementById(cat);  
-  
-  if(target){  
-  
-    target.classList.add("active");  
-    target.style.display = "block";  
-  
-  }  
-  
-  document.querySelectorAll(".tab").forEach(function(tab){  
-  
-    tab.classList.remove("active");  
-  
-  });  
-  
-  if(btn){  
-  
-    btn.classList.add("active");  
-  
-  }  
-  
-}  
-  
-  
-/* =========================  
-   PERSIAN NUMBER  
-========================= */  
-  
-function normalizeNumber(value){  
-  
-  return String(value || "")  
-    .replace(/[۰-۹]/g, function(d){  
-      return "۰۱۲۳۴۵۶۷۸۹".indexOf(d);  
-    })  
-    .replace(/[٠-٩]/g, function(d){  
-      return "٠١٢٣٤٥٦٧٨٩".indexOf(d);  
-    });  
-  
-}  
-  
-  
-/* =========================  
-   PRIZE INDEX  
-========================= */  
-  
-function prizeIndex(prize){  
-  
-  const p = normalizeNumber(prize).toLowerCase();  
-  
-  if(p.includes("20") || p.includes("۲۰")) return 0;  
-  if(p.includes("15") || p.includes("۱۵")) return 1;  
-  if(p.includes("12") || p.includes("۱۲")) return 2;  
-  if(p.includes("6")  || p.includes("۶"))  return 3;  
-  if(p.includes("2")  || p.includes("۲"))  return 4;  
-  if(p.includes("4")  || p.includes("۴"))  return 5;  
-  
-  if(  
-    p.includes("free") ||  
-    p.includes("رایگان") ||  
-    p.includes("آیتم")  
-  ){  
-    return 6;  
-  }  
-  
-  return 7;  
-  
-}  
-  
-  
-/* =========================  
-   SHOW RESULT  
-========================= */  
-  
-function showResult(data){  
-  
-  const box = document.getElementById("resultBox");  
-  const icon = document.getElementById("resultIcon");  
-  const title = document.getElementById("resultTitle");  
-  const text = document.getElementById("resultText");  
-  const codeBox = document.getElementById("codeBox");  
-  const code = document.getElementById("discountCode");  
-  const freeItems = document.getElementById("freeItems");  
-  
-  box.style.display = "block";  
-  
-  codeBox.style.display = "none";  
-  freeItems.style.display = "none";  
-  
-  code.textContent = "";  
-  
-  const prize =  
-    data.prize ||  
-    data.result ||  
-    data.discount ||  
-    data.reward ||  
-    "";  
-  
-  const normalized = normalizeNumber(prize).toLowerCase();  
-  
-  const isFree =  
-    normalized.includes("free") ||  
-    normalized.includes("رایگان") ||  
-    normalized.includes("آیتم");  
-  
-  const isLose =  
-    normalized.includes("پوچ") ||  
-    normalized.includes("lose") ||  
-    normalized.includes("nothing") ||  
-    normalized.includes("none") ||  
-    !prize;  
-  
-  if(isLose){  
-  
-    icon.textContent = "😅";  
-  
-    title.textContent = "پوچ شد!";  
-  
-    text.textContent =  
-      "این بار شانست یاری نکرد؛ دوباره امتحان کن.";  
-  
-    return;  
-  }  
-  
-  
-  if(isFree){  
-  
-    icon.textContent = "🎉";  
-  
-    title.textContent = "🎉 تبریک!";  
-  
-    text.textContent =  
-      "تبریک! شما برنده یک آیتم رایگان شدید.";  
-  
-    freeItems.style.display = "block";  
-  
-    return;  
-  }  
-  
-  
-  icon.textContent = "🎉";  
-  
-  title.textContent = "🎉 تبریک!";  
-  
-  text.textContent =  
-    "تبریک! شما برنده " + prize + " تخفیف شدید.";  
-  
-  
-  const realCode =  
-    data.code ||  
-    data.discountCode ||  
-    data.couponCode ||  
-    "";  
-  
-  if(realCode){  
-  
-    code.textContent = realCode;  
-  
-    codeBox.style.display = "block";  
-  
-  }  
-  
-}  
-  
-  
-/* =========================  
-   SPIN  
-========================= */  
-  
-async function spinWheel(){  
-  
-  if(spinning) return;  
-  
-  const phoneInput = document.getElementById("phone");  
-  const phone = phoneInput.value.trim();  
-  
-  if(!phone){  
-  
-    alert("لطفاً شماره موبایل را وارد کنید.");  
-  
-    phoneInput.focus();  
-  
-    return;  
-  }  
-  
-  
-  const wheel = document.getElementById("wheelCircle");  
-  const btn = document.getElementById("spinBtn");  
-  
-  spinning = true;  
-  
-  btn.disabled = true;  
-  
-  try{  
-  
-    const response = await fetch(API + "/spin", {  
-  
-      method:"POST",  
-  
-      headers:{  
-        "Content-Type":"application/json"  
-      },  
-  
-      body:JSON.stringify({  
-        phone:phone  
-      })  
-  
-    });  
-  
-  
-    const data = await response.json();  
-  
-  
-    if(!response.ok){  
-  
-      throw new Error(  
-        data.message ||  
-        data.error ||  
-        "خطا در ارتباط با سرور"  
-      );  
-  
-    }  
-  
-  
-    const prize =  
-      data.prize ||  
-      data.result ||  
-      data.discount ||  
-      data.reward ||  
-      "پوچ";  
-  
-  
-    const index = prizeIndex(prize);  
-  
-    const targetAngle =  
-      360 - (index * 45 + 22.5);  
-  
-  
-    const currentMod =  
-      ((currentRotation % 360) + 360) % 360;  
-  
-  
-    const extra =  
-      (targetAngle - currentMod + 360) % 360;  
-  
-  
-    currentRotation +=  
-      360 * 7 + extra;  
-  
-  
-    wheel.style.setProperty(  
-      "--wheel-rotation",  
-      currentRotation + "deg"  
-    );  
-  
-  
-    wheel.style.transition =  
-      "transform 4.5s cubic-bezier(.12,.75,.16,1)";  
-  
-  
-    wheel.style.transform =  
-      "rotate(" + currentRotation + "deg)";  
-  
-  
-    setTimeout(function(){  
-  
-      showResult(data);  
-  
-      spinning = false;  
-  
-      btn.disabled = false;  
-  
-    },4600);  
-  
-  
-  }catch(error){  
-  
-    console.error(error);  
-  
-    alert(  
-      error.message ||  
-      "خطایی در ارتباط با سرور رخ داد."  
-    );  
-  
-    spinning = false;  
-  
-    btn.disabled = false;  
-  
-  }  
-  
-}  
-  
-  
-/* =========================  
-   CLOSE RESULT  
-========================= */  
-  
-function closeResult(){  
-  
-  document.getElementById("resultBox").style.display = "none";  
-  
-}  
-  
-  
-/* =========================  
-   COPY CODE  
-========================= */  
-  
-async function copyCode(){  
-  
-  const code =  
-    document.getElementById("discountCode")  
-    .textContent  
-    .trim();  
-  
-  if(!code) return;  
-  
-  
-  try{  
-  
-    await navigator.clipboard.writeText(code);  
-  
-    alert("کد تخفیف کپی شد ✅");  
-  
-  }catch(e){  
-  
-    const temp =  
-      document.createElement("textarea");  
-  
-    temp.value = code;  
-  
-    document.body.appendChild(temp);  
-  
-    temp.select();  
-  
-    document.execCommand("copy");  
-  
-    temp.remove();  
-  
-    alert("کد تخفیف کپی شد ✅");  
-  
-  }  
-  
-}  
-  
-  
-/* =========================  
-   FREE ITEM  
-========================= */  
-  
-async function claimFreeItem(item){  
-  
-  const phone =  
-    document.getElementById("phone")  
-    .value  
-    .trim();  
-  
-  
-  if(!phone){  
-  
-    alert("شماره موبایل را وارد کنید.");  
-  
-    return;  
-  
-  }  
-  
-  
-  try{  
-  
-    const response = await fetch(  
-      API + "/free-item",  
-      {  
-  
-        method:"POST",  
-  
-        headers:{  
-          "Content-Type":"application/json"  
-        },  
-  
-        body:JSON.stringify({  
-          phone:phone,  
-          item:item  
-        })  
-  
-      }  
-    );  
-  
-  
-    const data = await response.json();  
-  
-  
-    if(!response.ok){  
-  
-      throw new Error(  
-        data.message ||  
-        data.error ||  
-        "خطا در ثبت آیتم رایگان"  
-      );  
-  
+  <div class="menu-title">
+    🍰 دسر
+  </div>
+
+  <div class="menu-item">
+    <span>کیک شکلاتی (هر اسلایس</span>
+    <span class="price">۷۰</span>
+  </div>
+
+</section>
+
+
+<!-- =========================
+     WHEEL
+========================= -->
+
+<section
+  id="wheel"
+  class="menu-section">
+
+  <div class="menu-title">
+    🎡 گردونه شانس
+  </div>
+
+
+  <div class="wheel-box">
+
+
+    <!-- PHONE -->
+
+    <div class="phone-box">
+
+      <input
+        id="phone"
+        type="tel"
+        inputmode="numeric"
+        placeholder="شماره موبایل">
+
+      <div
+        id="message"
+        class="message">
+      </div>
+
+    </div>
+
+
+    <!-- WHEEL -->
+
+    <div class="wheel-wrap">
+
+      <!-- فقط خود دایره -->
+      <div
+        id="wheelCircle"
+        class="wheel">
+      </div>
+
+
+      <!-- نوشته های روی گردونه -->
+
+      <div
+        id="wheelLabels"
+        class="wheel-labels">
+
+        <div class="wheel-label l1">
+          <span>۲۰٪</span>
+        </div>
+
+        <div class="wheel-label l2">
+          <span>۱۵٪</span>
+        </div>
+
+        <div class="wheel-label l3">
+          <span>۱۲٪</span>
+        </div>
+
+        <div class="wheel-label l4">
+          <span>۶٪</span>
+        </div>
+
+        <div class="wheel-label l5">
+          <span>۲٪</span>
+        </div>
+
+        <div class="wheel-label l6">
+          <span>۴٪</span>
+        </div>
+
+        <div class="wheel-label l7">
+          <span>🎁</span>
+        </div>
+
+        <div class="wheel-label l8">
+          <span>پوچ</span>
+        </div>
+
+      </div>
+
+
+      <!-- POINTER -->
+
+      <div class="pointer"></div>
+
+
+      <!-- CENTER -->
+
+      <div class="wheel-center">
+        ☕
+      </div>
+
+    </div>
+
+
+    <!-- SPIN BUTTON -->
+
+    <button
+      id="spinBtn"
+      type="button"
+      class="spin-btn"
+      onclick="spinWheel()">
+
+      🎯 چرخاندن گردونه
+
+    </button>
+
+
+    <!-- RESULT -->
+
+    <div
+      id="result"
+      class="result">
+
+      <div
+        id="resultIcon"
+        class="result-icon">
+        🎁
+      </div>
+
+      <h2 id="resultTitle"></h2>
+
+      <p id="resultText"></p>
+
+
+      <!-- FREE ITEMS -->
+
+      <div
+        id="freeItems"
+        class="free-items">
+
+        <button
+          type="button"
+          onclick="chooseFreeItem('کافی میکس')">
+          کافی میکس
+        </button>
+
+        <button
+          type="button"
+          onclick="chooseFreeItem('چای کرک')">
+          چای کرک
+        </button>
+
+        <button
+          type="button"
+          onclick="chooseFreeItem('هات چاکلت')">
+          هات چاکلت
+        </button>
+
+        <button
+          type="button"
+          onclick="chooseFreeItem('ماسالا')">
+          ماسالا
+        </button>
+
+        <button
+          type="button"
+          onclick="chooseFreeItem('لته')">
+          لته
+        </button>
+
+        <button
+          type="button"
+          onclick="chooseFreeItem('کاپوچینو')">
+          کاپوچینو
+        </button>
+
+        <button
+          type="button"
+          onclick="chooseFreeItem('شیر پسته')">
+          شیر پسته
+        </button>
+
+        <button
+          type="button"
+          onclick="chooseFreeItem('شیر زعفران')">
+          شیر زعفران
+        </button>
+
+        <button
+          type="button"
+          onclick="chooseFreeItem('موکا')">
+          موکا
+        </button>
+
+      </div>
+
+    </div>
+
+  </div>
+
+</section>
+
+
+<script>
+
+/* =========================
+   WORKER
+========================= */
+
+const API =
+  "https://cafe-di-discount.miladsh00.workers.dev";
+
+
+/* =========================
+   VARIABLES
+========================= */
+
+let currentRotation = 0;
+let spinning = false;
+
+
+/* =========================
+   TABS
+========================= */
+
+function showCat(cat, btn){
+
+  /* همه بخش ها مخفی */
+
+  const sections =
+    document.querySelectorAll(".menu-section");
+
+  sections.forEach(function(section){
+
+    section.classList.remove("active");
+    section.style.display = "none";
+
+  });
+
+
+  /* بخش انتخاب شده */
+
+  const target =
+    document.getElementById(cat);
+
+  if(target){
+
+    target.classList.add("active");
+    target.style.display = "block";
+
+  }
+
+
+  /* فعال کردن تب */
+
+  const tabs =
+    document.querySelectorAll(".tab");
+
+  tabs.forEach(function(tab){
+
+    tab.classList.remove("active");
+
+  });
+
+
+  if(btn){
+
+    btn.classList.add("active");
+
+  }
+
+}
+
+
+/* =========================
+   PHONE
+========================= */
+
+function getPhone(){
+
+  const input =
+    document.getElementById("phone");
+
+  if(!input){
+    return null;
+  }
+
+  const phone =
+    input.value.trim();
+
+
+  if(!phone){
+
+    showMessage(
+      "لطفاً شماره موبایل را وارد کن."
+    );
+
+    return null;
+  }
+
+
+  if(!/^09\d{9}$/.test(phone)){
+
+    showMessage(
+      "شماره موبایل معتبر نیست."
+    );
+
+    return null;
+  }
+
+
+  return phone;
+
+}
+
+
+function showMessage(text){
+
+  const box =
+    document.getElementById("message");
+
+  if(box){
+    box.textContent = text;
+  }
+
+}
+
+
+/* =========================
+   CHECK
+========================= */
+
+async function checkPhone(phone){
+
+  try{
+
+    const response =
+      await fetch(
+        API +
+        "/check?phone=" +
+        encodeURIComponent(phone)
+      );
+
+
+    if(!response.ok){
+      return null;
     }
+
+
+    return await response.json();
+
+  }catch(error){
+
+    console.error(error);
+
+    return null;
+
+  }
+
+}
+
+
+/* =========================
+   PRIZE INDEX
+========================= */
+
+function prizeIndex(prize){
+
+  const p =
+    String(prize).toLowerCase();
+
+
+  if(
+    p.includes("20") ||
+    p.includes("۲۰")
+  ){
+    return 0;
+  }
+
+
+  if(
+    p.includes("15") ||
+    p.includes("۱۵")
+  ){
+    return 1;
+  }
+
+
+  if(
+    p.includes("12") ||
+    p.includes("۱۲")
+  ){
+    return 2;
+  }
+
+
+  if(
+    p.includes("6") ||
+    p.includes("۶")
+  ){
+    return 3;
+  }
+
+
+  if(
+    p.includes("2") ||
+    p.includes("۲")
+  ){
+    return 4;
+  }
+
+
+  if(
+    p.includes("4") ||
+    p.includes("۴")
+  ){
+    return 5;
+  }
+
+
+  if(
+    p.includes("free") ||
+    p.includes("gift") ||
+    p.includes("رایگان") ||
+    p.includes("🎁")
+  ){
+    return 6;
+  }
+
+
+  return 7;
+
+}
+
+
+/* =========================
+   RESULT
+========================= */
+
+function showResult(prize){
+
+  const result =
+    document.getElementById("result");
+
+  const icon =
+    document.getElementById("resultIcon");
+
+  const title =
+    document.getElementById("resultTitle");
+
+  const text =
+    document.getElementById("resultText");
+
+  const freeItems =
+    document.getElementById("freeItems");
+
+
+  if(!result){
+    return;
+  }
+
+
+  result.classList.add("show");
+
+
+  freeItems.classList.remove("show");
+
+
+  const p =
+    String(prize).toLowerCase();
+
+
+  /* FREE */
+
+  if(
+    p.includes("free") ||
+    p.includes("gift") ||
+    p.includes("رایگان") ||
+    p.includes("🎁")
+  ){
+
+    icon.textContent = "🎁";
+
+    title.textContent =
+      "🎉 برنده شدی!";
+
+    text.textContent =
+      "یک آیتم کاملاً رایگان مهمون کافه دی هستی.";
+
+    freeItems.classList.add("show");
+
+    return;
+
+  }
+
+
+  /* LOSE */
+
+  if(
+    p.includes("lose") ||
+    p.includes("none") ||
+    p.includes("پوچ")
+  ){
+
+    icon.textContent = "😅";
+
+    title.textContent =
+      "پوچ شد!";
+
+    text.textContent =
+      "این بار شانست نگرفت.";
+
+    return;
+
+  }
+
+
+  /* DISCOUNTS */
+
+  let shownPrize =
+    String(prize);
+
+
+  if(
+    p.includes("20") ||
+    p.includes("۲۰")
+  ){
+
+    shownPrize =
+      "۲۰٪ تخفیف";
+
+  }
+  else if(
+    p.includes("15") ||
+    p.includes("۱۵")
+  ){
+
+    shownPrize =
+      "۱۵٪ تخفیف";
+
+  }
+  else if(
+    p.includes("12") ||
+    p.includes("۱۲")
+  ){
+
+    shownPrize =
+      "۱۲٪ تخفیف";
+
+  }
+  else if(
+    p.includes("6") ||
+    p.includes("۶")
+  ){
+
+    shownPrize =
+      "۶٪ تخفیف";
+
+  }
+  else if(
+    p.includes("2") ||
+    p.includes("۲")
+  ){
+
+    shownPrize =
+      "۲٪ تخفیف";
+
+  }
+  else if(
+    p.includes("4") ||
+    p.includes("۴")
+  ){
+
+    shownPrize =
+      "۴٪ تخفیف";
+
+  }
+
+
+  icon.textContent =
+    "🔥";
+
+  title.textContent =
+    "🎉 برنده شدی!";
+
+  text.textContent =
+    "تبریک! تو " +
+    shownPrize +
+    " برنده شدی.";
+
+}
+
+
+/* =========================
+   SPIN
+========================= */
+
+async function spinWheel(){
+
+  if(spinning){
+    return;
+  }
+
+
+  const phone =
+    getPhone();
+
+
+  if(!phone){
+    return;
+  }
+
+
+  const wheel =
+    document.getElementById("wheelCircle");
+
+  const wheelLabels =
+    document.getElementById("wheelLabels");
+
+  const btn =
+    document.getElementById("spinBtn");
+
+
+  if(!wheel || !wheelLabels || !btn){
+    return;
+  }
+
+
+  spinning = true;
+
+  btn.disabled = true;
+
+
+  document
+    .getElementById("result")
+    .classList.remove("show");
+
+
+  showMessage(
+    "در حال بررسی..."
+  );
+
+
+  try{
+
+    const check =
+      await checkPhone(phone);
+
+
+    if(
+      check &&
+      (
+        check.used === true ||
+        check.exists === true
+      )
+    ){
+
+      showMessage(
+        "این شماره قبلاً از گردونه استفاده کرده است."
+      );
+
+      btn.disabled = false;
+      spinning = false;
+
+      return;
+
+    }
+
+
+    const response =
+      await fetch(
+        API + "/spin",
+        {
+          method:"POST",
+
+          headers:{
+            "Content-Type":
+              "application/json"
+          },
+
+          body:
+            JSON.stringify({
+              phone:phone
+            })
+        }
+      );
+
+
+    if(!response.ok){
+
+      throw new Error(
+        "spin failed"
+      );
+
+    }
+
+
+    const data =
+      await response.json();
+
+
+    const prize =
+      data.prize ||
+      data.result ||
+      data.discount ||
+      "پوچ";
+
+
+    const index =
+      prizeIndex(prize);
+
+
+    /* TARGET */
+
+    const targetAngle =
+      360 -
+      (
+        index * 45 +
+        22.5
+      );
+
+
+    const currentMod =
+      (
+        (
+          currentRotation % 360
+        ) + 360
+      ) % 360;
+
+
+    const extra =
+      (
+        targetAngle -
+        currentMod +
+        360
+      ) % 360;
+
+
+    currentRotation +=
+      360 * 7 +
+      extra;
+
+
+    /* ROTATE CIRCLE */
+
+    wheel.style.transition =
+      "transform 4.5s cubic-bezier(.12,.75,.16,1)";
+
+    wheel.style.transform =
+      "rotate(" +
+      currentRotation +
+      "deg)";
+
+
+    /* ROTATE LABELS WITH CIRCLE */
+
+    wheelLabels.style.transition =
+      "transform 4.5s cubic-bezier(.12,.75,.16,1)";
+
+    wheelLabels.style.transform =
+      "rotate(" +
+      currentRotation +
+      "deg)";
+
+
+    showMessage(
+      "گردونه در حال چرخش است..."
+    );
+
+
+    setTimeout(function(){
+
+      showResult(prize);
+
+      showMessage("");
+
+      btn.dis

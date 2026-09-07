@@ -41,7 +41,6 @@ body{
     background-color:#0d0d0d;
 }
 
-
 /* ================= HEADER ================= */
 
 header{
@@ -104,7 +103,6 @@ header h1{
     color:#e0d0be;
 }
 
-
 /* ================= NAV ================= */
 
 .category-nav{
@@ -148,7 +146,6 @@ header h1{
     border-color:#ffd194;
 }
 
-
 /* ================= MAIN ================= */
 
 main{
@@ -157,15 +154,20 @@ main{
     padding:0 14px;
 }
 
-
 /* ================= MENU ================= */
 
+/*
+   مهم:
+   اینجا دیگر !important نداریم.
+   JavaScript فقط کلاس active را عوض می‌کند.
+*/
+
 .menu-section{
-    display:none !important;
+    display:none;
 }
 
 .menu-section.active{
-    display:block !important;
+    display:block;
 }
 
 .menu-section h2{
@@ -213,16 +215,15 @@ main{
     color:#c4c4c4;
 }
 
-
 /* ================= WHEEL ================= */
 
 #wheel-section{
-    display:none !important;
+    display:none;
     text-align:center;
 }
 
 #wheel-section.active{
-    display:block !important;
+    display:block;
 }
 
 .wheel-title{
@@ -250,6 +251,10 @@ main{
     text-align:center;
     direction:ltr;
     font-family:var(--font-body);
+}
+
+.phone-input::placeholder{
+    color:#aaa;
 }
 
 .wheel-area{
@@ -370,6 +375,7 @@ main{
 
 .spin-button:disabled{
     opacity:.55;
+    cursor:not-allowed;
 }
 
 .result{
@@ -424,6 +430,10 @@ main{
     outline:none;
 }
 
+.free-item::placeholder{
+    color:#aaa;
+}
+
 .free-button{
     width:100%;
     margin-top:7px;
@@ -436,6 +446,9 @@ main{
     cursor:pointer;
 }
 
+.free-button:disabled{
+    opacity:.55;
+}
 
 /* ================= FOOTER ================= */
 
@@ -472,167 +485,236 @@ footer{
     fill:currentColor;
 }
 
+/* ================= MOBILE ================= */
+
+@media(max-width:480px){
+
+    header{
+        padding-top:22px;
+    }
+
+    .logo-container{
+        width:95px;
+        height:95px;
+    }
+
+    header h1{
+        font-size:2.15rem;
+    }
+
+    .quote-box{
+        font-size:.7rem;
+    }
+
+    .menu-section h2{
+        font-size:1.7rem;
+    }
+
+    .item-name{
+        font-size:.82rem;
+    }
+
+    .price-tag{
+        font-size:1.08rem;
+    }
+
+    .currency{
+        font-size:.58rem;
+    }
+
+    .card{
+        padding:10px 12px;
+    }
+
+    .wheel-area{
+        width:230px;
+        height:230px;
+    }
+
+    .wlabel{
+        transform-origin:center center;
+    }
+}
+
 </style>
 </head>
 
 <body>
 
-
 <header>
 
-<div class="logo-container">
+    <div class="logo-container">
 
-<img
-    id="mainLogo"
-    src="s.jpg"
-    alt="لوگوی کافه دی"
-    onerror="this.style.display='none';document.getElementById('altText').style.display='block';"
->
+        <img
+            id="mainLogo"
+            src="s.jpg"
+            alt="لوگوی کافه دی"
+            onerror="this.style.display='none';document.getElementById('altText').style.display='block';"
+        >
 
-<span id="altText" class="logo-placeholder">دی</span>
+        <span id="altText" class="logo-placeholder">دی</span>
 
-</div>
+    </div>
 
-<h1>کافه دی</h1>
+    <h1>کافه دی</h1>
 
-<p class="subtitle">طعم دلچسب لحظه‌های ناب</p>
+    <p class="subtitle">طعم دلچسب لحظه‌های ناب</p>
 
-<div class="quote-box">
-«زندگی مثل یک فنجان قهوه است؛ تلخ و گرم، اما عطر و لحظه‌هایش تا ابد ماندگار... خوش آمدید به خلوت دنج کافه دی»
-</div>
+    <div class="quote-box">
+        «زندگی مثل یک فنجان قهوه است؛ تلخ و گرم، اما عطر و لحظه‌هایش تا ابد ماندگار... خوش آمدید به خلوت دنج کافه دی»
+    </div>
 
 </header>
 
 
 <nav class="category-nav">
 
-<button type="button" class="cat-btn" onclick="showSection('coffee',this)">
-منوی قهوه
-</button>
+    <button
+        type="button"
+        class="cat-btn"
+        onclick="showSection('coffee',this)"
+    >
+        منوی قهوه
+    </button>
 
-<button type="button" class="cat-btn" onclick="showSection('hot',this)">
-بار گرم
-</button>
+    <button
+        type="button"
+        class="cat-btn"
+        onclick="showSection('hot',this)"
+    >
+        بار گرم
+    </button>
 
-<button type="button" class="cat-btn" onclick="showSection('cold',this)">
-بار سرد
-</button>
+    <button
+        type="button"
+        class="cat-btn"
+        onclick="showSection('cold',this)"
+    >
+        بار سرد
+    </button>
 
-<button type="button" class="cat-btn" onclick="showSection('dessert',this)">
-دسر
-</button>
+    <button
+        type="button"
+        class="cat-btn"
+        onclick="showSection('dessert',this)"
+    >
+        دسر
+    </button>
 
-<button type="button" class="cat-btn" onclick="showSection('wheel',this)">
-🎡 گردونه شانس
-</button>
+    <button
+        type="button"
+        class="cat-btn"
+        onclick="showSection('wheel',this)"
+    >
+        🎡 گردونه شانس
+    </button>
 
 </nav>
 
 
 <main>
 
-
 <!-- ================= قهوه ================= -->
 
 <section id="coffee" class="menu-section">
 
-<h2>قهوه‌های تخصصی</h2>
+    <h2>قهوه‌های تخصصی</h2>
 
-<div class="card">
-<span class="item-name">تک ۱۰۰٪ روبوستا</span>
-<div class="price-wrapper">
-<span class="price-tag">۶۰</span>
-<span class="currency">هزار تومان</span>
-</div>
-</div>
+    <div class="card">
+        <span class="item-name">تک ۱۰۰٪ روبوستا</span>
+        <div class="price-wrapper">
+            <span class="price-tag">۶۰</span>
+            <span class="currency">هزار تومان</span>
+        </div>
+    </div>
 
-<div class="card">
-<span class="item-name">دبل ۱۰۰٪ روبوستا</span>
-<div class="price-wrapper">
-<span class="price-tag">۷۰</span>
-<span class="currency">هزار تومان</span>
-</div>
-</div>
+    <div class="card">
+        <span class="item-name">دبل ۱۰۰٪ روبوستا</span>
+        <div class="price-wrapper">
+            <span class="price-tag">۷۰</span>
+            <span class="currency">هزار تومان</span>
+        </div>
+    </div>
 
-<div class="card">
-<span class="item-name">تک ۸۰/۲۰ روبوستا</span>
-<div class="price-wrapper">
-<span class="price-tag">۶۰</span>
-<span class="currency">هزار تومان</span>
-</div>
-</div>
+    <div class="card">
+        <span class="item-name">تک ۸۰/۲۰ روبوستا</span>
+        <div class="price-wrapper">
+            <span class="price-tag">۶۰</span>
+            <span class="currency">هزار تومان</span>
+        </div>
+    </div>
 
-<div class="card">
-<span class="item-name">دبل ۸۰/۲۰ روبوستا</span>
-<div class="price-wrapper">
-<span class="price-tag">۷۰</span>
-<span class="currency">هزار تومان</span>
-</div>
-</div>
+    <div class="card">
+        <span class="item-name">دبل ۸۰/۲۰ روبوستا</span>
+        <div class="price-wrapper">
+            <span class="price-tag">۷۰</span>
+            <span class="currency">هزار تومان</span>
+        </div>
+    </div>
 
-<div class="card">
-<span class="item-name">تک ۷۰/۳۰ روبوستا</span>
-<div class="price-wrapper">
-<span class="price-tag">۶۵</span>
-<span class="currency">هزار تومان</span>
-</div>
-</div>
+    <div class="card">
+        <span class="item-name">تک ۷۰/۳۰ روبوستا</span>
+        <div class="price-wrapper">
+            <span class="price-tag">۶۵</span>
+            <span class="currency">هزار تومان</span>
+        </div>
+    </div>
 
-<div class="card">
-<span class="item-name">دبل ۷۰/۳۰ روبوستا</span>
-<div class="price-wrapper">
-<span class="price-tag">۷۵</span>
-<span class="currency">هزار تومان</span>
-</div>
-</div>
+    <div class="card">
+        <span class="item-name">دبل ۷۰/۳۰ روبوستا</span>
+        <div class="price-wrapper">
+            <span class="price-tag">۷۵</span>
+            <span class="currency">هزار تومان</span>
+        </div>
+    </div>
 
-<div class="card">
-<span class="item-name">تک ۱۰۰٪ عربیکا</span>
-<div class="price-wrapper">
-<span class="price-tag">۱۱۰</span>
-<span class="currency">هزار تومان</span>
-</div>
-</div>
+    <div class="card">
+        <span class="item-name">تک ۱۰۰٪ عربیکا</span>
+        <div class="price-wrapper">
+            <span class="price-tag">۱۱۰</span>
+            <span class="currency">هزار تومان</span>
+        </div>
+    </div>
 
-<div class="card">
-<span class="item-name">دبل ۱۰۰٪ عربیکا</span>
-<div class="price-wrapper">
-<span class="price-tag">۱۲۰</span>
-<span class="currency">هزار تومان</span>
-</div>
-</div>
+    <div class="card">
+        <span class="item-name">دبل ۱۰۰٪ عربیکا</span>
+        <div class="price-wrapper">
+            <span class="price-tag">۱۲۰</span>
+            <span class="currency">هزار تومان</span>
+        </div>
+    </div>
 
-<div class="card">
-<span class="item-name">تک ۸۰/۲۰ عربیکا</span>
-<div class="price-wrapper">
-<span class="price-tag">۸۰</span>
-<span class="currency">هزار تومان</span>
-</div>
-</div>
+    <div class="card">
+        <span class="item-name">تک ۸۰/۲۰ عربیکا</span>
+        <div class="price-wrapper">
+            <span class="price-tag">۸۰</span>
+            <span class="currency">هزار تومان</span>
+        </div>
+    </div>
 
-<div class="card">
-<span class="item-name">دبل ۸۰/۲۰ عربیکا</span>
-<div class="price-wrapper">
-<span class="price-tag">۹۰</span>
-<span class="currency">هزار تومان</span>
-</div>
-</div>
+    <div class="card">
+        <span class="item-name">دبل ۸۰/۲۰ عربیکا</span>
+        <div class="price-wrapper">
+            <span class="price-tag">۹۰</span>
+            <span class="currency">هزار تومان</span>
+        </div>
+    </div>
 
-<div class="card">
-<span class="item-name">تک ۷۰/۳۰ عربیکا</span>
-<div class="price-wrapper">
-<span class="price-tag">۸۵</span>
-<span class="currency">هزار تومان</span>
-</div>
-</div>
+    <div class="card">
+        <span class="item-name">تک ۷۰/۳۰ عربیکا</span>
+        <div class="price-wrapper">
+            <span class="price-tag">۸۵</span>
+            <span class="currency">هزار تومان</span>
+        </div>
+    </div>
 
-<div class="card">
-<span class="item-name">دبل ۷۰/۳۰ عربیکا</span>
-<div class="price-wrapper">
-<span class="price-tag">۹۵</span>
-<span class="currency">هزار تومان</span>
-</div>
-</div>
+    <div class="card">
+        <span class="item-name">دبل ۷۰/۳۰ عربیکا</span>
+        <div class="price-wrapper">
+            <span class="price-tag">۹۵</span>
+            <span class="currency">هزار تومان</span>
+        </div>
+    </div>
 
 </section>
 
@@ -641,79 +723,79 @@ footer{
 
 <section id="hot" class="menu-section">
 
-<h2>نوشیدنی‌های گرم</h2>
+    <h2>نوشیدنی‌های گرم</h2>
 
-<div class="card">
-<span class="item-name">کافی میکس</span>
-<div class="price-wrapper">
-<span class="price-tag">۸۰</span>
-<span class="currency">هزار تومان</span>
-</div>
-</div>
+    <div class="card">
+        <span class="item-name">کافی میکس</span>
+        <div class="price-wrapper">
+            <span class="price-tag">۸۰</span>
+            <span class="currency">هزار تومان</span>
+        </div>
+    </div>
 
-<div class="card">
-<span class="item-name">چای کرک</span>
-<div class="price-wrapper">
-<span class="price-tag">۸۵</span>
-<span class="currency">هزار تومان</span>
-</div>
-</div>
+    <div class="card">
+        <span class="item-name">چای کرک</span>
+        <div class="price-wrapper">
+            <span class="price-tag">۸۵</span>
+            <span class="currency">هزار تومان</span>
+        </div>
+    </div>
 
-<div class="card">
-<span class="item-name">هات چاکلت</span>
-<div class="price-wrapper">
-<span class="price-tag">۸۶</span>
-<span class="currency">هزار تومان</span>
-</div>
-</div>
+    <div class="card">
+        <span class="item-name">هات چاکلت</span>
+        <div class="price-wrapper">
+            <span class="price-tag">۸۶</span>
+            <span class="currency">هزار تومان</span>
+        </div>
+    </div>
 
-<div class="card">
-<span class="item-name">ماسالا</span>
-<div class="price-wrapper">
-<span class="price-tag">۸۵</span>
-<span class="currency">هزار تومان</span>
-</div>
-</div>
+    <div class="card">
+        <span class="item-name">ماسالا</span>
+        <div class="price-wrapper">
+            <span class="price-tag">۸۵</span>
+            <span class="currency">هزار تومان</span>
+        </div>
+    </div>
 
-<div class="card">
-<span class="item-name">لته</span>
-<div class="price-wrapper">
-<span class="price-tag">۱۴۰</span>
-<span class="currency">هزار تومان</span>
-</div>
-</div>
+    <div class="card">
+        <span class="item-name">لته</span>
+        <div class="price-wrapper">
+            <span class="price-tag">۱۴۰</span>
+            <span class="currency">هزار تومان</span>
+        </div>
+    </div>
 
-<div class="card">
-<span class="item-name">کاپوچینو</span>
-<div class="price-wrapper">
-<span class="price-tag">۸۰</span>
-<span class="currency">هزار تومان</span>
-</div>
-</div>
+    <div class="card">
+        <span class="item-name">کاپوچینو</span>
+        <div class="price-wrapper">
+            <span class="price-tag">۸۰</span>
+            <span class="currency">هزار تومان</span>
+        </div>
+    </div>
 
-<div class="card">
-<span class="item-name">شیر پسته</span>
-<div class="price-wrapper">
-<span class="price-tag">۸۵</span>
-<span class="currency">هزار تومان</span>
-</div>
-</div>
+    <div class="card">
+        <span class="item-name">شیر پسته</span>
+        <div class="price-wrapper">
+            <span class="price-tag">۸۵</span>
+            <span class="currency">هزار تومان</span>
+        </div>
+    </div>
 
-<div class="card">
-<span class="item-name">شیر زعفران</span>
-<div class="price-wrapper">
-<span class="price-tag">۸۵</span>
-<span class="currency">هزار تومان</span>
-</div>
-</div>
+    <div class="card">
+        <span class="item-name">شیر زعفران</span>
+        <div class="price-wrapper">
+            <span class="price-tag">۸۵</span>
+            <span class="currency">هزار تومان</span>
+        </div>
+    </div>
 
-<div class="card">
-<span class="item-name">موکا</span>
-<div class="price-wrapper">
-<span class="price-tag">۱۵۰</span>
-<span class="currency">هزار تومان</span>
-</div>
-</div>
+    <div class="card">
+        <span class="item-name">موکا</span>
+        <div class="price-wrapper">
+            <span class="price-tag">۱۵۰</span>
+            <span class="currency">هزار تومان</span>
+        </div>
+    </div>
 
 </section>
 
@@ -722,23 +804,23 @@ footer{
 
 <section id="cold" class="menu-section">
 
-<h2>نوشیدنی‌های سرد</h2>
+    <h2>نوشیدنی‌های سرد</h2>
 
-<div class="card">
-<span class="item-name">آیس لته</span>
-<div class="price-wrapper">
-<span class="price-tag">۱۵۰</span>
-<span class="currency">هزار تومان</span>
-</div>
-</div>
+    <div class="card">
+        <span class="item-name">آیس لته</span>
+        <div class="price-wrapper">
+            <span class="price-tag">۱۵۰</span>
+            <span class="currency">هزار تومان</span>
+        </div>
+    </div>
 
-<div class="card">
-<span class="item-name">آیس موکا</span>
-<div class="price-wrapper">
-<span class="price-tag">۱۶۰</span>
-<span class="currency">هزار تومان</span>
-</div>
-</div>
+    <div class="card">
+        <span class="item-name">آیس موکا</span>
+        <div class="price-wrapper">
+            <span class="price-tag">۱۶۰</span>
+            <span class="currency">هزار تومان</span>
+        </div>
+    </div>
 
 </section>
 
@@ -747,15 +829,15 @@ footer{
 
 <section id="dessert" class="menu-section">
 
-<h2>کیک و دسر</h2>
+    <h2>کیک و دسر</h2>
 
-<div class="card">
-<span class="item-name">کیک شکلاتی (هر اسلایس)</span>
-<div class="price-wrapper">
-<span class="price-tag">۷۰</span>
-<span class="currency">هزار تومان</span>
-</div>
-</div>
+    <div class="card">
+        <span class="item-name">کیک شکلاتی (هر اسلایس)</span>
+        <div class="price-wrapper">
+            <span class="price-tag">۷۰</span>
+            <span class="currency">هزار تومان</span>
+        </div>
+    </div>
 
 </section>
 
@@ -764,71 +846,75 @@ footer{
 
 <section id="wheel-section">
 
-<h2 class="wheel-title">🎡 گردونه شانس</h2>
+    <h2 class="wheel-title">🎡 گردونه شانس</h2>
 
-<p class="wheel-subtitle">
-شماره موبایلت رو وارد کن و شانست رو امتحان کن
-</p>
+    <p class="wheel-subtitle">
+        شماره موبایلت رو وارد کن و شانست رو امتحان کن
+    </p>
 
-<input
-    id="phone"
-    class="phone-input"
-    type="tel"
-    inputmode="numeric"
-    maxlength="13"
-    placeholder="شماره موبایل"
->
+    <input
+        id="phone"
+        class="phone-input"
+        type="tel"
+        inputmode="numeric"
+        maxlength="13"
+        placeholder="شماره موبایل"
+    >
 
-<div class="wheel-area">
+    <div class="wheel-area">
 
-<div class="pointer"></div>
+        <div class="pointer"></div>
 
-<div id="wheel" class="wheel">
+        <div id="wheel" class="wheel">
 
-<div class="wlabel w1">پوچ</div>
-<div class="wlabel w2">تخفیف</div>
-<div class="wlabel w3">تخفیف</div>
-<div class="wlabel w4">تخفیف</div>
-<div class="wlabel w5">تخفیف</div>
-<div class="wlabel w6">تخفیف</div>
-<div class="wlabel w7">تخفیف</div>
-<div class="wlabel w8">رایگان</div>
+            <div class="wlabel w1">پوچ</div>
+            <div class="wlabel w2">تخفیف</div>
+            <div class="wlabel w3">تخفیف</div>
+            <div class="wlabel w4">تخفیف</div>
+            <div class="wlabel w5">تخفیف</div>
+            <div class="wlabel w6">تخفیف</div>
+            <div class="wlabel w7">تخفیف</div>
+            <div class="wlabel w8">رایگان</div>
 
-<div class="wheel-center"></div>
+            <div class="wheel-center"></div>
 
-</div>
+        </div>
 
-</div>
+    </div>
 
-<button type="button" id="spin" class="spin-button">
-🎯 چرخاندن گردونه
-</button>
+    <button
+        type="button"
+        id="spin"
+        class="spin-button"
+    >
+        🎯 چرخاندن گردونه
+    </button>
 
-<div id="result" class="result"></div>
+    <div id="result" class="result"></div>
 
-<div id="freeBox" class="free-box">
+    <div id="freeBox" class="free-box">
 
-<p>🎁 یک آیتم رایگان برنده شدی!</p>
+        <p>🎁 یک آیتم رایگان برنده شدی!</p>
 
-<p>فقط یک آیتم انتخاب کن:</p>
+        <p>فقط یک آیتم انتخاب کن:</p>
 
-<input
-    id="freeItem"
-    class="free-item"
-    type="text"
-    maxlength="100"
-    placeholder="مثلاً لته"
->
+        <input
+            id="freeItem"
+            class="free-item"
+            type="text"
+            maxlength="100"
+            placeholder="مثلاً لته"
+        >
 
-<button
-    type="button"
-    id="freeButton"
-    class="free-button"
->
-ثبت آیتم رایگان
-</button>
+        <button
+            type="button"
+            id="freeButton"
+            class="free-button"
+        >
+            ثبت آیتم رایگان
+        </button>
 
-</div>
+    </div>
 
 </section>
 
@@ -837,227 +923,36 @@ footer{
 
 <footer>
 
-<a
-    href="https://instagram.com/cafedey2026"
-    target="_blank"
-    rel="noopener"
-    class="instagram-badge"
->
+    <a
+        href="https://instagram.com/cafedey2026"
+        target="_blank"
+        rel="noopener"
+        class="instagram-badge"
+    >
 
-<svg viewBox="0 0 24 24">
+        <svg viewBox="0 0 24 24">
+            <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069z"/>
+        </svg>
 
-<path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069z"/>
+        <span>@cafedey2026</span>
 
-</svg>
-
-<span>@cafedey2026</span>
-
-</a>
+    </a>
 
 </footer>
 
 
 <script>
 
-/* =========================
-   انتخاب سربرگ
-========================= */
+/* =========================================================
+   انتخاب دسته‌های منو
+========================================================= */
 
-function showSection(section,button){
+function showSection(section, button){
 
+    /* مخفی کردن همه بخش‌های منو */
     document.querySelectorAll(".menu-section").forEach(function(item){
         item.classList.remove("active");
     });
 
-    document.getElementById("wheel-section").classList.remove("active");
-
-    document.querySelectorAll(".cat-btn").forEach(function(btn){
-        btn.classList.remove("active");
-    });
-
-    button.classList.add("active");
-
-    if(section === "wheel"){
-
-        document.getElementById("wheel-section").classList.add("active");
-
-    }else{
-
-        document.getElementById(section).classList.add("active");
-
-    }
-
-}
-
-
-/* =========================
-   نمایش قهوه در شروع
-========================= */
-
-document.addEventListener("DOMContentLoaded",function(){
-
-    showSection(
-        "coffee",
-        document.querySelector(".cat-btn")
-    );
-
-});
-
-
-/* =========================
-   گردونه
-========================= */
-
-var WORKER =
-"https://cafe-di-discount.miladsh00.workers.dev/";
-
-var spinning = false;
-var rotation = 0;
-
-
-function normalizePhone(value){
-
-    return String(value)
-
-    .replace(/[۰-۹]/g,function(d){
-        return "۰۱۲۳۴۵۶۷۸۹".indexOf(d);
-    })
-
-    .replace(/[٠-٩]/g,function(d){
-        return "٠١٢٣٤٥٦٧٨٩".indexOf(d);
-    })
-
-    .replace(/[\s\-()]/g,"")
-
-    .trim();
-
-}
-
-
-document.getElementById("spin").addEventListener("click",async function(){
-
-    if(spinning){
-        return;
-    }
-
-    var phone =
-    normalizePhone(
-        document.getElementById("phone").value
-    );
-
-    var result =
-    document.getElementById("result");
-
-    if(!/^09\d{9}$/.test(phone)){
-
-        result.innerHTML =
-        "❌ لطفاً شماره موبایل معتبر وارد کنید.";
-
-        return;
-    }
-
-    spinning = true;
-    this.disabled = true;
-
-    result.innerHTML =
-    "⏳ در حال بررسی...";
-
-
-    try{
-
-        var checkResponse =
-        await fetch(
-            WORKER +
-            "check?phone=" +
-            encodeURIComponent(phone)
-        );
-
-        var check =
-        await checkResponse.json();
-
-
-        if(check.canSpin === false){
-
-            result.innerHTML =
-            "⚠️ این شماره قبلاً از گردونه استفاده کرده است.";
-
-            spinning = false;
-            this.disabled = false;
-
-            return;
-        }
-
-
-        var response =
-        await fetch(
-            WORKER + "spin",
-            {
-                method:"POST",
-
-                headers:{
-                    "Content-Type":"application/json"
-                },
-
-                body:JSON.stringify({
-                    phone:phone
-                })
-            }
-        );
-
-
-        var data =
-        await response.json();
-
-
-        if(!response.ok){
-
-            result.innerHTML =
-            "❌ " +
-            (
-                data.message ||
-                "خطایی رخ داد."
-            );
-
-            spinning = false;
-            this.disabled = false;
-
-            return;
-        }
-
-
-        var prize = data.result;
-
-
-        var target = 0;
-
-
-        if(prize.type === "lose"){
-
-            target = 0;
-
-        }else if(prize.type === "free"){
-
-            target = 7;
-
-        }else{
-
-            target =
-            1 +
-            Math.floor(
-                Math.random() * 6
-            );
-
-        }
-
-
-        var targetAngle =
-        360 -
-        (
-            target * 45 +
-            22.5
-        );
-
-
-        rotation +=
-        2160 +
-  
+    /* مخفی کردن گردونه */
+    document.getElementById("wheel-section").classList.remov

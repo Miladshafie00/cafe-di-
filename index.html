@@ -5,7 +5,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>منوی دیجیتال کافه دی</title>
 
-    <!-- فونت‌های گوگل لاله زار و وزیرمتن -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Lalezar&family=Vazirmatn:wght@300;400;600;700&display=swap" rel="stylesheet">
@@ -19,16 +18,24 @@
             --font-body: 'Vazirmatn', sans-serif;
         }
 
-        * { 
-            margin: 0; 
-            padding: 0; 
-            box-sizing: border-box; 
-            -webkit-tap-highlight-color: transparent; 
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            -webkit-tap-highlight-color: transparent;
         }
 
         body {
             font-family: var(--font-body);
-            background: linear-gradient(rgba(12, 12, 12, 0.88), rgba(12, 12, 12, 0.94)), var(--bg-image);
+
+            /* بک گراند روشن‌تر */
+            background:
+                linear-gradient(
+                    rgba(12, 12, 12, 0.68),
+                    rgba(12, 12, 12, 0.78)
+                ),
+                var(--bg-image);
+
             background-size: cover;
             background-position: center;
             background-attachment: fixed;
@@ -38,132 +45,139 @@
             padding-bottom: 30px;
         }
 
-        header { 
-            text-align: center; 
-            padding: 35px 20px 15px; 
+        header {
+            text-align: center;
+            padding: 30px 15px 12px;
         }
 
         .logo-container {
-            width: 120px; 
-            height: 120px;
-            margin: 0 auto 14px;
+            width: 110px;
+            height: 110px;
+            margin: 0 auto 12px;
             border-radius: 50%;
             border: 2.5px solid var(--gold-color);
             box-shadow: 0 0 25px rgba(229, 184, 130, 0.35);
             overflow: hidden;
             background: #181818;
-            display: flex; 
-            align-items: center; 
+            display: flex;
+            align-items: center;
             justify-content: center;
             transition: transform 0.3s ease;
         }
 
-        .logo-container:hover { 
-            transform: scale(1.05); 
+        .logo-container:hover {
+            transform: scale(1.05);
         }
 
-        .logo-container img { 
-            width: 100%; 
-            height: 100%; 
-            object-fit: cover; 
-            display: block; 
+        .logo-container img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block;
         }
 
         .logo-placeholder {
             font-family: var(--font-title);
-            font-size: 46px;
+            font-size: 42px;
             color: var(--gold-bright);
             display: none;
         }
 
         header h1 {
             font-family: var(--font-title);
-            font-size: 2.9rem;
+            font-size: 2.5rem;
             color: var(--gold-bright);
             letter-spacing: 1px;
             text-shadow: 0 0 16px rgba(229, 184, 130, 0.45);
             margin-bottom: 2px;
         }
 
-        header .subtitle { 
-            color: #d1d1d1; 
-            font-size: 0.95rem; 
-            font-weight: 300; 
-            margin-bottom: 12px;
+        header .subtitle {
+            color: #e0e0e0;
+            font-size: 0.88rem;
+            font-weight: 300;
+            margin-bottom: 10px;
         }
 
-        /* بخش دکلمه */
         .quote-box {
             max-width: 480px;
-            margin: 0 auto 10px;
-            padding: 10px 16px;
-            background: rgba(229, 184, 130, 0.05);
+            margin: 0 auto 8px;
+            padding: 9px 14px;
+            background: rgba(229, 184, 130, 0.08);
             border-right: 3px solid var(--gold-color);
             border-left: 3px solid var(--gold-color);
             border-radius: 12px;
-            font-size: 0.9rem;
+            font-size: 0.82rem;
             line-height: 1.7;
-            color: #e0d0be;
+            color: #e8d7c5;
             font-style: italic;
         }
+
+        /* =========================
+           دسته‌بندی‌ها
+        ========================= */
 
         .category-nav {
             display: flex;
             overflow-x: auto;
             white-space: nowrap;
             justify-content: center;
-            gap: 10px;
-            padding: 14px 15px;
+            gap: 7px;
+            padding: 11px 8px;
             position: sticky;
             top: 0;
-            background: rgba(14, 14, 14, 0.9);
+            background: rgba(14, 14, 14, 0.88);
             backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
             z-index: 100;
             border-bottom: 1px solid rgba(229, 184, 130, 0.22);
         }
 
-        .category-nav::-webkit-scrollbar { display: none; }
+        .category-nav::-webkit-scrollbar {
+            display: none;
+        }
 
         .cat-btn {
             background: rgba(255, 255, 255, 0.04);
-
-border: 1.5px solid rgba(229, 184, 130, 0.5);
+            border: 1.5px solid rgba(229, 184, 130, 0.5);
             color: var(--gold-color);
-            padding: 7px 20px;
-            border-radius: 30px;
+            padding: 6px 11px;
+            border-radius: 25px;
             cursor: pointer;
-            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            transition: all 0.3s ease;
             font-family: var(--font-title);
-            font-size: 1.15rem;
+            font-size: 0.88rem;
             flex-shrink: 0;
+            line-height: 1.4;
         }
 
-        .cat-btn.active, .cat-btn:hover {
+        .cat-btn.active,
+        .cat-btn:hover {
             background: linear-gradient(135deg, #e5b882, #c79053);
             color: #121212;
             border-color: #ffd194;
-            box-shadow: 0 0 16px rgba(229, 184, 130, 0.45);
-            transform: translateY(-2px);
+            box-shadow: 0 0 14px rgba(229, 184, 130, 0.45);
+            transform: translateY(-1px);
         }
 
-        main { 
-            max-width: 580px; 
-            margin: 20px auto; 
-            padding: 0 16px; 
+        main {
+            max-width: 580px;
+            margin: 20px auto;
+            padding: 0 16px;
         }
 
         .menu-section h2 {
             text-align: center;
             font-family: var(--font-title);
-            font-size: 2.1rem;
+            font-size: 1.9rem;
             color: var(--gold-bright);
             margin-bottom: 20px;
             text-shadow: 0 0 10px rgba(229, 184, 130, 0.25);
         }
 
         .card {
-            background: rgba(255, 255, 255, 0.045);
-            border: 1px solid rgba(255, 255, 255, 0.08);
+            background: rgba(255, 255, 255, 0.055);
+            border: 1px solid rgba(255, 255, 255, 0.10);
             backdrop-filter: blur(8px);
             border-radius: 16px;
             padding: 14px 20px;
@@ -175,37 +189,286 @@ border: 1.5px solid rgba(229, 184, 130, 0.5);
         }
 
         .card:hover {
-            background: rgba(255, 255, 255, 0.08);
+            background: rgba(255, 255, 255, 0.10);
             border-color: rgba(229, 184, 130, 0.4);
             transform: translateX(-4px);
         }
 
         .item-name {
-            font-size: 1.05rem;
+            font-size: 1.02rem;
             font-weight: 600;
             color: #ffffff;
         }
 
-        .price-wrapper { 
-            display: flex; 
-            align-items: baseline; 
-            gap: 5px; 
+        .price-wrapper {
+            display: flex;
+            align-items: baseline;
+            gap: 5px;
+            flex-shrink: 0;
         }
 
         .price-tag {
             font-family: var(--font-title);
             color: var(--gold-bright);
-            font-size: 1.45rem;
+            font-size: 1.4rem;
             letter-spacing: 0.5px;
         }
 
-        .currency { 
-            font-size: 0.8rem; 
-            font-weight: 400; 
-            color: #c4c4c4; 
+        .currency {
+            font-size: 0.75rem;
+            font-weight: 400;
+            color: #d0d0d0;
         }
 
-        /* فوتر و دکمه اینستاگرام */
+        /* =========================
+           گردونه شانس
+        ========================= */
+
+        .wheel-section {
+            text-align: center;
+        }
+
+        .wheel-description {
+            color: #ddd;
+            font-size: 0.9rem;
+            line-height: 1.8;
+            margin: -8px auto 18px;
+            max-width: 450px;
+        }
+
+        .phone-box {
+            background: rgba(255, 255, 255, 0.06);
+            border: 1px solid rgba(229, 184, 130, 0.35);
+            border-radius: 16px;
+            padding: 18px;
+            margin-bottom: 22px;
+        }
+
+        .phone-box label {
+            display: block;
+            color: var(--gold-bright);
+            font-family: var(--font-title);
+            font-size: 1.05rem;
+            margin-bottom: 10px;
+        }
+
+        #phoneInput {
+            width: 100%;
+            max-width: 330px;
+            padding: 12px 15px;
+            border-radius: 12px;
+            border: 1px solid rgba(229, 184, 130, 0.45);
+            background: rgba(0, 0, 0, 0.45);
+            color: white;
+            outline: none;
+            text-align: center;
+            font-family: var(--font-body);
+            font-size: 1rem;
+            direction: ltr;
+        }
+
+        #phoneInput:focus {
+            border-color: var(--gold-bright);
+            box-shadow: 0 0 12px rgba(229, 184, 130, 0.2);
+        }
+
+        .wheel-wrapper {
+            position: relative;
+            width: min(330px, 86vw);
+            height: min(330px, 86vw);
+            margin: 10px auto 25px;
+        }
+
+        #wheel {
+            width: 100%;
+            height: 100%;
+            border-radius: 50%;
+            border: 8px solid #e5b882;
+            box-shadow:
+                0 0 0 5px rgba(229, 184, 130, 0.12),
+                0 0 35px rgba(229, 184, 130, 0.3);
+            background: conic-gradient(
+                #6d4c41 0deg 45deg,
+                #9b6b43 45deg 90deg,
+                #70513e 90deg 135deg,
+                #b17d4f 135deg 180deg,
+                #65483b 180deg 225deg,
+                #9a6842 225deg 270deg,
+                #73513d 270deg 315deg,
+                #ad794b 315deg 360deg
+            );
+            position: relative;
+            transition: transform 5s cubic-bezier(0.12, 0.8, 0.15, 1);
+            overflow: hidden;
+        }
+
+        .wheel-label {
+            position: absolute;
+            left: 50%;
+            top: 50%;
+            width: 100%;
+            height: 100%;
+            transform-origin: center;
+            font-family: var(--font-title);
+            font-size: 1.05rem;
+            color: #fff;
+            text-shadow: 1px 1px 3px #000;
+            pointer-events: none;
+        }
+
+        .wheel-label span {
+            position: absolute;
+            top: 14%;
+            left: 50%;
+            transform: translateX(-50%);
+            white-space: nowrap;
+        }
+
+        .wheel-label:nth-child(1) {
+            transform: translate(-50%, -50%) rotate(22.5deg);
+        }
+
+        .wheel-label:nth-child(2) {
+            transform: translate(-50%, -50%) rotate(67.5deg);
+        }
+
+        .wheel-label:nth-child(3) {
+            transform: translate(-50%, -50%) rotate(112.5deg);
+        }
+
+        .wheel-label:nth-child(4) {
+            transform: translate(-50%, -50%) rotate(157.5deg);
+        }
+
+        .wheel-label:nth-child(5) {
+            transform: translate(-50%, -50%) rotate(202.5deg);
+        }
+
+        .wheel-label:nth-child(6) {
+            transform: translate(-50%, -50%) rotate(247.5deg);
+        }
+
+        .wheel-label:nth-child(7) {
+            transform: translate(-50%, -50%) rotate(292.5deg);
+        }
+
+        .wheel-label:nth-child(8) {
+            transform: translate(-50%, -50%) rotate(337.5deg);
+        }
+
+        .wheel-center {
+            position: absolute;
+            z-index: 5;
+            left: 50%;
+            top: 50%;
+            transform: translate(-50%, -50%);
+            width: 65px;
+            height: 65px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, #ffd194, #c79053);
+            border: 4px solid #fff0d2;
+            box-shadow: 0 0 18px rgba(0,0,0,0.45);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #1a120d;
+            font-family: var(--font-title);
+            font-size: 1.2rem;
+        }
+
+        .wheel-pointer {
+            position: absolute;
+            z-index: 10;
+            top: -8px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 0;
+            height: 0;
+            border-left: 15px solid transparent;
+            border-right: 15px solid transparent;
+            border-top: 30px solid #ffd194;
+            filter: drop-shadow(0 3px 4px rgba(0,0,0,0.7));
+        }
+
+        #spinBtn {
+            border: none;
+            outline: none;
+            background: linear-gradient(135deg, #e5b882, #c79053);
+            color: #15100d;
+            padding: 12px 35px;
+            border-radius: 30px;
+            font-family: var(--font-title);
+            font-size: 1.2rem;
+            cursor: pointer;
+            box-shadow: 0 5px 18px rgba(229, 184, 130, 0.3);
+            transition: 0.25s ease;
+        }
+
+        #spinBtn:hover {
+            transform: translateY(-2px) scale(1.02);
+            box-shadow: 0 7px 22px rgba(229, 184, 130, 0.45);
+        }
+
+        #spinBtn:disabled {
+            opacity: 0.5;
+            cursor: not-allowed;
+            transform: none;
+        }
+
+        #wheelResult {
+            min-height: 30px;
+            margin: 18px auto 5px;
+            color: var(--gold-bright);
+            font-family: var(--font-title);
+            font-size: 1.35rem;
+        }
+
+        .free-box {
+            display: none;
+            margin: 18px auto 0;
+            padding: 18px;
+            background: rgba(229, 184, 130, 0.08);
+            border: 1px solid rgba(229, 184, 130, 0.35);
+            border-radius: 16px;
+        }
+
+        .free-box.show {
+            display: block;
+        }
+
+        .free-box p {
+            color: #fff;
+            margin-bottom: 12px;
+            font-size: 0.9rem;
+        }
+
+        .free-item-btn {
+            border: 1px solid rgba(229, 184, 130, 0.5);
+            background: rgba(255,255,255,0.05);
+            color: var(--gold-bright);
+            border-radius: 10px;
+            padding: 8px 12px;
+            margin: 4px;
+            font-family: var(--font-body);
+            cursor: pointer;
+        }
+
+        .free-item-btn:hover {
+            background: var(--gold-color);
+            color: #111;
+        }
+
+        #message {
+            min-height: 24px;
+            margin-top: 10px;
+            font-size: 0.82rem;
+            color: #e4c8a6;
+        }
+
+        /* =========================
+           فوتر
+        ========================= */
+
         footer {
             text-align: center;
             margin-top: 35px;
@@ -238,8 +501,47 @@ border: 1.5px solid rgba(229, 184, 130, 0.5);
             height: 20px;
             fill: currentColor;
         }
+
+        /* موبایل */
+        @media (max-width: 520px) {
+            .category-nav {
+                justify-content: flex-start;
+                gap: 5px;
+                padding: 9px 6px;
+            }
+
+            .cat-btn {
+                padding: 6px 8px;
+                font-size: 0.78rem;
+            }
+
+            header h1 {
+                font-size: 2.3rem;
+            }
+
+            .quote-box {
+                font-size: 0.78rem;
+            }
+
+            .card {
+                padding: 13px 15px;
+            }
+
+            .item-name {
+                font-size: 0.92rem;
+            }
+
+            .price-tag {
+                font-size: 1.25rem;
+            }
+
+            .currency {
+                font-size: 0.68rem;
+            }
+        }
     </style>
 </head>
+
 <body>
 
     <header>
@@ -248,20 +550,38 @@ border: 1.5px solid rgba(229, 184, 130, 0.5);
                  onerror="this.style.display='none'; document.getElementById('altText').style.display='block';">
             <span id="altText" class="logo-placeholder">دی</span>
         </div>
+
         <h1>کافه دی</h1>
+
         <p class="subtitle">طعم دلچسب لحظه‌های ناب</p>
-        
-        <!-- دکلمه -->
+
         <div class="quote-box">
             «زندگی مثل یک فنجان قهوه است؛ تلخ و گرم، اما عطر و لحظه‌هایش تا ابد ماندگار... خوش آمدید به خلوت دنج کافه دی»
         </div>
     </header>
 
-<nav class="category-nav">
-        <button class="cat-btn active" data-cat="coffee">منوی قهوه</button>
-        <button class="cat-btn" data-cat="hot">بار گرم</button>
-        <button class="cat-btn" data-cat="cold">بار سرد</button>
-        <button class="cat-btn" data-cat="dessert">دسر</button>
+    <nav class="category-nav">
+
+        <button class="cat-btn active" data-cat="coffee">
+            ☕ قهوه
+        </button>
+
+        <button class="cat-btn" data-cat="hot">
+            🔥 گرم
+        </button>
+
+        <button class="cat-btn" data-cat="cold">
+            🧊 سرد
+        </button>
+
+        <button class="cat-btn" data-cat="dessert">
+            🍰 دسر
+        </button>
+
+        <button class="cat-btn" data-cat="wheel">
+            🎡 شانس
+        </button>
+
     </nav>
 
     <main id="menu-content"></main>
@@ -271,12 +591,20 @@ border: 1.5px solid rgba(229, 184, 130, 0.5);
             <svg viewBox="0 0 24 24">
                 <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/>
             </svg>
+
             <span>@cafedey2026</span>
         </a>
     </footer>
 
+
     <script>
+
+        /* =========================
+           اطلاعات منو
+        ========================= */
+
         const menuData = {
+
             coffee: {
                 title: 'قهوه‌های تخصصی',
                 items: [
@@ -290,10 +618,11 @@ border: 1.5px solid rgba(229, 184, 130, 0.5);
                     { n: 'دبل ۱۰۰٪ عربیکا', p: '۱۲۰' },
                     { n: 'تک ۸۰/۲۰ عربیکا', p: '۸۰' },
                     { n: 'دبل ۸۰/۲۰ عربیکا', p: '۹۰' },
-                    { n: 'تک ۷۰/۳۰ عربیکا', p: '۸۵' },     
+                    { n: 'تک ۷۰/۳۰ عربیکا', p: '۸۵' },
                     { n: 'دبل ۷۰/۳۰ عربیکا', p: '۹۵' }
                 ]
             },
+
             hot: {
                 title: 'نوشیدنی‌های گرم',
                 items: [
@@ -308,6 +637,7 @@ border: 1.5px solid rgba(229, 184, 130, 0.5);
                     { n: 'موکا', p: '۱۵۰' }
                 ]
             },
+
             cold: {
                 title: 'نوشیدنی‌های سرد',
                 items: [
@@ -315,47 +645,45 @@ border: 1.5px solid rgba(229, 184, 130, 0.5);
                     { n: 'آیس موکا', p: '۱۶۰' }
                 ]
             },
+
             dessert: {
                 title: 'کیک و دسر',
                 items: [
                     { n: '(کیک شکلاتی (هر اسلایس', p: '۷۰' }
                 ]
             }
+
         };
 
-        function showCat(cat, clickedBtn) {
-            const data = menuData[cat];
-            if (!data) return;
 
-            document.querySelectorAll('.cat-btn').forEach(function (btn) {
+        /* =========================
+           نمایش منو
+        ========================= */
+
+        function showCat(cat, clickedBtn) {
+
+            document.querySelectorAll('.cat-btn').forEach(function(btn) {
                 btn.classList.remove('active');
             });
-            if (clickedBtn) clickedBtn.classList.add('active');
 
-            let html = '<div class="menu-section"><h2>' + data.title + '</h2>';
+            if (clickedBtn) {
+                clickedBtn.classList.add('active');
+            }
 
-data.items.forEach(function (item) {
-                html += '<div class="card">' +
-                            '<span class="item-name">' + item.n + '</span>' +
-                            '<div class="price-wrapper">' +
-                                '<span class="price-tag">' + item.p + '</span>' +
-                                '<span class="currency">هزار تومان</span>' +
-                            '</div>' +
-                        '</div>';
-            });
-            html += '</div>';
-            document.getElementById('menu-content').innerHTML = html;
-        }
+            if (cat === 'wheel') {
+                showWheel();
+                return;
+            }
 
-        document.addEventListener('DOMContentLoaded', function () {
-            const buttons = document.querySelectorAll('.cat-btn');
-            buttons.forEach(function (button) {
-                button.addEventListener('click', function () {
-                    showCat(this.getAttribute('data-cat'), this);
-                });
-            });
-            showCat('coffee', document.querySelector('.cat-btn[data-cat="coffee"]'));
-        });
-    </script>
-</body>
-</html>
+            const data = menuData[cat];
+
+            if (!data) return;
+
+            let html = '<div class="menu-section">';
+            html += '<h2>' + data.title + '</h2>';
+
+            data.items.forEach(function(item) {
+
+                html +=
+                    '<div class="card">' +
+                      

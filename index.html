@@ -3,6 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
 <title>منوی دیجیتال کافه دی</title>
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -12,11 +13,11 @@
 <style>
 
 :root{
-    --bg-image:url('m.jpg');
     --gold:#e5b882;
     --gold-bright:#ffd194;
     --font-title:'Lalezar',sans-serif;
     --font-body:'Vazirmatn',sans-serif;
+    --bg-image:url('m.jpg');
 }
 
 *{
@@ -28,22 +29,25 @@
 
 body{
     font-family:var(--font-body);
+    color:#fff;
+    min-height:100vh;
+    padding-bottom:30px;
+
     background:
-        linear-gradient(rgba(12,12,12,.88),rgba(12,12,12,.94)),
+        linear-gradient(
+            rgba(12,12,12,.88),
+            rgba(12,12,12,.94)
+        ),
         var(--bg-image);
+
     background-size:cover;
     background-position:center;
     background-attachment:fixed;
     background-color:#0d0d0d;
-    color:#f5f5f5;
-    min-height:100vh;
-    padding-bottom:30px;
 }
 
 
-/* =========================
-   HEADER
-========================= */
+/* ================= HEADER ================= */
 
 header{
     text-align:center;
@@ -53,14 +57,18 @@ header{
 .logo-container{
     width:110px;
     height:110px;
+
     margin:0 auto 12px;
 
     border-radius:50%;
+
     border:2.5px solid var(--gold);
 
-    box-shadow:0 0 25px rgba(229,184,130,.35);
+    box-shadow:
+        0 0 25px rgba(229,184,130,.35);
 
     overflow:hidden;
+
     background:#181818;
 
     display:flex;
@@ -77,16 +85,24 @@ header{
 
 .logo-placeholder{
     display:none;
+
     font-family:var(--font-title);
     font-size:42px;
+
     color:var(--gold-bright);
 }
 
 header h1{
     font-family:var(--font-title);
+
     font-size:2.5rem;
+
     color:var(--gold-bright);
-    text-shadow:0 0 16px rgba(229,184,130,.45);
+
+    text-shadow:
+        0 0 16px rgba(229,184,130,.45);
+
+    margin-bottom:2px;
 }
 
 .subtitle{
@@ -97,6 +113,7 @@ header h1{
 
 .quote-box{
     max-width:480px;
+
     margin:0 auto;
 
     padding:8px 13px;
@@ -115,31 +132,31 @@ header h1{
 }
 
 
-/* =========================
-   CATEGORY BUTTONS
-========================= */
+/* ================= NAV ================= */
 
 .category-nav{
+
     position:sticky;
     top:0;
     z-index:100;
 
-    display:flex;
     width:100%;
 
-    justify-content:center;
+    display:flex;
 
     gap:5px;
 
     padding:10px 5px;
 
-    background:rgba(14,14,14,.95);
+    background:rgba(14,14,14,.96);
 
     backdrop-filter:blur(12px);
 
-    border-bottom:1px solid rgba(229,184,130,.22);
+    border-bottom:
+        1px solid rgba(229,184,130,.22);
 
     overflow-x:auto;
+
     scrollbar-width:none;
 }
 
@@ -147,67 +164,85 @@ header h1{
     display:none;
 }
 
+
+/* مهم: دکمه‌ها لینک هستند */
+
 .cat-btn{
-    flex:1 1 auto;
 
-    min-width:0;
+    flex:1 0 auto;
 
-    background:rgba(255,255,255,.04);
+    min-width:65px;
 
-    border:1px solid rgba(229,184,130,.5);
-
-    color:var(--gold);
-
-    padding:6px 5px;
+    padding:7px 8px;
 
     border-radius:25px;
 
-    cursor:pointer;
+    border:
+        1px solid rgba(229,184,130,.5);
+
+    background:
+        rgba(255,255,255,.04);
+
+    color:var(--gold);
 
     font-family:var(--font-title);
 
     font-size:.74rem;
 
+    text-align:center;
+
     white-space:nowrap;
 
-    text-align:center;
+    text-decoration:none;
+
+    cursor:pointer;
+
+    display:block;
 }
 
-.cat-btn.active{
-    background:linear-gradient(135deg,#e5b882,#c79053);
+.cat-btn:hover,
+.cat-btn:active{
 
-    color:#121212;
+    background:
+        linear-gradient(
+            135deg,
+            #e5b882,
+            #c79053
+        );
+
+    color:#111;
 
     border-color:#ffd194;
-
-    box-shadow:0 0 14px rgba(229,184,130,.45);
 }
 
 
-/* =========================
-   MAIN
-========================= */
+/* ================= MAIN ================= */
 
 main{
     max-width:580px;
+
     margin:18px auto;
+
     padding:0 14px;
 }
 
 
-/* =========================
-   MENU
-========================= */
+/* ================= MENU ================= */
 
 .menu-section{
+
     display:none;
+
 }
 
 .menu-section.active{
+
     display:block;
+
 }
 
 .menu-section h2{
+
     text-align:center;
 
     font-family:var(--font-title);
@@ -217,12 +252,19 @@ main{
     color:var(--gold-bright);
 
     margin-bottom:16px;
+
+    text-shadow:
+        0 0 10px rgba(229,184,130,.25);
 }
 
-.card{
-    background:rgba(255,255,255,.045);
 
-    border:1px solid rgba(255,255,255,.08);
+.card{
+
+    background:
+        rgba(255,255,255,.045);
+
+    border:
+        1px solid rgba(255,255,255,.08);
 
     backdrop-filter:blur(8px);
 
@@ -239,68 +281,99 @@ main{
     align-items:center;
 }
 
+
 .item-name{
+
     font-size:.9rem;
+
     font-weight:600;
+
     color:#fff;
 }
 
+
 .price-wrapper{
+
     display:flex;
+
     align-items:baseline;
+
     gap:4px;
+
     flex-shrink:0;
 }
 
+
 .price-tag{
+
     font-family:var(--font-title);
+
     color:var(--gold-bright);
+
     font-size:1.2rem;
 }
 
+
 .currency{
+
     font-size:.65rem;
+
     color:#c4c4c4;
 }
 
 
-/* =========================
-   WHEEL
-========================= */
+/* ================= WHEEL ================= */
 
 #wheel-section{
+
     display:none;
+
     text-align:center;
+
 }
 
 #wheel-section.active{
+
     display:block;
+
 }
 
 .wheel-title{
+
     font-family:var(--font-title);
+
     font-size:1.9rem;
+
     color:var(--gold-bright);
+
     margin-bottom:3px;
 }
 
 .wheel-subtitle{
+
     color:#ccc;
+
     font-size:.76rem;
+
     margin-bottom:12px;
 }
 
+
 .phone-input{
+
     width:100%;
+
     max-width:310px;
 
     padding:10px;
 
     border-radius:10px;
 
-    border:1px solid rgba(229,184,130,.55);
+    border:
+        1px solid rgba(229,184,130,.55);
 
-    background:rgba(0,0,0,.4);
+    background:
+        rgba(0,0,0,.4);
 
     color:#fff;
 
@@ -313,7 +386,9 @@ main{
     font-family:var(--font-body);
 }
 
+
 .wheel-area{
+
     position:relative;
 
     width:250px;
@@ -322,13 +397,16 @@ main{
     margin:22px auto 17px;
 }
 
+
 .pointer{
+
     position:absolute;
 
     z-index:20;
 
     left:50%;
-    top:-5px;
+
+    top:-6px;
 
     transform:translateX(-50%);
 
@@ -336,13 +414,18 @@ main{
     height:0;
 
     border-left:13px solid transparent;
-    border-right:13px solid transparent;
-    border-top:27px solid white;
 
-    filter:drop-shadow(0 2px 3px black);
+    border-right:13px solid transparent;
+
+    border-top:27px solid #fff;
+
+    filter:
+        drop-shadow(0 2px 3px #000);
 }
 
+
 .wheel{
+
     position:relative;
 
     width:100%;
@@ -355,24 +438,36 @@ main{
     overflow:hidden;
 
     background:
+
         conic-gradient(
+
             #4b3020 0deg 45deg,
+
             #a96f39 45deg 90deg,
+
             #6e482d 90deg 135deg,
+
             #b47c43 135deg 180deg,
+
             #573823 180deg 225deg,
+
             #c18c52 225deg 270deg,
+
             #80512c 270deg 315deg,
+
             #d5a15e 315deg 360deg
         );
 
     transition:
         transform 5s cubic-bezier(.12,.72,.16,1);
 
-    box-shadow:0 5px 25px rgba(0,0,0,.5);
+    box-shadow:
+        0 5px 25px rgba(0,0,0,.5);
 }
 
+
 .wheel-center{
+
     position:absolute;
 
     z-index:10;
@@ -383,16 +478,22 @@ main{
     left:50%;
     top:50%;
 
-    transform:translate(-50%,-50%);
+    transform:
+        translate(-50%,-50%);
 
     border-radius:50%;
 
     background:#151515;
 
-    border:4px solid var(--gold);
+    border:
+        4px solid var(--gold);
 }
 
+
+/* نوشته‌های گردونه */
+
 .wlabel{
+
     position:absolute;
 
     left:50%;
@@ -411,20 +512,71 @@ main{
 
     color:#fff;
 
-    text-shadow:0 1px 4px #000;
+    text-shadow:
+        0 1px 4px #000;
 }
 
-.w1{transform:rotate(22.5deg) translateY(-91px) rotate(-22.5deg);}
-.w2{transform:rotate(67.5deg) translateY(-91px) rotate(-67.5deg);}
-.w3{transform:rotate(112.5deg) translateY(-91px) rotate(-112.5deg);}
-.w4{transform:rotate(157.5deg) translateY(-91px) rotate(-157.5deg);}
-.w5{transform:rotate(202.5deg) translateY(-91px) rotate(-202.5deg);}
-.w6{transform:rotate(247.5deg) translateY(-91px) rotate(-247.5deg);}
-.w7{transform:rotate(292.5deg) translateY(-91px) rotate(-292.5deg);}
-.w8{transform:rotate(337.5deg) translateY(-91px) rotate(-337.5deg);}
+.w1{
+    transform:
+        rotate(22.5deg)
+        translateY(-91px)
+        rotate(-22.5deg);
+}
+
+.w2{
+    transform:
+        rotate(67.5deg)
+        translateY(-91px)
+        rotate(-67.5deg);
+}
+
+.w3{
+    transform:
+        rotate(112.5deg)
+        translateY(-91px)
+        rotate(-112.5deg);
+}
+
+.w4{
+    transform:
+        rotate(157.5deg)
+        translateY(-91px)
+        rotate(-157.5deg);
+}
+
+.w5{
+    transform:
+        rotate(202.5deg)
+        translateY(-91px)
+        rotate(-202.5deg);
+}
+
+.w6{
+    transform:
+        rotate(247.5deg)
+        translateY(-91px)
+        rotate(-247.5deg);
+}
+
+.w7{
+    transform:
+        rotate(292.5deg)
+        translateY(-91px)
+        rotate(-292.5deg);
+}
+
+.w8{
+    transform:
+        rotate(337.5deg)
+        translateY(-91px)
+        rotate(-337.5deg);
+}
+
 
 .spin-button{
+
     width:100%;
+
     max-width:310px;
 
     padding:11px;
@@ -433,7 +585,12 @@ main{
 
     border-radius:10px;
 
-    background:linear-gradient(135deg,#e5b882,#c79053);
+    background:
+        linear-gradient(
+            135deg,
+            #e5b882,
+            #c79053
+        );
 
     color:#111;
 
@@ -448,7 +605,9 @@ main{
     opacity:.55;
 }
 
+
 .result{
+
     min-height:45px;
 
     margin-top:12px;
@@ -459,6 +618,7 @@ main{
 }
 
 .win{
+
     color:var(--gold-bright);
 
     font-family:var(--font-title);
@@ -467,55 +627,68 @@ main{
 }
 
 .code{
+
     display:inline-block;
 
     direction:ltr;
 
     padding:3px 9px;
 
-    border:1px dashed var(--gold);
+    border:
+        1px dashed var(--gold);
 
     border-radius:7px;
 
     color:var(--gold-bright);
 
-    background:rgba(229,184,130,.1);
+    background:
+        rgba(229,184,130,.1);
 
     font-weight:bold;
 }
 
+
 .free-box{
+
     display:none;
 
     width:100%;
+
     max-width:310px;
 
     margin:10px auto;
 
     padding:12px;
 
-    border:1px solid rgba(229,184,130,.35);
+    border:
+        1px solid rgba(229,184,130,.35);
 
     border-radius:11px;
 
-    background:rgba(0,0,0,.3);
+    background:
+        rgba(0,0,0,.3);
 }
 
 .free-box p{
+
     font-size:.78rem;
+
     margin-bottom:7px;
 }
 
 .free-item{
+
     width:100%;
 
     padding:9px;
 
     border-radius:8px;
 
-    border:1px solid rgba(229,184,130,.5);
+    border:
+        1px solid rgba(229,184,130,.5);
 
-    background:rgba(0,0,0,.35);
+    background:
+        rgba(0,0,0,.35);
 
     color:#fff;
 
@@ -527,6 +700,7 @@ main{
 }
 
 .free-button{
+
     width:100%;
 
     margin-top:7px;
@@ -547,11 +721,10 @@ main{
 }
 
 
-/* =========================
-   FOOTER
-========================= */
+/* ================= FOOTER ================= */
 
 footer{
+
     text-align:center;
 
     margin-top:30px;
@@ -560,6 +733,7 @@ footer{
 }
 
 .instagram-badge{
+
     display:inline-flex;
 
     align-items:center;
@@ -592,8 +766,10 @@ footer{
 }
 
 .instagram-badge svg{
+
     width:18px;
     height:18px;
+
     fill:currentColor;
 }
 
@@ -604,15 +780,20 @@ footer{
 <body>
 
 
+<!-- ================= HEADER ================= -->
+
 <header>
 
 <div class="logo-container">
 
 <img
-id="mainLogo"
-src="s.jpg"
-alt="لوگوی کافه دی"
-onerror="this.style.display='none';document.getElementById('altText').style.display='block';"
+    id="mainLogo"
+    src="s.jpg"
+    alt="لوگوی کافه دی"
+    onerror="
+        this.style.display='none';
+        document.getElementById('altText').style.display='block';
+    "
 >
 
 <span id="altText" class="logo-placeholder">
@@ -628,32 +809,56 @@ onerror="this.style.display='none';document.getElementById('altText').style.disp
 </p>
 
 <div class="quote-box">
+
 «زندگی مثل یک فنجان قهوه است؛ تلخ و گرم، اما عطر و لحظه‌هایش تا ابد ماندگار... خوش آمدید به خلوت دنج کافه دی»
+
 </div>
 
 </header>
 
 
 
+<!-- ================= NAV ================= -->
+
 <nav class="category-nav">
 
-<button type="button" class="cat-btn active" data-section="coffee">
+<button
+    type="button"
+    class="cat-btn"
+    onclick="showSection('coffee',this)"
+>
 منوی قهوه
 </button>
 
-<button type="button" class="cat-btn" data-section="hot">
+<button
+    type="button"
+    class="cat-btn"
+    onclick="showSection('hot',this)"
+>
 بار گرم
 </button>
 
-<button type="button" class="cat-btn" data-section="cold">
+<button
+    type="button"
+    class="cat-btn"
+    onclick="showSection('cold',this)"
+>
 بار سرد
 </button>
 
-<button type="button" class="cat-btn" data-section="dessert">
+<button
+    type="button"
+    class="cat-btn"
+    onclick="showSection('dessert',this)"
+>
 دسر
 </button>
 
-<button type="button" class="cat-btn" data-section="wheel">
+<button
+    type="button"
+    class="cat-btn"
+    onclick="showSection('wheel',this)"
+>
 🎡 گردونه شانس
 </button>
 
@@ -664,11 +869,12 @@ onerror="this.style.display='none';document.getElementById('altText').style.disp
 <main>
 
 
-<!-- =========================
-     قهوه
-========================= -->
+<!-- ================= قهوه ================= -->
 
-<section id="coffee" class="menu-section active">
+<section
+    id="coffee"
+    class="menu-section"
+>
 
 <h2>قهوه‌های تخصصی</h2>
 
@@ -772,11 +978,12 @@ onerror="this.style.display='none';document.getElementById('altText').style.disp
 
 
 
-<!-- =========================
-     بار گرم
-========================= -->
+<!-- ================= بار گرم ================= -->
 
-<section id="hot" class="menu-section">
+<section
+    id="hot"
+    class="menu-section"
+>
 
 <h2>نوشیدنی‌های گرم</h2>
 
@@ -856,11 +1063,12 @@ onerror="this.style.display='none';document.getElementById('altText').style.disp
 
 
 
-<!-- =========================
-     بار سرد
-========================= -->
+<!-- ================= بار سرد ================= -->
 
-<section id="cold" class="menu-section">
+<section
+    id="cold"
+    class="menu-section"
+>
 
 <h2>نوشیدنی‌های سرد</h2>
 
@@ -884,11 +1092,12 @@ onerror="this.style.display='none';document.getElementById('altText').style.disp
 
 
 
-<!-- =========================
-     دسر
-========================= -->
+<!-- ================= دسر ================= -->
 
-<section id="dessert" class="menu-section">
+<section
+    id="dessert"
+    class="menu-section"
+>
 
 <h2>کیک و دسر</h2>
 
@@ -904,27 +1113,26 @@ onerror="this.style.display='none';document.getElementById('altText').style.disp
 
 
 
-<!-- =========================
-     گردونه
-========================= -->
+<!-- ================= گردونه ================= -->
 
 <section id="wheel-section">
 
-<div class="wheel-title">
+<h2 class="wheel-title">
 🎡 گردونه شانس
-</div>
+</h2>
 
-<div class="wheel-subtitle">
+<p class="wheel-subtitle">
 شماره موبایلت رو وارد کن و شانست رو امتحان کن
-</div>
+</p>
+
 
 <input
-id="phone"
-class="phone-input"
-type="tel"
-inputmode="numeric"
-maxlength="13"
-placeholder="شماره موبایل"
+    id="phone"
+    class="phone-input"
+    type="tel"
+    inputmode="numeric"
+    maxlength="13"
+    placeholder="شماره موبایل"
 >
 
 
@@ -932,7 +1140,10 @@ placeholder="شماره موبایل"
 
 <div class="pointer"></div>
 
-<div id="wheel" class="wheel">
+<div
+    id="wheel"
+    class="wheel"
+>
 
 <div class="wlabel w1">پوچ</div>
 <div class="wlabel w2">تخفیف</div>
@@ -951,35 +1162,45 @@ placeholder="شماره موبایل"
 
 
 <button
-type="button"
-id="spin"
-class="spin-button"
+    type="button"
+    id="spin"
+    class="spin-button"
 >
 🎯 چرخاندن گردونه
 </button>
 
 
-<div id="result" class="result"></div>
+<div
+    id="result"
+    class="result"
+></div>
 
 
-<div id="freeBox" class="free-box">
+<div
+    id="freeBox"
+    class="free-box"
+>
 
-<p>🎁 یک آیتم رایگان برنده شدی!</p>
+<p>
+🎁 یک آیتم رایگان برنده شدی!
+</p>
 
-<p>فقط یک آیتم انتخاب کن:</p>
+<p>
+فقط یک آیتم انتخاب کن:
+</p>
 
 <input
-id="freeItem"
-class="free-item"
-type="text"
-maxlength="100"
-placeholder="مثلاً لاته"
+    id="freeItem"
+    class="free-item"
+    type="text"
+    maxlength="100"
+    placeholder="مثلاً لاته"
 >
 
 <button
-type="button"
-id="freeButton"
-class="free-button"
+    type="button"
+    id="freeButton"
+    class="free-button"
 >
 ثبت آیتم رایگان
 </button>
@@ -992,17 +1213,19 @@ class="free-button"
 
 
 
+<!-- ================= FOOTER ================= -->
+
 <footer>
 
 <a
-href="https://instagram.com/cafedey2026"
-target="_blank"
-class="instagram-badge"
+    href="https://instagram.com/cafedey2026"
+    target="_blank"
+    class="instagram-badge"
 >
 
 <svg viewBox="0 0 24 24">
 
-<path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-4.92-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.78 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.204-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.79 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/>
+<path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069z"/>
 
 </svg>
 
@@ -1016,81 +1239,99 @@ class="instagram-badge"
 
 <script>
 
-/* =========================
-   جابه‌جایی منوها
-========================= */
+/* ==================================================
+   سیستم انتخاب منو
+   ================================================== */
 
-var buttons =
-document.querySelectorAll(".cat-btn");
+function showSection(section, button){
 
-var sections =
-document.querySelectorAll(".menu-section");
+    /* مخفی کردن تمام بخش‌ها */
 
-var wheelSection =
-document.getElementById("wheel-section");
+    document
+    .querySelectorAll(".menu-section")
+    .forEach(function(item){
 
-
-buttons.forEach(function(button){
-
-    button.addEventListener("click",function(){
-
-        var target =
-        this.getAttribute("data-section");
-
-
-        /* همه دکمه‌ها خاموش */
-
-        buttons.forEach(function(btn){
-            btn.classList.remove("active");
-        });
-
-
-        /* همه منوها مخفی */
-
-        sections.forEach(function(section){
-            section.classList.remove("active");
-        });
-
-
-        /* گردونه هم مخفی */
-
-        wheelSection.classList.remove("active");
-
-
-        /* دکمه انتخاب‌شده */
-
-        this.classList.add("active");
-
-
-        /* نمایش مقصد */
-
-        if(target === "wheel"){
-
-            wheelSection.classList.add("active");
-
-        }else{
-
-            var selected =
-            document.getElementById(target);
-
-            if(selected){
-                selected.classList.add("active");
-            }
-
-        }
+        item.classList.remove("active");
 
     });
 
-});
+
+    /* مخفی کردن گردونه */
+
+    document
+    .getElementById("wheel-section")
+    .classList.remove("active");
+
+
+    /* خاموش کردن تمام دکمه‌ها */
+
+    document
+    .querySelectorAll(".cat-btn")
+    .forEach(function(btn){
+
+        btn.classList.remove("active");
+
+    });
+
+
+    /* فعال کردن دکمه */
+
+    button.classList.add("active");
+
+
+    /* نمایش بخش مورد نظر */
+
+    if(section === "wheel"){
+
+        document
+        .getElementById("wheel-section")
+        .classList.add("active");
+
+    }else{
+
+        document
+        .getElementById(section)
+        .classList.add("active");
+
+    }
+
+}
+
+
+/* ==================================================
+   منوی قهوه در شروع
+   ================================================== */
+
+document
+.addEventListener(
+    "DOMContentLoaded",
+    function(){
+
+        var firstButton =
+        document.querySelector(
+            ".cat-btn"
+        );
+
+        showSection(
+            "coffee",
+            firstButton
+        );
+
+    }
+);
 
 
 
-/* =========================
-   اتصال گردونه
-========================= */
+/* ==================================================
+   گردونه
+   ================================================== */
 
 var WORKER =
 "https://cafe-di-discount.miladsh00.workers.dev/";
+
+var spinning = false;
+
+var rotation = 0;
 
 
 function normalizePhone(value){
@@ -1098,11 +1339,15 @@ function normalizePhone(value){
     return String(value)
 
     .replace(/[۰-۹]/g,function(d){
+
         return "۰۱۲۳۴۵۶۷۸۹".indexOf(d);
+
     })
 
     .replace(/[٠-٩]/g,function(d){
+
         return "٠١٢٣٤٥٦٧٨٩".indexOf(d);
+
     })
 
     .replace(/[\s\-()]/g,"")
@@ -1112,68 +1357,25 @@ function normalizePhone(value){
 }
 
 
-var spinning=false;
-var rotation=0;
+document
+.getElementById("spin")
+.addEventListener(
+    "click",
+    async function(){
 
-
-document.getElementById("spin").addEventListener(
-"click",
-async function(){
-
-    if(spinning){
-        return;
-    }
-
-
-    var phone =
-    normalizePhone(
-        document.getElementById("phone").value
-    );
-
-
-    var result =
-    document.getElementById("result");
-
-
-    if(!/^09\d{9}$/.test(phone)){
-
-        result.innerHTML =
-        "❌ لطفاً شماره موبایل معتبر وارد کنید.";
-
-        return;
-    }
-
-
-    spinning=true;
-    this.disabled=true;
-
-    result.innerHTML =
-    "⏳ در حال بررسی...";
-
-
-    try{
-
-        var checkResponse =
-        await fetch(
-            WORKER+
-            "check?phone="+
-            encodeURIComponent(phone)
-        );
-
-
-        var check =
-        await checkResponse.json();
-
-
-        if(check.canSpin === false){
-
-            result.innerHTML =
-            "⚠️ این شماره قبلاً از گردونه استفاده کرده است.";
-
-            spinning=false;
-
+        if(spinning){
             return;
         }
 
 
-  
+        var phone =
+        normalizePhone(
+            document
+            .getElementById("phone")
+            .value
+        );
+
+
+        var result =
+        document
+        .getEl

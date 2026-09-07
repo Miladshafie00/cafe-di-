@@ -457,6 +457,7 @@ h1{
 <div class="container">
 
   <header class="header">
+
     <img src="s.jpg" class="logo" alt="کافه دی">
 
     <h1>کافه دی ☕</h1>
@@ -475,7 +476,9 @@ h1{
       <span class="instagram-icon">📷</span>
       <span>@cafedey2026</span>
     </a>
+
   </header>
+
 
   <div class="tabs" id="a9qqwb">
 
@@ -521,8 +524,6 @@ h1{
 
   </div>
 
-
-  <!-- COFFEE -->
 
   <section id="coffee" class="menu-section active">
 
@@ -591,8 +592,6 @@ h1{
   </section>
 
 
-  <!-- HOT -->
-
   <section id="hot" class="menu-section">
 
     <h2 class="menu-title">🔥 گرم</h2>
@@ -645,8 +644,6 @@ h1{
   </section>
 
 
-  <!-- COLD -->
-
   <section id="cold" class="menu-section">
 
     <h2 class="menu-title">🧊 سرد</h2>
@@ -664,8 +661,6 @@ h1{
   </section>
 
 
-  <!-- DESSERT -->
-
   <section id="dessert" class="menu-section">
 
     <h2 class="menu-title">🍰 دسر</h2>
@@ -678,8 +673,6 @@ h1{
   </section>
 
 
-  <!-- WHEEL -->
-
   <section id="wheel" class="menu-section">
 
     <h2 class="menu-title">🎡 گردونه شانس</h2>
@@ -687,6 +680,7 @@ h1{
     <div class="wheel-area">
 
       <div class="phone-box">
+
         <input
           id="phone"
           type="tel"
@@ -702,10 +696,9 @@ h1{
         >
           🎡 بچرخون!
         </button>
+
       </div>
 
-
-      <!-- RESULT -->
 
       <div id="resultBox" class="result-box">
 
@@ -728,6 +721,7 @@ h1{
           class="code-box"
           style="display:none;"
         >
+
           <div class="code-label">
             کد تخفیف شما
           </div>
@@ -744,13 +738,16 @@ h1{
           >
             📋 کپی کد تخفیف
           </button>
+
         </div>
+
 
         <div
           id="freeButtons"
           class="free-buttons"
           style="display:none;"
         >
+
           <button
             type="button"
             class="free-btn"
@@ -774,12 +771,11 @@ h1{
           >
             🍰 کیک رایگان
           </button>
+
         </div>
 
       </div>
 
-
-      <!-- WHEEL -->
 
       <div class="wheel-wrap">
 
@@ -827,6 +823,7 @@ h1{
 
       </div>
 
+
       <div class="note">
         هر شماره موبایل فقط طبق قوانین گردونه می‌تواند جایزه دریافت کند.
       </div>
@@ -863,6 +860,7 @@ function showCat(cat, btn){
 
   });
 
+
   const target =
     document.getElementById(cat);
 
@@ -873,6 +871,7 @@ function showCat(cat, btn){
 
   }
 
+
   document
     .querySelectorAll(".tab")
     .forEach(function(tab){
@@ -880,6 +879,7 @@ function showCat(cat, btn){
       tab.classList.remove("active");
 
     });
+
 
   if(btn){
 
@@ -921,6 +921,7 @@ function prizeIndex(prize){
     normalizeNumber(prize)
       .toLowerCase()
       .replace(/\s/g,"");
+
 
   if(p.includes("20%") || p.includes("20"))
     return 0;
@@ -981,7 +982,9 @@ function showResult(data){
 
 
   codeContainer.style.display = "none";
+
   freeButtons.style.display = "none";
+
   codeElement.textContent = "";
 
 
@@ -1051,6 +1054,7 @@ function showResult(data){
       prize +
       " تخفیف شدید.";
 
+
     if(realCode){
 
       codeElement.textContent =
@@ -1101,7 +1105,9 @@ async function spinWheel(){
 
   if(!phone){
 
-    alert("لطفاً شماره موبایل را وارد کنید.");
+    alert(
+      "لطفاً شماره موبایل را وارد کنید."
+    );
 
     return;
 
@@ -1172,11 +1178,6 @@ async function spinWheel(){
       prizeIndex(prize);
 
 
-    /*
-      هر بخش 45 درجه است.
-      pointer بالای گردونه است.
-    */
-
     const targetAngle =
       360 -
       (index * 45 + 22.5);
@@ -1204,4 +1205,15 @@ async function spinWheel(){
 
     wheel.style.setProperty(
       "--wheel-rotation",
+      currentRotation + "deg"
+    );
+
+
+    wheel.style.transition =
+      "transform 4.5s cubic-bezier(.12,.75,.16,1)";
+
+
+    wheel.style.transform =
+      "rotate(" +
       currentRotation +
+      "de

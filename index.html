@@ -1,8 +1,8 @@
 <!DOCTYPE html>
 <html lang="fa" dir="rtl">
 <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>منوی دیجیتال کافه دی</title>
 
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -27,15 +27,9 @@
 
         body {
             font-family: var(--font-body);
-
-            /* بک گراند روشن‌تر */
             background:
-                linear-gradient(
-                    rgba(12, 12, 12, 0.68),
-                    rgba(12, 12, 12, 0.78)
-                ),
+                linear-gradient(rgba(12,12,12,.68), rgba(12,12,12,.76)),
                 var(--bg-image);
-
             background-size: cover;
             background-position: center;
             background-attachment: fixed;
@@ -53,20 +47,15 @@
         .logo-container {
             width: 110px;
             height: 110px;
-            margin: 0 auto 12px;
+            margin: 0 auto 14px;
             border-radius: 50%;
             border: 2.5px solid var(--gold-color);
-            box-shadow: 0 0 25px rgba(229, 184, 130, 0.35);
+            box-shadow: 0 0 25px rgba(229,184,130,.35);
             overflow: hidden;
             background: #181818;
             display: flex;
             align-items: center;
             justify-content: center;
-            transition: transform 0.3s ease;
-        }
-
-        .logo-container:hover {
-            transform: scale(1.05);
         }
 
         .logo-container img {
@@ -78,24 +67,22 @@
 
         .logo-placeholder {
             font-family: var(--font-title);
-            font-size: 42px;
+            font-size: 46px;
             color: var(--gold-bright);
             display: none;
         }
 
         header h1 {
             font-family: var(--font-title);
-            font-size: 2.5rem;
+            font-size: 2.6rem;
             color: var(--gold-bright);
-            letter-spacing: 1px;
-            text-shadow: 0 0 16px rgba(229, 184, 130, 0.45);
+            text-shadow: 0 0 16px rgba(229,184,130,.45);
             margin-bottom: 2px;
         }
 
         header .subtitle {
-            color: #e0e0e0;
-            font-size: 0.88rem;
-            font-weight: 300;
+            color: #ddd;
+            font-size: .9rem;
             margin-bottom: 10px;
         }
 
@@ -103,34 +90,31 @@
             max-width: 480px;
             margin: 0 auto 8px;
             padding: 9px 14px;
-            background: rgba(229, 184, 130, 0.08);
+            background: rgba(229,184,130,.07);
             border-right: 3px solid var(--gold-color);
             border-left: 3px solid var(--gold-color);
             border-radius: 12px;
-            font-size: 0.82rem;
+            font-size: .82rem;
             line-height: 1.7;
-            color: #e8d7c5;
+            color: #e0d0be;
             font-style: italic;
         }
 
-        /* =========================
-           دسته‌بندی‌ها
-        ========================= */
-
+        /* تب‌ها */
         .category-nav {
             display: flex;
             overflow-x: auto;
             white-space: nowrap;
             justify-content: center;
-            gap: 7px;
-            padding: 11px 8px;
+            gap: 6px;
+            padding: 10px 6px;
             position: sticky;
             top: 0;
-            background: rgba(14, 14, 14, 0.88);
+            background: rgba(14,14,14,.88);
             backdrop-filter: blur(12px);
             -webkit-backdrop-filter: blur(12px);
             z-index: 100;
-            border-bottom: 1px solid rgba(229, 184, 130, 0.22);
+            border-bottom: 1px solid rgba(229,184,130,.22);
         }
 
         .category-nav::-webkit-scrollbar {
@@ -138,26 +122,24 @@
         }
 
         .cat-btn {
-            background: rgba(255, 255, 255, 0.04);
-            border: 1.5px solid rgba(229, 184, 130, 0.5);
+            background: rgba(255,255,255,.04);
+            border: 1.5px solid rgba(229,184,130,.5);
             color: var(--gold-color);
-            padding: 6px 11px;
+            padding: 6px 9px;
             border-radius: 25px;
             cursor: pointer;
-            transition: all 0.3s ease;
             font-family: var(--font-title);
-            font-size: 0.88rem;
+            font-size: .82rem;
             flex-shrink: 0;
             line-height: 1.4;
         }
 
         .cat-btn.active,
         .cat-btn:hover {
-            background: linear-gradient(135deg, #e5b882, #c79053);
+            background: linear-gradient(135deg,#e5b882,#c79053);
             color: #121212;
             border-color: #ffd194;
-            box-shadow: 0 0 14px rgba(229, 184, 130, 0.45);
-            transform: translateY(-1px);
+            box-shadow: 0 0 14px rgba(229,184,130,.45);
         }
 
         main {
@@ -169,15 +151,15 @@
         .menu-section h2 {
             text-align: center;
             font-family: var(--font-title);
-            font-size: 1.9rem;
+            font-size: 2rem;
             color: var(--gold-bright);
             margin-bottom: 20px;
-            text-shadow: 0 0 10px rgba(229, 184, 130, 0.25);
+            text-shadow: 0 0 10px rgba(229,184,130,.25);
         }
 
         .card {
-            background: rgba(255, 255, 255, 0.055);
-            border: 1px solid rgba(255, 255, 255, 0.10);
+            background: rgba(255,255,255,.055);
+            border: 1px solid rgba(255,255,255,.09);
             backdrop-filter: blur(8px);
             border-radius: 16px;
             padding: 14px 20px;
@@ -185,19 +167,12 @@
             display: flex;
             justify-content: space-between;
             align-items: center;
-            transition: all 0.25s ease;
-        }
-
-        .card:hover {
-            background: rgba(255, 255, 255, 0.10);
-            border-color: rgba(229, 184, 130, 0.4);
-            transform: translateX(-4px);
         }
 
         .item-name {
-            font-size: 1.02rem;
+            font-size: 1.05rem;
             font-weight: 600;
-            color: #ffffff;
+            color: #fff;
         }
 
         .price-wrapper {
@@ -211,95 +186,76 @@
             font-family: var(--font-title);
             color: var(--gold-bright);
             font-size: 1.4rem;
-            letter-spacing: 0.5px;
         }
 
         .currency {
-            font-size: 0.75rem;
-            font-weight: 400;
-            color: #d0d0d0;
+            font-size: .75rem;
+            color: #c4c4c4;
         }
 
-        /* =========================
-           گردونه شانس
-        ========================= */
-
+        /* گردونه */
         .wheel-section {
             text-align: center;
         }
 
         .wheel-description {
             color: #ddd;
-            font-size: 0.9rem;
+            font-size: .9rem;
             line-height: 1.8;
-            margin: -8px auto 18px;
-            max-width: 450px;
+            margin-bottom: 18px;
         }
 
         .phone-box {
-            background: rgba(255, 255, 255, 0.06);
-            border: 1px solid rgba(229, 184, 130, 0.35);
-            border-radius: 16px;
-            padding: 18px;
-            margin-bottom: 22px;
-        }
-
-        .phone-box label {
-            display: block;
-            color: var(--gold-bright);
-            font-family: var(--font-title);
-            font-size: 1.05rem;
-            margin-bottom: 10px;
+            margin-bottom: 20px;
         }
 
         #phoneInput {
             width: 100%;
-            max-width: 330px;
-            padding: 12px 15px;
+            max-width: 320px;
+            padding: 12px;
             border-radius: 12px;
-            border: 1px solid rgba(229, 184, 130, 0.45);
-            background: rgba(0, 0, 0, 0.45);
-            color: white;
-            outline: none;
+            border: 1px solid rgba(229,184,130,.5);
+            background: rgba(0,0,0,.5);
+            color: #fff;
             text-align: center;
-            font-family: var(--font-body);
-            font-size: 1rem;
             direction: ltr;
+            font-family: var(--font-body);
+            font-size: 16px;
+            outline: none;
         }
 
-        #phoneInput:focus {
-            border-color: var(--gold-bright);
-            box-shadow: 0 0 12px rgba(229, 184, 130, 0.2);
+        #message {
+            min-height: 25px;
+            margin-top: 8px;
+            color: #e5c49b;
+            font-size: .8rem;
         }
 
-        .wheel-wrapper {
+        .wheel-wrap {
             position: relative;
-            width: min(330px, 86vw);
-            height: min(330px, 86vw);
-            margin: 10px auto 25px;
+            width: min(330px,86vw);
+            height: min(330px,86vw);
+            margin: 25px auto;
         }
 
         #wheel {
             width: 100%;
             height: 100%;
             border-radius: 50%;
-            border: 8px solid #e5b882;
-            box-shadow:
-                0 0 0 5px rgba(229, 184, 130, 0.12),
-                0 0 35px rgba(229, 184, 130, 0.3);
+            border: 8px solid var(--gold-color);
             background: conic-gradient(
-                #6d4c41 0deg 45deg,
-                #9b6b43 45deg 90deg,
-                #70513e 90deg 135deg,
-                #b17d4f 135deg 180deg,
-                #65483b 180deg 225deg,
-                #9a6842 225deg 270deg,
-                #73513d 270deg 315deg,
-                #ad794b 315deg 360deg
+                #76513c 0deg 45deg,
+                #a67447 45deg 90deg,
+                #684939 90deg 135deg,
+                #b27d4e 135deg 180deg,
+                #76513c 180deg 225deg,
+                #a67447 225deg 270deg,
+                #684939 270deg 315deg,
+                #b27d4e 315deg 360deg
             );
+            box-shadow: 0 0 30px rgba(229,184,130,.3);
             position: relative;
-            transition: transform 5s cubic-bezier(0.12, 0.8, 0.15, 1);
-            overflow: hidden;
+            transition: transform 5s cubic-bezier(.12,.8,.15,1);
         }
 
         .wheel-label {
@@ -310,71 +266,28 @@
             height: 100%;
             transform-origin: center;
             font-family: var(--font-title);
-            font-size: 1.05rem;
             color: #fff;
+            font-size: 1rem;
             text-shadow: 1px 1px 3px #000;
             pointer-events: none;
         }
 
         .wheel-label span {
             position: absolute;
-            top: 14%;
+            top: 12%;
             left: 50%;
             transform: translateX(-50%);
             white-space: nowrap;
         }
 
-        .wheel-label:nth-child(1) {
-            transform: translate(-50%, -50%) rotate(22.5deg);
-        }
-
-        .wheel-label:nth-child(2) {
-            transform: translate(-50%, -50%) rotate(67.5deg);
-        }
-
-        .wheel-label:nth-child(3) {
-            transform: translate(-50%, -50%) rotate(112.5deg);
-        }
-
-        .wheel-label:nth-child(4) {
-            transform: translate(-50%, -50%) rotate(157.5deg);
-        }
-
-        .wheel-label:nth-child(5) {
-            transform: translate(-50%, -50%) rotate(202.5deg);
-        }
-
-        .wheel-label:nth-child(6) {
-            transform: translate(-50%, -50%) rotate(247.5deg);
-        }
-
-        .wheel-label:nth-child(7) {
-            transform: translate(-50%, -50%) rotate(292.5deg);
-        }
-
-        .wheel-label:nth-child(8) {
-            transform: translate(-50%, -50%) rotate(337.5deg);
-        }
-
-        .wheel-center {
-            position: absolute;
-            z-index: 5;
-            left: 50%;
-            top: 50%;
-            transform: translate(-50%, -50%);
-            width: 65px;
-            height: 65px;
-            border-radius: 50%;
-            background: linear-gradient(135deg, #ffd194, #c79053);
-            border: 4px solid #fff0d2;
-            box-shadow: 0 0 18px rgba(0,0,0,0.45);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: #1a120d;
-            font-family: var(--font-title);
-            font-size: 1.2rem;
-        }
+        .wheel-label:nth-child(1) { transform: translate(-50%,-50%) rotate(22.5deg); }
+        .wheel-label:nth-child(2) { transform: translate(-50%,-50%) rotate(67.5deg); }
+        .wheel-label:nth-child(3) { transform: translate(-50%,-50%) rotate(112.5deg); }
+        .wheel-label:nth-child(4) { transform: translate(-50%,-50%) rotate(157.5deg); }
+        .wheel-label:nth-child(5) { transform: translate(-50%,-50%) rotate(202.5deg); }
+        .wheel-label:nth-child(6) { transform: translate(-50%,-50%) rotate(247.5deg); }
+        .wheel-label:nth-child(7) { transform: translate(-50%,-50%) rotate(292.5deg); }
+        .wheel-label:nth-child(8) { transform: translate(-50%,-50%) rotate(337.5deg); }
 
         .wheel-pointer {
             position: absolute;
@@ -386,88 +299,61 @@
             height: 0;
             border-left: 15px solid transparent;
             border-right: 15px solid transparent;
-            border-top: 30px solid #ffd194;
-            filter: drop-shadow(0 3px 4px rgba(0,0,0,0.7));
+            border-top: 30px solid var(--gold-bright);
+            filter: drop-shadow(0 3px 4px #000);
         }
 
         #spinBtn {
-            border: none;
-            outline: none;
-            background: linear-gradient(135deg, #e5b882, #c79053);
-            color: #15100d;
-            padding: 12px 35px;
+            border: 0;
             border-radius: 30px;
+            padding: 12px 35px;
+            background: linear-gradient(135deg,#e5b882,#c79053);
+            color: #15100d;
             font-family: var(--font-title);
             font-size: 1.2rem;
             cursor: pointer;
-            box-shadow: 0 5px 18px rgba(229, 184, 130, 0.3);
-            transition: 0.25s ease;
-        }
-
-        #spinBtn:hover {
-            transform: translateY(-2px) scale(1.02);
-            box-shadow: 0 7px 22px rgba(229, 184, 130, 0.45);
         }
 
         #spinBtn:disabled {
-            opacity: 0.5;
+            opacity: .5;
             cursor: not-allowed;
-            transform: none;
         }
 
         #wheelResult {
-            min-height: 30px;
-            margin: 18px auto 5px;
+            min-height: 35px;
+            margin-top: 18px;
             color: var(--gold-bright);
             font-family: var(--font-title);
-            font-size: 1.35rem;
+            font-size: 1.3rem;
         }
 
-        .free-box {
+        #freeBox {
             display: none;
-            margin: 18px auto 0;
-            padding: 18px;
-            background: rgba(229, 184, 130, 0.08);
-            border: 1px solid rgba(229, 184, 130, 0.35);
-            border-radius: 16px;
+            margin-top: 18px;
+            padding: 15px;
+            background: rgba(229,184,130,.08);
+            border: 1px solid rgba(229,184,130,.35);
+            border-radius: 15px;
         }
 
-        .free-box.show {
+        #freeBox.show {
             display: block;
         }
 
-        .free-box p {
-            color: #fff;
-            margin-bottom: 12px;
-            font-size: 0.9rem;
+        #freeBox p {
+            margin-bottom: 10px;
         }
 
         .free-item-btn {
-            border: 1px solid rgba(229, 184, 130, 0.5);
-            background: rgba(255,255,255,0.05);
-            color: var(--gold-bright);
-            border-radius: 10px;
-            padding: 8px 12px;
             margin: 4px;
+            padding: 8px 11px;
+            border-radius: 10px;
+            border: 1px solid var(--gold-color);
+            background: rgba(255,255,255,.04);
+            color: var(--gold-bright);
             font-family: var(--font-body);
             cursor: pointer;
         }
-
-        .free-item-btn:hover {
-            background: var(--gold-color);
-            color: #111;
-        }
-
-        #message {
-            min-height: 24px;
-            margin-top: 10px;
-            font-size: 0.82rem;
-            color: #e4c8a6;
-        }
-
-        /* =========================
-           فوتر
-        ========================= */
 
         footer {
             text-align: center;
@@ -479,21 +365,14 @@
             display: inline-flex;
             align-items: center;
             gap: 8px;
-            background: linear-gradient(45deg, #f09433, #e6683c, #dc2743, #cc2366, #bc1888);
+            background: linear-gradient(45deg,#f09433,#e6683c,#dc2743,#cc2366,#bc1888);
             color: #fff;
             text-decoration: none;
             padding: 10px 22px;
             border-radius: 30px;
             font-weight: 600;
-            font-size: 0.95rem;
-            box-shadow: 0 4px 15px rgba(220, 39, 67, 0.35);
-            transition: transform 0.2s, box-shadow 0.2s;
+            font-size: .95rem;
             direction: ltr;
-        }
-
-        .instagram-badge:hover {
-            transform: scale(1.04);
-            box-shadow: 0 6px 20px rgba(220, 39, 67, 0.5);
         }
 
         .instagram-badge svg {
@@ -502,33 +381,22 @@
             fill: currentColor;
         }
 
-        /* موبایل */
-        @media (max-width: 520px) {
+        @media (max-width:520px) {
             .category-nav {
                 justify-content: flex-start;
-                gap: 5px;
-                padding: 9px 6px;
             }
 
             .cat-btn {
+                font-size: .75rem;
                 padding: 6px 8px;
-                font-size: 0.78rem;
             }
 
             header h1 {
                 font-size: 2.3rem;
             }
 
-            .quote-box {
-                font-size: 0.78rem;
-            }
-
-            .card {
-                padding: 13px 15px;
-            }
-
             .item-name {
-                font-size: 0.92rem;
+                font-size: .92rem;
             }
 
             .price-tag {
@@ -536,7 +404,7 @@
             }
 
             .currency {
-                font-size: 0.68rem;
+                font-size: .68rem;
             }
         }
     </style>
@@ -544,146 +412,292 @@
 
 <body>
 
-    <header>
-        <div class="logo-container">
-            <img id="mainLogo" src="s.jpg" alt="لوگوی کافه دی"
-                 onerror="this.style.display='none'; document.getElementById('altText').style.display='block';">
-            <span id="altText" class="logo-placeholder">دی</span>
+<header>
+    <div class="logo-container">
+        <img id="mainLogo" src="s.jpg" alt="لوگوی کافه دی"
+             onerror="this.style.display='none';document.getElementById('altText').style.display='block';">
+        <span id="altText" class="logo-placeholder">دی</span>
+    </div>
+
+    <h1>کافه دی</h1>
+    <p class="subtitle">طعم دلچسب لحظه‌های ناب</p>
+
+    <div class="quote-box">
+        «زندگی مثل یک فنجان قهوه است؛ تلخ و گرم، اما عطر و لحظه‌هایش تا ابد ماندگار... خوش آمدید به خلوت دنج کافه دی»
+    </div>
+</header>
+
+<nav class="category-nav">
+    <button class="cat-btn active" data-cat="coffee">☕ قهوه</button>
+    <button class="cat-btn" data-cat="hot">🔥 گرم</button>
+    <button class="cat-btn" data-cat="cold">🧊 سرد</button>
+    <button class="cat-btn" data-cat="dessert">🍰 دسر</button>
+    <button class="cat-btn" data-cat="wheel">🎡 شانس</button>
+</nav>
+
+<main id="menu-content"></main>
+
+<footer>
+    <a href="https://instagram.com/cafedey2026" target="_blank" class="instagram-badge">
+        <svg viewBox="0 0 24 24">
+            <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.79 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/>
+        </svg>
+        <span>@cafedey2026</span>
+    </a>
+</footer>
+
+<script>
+const menuData = {
+    coffee: {
+        title: 'قهوه‌های تخصصی',
+        items: [
+            {n:'تک ۱۰۰٪ روبوستا',p:'۶۰'},
+            {n:'دبل ۱۰۰٪ روبوستا',p:'۷۰'},
+            {n:'تک ۸۰/۲۰ روبوستا',p:'۶۰'},
+            {n:'دبل ۸۰/۲۰ روبوستا',p:'۷۰'},
+            {n:'تک ۷۰/۳۰ روبوستا',p:'۶۵'},
+            {n:'دبل ۷۰/۳۰ روبوستا',p:'۷۵'},
+            {n:'تک ۱۰۰٪ عربیکا',p:'۱۱۰'},
+            {n:'دبل ۱۰۰٪ عربیکا',p:'۱۲۰'},
+            {n:'تک ۸۰/۲۰ عربیکا',p:'۸۰'},
+            {n:'دبل ۸۰/۲۰ عربیکا',p:'۹۰'},
+            {n:'تک ۷۰/۳۰ عربیکا',p:'۸۵'},
+            {n:'دبل ۷۰/۳۰ عربیکا',p:'۹۵'}
+        ]
+    },
+
+    hot: {
+        title: 'نوشیدنی‌های گرم',
+        items: [
+            {n:'کافی میکس',p:'۸۰'},
+            {n:'چای کرک',p:'۸۵'},
+            {n:'هات چاکلت',p:'۸۶'},
+            {n:'ماسالا',p:'۸۵'},
+            {n:'لته',p:'۱۴۰'},
+            {n:'کاپوچینو',p:'۸۰'},
+            {n:'شیر پسته',p:'۸۵'},
+            {n:'شیر زعفران',p:'۸۵'},
+            {n:'موکا',p:'۱۵۰'}
+        ]
+    },
+
+    cold: {
+        title: 'نوشیدنی‌های سرد',
+        items: [
+            {n:'آیس لته',p:'۱۵۰'},
+            {n:'آیس موکا',p:'۱۶۰'}
+        ]
+    },
+
+    dessert: {
+        title: 'کیک و دسر',
+        items: [
+            {n:'(کیک شکلاتی (هر اسلایس',p:'۷۰'}
+        ]
+    }
+};
+
+function showCat(cat, clickedBtn) {
+
+    document.querySelectorAll('.cat-btn').forEach(btn => {
+        btn.classList.remove('active');
+    });
+
+    if (clickedBtn) {
+        clickedBtn.classList.add('active');
+    }
+
+    if (cat === 'wheel') {
+        showWheel();
+        return;
+    }
+
+    const data = menuData[cat];
+    if (!data) return;
+
+    let html =
+        '<div class="menu-section">' +
+        '<h2>' + data.title + '</h2>';
+
+    data.items.forEach(item => {
+        html +=
+            '<div class="card">' +
+                '<span class="item-name">' + item.n + '</span>' +
+                '<div class="price-wrapper">' +
+                    '<span class="price-tag">' + item.p + '</span>' +
+                    '<span class="currency">هزار تومان</span>' +
+                '</div>' +
+            '</div>';
+    });
+
+    html += '</div>';
+
+    document.getElementById('menu-content').innerHTML = html;
+}
+
+
+/* =========================
+   گردونه
+========================= */
+
+const WORKER_URL =
+    'https://cafe-di-discount.miladsh00.workers.dev';
+
+let currentPhone = '';
+let spinning = false;
+
+function showWheel() {
+
+    document.getElementById('menu-content').innerHTML = `
+
+        <div class="menu-section wheel-section">
+
+            <h2>🎡 گردونه شانس</h2>
+
+            <p class="wheel-description">
+                شماره موبایلت رو وارد کن و شانست رو امتحان کن ✨
+            </p>
+
+            <div class="phone-box">
+
+                <input
+                    id="phoneInput"
+                    type="tel"
+                    inputmode="numeric"
+                    maxlength="13"
+                    placeholder="09123456789"
+                >
+
+                <div id="message"></div>
+
+            </div>
+
+            <div class="wheel-wrap">
+
+                <div class="wheel-pointer"></div>
+
+                <div id="wheel">
+
+                    <div class="wheel-label">
+                        <span>۲۰٪</span>
+                    </div>
+
+                    <div class="wheel-label">
+                        <span>۱۵٪</span>
+                    </div>
+
+                    <div class="wheel-label">
+                        <span>۱۲٪</span>
+                    </div>
+
+                    <div class="wheel-label">
+                        <span>۶٪</span>
+                    </div>
+
+                    <div class="wheel-label">
+                        <span>۲٪</span>
+                    </div>
+
+                    <div class="wheel-label">
+                        <span>۴٪</span>
+                    </div>
+
+                    <div class="wheel-label">
+                        <span>🎁</span>
+                    </div>
+
+                    <div class="wheel-label">
+                        <span>شانس</span>
+                    </div>
+
+                </div>
+            </div>
+
+            <button id="spinBtn">
+                🎡 بچرخون!
+            </button>
+
+            <div id="wheelResult"></div>
+
+            <div id="freeBox">
+
+                <p>🎁 آیتم رایگانت رو انتخاب کن:</p>
+
+                <button class="free-item-btn" data-item="کافی میکس">کافی میکس</button>
+                <button class="free-item-btn" data-item="چای کرک">چای کرک</button>
+                <button class="free-item-btn" data-item="هات چاکلت">هات چاکلت</button>
+                <button class="free-item-btn" data-item="ماسالا">ماسالا</button>
+                <button class="free-item-btn" data-item="لته">لته</button>
+                <button class="free-item-btn" data-item="کاپوچینو">کاپوچینو</button>
+                <button class="free-item-btn" data-item="شیر پسته">شیر پسته</button>
+                <button class="free-item-btn" data-item="شیر زعفران">شیر زعفران</button>
+                <button class="free-item-btn" data-item="موکا">موکا</button>
+
+            </div>
+
         </div>
+    `;
 
-        <h1>کافه دی</h1>
+    document.getElementById('spinBtn')
+        .addEventListener('click', spinWheel);
 
-        <p class="subtitle">طعم دلچسب لحظه‌های ناب</p>
-
-        <div class="quote-box">
-            «زندگی مثل یک فنجان قهوه است؛ تلخ و گرم، اما عطر و لحظه‌هایش تا ابد ماندگار... خوش آمدید به خلوت دنج کافه دی»
-        </div>
-    </header>
-
-    <nav class="category-nav">
-
-        <button class="cat-btn active" data-cat="coffee">
-            ☕ قهوه
-        </button>
-
-        <button class="cat-btn" data-cat="hot">
-            🔥 گرم
-        </button>
-
-        <button class="cat-btn" data-cat="cold">
-            🧊 سرد
-        </button>
-
-        <button class="cat-btn" data-cat="dessert">
-            🍰 دسر
-        </button>
-
-        <button class="cat-btn" data-cat="wheel">
-            🎡 شانس
-        </button>
-
-    </nav>
-
-    <main id="menu-content"></main>
-
-    <footer>
-        <a href="https://instagram.com/cafedey2026" target="_blank" class="instagram-badge">
-            <svg viewBox="0 0 24 24">
-                <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/>
-            </svg>
-
-            <span>@cafedey2026</span>
-        </a>
-    </footer>
-
-
-    <script>
-
-        /* =========================
-           اطلاعات منو
-        ========================= */
-
-        const menuData = {
-
-            coffee: {
-                title: 'قهوه‌های تخصصی',
-                items: [
-                    { n: 'تک ۱۰۰٪ روبوستا', p: '۶۰' },
-                    { n: 'دبل ۱۰۰٪ روبوستا', p: '۷۰' },
-                    { n: 'تک ۸۰/۲۰ روبوستا', p: '۶۰' },
-                    { n: 'دبل ۸۰/۲۰ روبوستا', p: '۷۰' },
-                    { n: 'تک ۷۰/۳۰ روبوستا', p: '۶۵' },
-                    { n: 'دبل ۷۰/۳۰ روبوستا', p: '۷۵' },
-                    { n: 'تک ۱۰۰٪ عربیکا', p: '۱۱۰' },
-                    { n: 'دبل ۱۰۰٪ عربیکا', p: '۱۲۰' },
-                    { n: 'تک ۸۰/۲۰ عربیکا', p: '۸۰' },
-                    { n: 'دبل ۸۰/۲۰ عربیکا', p: '۹۰' },
-                    { n: 'تک ۷۰/۳۰ عربیکا', p: '۸۵' },
-                    { n: 'دبل ۷۰/۳۰ عربیکا', p: '۹۵' }
-                ]
-            },
-
-            hot: {
-                title: 'نوشیدنی‌های گرم',
-                items: [
-                    { n: 'کافی میکس', p: '۸۰' },
-                    { n: 'چای کرک', p: '۸۵' },
-                    { n: 'هات چاکلت', p: '۸۶' },
-                    { n: 'ماسالا', p: '۸۵' },
-                    { n: 'لته', p: '۱۴۰' },
-                    { n: 'کاپوچینو', p: '۸۰' },
-                    { n: 'شیر پسته', p: '۸۵' },
-                    { n: 'شیر زعفران', p: '۸۵' },
-                    { n: 'موکا', p: '۱۵۰' }
-                ]
-            },
-
-            cold: {
-                title: 'نوشیدنی‌های سرد',
-                items: [
-                    { n: 'آیس لته', p: '۱۵۰' },
-                    { n: 'آیس موکا', p: '۱۶۰' }
-                ]
-            },
-
-            dessert: {
-                title: 'کیک و دسر',
-                items: [
-                    { n: '(کیک شکلاتی (هر اسلایس', p: '۷۰' }
-                ]
-            }
-
-        };
-
-
-        /* =========================
-           نمایش منو
-        ========================= */
-
-        function showCat(cat, clickedBtn) {
-
-            document.querySelectorAll('.cat-btn').forEach(function(btn) {
-                btn.classList.remove('active');
+    document.querySelectorAll('.free-item-btn')
+        .forEach(btn => {
+            btn.addEventListener('click', function() {
+                chooseFreeItem(this.dataset.item);
             });
+        });
+}
 
-            if (clickedBtn) {
-                clickedBtn.classList.add('active');
-            }
+function normalizeDigits(value) {
 
-            if (cat === 'wheel') {
-                showWheel();
-                return;
-            }
+    return value
+        .replace(/[۰-۹]/g, d =>
+            '۰۱۲۳۴۵۶۷۸۹'.indexOf(d)
+        )
+        .replace(/[٠-٩]/g, d =>
+            '٠١٢٣٤٥٦٧٨٩'.indexOf(d)
+        );
+}
 
-            const data = menuData[cat];
+function normalizePhone(value) {
 
-            if (!data) return;
+    let phone = normalizeDigits(value)
+        .replace(/\s/g,'')
+        .replace(/-/g,'')
+        .replace(/\(/g,'')
+        .replace(/\)/g,'');
 
-            let html = '<div class="menu-section">';
-            html += '<h2>' + data.title + '</h2>';
+    if (phone.startsWith('+98')) {
+        phone = '0' + phone.substring(3);
+    }
 
-            data.items.forEach(function(item) {
+    if (phone.startsWith('0098')) {
+        phone = '0' + phone.substring(4);
+    }
 
-                html +=
-                    '<div class="card">' +
-                      
+    return phone;
+}
+
+async function checkPhone(phone) {
+
+    const response = await fetch(
+        WORKER_URL +
+        '/check?phone=' +
+        encodeURIComponent(phone)
+    );
+
+    if (!response.ok) {
+        throw new Error('check failed');
+    }
+
+    return await response.json();
+}
+
+function getPrize(data) {
+
+    if (!data) return null;
+
+    let prize =
+        data.prize ??
+        d

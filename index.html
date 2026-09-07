@@ -656,7 +656,6 @@ h1{
 
 </div>
 
-
 <script>
 
 const API_URL =
@@ -671,45 +670,31 @@ function showCat(cat,btn){
 
   document.querySelectorAll(".menu-section")
     .forEach(function(section){
-
       section.classList.remove("active");
       section.style.display="none";
-
     });
 
   const target=document.getElementById(cat);
 
   if(target){
-
     target.classList.add("active");
     target.style.display="block";
-
   }
 
   document.querySelectorAll(".tab")
     .forEach(function(tab){
-
       tab.classList.remove("active");
-
     });
 
   if(btn){
     btn.classList.add("active");
   }
-
 }
 
 
 /* =========================
    ELEMENTS
 ========================= */
-
-let currentRotation=0;
-let spinning=false;
-
-/* مهم:
-   آخرین خانه‌ای که گردونه برایش چرخیده */
-let lastPrizeIndex=7;
 
 const wheel=document.getElementById("wheelCircle");
 const spinBtn=document.getElementById("spinBtn");
@@ -724,14 +709,34 @@ const codeContainer=document.getElementById("codeContainer");
 const discountCode=document.getElementById("discountCode");
 const freeButtons=document.getElementById("freeButtons");
 
+let currentRotation=0;
+let spinning=false;
+
 
 /* =========================
-   NUMBER NORMALIZE
+   PRIZES
+   ترتیب باید دقیقاً با چرخ یکی باشد
+========================= */
+
+const PRIZES=[
+  "۲۰٪",
+  "۱۵٪",
+  "۱۲٪",
+  "۶٪",
+  "۲٪",
+  "۴٪",
+  "🎁",
+  "پوچ"
+];
+
+
+/* =========================
+   تبدیل اعداد فارسی و عربی
 ========================= */
 
 function normalizeNumber(value){
 
-  return String(value || "")
+  return String(value ?? "")
     .replace(/[۰-۹]/g,function(d){
       return "۰۱۲۳۴۵۶۷۸۹".indexOf(d);
     })
@@ -743,7 +748,7 @@ function normalizeNumber(value){
 
 
 /* =========================
-   GET PRIZE
+   تشخیص جایزه
 ========================= */
 
 function getPrize(data){
@@ -751,23 +756,23 @@ function getPrize(data){
   if(!data) return "";
 
   /*
-    اولویت با prize است.
-    بعد result و reward و ...
+    فقط فیلدهای مخصوص جایزه بررسی می‌شوند.
+    message عمداً حذف شده تا متن خطا یا پیام
+    باعث انتخاب اشتباه خانه نشود.
   */
 
-  const values=[
+  const possibleValues=[
     data.prize,
     data.result,
     data.reward,
-    data.discount,
     data.discountPercent,
     data.percent,
-    data.message
+    data.discount
   ];
 
-  for(let i=0;i<values.length;i++){
+  for(let i=0;i<possibleValues.length;i++){
 
-    const value=values[i];
+    const value=possibleValues[i];
 
     if(
       value !== undefined &&
@@ -787,128 +792,101 @@ function getPrize(data){
 
 
 /* =========================
-   PRIZE INDEX
+   تبدیل جایزه به شماره خانه
 ========================= */
 
-function prizeIndex(prize){
+function getPrizeIndex(prize){
 
-  const p=normalizeNumber(prize)
-    .toLowerCase()
-    .replace(/٪/g,"%")
-    .replace(/\s/g,"");
+  const p=
+    normalizeNumber(prize)
+      .toLowerCase()
+      .replace(/٪/g,"%")
+      .replace(/درصد/g,"%")
+      .replace(/\s/g,"");
 
 
   /*
-    ترتیب دقیق گردونه:
+    خیلی مهم:
+    ترتیب دقیق خانه‌ها:
 
-    ۰ = ۲۰٪
-    ۱ = ۱۵٪
-    ۲ = ۱۲٪
-    ۳ = ۶٪
-    ۴ = ۲٪
-    ۵ = ۴٪
-    ۶ = 🎁
-    ۷ = پوچ
+    0 = ۲۰٪
+    1 = ۱۵٪
+    2 = ۱۲٪
+    3 = ۶٪
+    4 = ۲٪
+    5 = ۴٪
+    6 = 🎁
+    7 = پوچ
   */
 
 
-  if(
-    p.includes("20%") ||
-    p.includes("20")
-  ){
+  if(p.includes("20%") || p === "20"){
     return 0;
   }
 
-
-  if(
-    p.includes("15%") ||
-    p.includes("15")
-  ){
+  if(p.includes("15%") || p === "15"){
     return 1;
   }
 
-
-  if(
-    p.includes("12%") ||
-    p.includes("12")
-  ){
+  if(p.includes("12%") || p === "12"){
     return 2;
   }
 
-
-  if(
-    p.includes("6%") ||
-    p.includes("6")
-  ){
+  if(p.includes("6%") || p === "6"){
     return 3;
   }
 
-
-  if(
-    p.includes("2%") ||
-    p.includes("2")
-  ){
+  if(p.includes("2%") || p === "2"){
     return 4;
   }
 
-
-  if(
-    p.includes("4%") ||
-    p.includes("4")
-  ){
+  if(p.includes("4%") || p === "4"){
     return 5;
   }
 
-
   if(
     p.includes("free") ||
+    p.includes("gift") ||
     p.includes("رایگان") ||
-    p.includes("آیتم") ||
-    p.includes("gift")
+    p.includes("آیتم")
   ){
     return 6;
   }
 
-
   if(
-    p.includes("پوچ") ||
-    p.includes("nothing") ||
     p.includes("lose") ||
-    p.includes("no prize")
+    p.includes("nothing") ||
+    p.includes("nop") ||
+    p.includes("no-prize") ||
+    p.includes("no_prize") ||
+    p.includes("no prize") ||
+    p.includes("پوچ")
   ){
     return 7;
   }
 
+  /*
+    اگر سرور چیزی غیرقابل تشخیص فرستاد،
+    پوچ نمایش داده می‌شود.
+  */
 
   return 7;
-
 }
 
 
 /* =========================
-   PRIZE NAME BY INDEX
+   نمایش نام جایزه
 ========================= */
 
 function prizeName(index){
 
-  const prizes=[
-    "۲۰٪",
-    "۱۵٪",
-    "۱۲٪",
-    "۶٪",
-    "۲٪",
-    "۴٪",
-    "آیتم رایگان",
-    "پوچ"
-  ];
-
-  return prizes[index] || "پوچ";
+  return PRIZES[index] || "پوچ";
 
 }
 
 
 /* =========================
-   RESULT
+   نمایش نتیجه
 ========================= */
 
 function showResult(data,index){
@@ -923,19 +901,6 @@ function showResult(data,index){
   resultIcon.textContent="";
   resultTitle.textContent="";
   resultText.textContent="";
-
-
-  /*
-    خیلی مهم:
-
-    دیگر اینجا index را از data دوباره
-    محاسبه نمی‌کنیم.
-
-    همان index که گردونه با آن چرخیده
-    مستقیماً استفاده می‌شود.
-  */
-
-  lastPrizeIndex=index;
 
 
   /* =========================
@@ -998,7 +963,7 @@ function showResult(data,index){
 
   if(index===6){
 
-    resultIcon.textContent="🎉";
+    resultIcon.textContent="🎁";
 
     resultTitle.textContent="تبریک!";
 
@@ -1007,13 +972,14 @@ function showResult(data,index){
 
     freeButtons.style.display="flex";
 
+    return;
   }
 
 }
 
 
 /* =========================
-   SPIN
+   چرخش اصلی
 ========================= */
 
 async function spinWheel(){
@@ -1045,6 +1011,10 @@ async function spinWheel(){
 
 
   try{
+
+    /* =========================
+       دریافت نتیجه از Worker
+    ========================= */
 
     const response=
       await fetch(
@@ -1078,95 +1048,112 @@ async function spinWheel(){
     }
 
 
-    /*
-      جایزه را فقط یک بار می‌خوانیم.
-    */
+    /* =========================
+       تعیین جایزه فقط یک بار
+    ========================= */
 
     const prize=
       getPrize(data);
 
 
-    /*
-      خانه‌ی جایزه فقط یک بار تعیین می‌شود.
-    */
-
     const index=
-      prizeIndex(prize);
+      getPrizeIndex(prize);
 
 
     /*
-      این index ذخیره می‌شود تا
-      پیام نتیجه دقیقاً همان خانه باشد.
+      از همین index برای:
+      1. چرخ
+      2. نتیجه
+      استفاده می‌کنیم.
     */
 
-    lastPrizeIndex=index;
+
+    /* =========================
+       زاویه دقیق مرکز هر خانه
+    ========================= */
+
+    const segmentAngle=45;
+
+    const segmentCenter=22.5;
 
 
     /*
-      مرکز هر خانه:
-
-      ۲۰٪  = 22.5
-      ۱۵٪  = 67.5
-      ۱۲٪  = 112.5
-      ۶٪   = 157.5
-      ۲٪   = 202.5
-      ۴٪   = 247.5
-      🎁   = 292.5
-      پوچ  = 337.5
+      خانه انتخاب شده باید بیاید
+      دقیقاً زیر فلش.
     */
 
     const targetAngle=
-      (index*45)+22.5;
+      index*segmentAngle+
+      segmentCenter;
 
 
     /*
-      چرخش لازم برای آوردن مرکز
-      خانه روی فلش
+      چون CSS rotate مثبت ساعتگرد است،
+      برای آوردن target به بالای چرخ
+      باید 360-target بچرخیم.
     */
 
-    const desiredRotation=
-      (360-targetAngle)%360;
+    const targetRotation=
+      360-targetAngle;
 
+
+    /*
+      زاویه فعلی چرخ
+    */
 
     const currentMod=
       ((currentRotation%360)+360)%360;
 
 
-    const extraRotation=
-      (desiredRotation-currentMod+360)%360;
+    /*
+      مقدار چرخش اضافه برای رسیدن
+      دقیق به خانه موردنظر
+    */
+
+    let extra=
+      targetRotation-currentMod;
+
+
+    if(extra<0){
+      extra+=360;
+    }
 
 
     /*
-      ۸ دور کامل
-      + رسیدن دقیق به جایزه
+      8 دور کامل + زاویه مقصد
     */
 
     currentRotation+=
-      (360*8)+extraRotation;
+      (360*8)+extra;
 
 
-    wheel.style.setProperty(
-      "--wheel-rotation",
-      currentRotation+"deg"
-    );
-
+    /* =========================
+       اعمال چرخش
+    ========================= */
 
     wheel.style.transition=
       "transform 4.5s cubic-bezier(.12,.75,.16,1)";
 
 
     wheel.style.transform=
-      "rotate("+
-      currentRotation+
-      "deg)";
+      "rotate("+currentRotation+"deg)";
 
 
-    /*
-      بعد از پایان چرخش:
-      همان index را به showResult می‌دهیم.
-    */
+    /* =========================
+       پایان چرخش
+    ========================= */
 
     setTimeout(function(){
+
+      /*
+        دقت کن:
+
+        اینجا دوباره نتیجه را از Worker
+        نمی‌خوانیم.
+
+        دقیقاً همان index استفاده می‌شود
+        که برای چرخش استفاده شد.
+      */
 
       showResult(data,index);
 
@@ -1250,33 +1237,26 @@ async function copyCode(){
 
     alert("کد تخفیف کپی شد ✅");
 
-
   }catch(error){
 
     const temp=
       document.createElement("textarea");
 
-
     temp.value=code;
 
     temp.style.position="fixed";
-
     temp.style.opacity="0";
-
 
     document.body.appendChild(temp);
 
     temp.focus();
-
     temp.select();
-
 
     try{
 
       document.execCommand("copy");
 
       alert("کد تخفیف کپی شد ✅");
-
 
     }catch(e){
 
@@ -1285,7 +1265,6 @@ async function copyCode(){
       );
 
     }
-
 
     temp.remove();
 
@@ -1329,7 +1308,6 @@ async function claimFreeItem(item){
     phoneInput.focus();
 
     return;
-
   }
 
 
@@ -1417,6 +1395,5 @@ showCat(
 );
 
 </script>
-
 </body>
 </html>

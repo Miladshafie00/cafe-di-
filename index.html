@@ -10,8 +10,13 @@
   box-sizing:border-box;
 }
 
-body{
+html,body{
   margin:0;
+  padding:0;
+  min-height:100%;
+}
+
+body{
   font-family:Tahoma,Arial,sans-serif;
   background:#17110d url("m.jpg") center/cover fixed no-repeat;
   color:#fff;
@@ -66,22 +71,14 @@ body::before{
   font-weight:bold;
   background:linear-gradient(
     135deg,
-    #833ab4,
-    #fd1d1d,
-    #fcb045
+    #833ab4 0%,
+    #fd1d1d 55%,
+    #fcb045 100%
   );
   border:1px solid rgba(255,255,255,.45);
   box-shadow:
     0 5px 18px rgba(253,29,29,.25),
     inset 0 1px 0 rgba(255,255,255,.25);
-  transition:.25s;
-}
-
-.instagram-link:hover{
-  transform:translateY(-2px);
-  box-shadow:
-    0 8px 22px rgba(253,29,29,.35),
-    inset 0 1px 0 rgba(255,255,255,.3);
 }
 
 .instagram-icon{
@@ -96,6 +93,10 @@ body::before{
   line-height:2.1;
   font-size:15px;
 }
+
+/* =========================
+   TABS
+========================= */
 
 .tabs{
   display:flex;
@@ -119,12 +120,17 @@ body::before{
   cursor:pointer;
   font-size:14px;
   transition:.2s;
+  -webkit-tap-highlight-color:transparent;
 }
 
 .tab.active{
   background:#c98238;
   box-shadow:0 4px 15px rgba(201,130,56,.35);
 }
+
+/* =========================
+   MENU
+========================= */
 
 .menu-section{
   display:none;
@@ -160,6 +166,10 @@ body::before{
   white-space:nowrap;
 }
 
+/* =========================
+   WHEEL AREA
+========================= */
+
 .wheel-area{
   position:relative;
   display:flex;
@@ -167,6 +177,10 @@ body::before{
   align-items:center;
   padding-top:10px;
 }
+
+/* =========================
+   RESULT BOX
+========================= */
 
 .result-box{
   display:none;
@@ -207,10 +221,20 @@ body::before{
   margin-bottom:15px;
 }
 
+/* =========================
+   CODE
+========================= */
+
 .code-box{
   display:none;
   margin-top:15px;
   padding-top:5px;
+}
+
+.code-label{
+  font-size:13px;
+  color:#ddd;
+  margin-bottom:8px;
 }
 
 .discount-code{
@@ -230,12 +254,6 @@ body::before{
   overflow-wrap:anywhere;
 }
 
-.code-label{
-  font-size:13px;
-  color:#ddd;
-  margin-bottom:8px;
-}
-
 .copy-btn,
 .free-btn,
 .spin-btn{
@@ -250,17 +268,20 @@ body::before{
 .copy-btn{
   margin-top:10px;
   background:#6c4525;
-  transition:.2s;
 }
 
-.copy-btn:hover{
-  background:#875a31;
+.copy-btn:active{
+  transform:scale(.97);
 }
 
 .copy-btn:disabled{
   opacity:.5;
   cursor:not-allowed;
 }
+
+/* =========================
+   FREE ITEM
+========================= */
 
 .free-items{
   display:none;
@@ -274,26 +295,53 @@ body::before{
   background:#6c4525;
 }
 
+/* =========================
+   PHONE
+========================= */
+
+.phone-box{
+  width:100%;
+  margin-top:15px;
+}
+
+.phone-box input{
+  width:100%;
+  padding:14px;
+  border-radius:12px;
+  border:1px solid rgba(255,255,255,.15);
+  background:rgba(0,0,0,.45);
+  color:#fff;
+  text-align:center;
+  font-size:16px;
+  outline:none;
+}
+
+.phone-box input::placeholder{
+  color:rgba(255,255,255,.65);
+}
+
+/* =========================
+   WHEEL
+========================= */
+
 .wheel-wrap{
   position:relative;
   width:min(88vw,430px);
   aspect-ratio:1;
+  margin-top:5px;
 }
-
-/* =========================
-   POINTER FIX
-========================= */
 
 .pointer{
   position:absolute;
-  z-index:30;
-  top:-7px;
+  z-index:50;
+  top:-6px;
   left:50%;
   transform:translateX(-50%);
+
   width:0;
   height:0;
 
-  /* فلش رو به پایین */
+  /* نوک فلش به سمت پایین */
   border-left:18px solid transparent;
   border-right:18px solid transparent;
   border-top:38px solid #fff;
@@ -303,10 +351,6 @@ body::before{
     drop-shadow(0 2px 4px #000)
     drop-shadow(0 0 2px #ffd27a);
 }
-
-/* =========================
-   WHEEL
-========================= */
 
 #wheelCircle{
   --wheel-rotation:0deg;
@@ -338,9 +382,10 @@ body::before{
     );
 
   transform:rotate(0deg);
+  will-change:transform;
 }
 
-/* خطوط جداکننده بخش‌ها */
+/* خطوط جداکننده */
 
 #wheelCircle::after{
   content:"";
@@ -352,37 +397,39 @@ body::before{
   background:
     repeating-conic-gradient(
       from 0deg,
-      rgba(255,255,255,.45) 0deg 1deg,
+      rgba(255,255,255,.5) 0deg 1deg,
       transparent 1deg 45deg
     );
 }
 
 /* =========================
-   WHEEL LABELS
+   LABELS
 ========================= */
 
 .wheel-label{
   position:absolute;
   left:50%;
   top:50%;
+
   width:50%;
   height:50%;
+
   transform-origin:0 0;
+
   pointer-events:none;
-  z-index:5;
+  z-index:10;
 }
 
 .wheel-label span{
   position:absolute;
+
   top:18%;
   left:50%;
 
   transform:
     translateX(-50%)
     rotate(
-      calc(
-        -22.5deg - var(--wheel-rotation)
-      )
+      calc(-22.5deg - var(--wheel-rotation))
     );
 
   font-size:23px;
@@ -396,18 +443,50 @@ body::before{
   white-space:nowrap;
 }
 
-.l1{transform:rotate(22.5deg);}
-.l2{transform:rotate(67.5deg);}
-.l3{transform:rotate(112.5deg);}
-.l4{transform:rotate(157.5deg);}
-.l5{transform:rotate(202.5deg);}
-.l6{transform:rotate(247.5deg);}
-.l7{transform:rotate(292.5deg);}
-.l8{transform:rotate(337.5deg);}
+/*
+  جای هر نوشته دقیقاً مرکز قسمت خودش
+*/
+
+.l1{
+  transform:rotate(22.5deg);
+}
+
+.l2{
+  transform:rotate(67.5deg);
+}
+
+.l3{
+  transform:rotate(112.5deg);
+}
+
+.l4{
+  transform:rotate(157.5deg);
+}
+
+.l5{
+  transform:rotate(202.5deg);
+}
+
+.l6{
+  transform:rotate(247.5deg);
+}
+
+.l7{
+  transform:rotate(292.5deg);
+}
+
+.l8{
+  transform:rotate(337.5deg);
+}
+
+/* =========================
+   CENTER
+========================= */
 
 .wheel-center{
   position:absolute;
-  z-index:15;
+  z-index:25;
+
   left:50%;
   top:50%;
 
@@ -430,6 +509,10 @@ body::before{
   box-shadow:0 3px 12px #000;
 }
 
+/* =========================
+   SPIN BUTTON
+========================= */
+
 .spin-btn{
   margin-top:25px;
   padding:15px 35px;
@@ -442,23 +525,6 @@ body::before{
 .spin-btn:disabled{
   opacity:.5;
   cursor:not-allowed;
-}
-
-.phone-box{
-  width:100%;
-  margin-top:15px;
-}
-
-.phone-box input{
-  width:100%;
-  padding:14px;
-  border-radius:12px;
-  border:1px solid rgba(255,255,255,.15);
-  background:rgba(0,0,0,.45);
-  color:#fff;
-  text-align:center;
-  font-size:16px;
-  outline:none;
 }
 
 .note{
@@ -476,7 +542,10 @@ body::before{
 
 <header class="header">
 
-  <img src="s.jpg" class="logo" alt="کافه دی">
+  <img
+    src="s.jpg"
+    class="logo"
+    alt="کافه دی">
 
   <h1>کافه دی</h1>
 
@@ -497,6 +566,10 @@ body::before{
 
 </header>
 
+
+<!-- =========================
+     TABS
+========================= -->
 
 <div class="tabs" id="a9qqwb">
 
@@ -538,7 +611,9 @@ body::before{
 </div>
 
 
-<!-- COFFEE -->
+<!-- =========================
+     COFFEE
+========================= -->
 
 <section id="coffee" class="menu-section active">
 
@@ -609,7 +684,9 @@ body::before{
 </section>
 
 
-<!-- HOT -->
+<!-- =========================
+     HOT
+========================= -->
 
 <section id="hot" class="menu-section">
 
@@ -665,7 +742,9 @@ body::before{
 </section>
 
 
-<!-- COLD -->
+<!-- =========================
+     COLD
+========================= -->
 
 <section id="cold" class="menu-section">
 
@@ -686,7 +765,9 @@ body::before{
 </section>
 
 
-<!-- DESSERT -->
+<!-- =========================
+     DESSERT
+========================= -->
 
 <section id="dessert" class="menu-section">
 
@@ -702,7 +783,9 @@ body::before{
 </section>
 
 
-<!-- WHEEL -->
+<!-- =========================
+     WHEEL
+========================= -->
 
 <section id="wheel" class="menu-section">
 
@@ -720,20 +803,29 @@ body::before{
         ×
       </button>
 
-      <div id="resultIcon" class="result-icon">
+      <div
+        id="resultIcon"
+        class="result-icon">
         🎉
       </div>
 
-      <div id="resultTitle" class="result-title">
+      <div
+        id="resultTitle"
+        class="result-title">
         🎉 تبریک!
       </div>
 
-      <div id="resultText" class="result-text"></div>
+      <div
+        id="resultText"
+        class="result-text">
+      </div>
 
 
       <!-- DISCOUNT CODE -->
 
-      <div id="codeBox" class="code-box">
+      <div
+        id="codeBox"
+        class="code-box">
 
         <div class="code-label">
           کد تخفیف شما:
@@ -759,7 +851,9 @@ body::before{
 
       <!-- FREE ITEM -->
 
-      <div id="freeItems" class="free-items">
+      <div
+        id="freeItems"
+        class="free-items">
 
         <button
           type="button"
@@ -795,6 +889,7 @@ body::before{
         id="phone"
         type="tel"
         inputmode="tel"
+        autocomplete="tel"
         placeholder="شماره موبایل خود را وارد کنید">
 
     </div>
@@ -873,8 +968,13 @@ body::before{
 
 <script>
 
+/* =========================
+   API
+========================= */
+
 const API =
   "https://cafe-di-discount.miladsh00.workers.dev";
+
 
 let currentRotation = 0;
 let spinning = false;
@@ -882,6 +982,8 @@ let spinning = false;
 
 /* =========================
    TABS
+   این قسمت عمداً ساده
+   و مستقل از گردونه است.
 ========================= */
 
 function showCat(cat, btn){
@@ -896,27 +998,31 @@ function showCat(cat, btn){
 
   });
 
+
   const target =
     document.getElementById(cat);
 
-  if(target){
-
-    target.classList.add("active");
-    target.style.display = "block";
-
+  if(!target){
+    return;
   }
 
-  document.querySelectorAll(".tab")
-    .forEach(function(tab){
 
-      tab.classList.remove("active");
+  target.classList.add("active");
+  target.style.display = "block";
 
-    });
+
+  const tabs =
+    document.querySelectorAll(".tab");
+
+  tabs.forEach(function(tab){
+
+    tab.classList.remove("active");
+
+  });
+
 
   if(btn){
-
     btn.classList.add("active");
-
   }
 
 }
@@ -1141,7 +1247,8 @@ function showResult(data){
 
 
   /*
-    کد واقعی Worker
+    فقط کد واقعی که Worker
+    برمی‌گرداند استفاده می‌شود.
   */
 
   const realCode =
@@ -1151,20 +1258,11 @@ function showResult(data){
     "";
 
 
-  /*
-    کد تخفیف همیشه نمایش داده
-    می‌شود؛ اگر Worker کد فرستاده باشد
-    دکمه کپی فعال خواهد بود.
-  */
-
-  code.textContent =
-    realCode || "کدی دریافت نشد";
-
-
-  codeBox.style.display = "block";
-
-
   if(realCode){
+
+    code.textContent = realCode;
+
+    codeBox.style.display = "block";
 
     copyBtn.disabled = false;
 
@@ -1179,7 +1277,9 @@ function showResult(data){
 
 async function spinWheel(){
 
-  if(spinning) return;
+  if(spinning){
+    return;
+  }
 
 
   const phoneInput =
@@ -1206,90 +1306,3 @@ async function spinWheel(){
     document.getElementById("wheelCircle");
 
   const btn =
-    document.getElementById("spinBtn");
-
-
-  spinning = true;
-
-  btn.disabled = true;
-
-
-  try{
-
-    const response =
-      await fetch(
-        API + "/spin",
-        {
-          method:"POST",
-
-          headers:{
-            "Content-Type":
-              "application/json"
-          },
-
-          body:JSON.stringify({
-            phone:phone
-          })
-        }
-      );
-
-
-    const data =
-      await response.json();
-
-
-    if(!response.ok){
-
-      throw new Error(
-        data.message ||
-        data.error ||
-        "خطا در ارتباط با سرور"
-      );
-
-    }
-
-
-    const prize =
-      data.prize ||
-      data.result ||
-      data.discount ||
-      data.reward ||
-      "پوچ";
-
-
-    /*
-      بخش واقعی جایزه
-    */
-
-    const index =
-      prizeIndex(prize);
-
-
-    /*
-      هر قسمت 45 درجه است.
-      مرکز هر قسمت:
-      22.5 + index*45
-
-      فلش روی 0 درجه است.
-      پس برای آوردن مرکز قسمت
-      زیر فلش، به این مقدار می‌چرخانیم.
-    */
-
-    const targetAngle =
-      360 -
-      (index * 45 + 22.5);
-
-
-    const currentMod =
-      (
-        (currentRotation % 360)
-        + 360
-      ) % 360;
-
-
-    const extra =
-      (
-        targetAngle -
-        currentMod +
-        360
-  

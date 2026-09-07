@@ -30,8 +30,6 @@ body::before{
   z-index:-1;
 }
 
-/* HEADER */
-
 header{
   text-align:center;
   padding:25px 15px 15px;
@@ -94,7 +92,7 @@ header p{
   font-weight:bold;
 }
 
-/* MENU SECTIONS */
+/* MENU */
 
 .menu-section{
   display:none;
@@ -211,8 +209,6 @@ header p{
   transition:transform 4.5s cubic-bezier(.12,.75,.16,1);
 }
 
-/* LABELS ROTATE WITH WHEEL */
-
 .wheel-labels{
   position:absolute;
   inset:0;
@@ -272,8 +268,6 @@ header p{
 .l8{
   transform:rotate(337.5deg) translateY(-92px);
 }
-
-/* KEEP TEXT UPRIGHT */
 
 .wheel-label span{
   display:block;
@@ -338,30 +332,96 @@ header p{
 
 .result{
   display:none;
+  position:relative;
   max-width:500px;
-  margin:25px auto;
-  padding:25px;
+  margin:10px auto 25px;
+  padding:22px 20px 25px;
   border-radius:20px;
-  background:rgba(35,18,10,.96);
+  background:rgba(35,18,10,.97);
   border:1px solid #c88b45;
   text-align:center;
+  box-shadow:0 10px 35px rgba(0,0,0,.5);
 }
 
 .result.show{
   display:block;
 }
 
+.close-result{
+  position:absolute;
+  top:8px;
+  left:10px;
+
+  width:34px;
+  height:34px;
+
+  border:0;
+  border-radius:50%;
+
+  background:#5a2b18;
+  color:#fff;
+
+  font-size:24px;
+  line-height:34px;
+  cursor:pointer;
+}
+
 .result-icon{
   font-size:55px;
+  margin-top:5px;
 }
 
 .result h2{
   color:#f3bd78;
+  margin:8px 0;
 }
 
 .result p{
   color:#eee;
   line-height:2;
+}
+
+.discount-code-box{
+  display:none;
+  margin:18px auto 5px;
+  max-width:380px;
+}
+
+.discount-code-box.show{
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  gap:8px;
+}
+
+.discount-code{
+  flex:1;
+  background:#160b07;
+  border:1px solid #c88b45;
+  border-radius:10px;
+  padding:11px 10px;
+  color:#f3bd78;
+  font-size:16px;
+  font-weight:bold;
+  direction:ltr;
+  text-align:center;
+  user-select:all;
+}
+
+.copy-btn{
+  border:1px solid #c88b45;
+  background:#c88b45;
+  color:#160b06;
+  border-radius:10px;
+  padding:11px 14px;
+  font-family:inherit;
+  font-weight:bold;
+  cursor:pointer;
+  white-space:nowrap;
+}
+
+.copy-btn:active{
+  transform:scale(.96);
 }
 
 .free-items{
@@ -385,8 +445,6 @@ header p{
   cursor:pointer;
 }
 
-/* MOBILE */
-
 @media(max-width:500px){
 
   .tabs{
@@ -404,13 +462,19 @@ header p{
     margin-bottom:-5px;
   }
 
+  .discount-code-box.show{
+    flex-direction:row;
+  }
+
+  .discount-code{
+    min-width:0;
+  }
+
 }
 </style>
 </head>
 
 <body>
-
-<!-- HEADER -->
 
 <header>
   <img src="s.jpg" alt="کافه دی">
@@ -418,41 +482,33 @@ header p{
   <p>منوی کافه و گردونه شانس</p>
 </header>
 
-
-<!-- TABS -->
-
 <div class="tabs">
 
-  <button
-    type="button"
+  <button type="button"
     class="tab active"
     onclick="showCat('coffee', this)">
     ☕ قهوه
   </button>
 
-  <button
-    type="button"
+  <button type="button"
     class="tab"
     onclick="showCat('hot', this)">
     🔥 گرم
   </button>
 
-  <button
-    type="button"
+  <button type="button"
     class="tab"
     onclick="showCat('cold', this)">
     🧊 سرد
   </button>
 
-  <button
-    type="button"
+  <button type="button"
     class="tab"
     onclick="showCat('dessert', this)">
     🍰 دسر
   </button>
 
-  <button
-    type="button"
+  <button type="button"
     class="tab"
     onclick="showCat('wheel', this)">
     🎡 گردونه شانس
@@ -461,17 +517,11 @@ header p{
 </div>
 
 
-<!-- =========================
-     COFFEE
-========================= -->
+<!-- COFFEE -->
 
-<section
-  id="coffee"
-  class="menu-section active">
+<section id="coffee" class="menu-section active">
 
-  <div class="menu-title">
-    ☕ قهوه
-  </div>
+  <div class="menu-title">☕ قهوه</div>
 
   <div class="menu-item">
     <span>تک ۱۰۰٪ روبوستا</span>
@@ -536,17 +586,11 @@ header p{
 </section>
 
 
-<!-- =========================
-     HOT
-========================= -->
+<!-- HOT -->
 
-<section
-  id="hot"
-  class="menu-section">
+<section id="hot" class="menu-section">
 
-  <div class="menu-title">
-    🔥 نوشیدنی گرم
-  </div>
+  <div class="menu-title">🔥 نوشیدنی گرم</div>
 
   <div class="menu-item">
     <span>کافی میکس</span>
@@ -596,17 +640,11 @@ header p{
 </section>
 
 
-<!-- =========================
-     COLD
-========================= -->
+<!-- COLD -->
 
-<section
-  id="cold"
-  class="menu-section">
+<section id="cold" class="menu-section">
 
-  <div class="menu-title">
-    🧊 نوشیدنی سرد
-  </div>
+  <div class="menu-title">🧊 نوشیدنی سرد</div>
 
   <div class="menu-item">
     <span>آیس لته</span>
@@ -621,17 +659,11 @@ header p{
 </section>
 
 
-<!-- =========================
-     DESSERT
-========================= -->
+<!-- DESSERT -->
 
-<section
-  id="dessert"
-  class="menu-section">
+<section id="dessert" class="menu-section">
 
-  <div class="menu-title">
-    🍰 دسر
-  </div>
+  <div class="menu-title">🍰 دسر</div>
 
   <div class="menu-item">
     <span>کیک شکلاتی (هر اسلایس</span>
@@ -641,23 +673,13 @@ header p{
 </section>
 
 
-<!-- =========================
-     WHEEL
-========================= -->
+<!-- WHEEL -->
 
-<section
-  id="wheel"
-  class="menu-section">
+<section id="wheel" class="menu-section">
 
-  <div class="menu-title">
-    🎡 گردونه شانس
-  </div>
-
+  <div class="menu-title">🎡 گردونه شانس</div>
 
   <div class="wheel-box">
-
-
-    <!-- PHONE -->
 
     <div class="phone-box">
 
@@ -667,98 +689,21 @@ header p{
         inputmode="numeric"
         placeholder="شماره موبایل">
 
-      <div
-        id="message"
-        class="message">
-      </div>
+      <div id="message" class="message"></div>
 
     </div>
 
 
-    <!-- WHEEL -->
+    <!-- RESULT - بالاتر از گردونه -->
 
-    <div class="wheel-wrap">
+    <div id="result" class="result">
 
-      <!-- فقط خود دایره -->
-      <div
-        id="wheelCircle"
-        class="wheel">
-      </div>
-
-
-      <!-- نوشته های روی گردونه -->
-
-      <div
-        id="wheelLabels"
-        class="wheel-labels">
-
-        <div class="wheel-label l1">
-          <span>۲۰٪</span>
-        </div>
-
-        <div class="wheel-label l2">
-          <span>۱۵٪</span>
-        </div>
-
-        <div class="wheel-label l3">
-          <span>۱۲٪</span>
-        </div>
-
-        <div class="wheel-label l4">
-          <span>۶٪</span>
-        </div>
-
-        <div class="wheel-label l5">
-          <span>۲٪</span>
-        </div>
-
-        <div class="wheel-label l6">
-          <span>۴٪</span>
-        </div>
-
-        <div class="wheel-label l7">
-          <span>🎁</span>
-        </div>
-
-        <div class="wheel-label l8">
-          <span>پوچ</span>
-        </div>
-
-      </div>
-
-
-      <!-- POINTER -->
-
-      <div class="pointer"></div>
-
-
-      <!-- CENTER -->
-
-      <div class="wheel-center">
-        ☕
-      </div>
-
-    </div>
-
-
-    <!-- SPIN BUTTON -->
-
-    <button
-      id="spinBtn"
-      type="button"
-      class="spin-btn"
-      onclick="spinWheel()">
-
-      🎯 چرخاندن گردونه
-
-    </button>
-
-
-    <!-- RESULT -->
-
-    <div
-      id="result"
-      class="result">
+      <button
+        type="button"
+        class="close-result"
+        onclick="closeResult()">
+        ×
+      </button>
 
       <div
         id="resultIcon"
@@ -769,6 +714,27 @@ header p{
       <h2 id="resultTitle"></h2>
 
       <p id="resultText"></p>
+
+
+      <!-- DISCOUNT CODE -->
+
+      <div
+        id="discountCodeBox"
+        class="discount-code-box">
+
+        <div
+          id="discountCode"
+          class="discount-code">
+        </div>
+
+        <button
+          type="button"
+          class="copy-btn"
+          onclick="copyCode()">
+          📋 کپی کد
+        </button>
+
+      </div>
 
 
       <!-- FREE ITEMS -->
@@ -835,6 +801,73 @@ header p{
 
     </div>
 
+
+    <!-- WHEEL -->
+
+    <div class="wheel-wrap">
+
+      <div
+        id="wheelCircle"
+        class="wheel">
+      </div>
+
+      <div
+        id="wheelLabels"
+        class="wheel-labels">
+
+        <div class="wheel-label l1">
+          <span>۲۰٪</span>
+        </div>
+
+        <div class="wheel-label l2">
+          <span>۱۵٪</span>
+        </div>
+
+        <div class="wheel-label l3">
+          <span>۱۲٪</span>
+        </div>
+
+        <div class="wheel-label l4">
+          <span>۶٪</span>
+        </div>
+
+        <div class="wheel-label l5">
+          <span>۲٪</span>
+        </div>
+
+        <div class="wheel-label l6">
+          <span>۴٪</span>
+        </div>
+
+        <div class="wheel-label l7">
+          <span>🎁</span>
+        </div>
+
+        <div class="wheel-label l8">
+          <span>پوچ</span>
+        </div>
+
+      </div>
+
+      <div class="pointer"></div>
+
+      <div class="wheel-center">
+        ☕
+      </div>
+
+    </div>
+
+
+    <button
+      id="spinBtn"
+      type="button"
+      class="spin-btn"
+      onclick="spinWheel()">
+
+      🎯 چرخاندن گردونه
+
+    </button>
+
   </div>
 
 </section>
@@ -842,17 +875,8 @@ header p{
 
 <script>
 
-/* =========================
-   WORKER
-========================= */
-
 const API =
   "https://cafe-di-discount.miladsh00.workers.dev";
-
-
-/* =========================
-   VARIABLES
-========================= */
 
 let currentRotation = 0;
 let spinning = false;
@@ -863,8 +887,6 @@ let spinning = false;
 ========================= */
 
 function showCat(cat, btn){
-
-  /* همه بخش ها مخفی */
 
   const sections =
     document.querySelectorAll(".menu-section");
@@ -877,8 +899,6 @@ function showCat(cat, btn){
   });
 
 
-  /* بخش انتخاب شده */
-
   const target =
     document.getElementById(cat);
 
@@ -889,8 +909,6 @@ function showCat(cat, btn){
 
   }
 
-
-  /* فعال کردن تب */
 
   const tabs =
     document.querySelectorAll(".tab");
@@ -903,9 +921,7 @@ function showCat(cat, btn){
 
 
   if(btn){
-
     btn.classList.add("active");
-
   }
 
 }
@@ -980,11 +996,9 @@ async function checkPhone(phone){
         encodeURIComponent(phone)
       );
 
-
     if(!response.ok){
       return null;
     }
-
 
     return await response.json();
 
@@ -1012,49 +1026,37 @@ function prizeIndex(prize){
   if(
     p.includes("20") ||
     p.includes("۲۰")
-  ){
-    return 0;
-  }
+  ) return 0;
 
 
   if(
     p.includes("15") ||
     p.includes("۱۵")
-  ){
-    return 1;
-  }
+  ) return 1;
 
 
   if(
     p.includes("12") ||
     p.includes("۱۲")
-  ){
-    return 2;
-  }
+  ) return 2;
 
 
   if(
     p.includes("6") ||
     p.includes("۶")
-  ){
-    return 3;
-  }
+  ) return 3;
 
 
   if(
     p.includes("2") ||
     p.includes("۲")
-  ){
-    return 4;
-  }
+  ) return 4;
 
 
   if(
     p.includes("4") ||
     p.includes("۴")
-  ){
-    return 5;
-  }
+  ) return 5;
 
 
   if(
@@ -1062,9 +1064,7 @@ function prizeIndex(prize){
     p.includes("gift") ||
     p.includes("رایگان") ||
     p.includes("🎁")
-  ){
-    return 6;
-  }
+  ) return 6;
 
 
   return 7;
@@ -1073,10 +1073,10 @@ function prizeIndex(prize){
 
 
 /* =========================
-   RESULT
+   SHOW RESULT
 ========================= */
 
-function showResult(prize){
+function showResult(prize, code){
 
   const result =
     document.getElementById("result");
@@ -1093,20 +1093,41 @@ function showResult(prize){
   const freeItems =
     document.getElementById("freeItems");
 
+  const codeBox =
+    document.getElementById("discountCodeBox");
 
-  if(!result){
-    return;
-  }
+  const codeElement =
+    document.getElementById("discountCode");
 
 
   result.classList.add("show");
 
-
   freeItems.classList.remove("show");
 
+  codeBox.classList.remove("show");
 
   const p =
     String(prize).toLowerCase();
+
+
+  /* POCH */
+
+  if(
+    p.includes("lose") ||
+    p.includes("none") ||
+    p.includes("پوچ")
+  ){
+
+    icon.textContent = "😅";
+
+    title.textContent =
+      "پوچ شد!";
+
+    text.textContent =
+      "این بار شانست نگرفت.";
+
+    return;
+  }
 
 
   /* FREE */
@@ -1129,32 +1150,10 @@ function showResult(prize){
     freeItems.classList.add("show");
 
     return;
-
   }
 
 
-  /* LOSE */
-
-  if(
-    p.includes("lose") ||
-    p.includes("none") ||
-    p.includes("پوچ")
-  ){
-
-    icon.textContent = "😅";
-
-    title.textContent =
-      "پوچ شد!";
-
-    text.textContent =
-      "این بار شانست نگرفت.";
-
-    return;
-
-  }
-
-
-  /* DISCOUNTS */
+  /* DISCOUNT */
 
   let shownPrize =
     String(prize);
@@ -1164,60 +1163,41 @@ function showResult(prize){
     p.includes("20") ||
     p.includes("۲۰")
   ){
-
-    shownPrize =
-      "۲۰٪ تخفیف";
-
+    shownPrize = "۲۰٪ تخفیف";
   }
   else if(
     p.includes("15") ||
     p.includes("۱۵")
   ){
-
-    shownPrize =
-      "۱۵٪ تخفیف";
-
+    shownPrize = "۱۵٪ تخفیف";
   }
   else if(
     p.includes("12") ||
     p.includes("۱۲")
   ){
-
-    shownPrize =
-      "۱۲٪ تخفیف";
-
+    shownPrize = "۱۲٪ تخفیف";
   }
   else if(
     p.includes("6") ||
     p.includes("۶")
   ){
-
-    shownPrize =
-      "۶٪ تخفیف";
-
+    shownPrize = "۶٪ تخفیف";
   }
   else if(
     p.includes("2") ||
     p.includes("۲")
   ){
-
-    shownPrize =
-      "۲٪ تخفیف";
-
+    shownPrize = "۲٪ تخفیف";
   }
   else if(
     p.includes("4") ||
     p.includes("۴")
   ){
-
-    shownPrize =
-      "۴٪ تخفیف";
-
+    shownPrize = "۴٪ تخفیف";
   }
 
 
-  icon.textContent =
-    "🔥";
+  icon.textContent = "🔥";
 
   title.textContent =
     "🎉 برنده شدی!";
@@ -1226,6 +1206,81 @@ function showResult(prize){
     "تبریک! تو " +
     shownPrize +
     " برنده شدی.";
+
+
+  /* SHOW CODE */
+
+  if(code){
+
+    codeElement.textContent =
+      code;
+
+    codeBox.classList.add("show");
+
+  }
+
+}
+
+
+/* =========================
+   CLOSE RESULT
+========================= */
+
+function closeResult(){
+
+  document
+    .getElementById("result")
+    .classList.remove("show");
+
+}
+
+
+/* =========================
+   COPY CODE
+========================= */
+
+async function copyCode(){
+
+  const code =
+    document
+      .getElementById("discountCode")
+      .textContent
+      .trim();
+
+
+  if(!code){
+    return;
+  }
+
+
+  try{
+
+    await navigator.clipboard.writeText(code);
+
+    const btn =
+      document.querySelector(".copy-btn");
+
+    const oldText =
+      btn.textContent;
+
+    btn.textContent =
+      "✅ کپی شد";
+
+    setTimeout(function(){
+
+      btn.textContent =
+        oldText;
+
+    },1500);
+
+
+  }catch(error){
+
+    alert(
+      "کپی خودکار انجام نشد؛ کد را دستی کپی کن."
+    );
+
+  }
 
 }
 
@@ -1270,9 +1325,7 @@ async function spinWheel(){
   btn.disabled = true;
 
 
-  document
-    .getElementById("result")
-    .classList.remove("show");
+  closeResult();
 
 
   showMessage(
@@ -1298,119 +1351,4 @@ async function spinWheel(){
         "این شماره قبلاً از گردونه استفاده کرده است."
       );
 
-      btn.disabled = false;
-      spinning = false;
-
-      return;
-
-    }
-
-
-    const response =
-      await fetch(
-        API + "/spin",
-        {
-          method:"POST",
-
-          headers:{
-            "Content-Type":
-              "application/json"
-          },
-
-          body:
-            JSON.stringify({
-              phone:phone
-            })
-        }
-      );
-
-
-    if(!response.ok){
-
-      throw new Error(
-        "spin failed"
-      );
-
-    }
-
-
-    const data =
-      await response.json();
-
-
-    const prize =
-      data.prize ||
-      data.result ||
-      data.discount ||
-      "پوچ";
-
-
-    const index =
-      prizeIndex(prize);
-
-
-    /* TARGET */
-
-    const targetAngle =
-      360 -
-      (
-        index * 45 +
-        22.5
-      );
-
-
-    const currentMod =
-      (
-        (
-          currentRotation % 360
-        ) + 360
-      ) % 360;
-
-
-    const extra =
-      (
-        targetAngle -
-        currentMod +
-        360
-      ) % 360;
-
-
-    currentRotation +=
-      360 * 7 +
-      extra;
-
-
-    /* ROTATE CIRCLE */
-
-    wheel.style.transition =
-      "transform 4.5s cubic-bezier(.12,.75,.16,1)";
-
-    wheel.style.transform =
-      "rotate(" +
-      currentRotation +
-      "deg)";
-
-
-    /* ROTATE LABELS WITH CIRCLE */
-
-    wheelLabels.style.transition =
-      "transform 4.5s cubic-bezier(.12,.75,.16,1)";
-
-    wheelLabels.style.transform =
-      "rotate(" +
-      currentRotation +
-      "deg)";
-
-
-    showMessage(
-      "گردونه در حال چرخش است..."
-    );
-
-
-    setTimeout(function(){
-
-      showResult(prize);
-
-      showMessage("");
-
-      btn.dis
+      btn.di

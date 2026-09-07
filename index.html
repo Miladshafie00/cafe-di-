@@ -1,26 +1,21 @@
 <!DOCTYPE html>
 <html lang="fa" dir="rtl">
-
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
 <title>منوی دیجیتال کافه دی</title>
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-
 <link href="https://fonts.googleapis.com/css2?family=Lalezar&family=Vazirmatn:wght@300;400;600;700&display=swap" rel="stylesheet">
 
-
 <style>
-
 :root{
+    --bg-image:url('m.jpg');
     --gold:#e5b882;
-    --gold2:#ffd194;
-    --bg:url("m.jpg");
-    --title:"Lalezar",sans-serif;
-    --body:"Vazirmatn",sans-serif;
+    --gold-bright:#ffd194;
+    --font-title:'Lalezar',sans-serif;
+    --font-body:'Vazirmatn',sans-serif;
 }
 
 *{
@@ -31,48 +26,33 @@
 }
 
 body{
-    min-height:100vh;
-    color:#fff;
-    font-family:var(--body);
-
+    font-family:var(--font-body);
     background:
-    linear-gradient(
-        rgba(12,12,12,.88),
-        rgba(12,12,12,.94)
-    ),
-    var(--bg);
-
+        linear-gradient(rgba(12,12,12,.88),rgba(12,12,12,.94)),
+        var(--bg-image);
     background-size:cover;
     background-position:center;
     background-attachment:fixed;
-
+    background-color:#0d0d0d;
+    color:#f5f5f5;
+    min-height:100vh;
     padding-bottom:30px;
 }
 
-
-/* HEADER */
-
 header{
     text-align:center;
-    padding:28px 12px 10px;
+    padding:30px 15px 12px;
 }
 
 .logo-container{
-    width:105px;
-    height:105px;
-
-    margin:0 auto 9px;
-
+    width:110px;
+    height:110px;
+    margin:0 auto 12px;
     border-radius:50%;
+    border:2.5px solid var(--gold);
+    box-shadow:0 0 25px rgba(229,184,130,.35);
     overflow:hidden;
-
-    border:2px solid var(--gold);
-
-    box-shadow:
-    0 0 22px rgba(229,184,130,.35);
-
     background:#181818;
-
     display:flex;
     align-items:center;
     justify-content:center;
@@ -82,311 +62,202 @@ header{
     width:100%;
     height:100%;
     object-fit:cover;
+    display:block;
 }
 
 .logo-placeholder{
-    display:none;
-    font-family:var(--title);
+    font-family:var(--font-title);
     font-size:42px;
-    color:var(--gold2);
+    color:var(--gold-bright);
+    display:none;
 }
 
 header h1{
-    font-family:var(--title);
-    font-size:2.35rem;
-    color:var(--gold2);
-
-    text-shadow:
-    0 0 15px rgba(229,184,130,.4);
+    font-family:var(--font-title);
+    font-size:2.5rem;
+    color:var(--gold-bright);
+    text-shadow:0 0 16px rgba(229,184,130,.45);
 }
 
 .subtitle{
     color:#d1d1d1;
-    font-size:.78rem;
-    margin-top:-2px;
-    margin-bottom:8px;
+    font-size:.85rem;
+    margin-bottom:9px;
 }
 
 .quote-box{
     max-width:480px;
-    margin:auto;
-
-    padding:7px 12px;
-
+    margin:0 auto;
+    padding:8px 13px;
+    background:rgba(229,184,130,.05);
     border-right:3px solid var(--gold);
     border-left:3px solid var(--gold);
-
-    border-radius:10px;
-
-    background:rgba(229,184,130,.05);
-
-    color:#e0d0be;
-
-    font-size:.72rem;
+    border-radius:12px;
+    font-size:.76rem;
     line-height:1.8;
+    color:#e0d0be;
 }
-
-
-/* CATEGORY */
 
 .category-nav{
+    display:flex;
+    justify-content:center;
+    gap:5px;
+    padding:10px 6px;
     position:sticky;
     top:0;
-    z-index:100;
-
-    display:flex;
-
-    justify-content:flex-start;
-
-    gap:6px;
-
-    padding:9px 8px;
-
-    overflow-x:auto;
-
-    white-space:nowrap;
-
     background:rgba(14,14,14,.95);
-
     backdrop-filter:blur(12px);
-
-    border-bottom:
-    1px solid rgba(229,184,130,.22);
-}
-
-.category-nav::-webkit-scrollbar{
-    display:none;
+    z-index:100;
+    border-bottom:1px solid rgba(229,184,130,.22);
+    overflow:hidden;
 }
 
 .cat-btn{
-    flex-shrink:0;
-
-    border:1px solid rgba(229,184,130,.5);
-
     background:rgba(255,255,255,.04);
-
+    border:1px solid rgba(229,184,130,.5);
     color:var(--gold);
-
-    border-radius:22px;
-
-    padding:5px 11px;
-
-    font-family:var(--title);
-
-    font-size:.78rem;
-
+    padding:5px 8px;
+    border-radius:25px;
     cursor:pointer;
+    font-family:var(--font-title);
+    font-size:.73rem;
+    white-space:nowrap;
+    flex-shrink:0;
 }
 
 .cat-btn.active{
-    background:
-    linear-gradient(
-        135deg,
-        #e5b882,
-        #c79053
-    );
-
-    color:#111;
-
+    background:linear-gradient(135deg,#e5b882,#c79053);
+    color:#121212;
     border-color:#ffd194;
-
-    box-shadow:
-    0 0 12px rgba(229,184,130,.4);
+    box-shadow:0 0 14px rgba(229,184,130,.45);
 }
-
-
-/* MAIN */
 
 main{
-    width:100%;
     max-width:580px;
-
-    margin:16px auto;
-
-    padding:0 13px;
+    margin:18px auto;
+    padding:0 14px;
 }
 
-.menu-title{
+.menu-section{
+    display:none;
+}
+
+.menu-section.active{
+    display:block;
+}
+
+.menu-section h2{
     text-align:center;
-
-    font-family:var(--title);
-
-    font-size:1.75rem;
-
-    color:var(--gold2);
-
-    margin-bottom:14px;
+    font-family:var(--font-title);
+    font-size:1.9rem;
+    color:var(--gold-bright);
+    margin-bottom:16px;
 }
-
-
-/* MENU CARD */
 
 .card{
-    display:flex;
-
-    align-items:center;
-    justify-content:space-between;
-
-    width:100%;
-
-    padding:10px 13px;
-
-    margin-bottom:8px;
-
-    border-radius:13px;
-
     background:rgba(255,255,255,.045);
-
-    border:
-    1px solid rgba(255,255,255,.08);
-
+    border:1px solid rgba(255,255,255,.08);
     backdrop-filter:blur(8px);
+    border-radius:14px;
+    padding:11px 15px;
+    margin-bottom:9px;
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
 }
 
 .item-name{
-    color:#fff;
-
-    font-size:.86rem;
-
+    font-size:.9rem;
     font-weight:600;
+    color:#fff;
 }
 
 .price-wrapper{
     display:flex;
-
     align-items:baseline;
-
     gap:4px;
-
     flex-shrink:0;
 }
 
 .price-tag{
-    font-family:var(--title);
-
-    color:var(--gold2);
-
-    font-size:1.12rem;
+    font-family:var(--font-title);
+    color:var(--gold-bright);
+    font-size:1.2rem;
 }
 
 .currency{
+    font-size:.65rem;
     color:#c4c4c4;
-
-    font-size:.62rem;
 }
 
 
-/* =========================
-   WHEEL
-========================= */
+/* گردونه */
 
-.wheel-section{
+#wheel-section{
+    display:none;
     text-align:center;
+}
 
-    padding-top:2px;
+#wheel-section.active{
+    display:block;
 }
 
 .wheel-title{
-    font-family:var(--title);
-
-    color:var(--gold2);
-
-    font-size:1.75rem;
-
+    font-family:var(--font-title);
+    font-size:1.9rem;
+    color:var(--gold-bright);
     margin-bottom:3px;
 }
 
 .wheel-subtitle{
-    color:#d0d0d0;
-
-    font-size:.75rem;
-
-    margin-bottom:13px;
+    color:#ccc;
+    font-size:.76rem;
+    margin-bottom:12px;
 }
 
 .phone-input{
     width:100%;
     max-width:310px;
-
     padding:10px;
-
     border-radius:10px;
-
-    border:
-    1px solid rgba(229,184,130,.55);
-
-    background:rgba(0,0,0,.35);
-
-    color:#fff;
-
+    border:1px solid rgba(229,184,130,.55);
+    background:rgba(0,0,0,.4);
+    color:white;
     outline:none;
-
     text-align:center;
-
     direction:ltr;
-
-    font-family:var(--body);
-
-    font-size:14px;
+    font-family:var(--font-body);
 }
-
-.phone-input::placeholder{
-    color:#aaa;
-}
-
-
-/* WHEEL AREA */
 
 .wheel-area{
     position:relative;
-
     width:250px;
     height:250px;
-
-    margin:20px auto 16px;
+    margin:22px auto 17px;
 }
-
-
-/* POINTER */
 
 .pointer{
     position:absolute;
-
     z-index:20;
-
     left:50%;
-    top:-3px;
-
+    top:-5px;
     transform:translateX(-50%);
-
     width:0;
     height:0;
-
     border-left:13px solid transparent;
     border-right:13px solid transparent;
-
-    border-top:25px solid white;
-
+    border-top:27px solid white;
     filter:drop-shadow(0 2px 3px black);
 }
 
-
-/* WHEEL */
-
 .wheel{
     position:relative;
-
     width:100%;
     height:100%;
-
     border-radius:50%;
-
     border:7px solid #d4af73;
-
     overflow:hidden;
-
-    background:
-    conic-gradient(
+    background:conic-gradient(
         #4b3020 0deg 45deg,
         #a96f39 45deg 90deg,
         #6e482d 90deg 135deg,
@@ -396,152 +267,56 @@ main{
         #80512c 270deg 315deg,
         #d5a15e 315deg 360deg
     );
-
-    transition:
-    transform 5s cubic-bezier(.12,.72,.16,1);
-
-    box-shadow:
-    0 5px 25px rgba(0,0,0,.5);
+    transition:transform 5s cubic-bezier(.12,.72,.16,1);
+    box-shadow:0 5px 25px rgba(0,0,0,.5);
 }
-
-
-/* CENTER */
 
 .wheel-center{
     position:absolute;
-
     z-index:10;
-
     width:45px;
     height:45px;
-
     left:50%;
     top:50%;
-
     transform:translate(-50%,-50%);
-
     border-radius:50%;
-
     background:#151515;
-
     border:4px solid var(--gold);
-
-    box-shadow:0 0 10px #000;
 }
-
-
-/* LABELS */
 
 .wlabel{
     position:absolute;
-
     left:50%;
     top:50%;
-
-    width:70px;
-
-    margin-left:-35px;
+    width:65px;
+    margin-left:-32.5px;
     margin-top:-9px;
-
     text-align:center;
-
-    font-family:var(--title);
-
-    font-size:.68rem;
-
-    color:#fff;
-
-    text-shadow:
-    0 1px 4px #000;
-
-    z-index:5;
+    font-family:var(--font-title);
+    font-size:.67rem;
+    color:white;
+    text-shadow:0 1px 4px #000;
 }
 
-
-/* positions */
-
-.w1{
-    transform:
-    rotate(22.5deg)
-    translateY(-88px)
-    rotate(-22.5deg);
-}
-
-.w2{
-    transform:
-    rotate(67.5deg)
-    translateY(-88px)
-    rotate(-67.5deg);
-}
-
-.w3{
-    transform:
-    rotate(112.5deg)
-    translateY(-88px)
-    rotate(-112.5deg);
-}
-
-.w4{
-    transform:
-    rotate(157.5deg)
-    translateY(-88px)
-    rotate(-157.5deg);
-}
-
-.w5{
-    transform:
-    rotate(202.5deg)
-    translateY(-88px)
-    rotate(-202.5deg);
-}
-
-.w6{
-    transform:
-    rotate(247.5deg)
-    translateY(-88px)
-    rotate(-247.5deg);
-}
-
-.w7{
-    transform:
-    rotate(292.5deg)
-    translateY(-88px)
-    rotate(-292.5deg);
-}
-
-.w8{
-    transform:
-    rotate(337.5deg)
-    translateY(-88px)
-    rotate(-337.5deg);
-}
-
-
-/* SPIN BUTTON */
+.w1{transform:rotate(22.5deg) translateY(-91px) rotate(-22.5deg);}
+.w2{transform:rotate(67.5deg) translateY(-91px) rotate(-67.5deg);}
+.w3{transform:rotate(112.5deg) translateY(-91px) rotate(-112.5deg);}
+.w4{transform:rotate(157.5deg) translateY(-91px) rotate(-157.5deg);}
+.w5{transform:rotate(202.5deg) translateY(-91px) rotate(-202.5deg);}
+.w6{transform:rotate(247.5deg) translateY(-91px) rotate(-247.5deg);}
+.w7{transform:rotate(292.5deg) translateY(-91px) rotate(-292.5deg);}
+.w8{transform:rotate(337.5deg) translateY(-91px) rotate(-337.5deg);}
 
 .spin-button{
     width:100%;
     max-width:310px;
-
-    padding:10px;
-
+    padding:11px;
     border:0;
-
     border-radius:10px;
-
-    background:
-    linear-gradient(
-        135deg,
-        #e5b882,
-        #c79053
-    );
-
+    background:linear-gradient(135deg,#e5b882,#c79053);
     color:#111;
-
-    font-family:var(--title);
-
+    font-family:var(--font-title);
     font-size:.95rem;
-
     cursor:pointer;
 }
 
@@ -549,669 +324,584 @@ main{
     opacity:.55;
 }
 
-
-/* RESULT */
-
 .result{
-    min-height:42px;
-
-    margin-top:11px;
-
+    min-height:45px;
+    margin-top:12px;
     line-height:1.9;
-
     font-size:.82rem;
 }
 
 .win{
-    color:var(--gold2);
-
-    font-family:var(--title);
-
+    color:var(--gold-bright);
+    font-family:var(--font-title);
     font-size:1.05rem;
 }
 
 .code{
     display:inline-block;
-
     direction:ltr;
-
     padding:3px 9px;
-
-    border:
-    1px dashed var(--gold);
-
+    border:1px dashed var(--gold);
     border-radius:7px;
-
-    color:var(--gold2);
-
+    color:var(--gold-bright);
     background:rgba(229,184,130,.1);
-
     font-weight:bold;
 }
 
-
-/* FREE */
-
 .free-box{
     display:none;
-
     width:100%;
     max-width:310px;
-
     margin:10px auto;
-
     padding:12px;
-
-    border:
-    1px solid rgba(229,184,130,.35);
-
+    border:1px solid rgba(229,184,130,.35);
     border-radius:11px;
-
     background:rgba(0,0,0,.3);
 }
 
 .free-box p{
     font-size:.78rem;
-
     margin-bottom:7px;
 }
 
 .free-item{
     width:100%;
-
     padding:9px;
-
     border-radius:8px;
-
-    border:
-    1px solid rgba(229,184,130,.5);
-
+    border:1px solid rgba(229,184,130,.5);
     background:rgba(0,0,0,.35);
-
     color:white;
-
     text-align:center;
-
-    font-family:var(--body);
-
+    font-family:var(--font-body);
     outline:none;
 }
 
 .free-button{
     width:100%;
-
     margin-top:7px;
-
     padding:9px;
-
     border:0;
-
     border-radius:8px;
-
     background:var(--gold);
-
     color:#111;
-
-    font-family:var(--title);
-
+    font-family:var(--font-title);
     cursor:pointer;
 }
 
-
-/* FOOTER */
-
 footer{
     text-align:center;
-
-    margin-top:25px;
-
+    margin-top:30px;
     padding:15px;
 }
 
 .instagram-badge{
     display:inline-flex;
-
     align-items:center;
-
-    gap:6px;
-
-    padding:8px 17px;
-
-    border-radius:25px;
-
+    gap:7px;
+    background:linear-gradient(45deg,#f09433,#e6683c,#dc2743,#cc2366,#bc1888);
     color:#fff;
-
     text-decoration:none;
-
-    font-size:.78rem;
-
+    padding:9px 18px;
+    border-radius:30px;
     font-weight:600;
-
+    font-size:.8rem;
     direction:ltr;
-
-    background:
-    linear-gradient(
-        45deg,
-        #f09433,
-        #e6683c,
-        #dc2743,
-        #cc2366,
-        #bc1888
-    );
 }
 
 .instagram-badge svg{
     width:18px;
     height:18px;
-
     fill:currentColor;
 }
 
-
-@media(max-width:380px){
-
+@media(max-width:390px){
     .cat-btn{
-        font-size:.72rem;
-        padding:5px 9px;
+        padding:5px 6px;
+        font-size:.68rem;
     }
 
     .wheel-area{
         width:230px;
         height:230px;
     }
-
-    .w1,.w2,.w3,.w4,
-    .w5,.w6,.w7,.w8{
-        transform-origin:center;
-    }
 }
-
 </style>
 </head>
 
 
 <body>
 
-
 <header>
 
-    <div class="logo-container">
+<div class="logo-container">
 
-        <img
-            src="s.jpg"
-            alt="لوگوی کافه دی"
-            onerror="
-                this.style.display='none';
-                document.getElementById('altText').style.display='block';
-            "
-        >
+<img
+id="mainLogo"
+src="s.jpg"
+alt="لوگوی کافه دی"
+onerror="this.style.display='none';document.getElementById('altText').style.display='block';"
+>
 
-        <span
-            id="altText"
-            class="logo-placeholder"
-        >
-            دی
-        </span>
+<span id="altText" class="logo-placeholder">دی</span>
 
-    </div>
+</div>
 
+<h1>کافه دی</h1>
 
-    <h1>
-        کافه دی
-    </h1>
+<p class="subtitle">
+طعم دلچسب لحظه‌های ناب
+</p>
 
-
-    <p class="subtitle">
-        طعم دلچسب لحظه‌های ناب
-    </p>
-
-
-    <div class="quote-box">
-        «زندگی مثل یک فنجان قهوه است؛ تلخ و گرم، اما عطر و لحظه‌هایش تا ابد ماندگار... خوش آمدید به خلوت دنج کافه دی»
-    </div>
+<div class="quote-box">
+«زندگی مثل یک فنجان قهوه است؛ تلخ و گرم، اما عطر و لحظه‌هایش تا ابد ماندگار... خوش آمدید به خلوت دنج کافه دی»
+</div>
 
 </header>
 
 
-
 <nav class="category-nav">
 
-    <button
-        class="cat-btn active"
-        data-cat="coffee"
-    >
-        منوی قهوه
-    </button>
+<button class="cat-btn active" data-section="coffee">
+منوی قهوه
+</button>
 
+<button class="cat-btn" data-section="hot">
+بار گرم
+</button>
 
-    <button
-        class="cat-btn"
-        data-cat="hot"
-    >
-        بار گرم
-    </button>
+<button class="cat-btn" data-section="cold">
+بار سرد
+</button>
 
+<button class="cat-btn" data-section="dessert">
+دسر
+</button>
 
-    <button
-        class="cat-btn"
-        data-cat="cold"
-    >
-        بار سرد
-    </button>
-
-
-    <button
-        class="cat-btn"
-        data-cat="dessert"
-    >
-        دسر
-    </button>
-
-
-    <button
-        class="cat-btn"
-        data-cat="wheel"
-    >
-        🎡 گردونه شانس
-    </button>
+<button class="cat-btn" data-section="wheel">
+🎡 گردونه شانس
+</button>
 
 </nav>
 
 
+<main>
 
-<main id="content"></main>
 
+<!-- قهوه -->
+
+<section id="coffee" class="menu-section active">
+
+<h2>قهوه‌های تخصصی</h2>
+
+<div class="card">
+<span class="item-name">تک ۱۰۰٪ روبوستا</span>
+<div class="price-wrapper">
+<span class="price-tag">۶۰</span>
+<span class="currency">هزار تومان</span>
+</div>
+</div>
+
+<div class="card">
+<span class="item-name">دبل ۱۰۰٪ روبوستا</span>
+<div class="price-wrapper">
+<span class="price-tag">۷۰</span>
+<span class="currency">هزار تومان</span>
+</div>
+</div>
+
+<div class="card">
+<span class="item-name">تک ۸۰/۲۰ روبوستا</span>
+<div class="price-wrapper">
+<span class="price-tag">۶۰</span>
+<span class="currency">هزار تومان</span>
+</div>
+</div>
+
+<div class="card">
+<span class="item-name">دبل ۸۰/۲۰ روبوستا</span>
+<div class="price-wrapper">
+<span class="price-tag">۷۰</span>
+<span class="currency">هزار تومان</span>
+</div>
+</div>
+
+<div class="card">
+<span class="item-name">تک ۷۰/۳۰ روبوستا</span>
+<div class="price-wrapper">
+<span class="price-tag">۶۵</span>
+<span class="currency">هزار تومان</span>
+</div>
+</div>
+
+<div class="card">
+<span class="item-name">دبل ۷۰/۳۰ روبوستا</span>
+<div class="price-wrapper">
+<span class="price-tag">۷۵</span>
+<span class="currency">هزار تومان</span>
+</div>
+</div>
+
+<div class="card">
+<span class="item-name">تک ۱۰۰٪ عربیکا</span>
+<div class="price-wrapper">
+<span class="price-tag">۱۱۰</span>
+<span class="currency">هزار تومان</span>
+</div>
+</div>
+
+<div class="card">
+<span class="item-name">دبل ۱۰۰٪ عربیکا</span>
+<div class="price-wrapper">
+<span class="price-tag">۱۲۰</span>
+<span class="currency">هزار تومان</span>
+</div>
+</div>
+
+<div class="card">
+<span class="item-name">تک ۸۰/۲۰ عربیکا</span>
+<div class="price-wrapper">
+<span class="price-tag">۸۰</span>
+<span class="currency">هزار تومان</span>
+</div>
+</div>
+
+<div class="card">
+<span class="item-name">دبل ۸۰/۲۰ عربیکا</span>
+<div class="price-wrapper">
+<span class="price-tag">۹۰</span>
+<span class="currency">هزار تومان</span>
+</div>
+</div>
+
+<div class="card">
+<span class="item-name">تک ۷۰/۳۰ عربیکا</span>
+<div class="price-wrapper">
+<span class="price-tag">۸۵</span>
+<span class="currency">هزار تومان</span>
+</div>
+</div>
+
+<div class="card">
+<span class="item-name">دبل ۷۰/۳۰ عربیکا</span>
+<div class="price-wrapper">
+<span class="price-tag">۹۵</span>
+<span class="currency">هزار تومان</span>
+</div>
+</div>
+
+</section>
+
+
+<!-- بار گرم -->
+
+<section id="hot" class="menu-section">
+
+<h2>نوشیدنی‌های گرم</h2>
+
+<div class="card">
+<span class="item-name">کافی میکس</span>
+<div class="price-wrapper">
+<span class="price-tag">۸۰</span>
+<span class="currency">هزار تومان</span>
+</div>
+</div>
+
+<div class="card">
+<span class="item-name">چای کرک</span>
+<div class="price-wrapper">
+<span class="price-tag">۸۵</span>
+<span class="currency">هزار تومان</span>
+</div>
+</div>
+
+<div class="card">
+<span class="item-name">هات چاکلت</span>
+<div class="price-wrapper">
+<span class="price-tag">۸۶</span>
+<span class="currency">هزار تومان</span>
+</div>
+</div>
+
+<div class="card">
+<span class="item-name">ماسالا</span>
+<div class="price-wrapper">
+<span class="price-tag">۸۵</span>
+<span class="currency">هزار تومان</span>
+</div>
+</div>
+
+<div class="card">
+<span class="item-name">لته</span>
+<div class="price-wrapper">
+<span class="price-tag">۱۴۰</span>
+<span class="currency">هزار تومان</span>
+</div>
+</div>
+
+<div class="card">
+<span class="item-name">کاپوچینو</span>
+<div class="price-wrapper">
+<span class="price-tag">۸۰</span>
+<span class="currency">هزار تومان</span>
+</div>
+</div>
+
+<div class="card">
+<span class="item-name">شیر پسته</span>
+<div class="price-wrapper">
+<span class="price-tag">۸۵</span>
+<span class="currency">هزار تومان</span>
+</div>
+</div>
+
+<div class="card">
+<span class="item-name">شیر زعفران</span>
+<div class="price-wrapper">
+<span class="price-tag">۸۵</span>
+<span class="currency">هزار تومان</span>
+</div>
+</div>
+
+<div class="card">
+<span class="item-name">موکا</span>
+<div class="price-wrapper">
+<span class="price-tag">۱۵۰</span>
+<span class="currency">هزار تومان</span>
+</div>
+</div>
+
+</section>
+
+
+<!-- بار سرد -->
+
+<section id="cold" class="menu-section">
+
+<h2>نوشیدنی‌های سرد</h2>
+
+<div class="card">
+<span class="item-name">آیس لته</span>
+<div class="price-wrapper">
+<span class="price-tag">۱۵۰</span>
+<span class="currency">هزار تومان</span>
+</div>
+</div>
+
+<div class="card">
+<span class="item-name">آیس موکا</span>
+<div class="price-wrapper">
+<span class="price-tag">۱۶۰</span>
+<span class="currency">هزار تومان</span>
+</div>
+</div>
+
+</section>
+
+
+<!-- دسر -->
+
+<section id="dessert" class="menu-section">
+
+<h2>کیک و دسر</h2>
+
+<div class="card">
+<span class="item-name">(کیک شکلاتی (هر اسلایس</span>
+<div class="price-wrapper">
+<span class="price-tag">۷۰</span>
+<span class="currency">هزار تومان</span>
+</div>
+</div>
+
+</section>
+
+
+<!-- گردونه -->
+
+<section id="wheel-section">
+
+<div class="wheel-title">
+🎡 گردونه شانس
+</div>
+
+<div class="wheel-subtitle">
+شماره موبایلت رو وارد کن و شانست رو امتحان کن
+</div>
+
+<input
+id="phone"
+class="phone-input"
+type="tel"
+inputmode="numeric"
+maxlength="13"
+placeholder="شماره موبایل"
+>
+
+
+<div class="wheel-area">
+
+<div class="pointer"></div>
+
+<div id="wheel" class="wheel">
+
+<div class="wlabel w1">پوچ</div>
+<div class="wlabel w2">تخفیف</div>
+<div class="wlabel w3">تخفیف</div>
+<div class="wlabel w4">تخفیف</div>
+<div class="wlabel w5">تخفیف</div>
+<div class="wlabel w6">تخفیف</div>
+<div class="wlabel w7">تخفیف</div>
+<div class="wlabel w8">رایگان</div>
+
+<div class="wheel-center"></div>
+
+</div>
+
+</div>
+
+
+<button
+id="spin"
+class="spin-button"
+>
+🎯 چرخاندن گردونه
+</button>
+
+
+<div id="result" class="result"></div>
+
+
+<div id="freeBox" class="free-box">
+
+<p>🎁 یک آیتم رایگان برنده شدی!</p>
+
+<p>فقط یک آیتم انتخاب کن:</p>
+
+<input
+id="freeItem"
+class="free-item"
+type="text"
+maxlength="100"
+placeholder="مثلاً لاته"
+>
+
+<button
+id="freeButton"
+class="free-button"
+>
+ثبت آیتم رایگان
+</button>
+
+</div>
+
+</section>
+
+</main>
 
 
 <footer>
 
 <a
-    href="https://instagram.com/cafedey2026"
-    target="_blank"
-    class="instagram-badge"
+href="https://instagram.com/cafedey2026"
+target="_blank"
+class="instagram-badge"
 >
 
 <svg viewBox="0 0 24 24">
 
-<path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.79 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/>
+<path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.78 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.204-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.79 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/>
 
 </svg>
 
-<span>
-@cafedey2026
-</span>
+<span>@cafedey2026</span>
 
 </a>
 
 </footer>
 
 
-
 <script>
 
-
-/* ===================================
-   آدرس سیستم گردونه
-=================================== */
-
 const WORKER =
-"https://cafe-di-discount.miladsh00.workers.dev";
+"https://cafe-di-discount.miladsh00.workers.dev/";
 
 
-/* ===================================
-   اطلاعات منو
-=================================== */
+/* تغییر دسته‌ها */
 
-const menus = {
+document.querySelectorAll(".cat-btn").forEach(function(button){
 
-coffee: {
-title:"قهوه‌های تخصصی",
+button.addEventListener("click",function(){
 
-items:[
-["تک ۱۰۰٪ روبوستا","۶۰"],
-["دبل ۱۰۰٪ روبوستا","۷۰"],
-["تک ۸۰/۲۰ روبوستا","۶۰"],
-["دبل ۸۰/۲۰ روبوستا","۷۰"],
-["تک ۷۰/۳۰ روبوستا","۶۵"],
-["دبل ۷۰/۳۰ روبوستا","۷۵"],
-["تک ۱۰۰٪ عربیکا","۱۱۰"],
-["دبل ۱۰۰٪ عربیکا","۱۲۰"],
-["تک ۸۰/۲۰ عربیکا","۸۰"],
-["دبل ۸۰/۲۰ عربیکا","۹۰"],
-["تک ۷۰/۳۰ عربیکا","۸۵"],
-["دبل ۷۰/۳۰ عربیکا","۹۵"]
-]
-},
-
-
-hot:{
-title:"نوشیدنی‌های گرم",
-
-items:[
-["کافی میکس","۸۰"],
-["چای کرک","۸۵"],
-["هات چاکلت","۸۶"],
-["ماسالا","۸۵"],
-["لته","۱۴۰"],
-["کاپوچینو","۸۰"],
-["شیر پسته","۸۵"],
-["شیر زعفران","۸۵"],
-["موکا","۱۵۰"]
-]
-},
-
-
-cold:{
-title:"نوشیدنی‌های سرد",
-
-items:[
-["آیس لته","۱۵۰"],
-["آیس موکا","۱۶۰"]
-]
-},
-
-
-dessert:{
-title:"کیک و دسر",
-
-items:[
-["(کیک شکلاتی (هر اسلایس","۷۰"]
-]
-}
-
-};
-
-
-/* ===================================
-   تبدیل اعداد
-=================================== */
-
-function normalizeDigits(value){
-
-return String(value)
-
-.replace(/[۰-۹]/g,function(d){
-return "۰۱۲۳۴۵۶۷۸۹".indexOf(d);
-})
-
-.replace(/[٠-٩]/g,function(d){
-return "٠١٢٣٤٥٦٧٨٩".indexOf(d);
+document.querySelectorAll(".cat-btn").forEach(function(btn){
+btn.classList.remove("active");
 });
 
+document.querySelectorAll(".menu-section").forEach(function(section){
+section.classList.remove("active");
+});
+
+document.getElementById("wheel-section").classList.remove("active");
+
+this.classList.add("active");
+
+const section =
+this.getAttribute("data-section");
+
+if(section==="wheel"){
+
+document.getElementById("wheel-section").classList.add("active");
+
+}else{
+
+document.getElementById(section).classList.add("active");
+
 }
 
+});
+
+});
+
+
+/* تبدیل شماره */
 
 function normalizePhone(value){
 
-let phone =
-normalizeDigits(value)
-.trim()
-.replace(/[\s\-()]/g,"");
-
-
-if(phone.startsWith("+98")){
-
-phone =
-"0"+phone.substring(3);
-
-}
-
-else if(
-phone.startsWith("98") &&
-phone.length===12
-){
-
-phone =
-"0"+phone.substring(2);
+return String(value)
+.replace(/[۰-۹]/g,function(d){
+return "۰۱۲۳۴۵۶۷۸۹".indexOf(d);
+})
+.replace(/[٠-٩]/g,function(d){
+return "٠١٢٣٤٥٦٧٨٩".indexOf(d);
+})
+.replace(/[\s\-()]/g,"")
+.trim();
 
 }
 
 
-return phone;
+/* گردونه */
 
-}
+let spinning=false;
+let rotation=0;
 
 
-function isPhone(phone){
+document.getElementById("spin").addEventListener("click",async function(){
 
-return /^09\d{9}$/.test(phone);
+if(spinning)return;
 
-}
 
+const phone=
+normalizePhone(
+document.getElementById("phone").value
+);
 
-/* ===================================
-   نمایش منو
-=================================== */
 
-function showMenu(type){
-
-const data =
-menus[type];
-
-if(!data) return;
-
-
-let html =
-
-'<div class="menu-title">'+
-data.title+
-'</div>';
-
-
-data.items.forEach(function(item){
-
-html +=
-
-'<div class="card">'+
-
-'<span class="item-name">'+
-item[0]+
-'</span>'+
-
-'<div class="price-wrapper">'+
-
-'<span class="price-tag">'+
-item[1]+
-'</span>'+
-
-'<span class="currency">'+
-'هزار تومان'+
-'</span>'+
-
-'</div>'+
-
-'</div>';
-
-});
-
-
-document.getElementById("content").innerHTML =
-html;
-
-}
-
-
-/* ===================================
-   نمایش گردونه
-=================================== */
-
-function showWheel(){
-
-document.getElementById("content").innerHTML = `
-
-<div class="wheel-section">
-
-    <div class="wheel-title">
-        🎡 گردونه شانس
-    </div>
-
-    <div class="wheel-subtitle">
-        شماره موبایلت رو وارد کن و شانست رو امتحان کن
-    </div>
-
-
-    <input
-        id="phone"
-        class="phone-input"
-        type="tel"
-        inputmode="numeric"
-        maxlength="13"
-        placeholder="شماره موبایل"
-    >
-
-
-    <div class="wheel-area">
-
-        <div class="pointer"></div>
-
-
-        <div
-            id="wheel"
-            class="wheel"
-        >
-
-            <div class="wlabel w1">
-                پوچ
-            </div>
-
-            <div class="wlabel w2">
-                تخفیف
-            </div>
-
-            <div class="wlabel w3">
-                تخفیف
-            </div>
-
-            <div class="wlabel w4">
-                تخفیف
-            </div>
-
-            <div class="wlabel w5">
-                تخفیف
-            </div>
-
-            <div class="wlabel w6">
-                تخفیف
-            </div>
-
-            <div class="wlabel w7">
-                تخفیف
-            </div>
-
-            <div class="wlabel w8">
-                رایگان
-            </div>
-
-
-            <div class="wheel-center"></div>
-
-        </div>
-
-    </div>
-
-
-    <button
-        id="spin"
-        class="spin-button"
-    >
-        🎯 چرخاندن گردونه
-    </button>
-
-
-    <div
-        id="result"
-        class="result"
-    ></div>
-
-
-    <div
-        id="freeBox"
-        class="free-box"
-    >
-
-        <p>
-            🎁 یک آیتم رایگان برنده شدی!
-        </p>
-
-        <p>
-            فقط یک آیتم انتخاب کن:
-        </p>
-
-
-        <input
-            id="freeItem"
-            class="free-item"
-            type="text"
-            maxlength="100"
-            placeholder="مثلاً لاته"
-        >
-
-
-        <button
-            id="freeButton"
-            class="free-button"
-        >
-            ثبت آیتم رایگان
-        </button>
-
-    </div>
-
-</div>
-`;
-
-
-setupWheel();
-
-}
-
-
-/* ===================================
-   عملکرد گردونه
-=================================== */
-
-function setupWheel(){
-
-const phone =
-document.getElementById("phone");
-
-const spin =
-document.getElementById("spin");
-
-const wheel =
-document.getElementById("wheel");
-
-const result =
+const result=
 document.getElementById("result");
 
-const freeBox =
-document.getElementById("freeBox");
 
-const freeItem =
-document.getElementById("freeItem");
+if(!/^09\d{9}$/.test(phone)){
 
-const freeButton =
-document.getElementById("freeButton");
-
-
-let rotation = 0;
-
-let spinning = false;
-
-
-spin.addEventListener(
-"click",
-async function(){
-
-if(spinning) return;
-
-
-const phoneNumber =
-normalizePhone(phone.value);
-
-
-if(!isPhone(phoneNumber)){
-
-result.innerHTML =
+result.innerHTML=
 "❌ لطفاً شماره موبایل معتبر وارد کنید.";
 
 return;
@@ -1219,144 +909,87 @@ return;
 }
 
 
-spinning = true;
+spinning=true;
 
-spin.disabled = true;
+this.disabled=true;
 
-freeBox.style.display =
-"none";
-
-result.innerHTML =
+result.innerHTML=
 "⏳ در حال بررسی...";
 
 
 try{
 
+/* بررسی اینکه قبلاً بازی کرده یا نه */
 
-/* بررسی قبلی */
-
-const checkResponse =
+const checkResponse=
 await fetch(
 WORKER+
-"/check?phone="+
-encodeURIComponent(phoneNumber)
+"check?phone="+
+encodeURIComponent(phone)
 );
 
 
-const check =
+const check=
 await checkResponse.json();
 
 
-if(!check.canSpin){
+if(check.canSpin===false){
 
-const old =
-check.record;
-
-
-if(old && old.type==="lose"){
-
-result.innerHTML =
-"⚠️ این شماره قبلاً بازی کرده است.<br>😅 این بار پوچ شده.";
-
-}
-
-else if(
-old &&
-old.type==="free"
-){
-
-result.innerHTML =
-"⚠️ این شماره قبلاً بازی کرده است.<br>🎁 جایزه رایگان شما ثبت شده است.";
-
-if(old.freeItem){
-
-result.innerHTML +=
-"<br>آیتم: "+
-old.freeItem;
-
-}
-
-}
-
-else if(old){
-
-result.innerHTML =
-
-"⚠️ این شماره قبلاً بازی کرده است."+
-
-"<br>🎉 جایزه: "+
-old.label+
-
-"<br>کد: "+
-
-'<span class="code">'+
-old.code+
-"</span>";
-
-}
-
+result.innerHTML=
+"⚠️ این شماره قبلاً از گردونه استفاده کرده است.";
 
 spinning=false;
-
-spin.disabled=true;
 
 return;
 
 }
 
 
-/* گرفتن نتیجه واقعی از سرور */
+/* درخواست چرخش */
 
-const response =
+const response=
 await fetch(
-WORKER+"/spin",
+WORKER+"spin",
 {
-
 method:"POST",
 
 headers:{
-"Content-Type":
-"application/json"
+"Content-Type":"application/json"
 },
 
 body:JSON.stringify({
-phone:phoneNumber
+phone:phone
 })
 
 }
 );
 
 
-const data =
+const data=
 await response.json();
 
 
 if(!response.ok){
 
-result.innerHTML =
+result.innerHTML=
 "❌ "+
-(
-data.message ||
-"خطایی رخ داد."
-);
+(data.message||"خطایی رخ داد.");
 
 spinning=false;
 
-spin.disabled=false;
+this.disabled=false;
 
 return;
 
 }
 
 
-const prize =
-data.result;
+const prize=data.result;
 
 
 /*
-0 = پوچ
-1 تا 6 = تخفیف
-7 = رایگان
+نتیجه واقعی از Worker می‌آید.
+خود کاربر درصدها را نمی‌بیند.
 */
 
 let target=0;
@@ -1366,35 +999,21 @@ if(prize.type==="lose"){
 
 target=0;
 
-}
-
-else if(prize.type==="free"){
+}else if(prize.type==="free"){
 
 target=7;
 
-}
+}else{
 
-else{
-
-target =
+target=
 1+
-Math.floor(
-Math.random()*6
-);
+Math.floor(Math.random()*6);
 
 }
 
 
-/* چرخش */
-
-const angle=45;
-
-const targetAngle =
-360-
-(
-target*angle+
-angle/2
-);
+const targetAngle=
+360-(target*45+22.5);
 
 
 rotation +=
@@ -1403,182 +1022,98 @@ targetAngle-
 (rotation%360);
 
 
-wheel.style.transform =
-"rotate("+
-rotation+
-"deg)";
+document.getElementById("wheel").style.transform=
+"rotate("+rotation+"deg)";
 
 
-result.innerHTML =
+result.innerHTML=
 "🎡 در حال چرخش...";
 
-
-/* پایان */
 
 setTimeout(function(){
 
 
 if(prize.type==="lose"){
 
-result.innerHTML =
-'<span class="win">'+
-"😅 این بار پوچ شد!"+
-"</span>";
+result.innerHTML=
+'<span class="win">😅 این بار پوچ شد!</span>';
 
 }
 
-
 else if(prize.type==="free"){
 
-result.innerHTML =
-
-'<span class="win">'+
-"🎁 یک آیتم رایگان برنده شدی!"+
-"</span>"+
-
+result.innerHTML=
+'<span class="win">🎁 یک آیتم رایگان برنده شدی!</span>'+
 "<br>کد: "+
-
 '<span class="code">'+
-prize.code+
+(prize.code||"")+
 "</span>";
 
-
-freeBox.style.display =
+document.getElementById("freeBox").style.display=
 "block";
 
 }
 
-
 else{
 
-result.innerHTML =
-
-'<span class="win">'+
-"🎉 "+
-prize.label+
+result.innerHTML=
+'<span class="win">🎉 '+
+(prize.label||"جایزه")+
 "</span>"+
-
 "<br>کد تخفیف: "+
-
 '<span class="code">'+
-prize.code+
+(prize.code||"")+
 "</span>";
 
 }
 
-
 spinning=false;
-
-spin.disabled=true;
-
 
 },5200);
 
-
 }
-
 catch(error){
 
 console.error(error);
 
-result.innerHTML =
+result.innerHTML=
 "❌ ارتباط با سرور برقرار نشد.";
 
 spinning=false;
 
-spin.disabled=false;
+this.disabled=false;
 
 }
 
 });
 
 
-
 /* ثبت آیتم رایگان */
 
-freeButton.addEventListener(
-"click",
-async function(){
+document.getElementById("freeButton").addEventListener("click",async function(){
 
-const phoneNumber =
-normalizePhone(phone.value);
-
-const item =
-freeItem.value.trim();
-
-
-if(!isPhone(phoneNumber)){
-
-alert(
-"شماره موبایل معتبر نیست."
+const phone=
+normalizePhone(
+document.getElementById("phone").value
 );
 
-return;
-
-}
+const item=
+document.getElementById("freeItem").value.trim();
 
 
 if(!item){
 
-alert(
-"نام آیتم را وارد کنید."
-);
+alert("نام آیتم را وارد کنید.");
 
 return;
 
 }
 
 
-freeButton.disabled=true;
+this.disabled=true;
 
 
 try{
 
-
-const response =
-await fetch(
-WORKER+"/free-item",
-{
-
-method:"POST",
-
-headers:{
-"Content-Type":
-"application/json"
-},
-
-body:JSON.stringify({
-
-phone:phoneNumber,
-
-item:item
-
-})
-
-}
-);
-
-
-const data =
-await response.json();
-
-
-if(!response.ok){
-
-alert(
-data.message ||
-"ثبت آیتم انجام نشد."
-);
-
-freeButton.disabled=false;
-
-return;
-
-}
-
-
-result.innerHTML +=
-"<br>✅ آیتم رایگان ثبت شد.";
-
-
-freeBox.style.display
+const response=
+await 
